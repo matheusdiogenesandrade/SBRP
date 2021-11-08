@@ -2,6 +2,7 @@ using ArgParse
 
 include("data.jl")
 include("model.jl")
+include("solve.jl")
 
 function parse_commandline(args_array::Array{String,1}, appfolder::String)
    s = ArgParseSettings(usage="  On interactive mode, call main([\"arg1\", ..., \"argn\"])", exit_after_help=false)
@@ -17,32 +18,32 @@ function parse_commandline(args_array::Array{String,1}, appfolder::String)
 end
  
 function run(app::Dict{String,Any})
-   println("Application parameters:")
-   for (arg,val) in app
-      println("  $arg  =>  $(repr(val))")
-   end
-   flush(stdout)
-
-   instance_name = split(basename(app["instance"]), ".")[1]
-
-   data = readSBRPData(app)
-
-   # (model, x, y) = build_model(data, app)
-   # solve model
-   # (status, solution_found) = optimize!(optimizer)
-   solution_found = false
-   if solution_found
-      println("########################################################")
-      #=
-      (app["out"] != nothing) && write(f, "Cost: $(get_objective_value(optimizer))\n")
-      (app["out"] != nothing) && close(f)
-      =#
-      println("########################################################")
-   elseif status == :Infeasible
-      println("Problem infeasible")
-   else
-      println("Solution not found")
-   end
+  println("Application parameters:")
+  for (arg,val) in app
+    println("  $arg  =>  $(repr(val))")
+  end
+  flush(stdout)
+  # read instance
+  instance_name = split(basename(app["instance"]), ".")[1]
+  data, ids = readSBRPData(app)
+  # solve models
+  println("#######################SBRP#############################")
+  (model, x) = build_model_sbrp(data, app)
+  if solve(model)
+    println(objective_value(model)) 
+    app["out"] != nothing && writesol(app["out"], data, x, model, app)
+  else
+    println("Model infeasible or unknown")
+  end
+  println("#######################SBRP MAX#########################")
+  (model_max, x, y) = build_model_max_profit_sbrp(data, app)
+  if solve(model_max)
+    println(objective_value(model_max)) 
+    app["out"] != nothing && writesol(app["out"] * "max", data, x, model)
+  else
+    println("Model infeasible or unknown")
+  end
+  println("########################################################")
 end
 
 function main(args)

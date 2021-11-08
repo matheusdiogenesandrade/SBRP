@@ -45,6 +45,7 @@ function build_model_sbrp(data::SBRPData, app::Dict{String,Any})
   @constraint(model, degree[i in V], sum(x[a] for a in δ⁻(A, i)) == sum(x[a] for a in δ⁺(A, i)))
   @constraint(sbrp.formulation, block[block in B], sum(sum(x[a] for a in δ⁺(A, i)) for i in block) >= 1)
   @constraint(sbrp.formulation, sum(x[a] for a in A) <= T - sum(time_block(data, block) for block in B))
+  @constraint(sbrp.formulation, sum(x[a] for a in δ⁺(A, depot)) <= 1)
   # connectivity
   # lazy
   function bfs_callback(cb_data)
@@ -93,6 +94,7 @@ function build_model_max_profit_sbrp(data::SBRPData, app::Dict{String,Any})
   @constraint(model, degree[i in V], sum(x[a] for a in δ⁻(A, i)) == sum(x[a] for a in δ⁺(A, i)))
   @constraint(sbrp.formulation, block[block in B], sum(sum(x[a] for a in δ⁺(A, i)) for i in block) >= y[b])
   @constraint(sbrp.formulation, sum(x[a] for a in A) + sum(y[block] * time_block(data, block) for block in B) <= T)
+  @constraint(sbrp.formulation, sum(x[a] for a in δ⁺(A, depot)) <= 1)
   # connectivity
   # lazy
   function bfs_callback(cb_data)
