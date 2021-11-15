@@ -3,18 +3,19 @@ using ArgParse
 include("data.jl")
 include("model.jl")
 include("solve.jl")
+include("sol.jl")
 
 function parse_commandline(args_array::Array{String,1}, appfolder::String)
-   s = ArgParseSettings(usage="  On interactive mode, call main([\"arg1\", ..., \"argn\"])", exit_after_help=false)
-   @add_arg_table s begin
-      "instance"
-         help = "Instance file path"
-      "--out","-o"
-         help = "Path to write the solution found"
-      "--batch","-b" 
-         help = "batch file path" 
-   end
-   return parse_args(args_array, s)
+  s = ArgParseSettings(usage="  On interactive mode, call main([\"arg1\", ..., \"argn\"])", exit_after_help=false)
+  @add_arg_table s begin
+    "instance"
+    help = "Instance file path"
+    "--out","-o"
+    help = "Path to write the solution found"
+    "--batch","-b" 
+    help = "batch file path" 
+  end
+  return parse_args(args_array, s)
 end
  
 function run(app::Dict{String,Any})
@@ -25,16 +26,25 @@ function run(app::Dict{String,Any})
   flush(stdout)
   # read instance
   instance_name = split(basename(app["instance"]), ".")[1]
-  data, ids = readSBRPData(app)
+  data, ids, data′, paths = readSBRPData(app, true)
   # solve models
   println("#######################SBRP#############################")
   (model, x) = build_model_sbrp(data, app)
-  if solve(model)
+  if solve(model) 
     println(objective_value(model)) 
     app["out"] != nothing && writesol(app["out"], data, x, model, app)
   else
     println("Model infeasible or unknown")
   end
+  println("#######################SBRP_COMPLETE####################")
+  (model, x) = build_model_sbrp(data, app)
+  if solve(model) 
+    println(objective_value(model)) 
+    app["out"] != nothing && writesol(app["out"], data, x, model, app)
+  else
+    println("Model infeasible or unknown")
+  end
+  #=
   println("#######################SBRP MAX#########################")
   (model_max, x, y) = build_model_max_profit_sbrp(data, app)
   if solve(model_max)
@@ -44,6 +54,7 @@ function run(app::Dict{String,Any})
     println("Model infeasible or unknown")
   end
   println("########################################################")
+  =#
 end
 
 function main(args)

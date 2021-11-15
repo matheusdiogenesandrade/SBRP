@@ -14,8 +14,8 @@ mutable struct InputDigraph
 end
 
 δ⁺(A::Array{Tuple{Int64, Int64}}, i::Int64) = [(j, k) for (j, k) in A if j == i]
-δ⁺(A::Array{Tuple{Int64, Int64}}, S::Set{Int64}) = [(j, k) for (j, k) in A if j == i]
-δ⁺(A::Array{Tuple{Int64, Int64}}, S::Array{Int64}) = [(j, k) for (j, k) in A if j == i]
+δ⁺(A::Array{Tuple{Int64, Int64}}, S::Set{Int64}) = [(i, j) for (i, j) in A if i in S && !in(j, S)]
+δ⁺(A::Array{Tuple{Int64, Int64}}, S::Array{Int64}) = [(i, j) for (i, j) in A if i in S && !in(j, S)]
 δ⁻(A::Array{Tuple{Int64, Int64}}, i::Int64) = [(j, k) for (j, k) in A if k == i]
 δ⁻(A::Array{Tuple{Int64, Int64}}, S::Set{Int64}) = [(j, k) for (j, k) in A if k == i]
 δ⁻(A::Array{Tuple{Int64, Int64}}, S::Array{Int64}) = [(j, k) for (j, k) in A if k == i]
@@ -29,7 +29,48 @@ mutable struct SBRPData
   T::Float64
 end
 
-function readSBRPData(app::Dict{String,Any})
+function compact(data::SBRPData)
+  Vb = [i for b in data.B for i in b]
+  data′, V, paths = SBRPData(
+    InputDigraph(
+                 Array{Vertex, 1}(vcat(data.D.V[data.depot], [data.D.V[i] for i in Vb])), 
+                 Array{Tuple{Int64,Int64}, 1}(), 
+                 Dict{Tuple{Int64, Int64}, Float64}()
+                ), 
+    data.depot, data.B, data.T # 2 hours
+  ), 1:length(data.D.V), Dict{Tuple{Int64, Int64}, Array{Int64}}()
+  for i in Vb
+    # bfs
+    distances, pred, q = [typemax(Float64) for i in V], [i for i in V], [i]
+    distances[i] = 0.0
+    while !isempty(q)
+      curr = popfirst!(q)
+      for (curr, next) in δ⁺(data.D.A, curr)
+        if !in(next, [data.depot, i]) && (pred[next] == next || distances[next] > distances[curr] + data.D.distance[(curr, next)])
+          distances[next] = distances[curr] + data.D.distance[(curr, next)]
+          pred[next] = curr
+          push!(q, next)
+        end
+      end
+    end
+    # add cost and distance
+    for j in Vb
+      i == j && continue
+      data′.D.distance[(i, j)], paths[(i, j)], curr = distances[j], [], j
+      while pred[curr] != curr
+        pushfirst!(paths[(i, j)], curr)
+        curr = pred[curr]
+      end
+      pushfirst!(paths[(i, j)], i)
+    end
+  end
+  # add arcs
+  [(data′.D.distance[(data.depot, i)] = data′.D.distance[(i, data.depot)] = 0.0) for i in Vb]
+  data′.D.A = collect(keys(data′.D.distance))
+  return data′, paths
+end
+
+function readSBRPData(app::Dict{String,Any}, compactPaths = false)
   depot = 1
   data, blocks, ids = SBRPData(
     InputDigraph(
@@ -55,7 +96,8 @@ function readSBRPData(app::Dict{String,Any})
     # get distances
     for i in 1:nArcs
       parts = split(readline(f), [' ']; limit=0, keepempty=false)
-      a, data.D.distance[a] = (ids[parse(Int64, parts[2])], ids[parse(Int64, parts[3])]), parse(Float64, parts[4])
+      a = (ids[parse(Int64, parts[2])], ids[parse(Int64, parts[3])])
+      data.D.distance[a] = parse(Float64, parts[4])
       # get blocks
       parts[5] == "-1" && continue
       for j in 5:length(parts)
@@ -77,10 +119,14 @@ function readSBRPData(app::Dict{String,Any})
     push!(data.B, cycle)
   end
   # dummy arcs
-  [data.D.distance[(depot, i)] = data.D.distance[(i, data.depot)] = 0.0 for i in 2:length(data.V)]
+  [data.D.distance[(depot, i)] = data.D.distance[(i, data.depot)] = 0.0 for i in 2:length(data.D.V)]
   # add arcs
   data.D.A = [keys(data.D.distance)...]
+  # ids
+  ids′ = Dict{Int64, Int64}(v => k for (k, v) in ids)
+  # compact
+  compactPaths && return data, ids′, compact(data)...
   # return
-  return data, Dict{Int64, Int64}(v => k for (k, v) in ids)
+  return data, ids′
 end
 
