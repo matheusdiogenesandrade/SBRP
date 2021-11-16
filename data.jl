@@ -55,7 +55,7 @@ function compact(data::SBRPData)
     end
     # add cost and distance
     for j in Vb
-      i == j && continue
+      pred[j] == j && continue
       data′.D.distance[(i, j)], paths[(i, j)], curr = distances[j], [], j
       while pred[curr] != curr
         pushfirst!(paths[(i, j)], curr)

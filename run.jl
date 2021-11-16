@@ -32,15 +32,30 @@ function run(app::Dict{String,Any})
   (model, x) = build_model_sbrp(data, app)
   if solve(model) 
     println(objective_value(model)) 
-    app["out"] != nothing && writesol(app["out"], data, x, model, app)
+#    app["out"] != nothing && writesol(app["out"], data, x, model, app)
   else
     println("Model infeasible or unknown")
   end
   println("#######################SBRP_COMPLETE####################")
-  (model, x) = build_model_sbrp(data, app)
+  (model, x, y) = build_model_sbrp_complete(data′, app)
   if solve(model) 
     println(objective_value(model)) 
-    app["out"] != nothing && writesol(app["out"], data, x, model, app)
+#    app["out"] != nothing && writesol(app["out"], data′, x, model, app)
+  else
+    println("Model infeasible or unknown")
+  end
+  println("#######################SBRP_ATSP########################")
+  V, A, costs, Vb, Vb′ = build_atsp_instance(data′)
+  (model, x, y) = build_model_atsp(V, A, costs, data′.depot)
+  if solve(model) 
+    println(objective_value(model)) 
+    tour = gettour(V, A, data′.depot, x)
+    println(tour)
+    for (i, b) in keys(Vb)
+      println(i, " ", b, " ", Vb[(i, b)], " ", Vb′[(i, b)])
+    end
+    println(check_atsp_sol(tour, Vb, Vb′))
+#    app["out"] != nothing && writesol(app["out"], data′, x, model, app)
   else
     println("Model infeasible or unknown")
   end
