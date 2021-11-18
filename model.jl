@@ -24,76 +24,115 @@ function bfs_sets(A, nodes, source::Int64)
   return sets
 end
 
-function gh_sets(x_val, source::Int64, targets, n::Int64)
+function gh_sets(x_val, sink::Int64, sources, n::Int64)
+  #=
+  for (a, v) in x_val
+    println(a, " ", v)
+  end
+  =#
   g, M, sets = SparseMaxFlowMinCut.ArcFlow[], 100000, Set{Set{Int64}}()
   # mouting graph
 #  [push!(g, SparseMaxFlowMinCut.ArcFlow(a[1], a[2], trunc(floor(value, digits=5) * M))) for (a, value) in x_val if value > 1e-3]
-  [push!(g, SparseMaxFlowMinCut.ArcFlow(key[1][1], key[1][2], trunc(floor(x_val[key[1]], digits=5) * M))) for key in keys(x_val) if x_val[key[1]] > 1e-3]
+  [push!(g, SparseMaxFlowMinCut.ArcFlow(a[1], a[2], trunc(floor(v, digits=5) * M))) for (a, v) in x_val]
+  [push!(g, SparseMaxFlowMinCut.ArcFlow(a[2], a[1], trunc(floor(v, digits=5) * M))) for (a, v) in x_val]
   # get subsets
-  for i in targets
-    maxFlow, flows, set = SparseMaxFlowMinCut.find_maxflow_mincut(SparseMaxFlowMinCut.Graph(n, g), source, i)
-    (maxFlow / M) < (2 - 1e-3) && push!(sets, Set{Int64}([i for i in 1:n if set[i] == 1]))
+  for source in sources 
+    maxFlow, flows, set = SparseMaxFlowMinCut.find_maxflow_mincut(SparseMaxFlowMinCut.Graph(n, g), source, sink)
+#    println(source, " to ", sink, " = ", maxFlow / M, " ", set[sink])
+    ((maxFlow / M) < (2 - 1e-3) && set[sink] == 0) && push!(sets, Set{Int64}([i for i in 1:n if set[i] == 1]))
   end
   return sets
 end
 
+function get_max_flow_min_cut_cuts(data::SBRPData, model, x)
+  A, B, depot, sets, n = data.D.A, data.B, data.depot, Set{Set{Int64}}(), length(data.D.V)
+  while true
+    !solve(model) && error("The model could not be solved")
+    # create dummy nodes
+    Nb = Dict{Array{Int64, 1}, Int64}(B[i] => n + i for i in 1:length(B))
+    ids = Set{Int64}(collect(values(Nb)))
+    # get value
+    x_val = merge(
+                  Dict{Tuple{Int64, Int64}, Float64}(a      => value(x[a]) for a in A if value(x[a]) > 1e-3),
+                  Dict{Tuple{Int64, Int64}, Float64}((i, j) => 2.0         for (b, i) in Nb for j in b)
+                 )
+    # get subsets
+    sets′, sets″ = gh_sets(x_val, depot, ids, n + length(B)), []
+    for S in sets′
+      S′ = setdiff(S, ids)
+      !(isempty(S′) || in(S′, sets)) && push!(sets″, S′)
+    end
+    # base case
+    isempty(sets″) && break
+    println(sets″)
+    # store sets″
+    [push!(sets, S) for S in sets″]
+    # add ineqs
+    add_subtour_ineqs(model, x, sets″, A)
+  end
+  return sets
+end
+
+function add_subtour_ineqs(model, x, sets, A::Array{Tuple{Int64, Int64}})
+  [@constraint(model, sum(x[a′] for a′ in δ⁺(A, S)) >= 1) for S in sets]
+end
+
 function build_model_sbrp(data::SBRPData, app::Dict{String,Any})
-  B, A, T, V, depot, Vb, gh_cuts, bfs_cuts = data.B, data.D.A, data.T, 1:length(data.D.V), data.depot, Set{Int64}([i for b in data.B for i in b]), [], []
+  B, A, T, V, depot, Vb, bfs_cuts = data.B, data.D.A, data.T, 1:length(data.D.V), data.depot, Set{Int64}([i for b in data.B for i in b]), [], Set{Set{Int64}}()
+  function add_basic_constraints(model)
+    @objective(model, Min, sum(time(data, a) * x[a] for a in A))
+    @constraint(model, degree[i in V], sum(x[a] for a in δ⁻(A, i)) == sum(x[a] for a in δ⁺(A, i)))
+    @constraint(model, block[block in B], sum(sum(x[a] for a in δ⁺(A, i)) for i in block) >= 1)
+    @constraint(model, block1[block in B], sum(x[a] for a in δ⁺(A, block))  >= 1)
+    @constraint(model, sum(x[a] for a in δ⁺(A, depot)) <= 1)
+#    @constraint(model, sum(x[a] for a in A) <= T - sum(time_block(data, block) for block in B))
+  end
   # Formulation
-  #  model = Model(CPLEX.Optimizer)
+  # frac model - get max-flow/min-cut cuts
+  model = direct_model(CPLEX.Optimizer())
+  set_silent(model)
+  @variable(model, x[a in A], lower_bound = 0)
+  add_basic_constraints(model)
+  sets = get_max_flow_min_cut_cuts(data, model, x)
+  println("# Max-flow-min-cuts: $(length(sets))")
+  # integer model
   model = direct_model(CPLEX.Optimizer())
   set_silent(model)
   MOI.set(model, MOI.NumberOfThreads(), 1)
   @variable(model, x[a in A], Int, lower_bound = 0)
-  @objective(model, Min, sum(time(data, a) * x[a] for a in A))
-  @constraint(model, degree[i in V], sum(x[a] for a in δ⁻(A, i)) == sum(x[a] for a in δ⁺(A, i)))
-  @constraint(model, block[block in B], sum(sum(x[a] for a in δ⁺(A, i)) for i in block) >= 1)
-  @constraint(model, sum(x[a] for a in δ⁺(A, depot)) <= 1)
-#  @constraint(model, sum(x[a] for a in A) <= T - sum(time_block(data, block) for block in B))
+  add_basic_constraints(model)
+  add_subtour_ineqs(model, x, sets, A)
   # connectivity
   # lazy
   function bfs_callback(cb_data::CPLEX.CallbackContext, context_id::Clong)
+    # preliminary checkings
     context_id != CPX_CALLBACKCONTEXT_CANDIDATE && return
     ispoint_p = Ref{Cint}()
     (CPXcallbackcandidateispoint(cb_data, ispoint_p) != 0 || ispoint_p[] == 0) && return 
+    # get values
     CPLEX.load_callback_variable_primal(cb_data, context_id)
     x_val = callback_value.(Ref(cb_data), x)
+    # create dummy nodes
+    n = length(V)
+    Nb = Dict{Array{Int64, 1}, Int64}(B[i] => n + i for i in 1:length(B))
+    ids = Set{Int64}(collect(values(Nb)))
     # bfs
-    sets = bfs_sets([a for a in A if x_val[a] > 0.5], Vb, depot)
-    !isempty(sets) && println("=========Lazy callback==========")
+    A′ = vcat([a for a in A if x_val[a] > 0.5], [(i, j) for (b, i) in Nb for j in b])
+    sets = bfs_sets(A′, ids, depot)
+#    !isempty(sets) && println("=========Lazy callback==========")
     for S in sets
-#      S in bfs_cuts && continue
-      push!(bfs_cuts, S)
-      println(collect(S))
+      # remove dummy node
+      S′ = setdiff(S, ids)
+      # edge case
+      isempty(S′) && continue
+      # store
+      push!(bfs_cuts, S′)
+      println(collect(S′))
       # add ineq
-      [MOI.submit(model, MOI.LazyConstraint(cb_data), @build_constraint(sum(x[a] for a in δ⁺(A, S)) >= x[(i, j)])) for (i, j) in A if i in S && j in S]
- #     [MOI.submit(model, MOI.LazyConstraint(cb_data), @build_constraint(sum(x[a] for a in δ⁺(A, S)) >= sum(x[a] for a in δ⁺(A, i)))) for i in S]
+      MOI.submit(model, MOI.LazyConstraint(cb_data), @build_constraint(sum(x[a] for a in δ⁺(A, S′)) >= 1))
     end
   end
   MOI.set(model, CPLEX.CallbackFunction(), bfs_callback)
-  # user cut
-  #=
-  function gh_callback(cb_data::CPLEX.CallbackContext, context_id::Clong)
-    ispoint_p = Ref{CPXINT}()
-    (CPXcallbackcandidateispoint(cb_data, ispoint_p) != 0 || ispoint_p[] == 0) && return 
-    # if it is in the root
-    n = Ref{CPXLONG}()
-    CPXcallbackgetinfolong(cb_data, CPXCALLBACKINFO_NODECOUNT, n)
-    n[] > 0 && return
-    # get valus
-    CPLEX.load_callback_variable_primal(cb_data, context_id)
-    x_val = callback_value.(Ref(cb_data), x)
-    # gh
-    sets = gh_sets(x_val, depot, Vb, length(V))
-    for S in sets
-      S in gh_cuts && continue
-      println(S)
-      push!(gh_cuts, S)
-      [MOI.submit(model, MOI.UserCut(cb_data), @build_constraint(sum(x[a′] for a′ in δ⁺(A, S)) >= x[(i, j)])) for (i, j) in A if i in S && j in S]
-    end
-  end
-  MOI.set(model, CPLEX.CallbackFunction(), gh_callback)
-  =#
   return (model, x)
 end
 
