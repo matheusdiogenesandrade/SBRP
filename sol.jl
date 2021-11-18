@@ -9,6 +9,26 @@ function writesol(ids::Dict{Int64, Int64}, path::String, data::SBRPData, x, mode
   end
 end
 
+function gettour(data::SBRPData, x)
+  A, depot, tour = [a for a in data.D.A if value(x[a]) > 0.5], data.depot, []
+  V = Set{Int64}(vcat([i for (i, j) in A], [j for (i, j) in A]))
+#  println(A)
+  #hierholzer's
+  adjList, curr_path = Dict{Int64, Vector{Int64}}(i => [j for (i, j) in δ⁺(A, i) for i in 1:Int(floor(value(x[(i, j)]) + 0.5))] for i in V), Stack{Int}()
+  push!(curr_path, depot)
+  curr_v = first(curr_path)
+  while !isempty(curr_path)
+    if !isempty(adjList[curr_v])
+      push!(curr_path, curr_v)
+      curr_v = pop!(adjList[curr_v])
+    else
+      push!(tour, curr_v)
+      curr_v = pop!(curr_path)
+    end
+  end
+  return Array{Int64}(reverse(tour))
+end
+
 #function gettour(data::SBRPData, x)
 function gettour(V::Array{Int64}, A::Array{Tuple{Int64, Int64}}, depot::Int64, x)
 #  V, A, depot, tour = V, [a for a in data.D.A if value(x[a]) > 0.5], data.depot, []
@@ -26,7 +46,20 @@ function gettour(V::Array{Int64}, A::Array{Tuple{Int64, Int64}}, depot::Int64, x
       curr_v = pop!(curr_path)
     end
   end
-  return reverse(tour)
+  return Array{Int64}(reverse(tour))
+end
+
+function check_sbrp_sol(data::SBRPData, tour::Array{Int64, 1})
+  V′ = Set{Int64}()
+  for i in 1:(length(tour) - 1)
+    a = (tour[i], tour[i + 1])
+    push!(V′, a[1])
+    push!(V′, a[2])
+    !in(a, data.D.A) && println("Arc $a does not exists")
+  end
+  for b in data.B
+    all(!in(i, V′) for i in b) && println("Block $b was not served")
+  end
 end
 
 function check_atsp_sol(tour::Array{Int64, 1}, Vb::Dict{Tuple{Int64, Array{Int64, 1}}, Int64}, Vb′::Dict{Tuple{Int64, Array{Int64, 1}}, Int64})

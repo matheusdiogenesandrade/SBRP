@@ -29,17 +29,16 @@ mutable struct SBRPData
   T::Float64
 end
 
-function compact(data::SBRPData)
-  Vb = [i for b in data.B for i in b]
+function compact(data::SBRPData, V′)
   data′, V, paths = SBRPData(
     InputDigraph(
-                 Array{Vertex, 1}(vcat(data.D.V[data.depot], [data.D.V[i] for i in Vb])), 
+                 Array{Vertex, 1}(vcat(data.D.V[data.depot], [data.D.V[i] for i in V′])), 
                  Array{Tuple{Int64,Int64}, 1}(), 
                  Dict{Tuple{Int64, Int64}, Float64}()
                 ), 
     data.depot, data.B, data.T # 2 hours
   ), 1:length(data.D.V), Dict{Tuple{Int64, Int64}, Array{Int64}}()
-  for i in Vb
+  for i in V′
     # bfs
     distances, pred, q = [typemax(Float64) for i in V], [i for i in V], [i]
     distances[i] = 0.0
@@ -54,7 +53,7 @@ function compact(data::SBRPData)
       end
     end
     # add cost and distance
-    for j in Vb
+    for j in V′
       pred[j] == j && continue
       data′.D.distance[(i, j)], paths[(i, j)], curr = distances[j], [], j
       while pred[curr] != curr
@@ -65,12 +64,12 @@ function compact(data::SBRPData)
     end
   end
   # add arcs
-  [(data′.D.distance[(data.depot, i)] = data′.D.distance[(i, data.depot)] = 0.0) for i in Vb]
+  [(data′.D.distance[(data.depot, i)] = data′.D.distance[(i, data.depot)] = 0.0) for i in V′]
   data′.D.A = collect(keys(data′.D.distance))
   return data′, paths
 end
 
-function readSBRPData(app::Dict{String,Any}, compactPaths = false)
+function readSBRPData(app::Dict{String,Any})
   depot = 1
   data, blocks, ids = SBRPData(
     InputDigraph(
@@ -100,13 +99,12 @@ function readSBRPData(app::Dict{String,Any}, compactPaths = false)
       data.D.distance[a] = parse(Float64, parts[4])
       # get blocks
       parts[5] == "-1" && continue
-      for j in 5:length(parts)
-        id_block = parse(Int64, parts[j])
-        !haskey(blocks, id_block) && (blocks[id_block] = Array{Tuple{Int64, Int64}, 1}())
-        push!(blocks[id_block], a)
-      end
+      id_block = parse(Int64, parts[5])
+      !haskey(blocks, id_block) && (blocks[id_block] = Array{Tuple{Int64, Int64}, 1}())
+      push!(blocks[id_block], a)
     end
   end
+  n_blocks, k = 14, 1
   # get blocks
   for (block, arcs) in blocks
     # get cycle     
@@ -117,16 +115,31 @@ function readSBRPData(app::Dict{String,Any}, compactPaths = false)
       curr, next = next, first(δ⁺(arcs, next))[2]
     end
     push!(data.B, cycle)
+
+    k >= n_blocks && break
+    k = k + 1
   end
-  # dummy arcs
-  [data.D.distance[(depot, i)] = data.D.distance[(i, data.depot)] = 0.0 for i in 2:length(data.D.V)]
   # add arcs
   data.D.A = [keys(data.D.distance)...]
-  # ids
-  ids′ = Dict{Int64, Int64}(v => k for (k, v) in ids)
   # compact
-  compactPaths && return data, ids′, compact(data)...
+  Vb = Set{Int64}([i for b in data.B for i in b])
+  data′, paths = compact(data, Vb)
+  # update arcs
+  data.D.A = vcat(
+    collect(Set{Tuple{Int64, Int64}}([(path[i], path[i + 1]) for (a, path) in paths for i in 1:(length(path) - 1)])),
+    [(depot, i) for i in Vb],
+    [(i, depot) for i in Vb]
+  )
+  # dummy weights
+  [data.D.distance[(depot, i)] = data.D.distance[(i, depot)] = 0.0 for i in Vb]
+  # check feasibility
+  !checkSBRPfeasibility(data′, Vb) && error("The SBRP instance is not feasible")
   # return
-  return data, ids′
+  return data, Dict{Int64, Int64}(v => k for (k, v) in ids), data′, paths
+end
+
+function checkSBRPfeasibility(data_complete::SBRPData, V′)
+  A′ = keys(data_complete.D.distance)
+  return all((i, j) in A′ && (j, i) in A′ for i in V′ for j in V′ if i < j)
 end
 

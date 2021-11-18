@@ -10,6 +10,9 @@ function parse_commandline(args_array::Array{String,1}, appfolder::String)
   @add_arg_table s begin
     "instance"
     help = "Instance file path"
+    "--nosolve","-n"
+    help = "Not solve flag"
+    action = :store_true
     "--out","-o"
     help = "Path to write the solution found"
     "--batch","-b" 
@@ -26,12 +29,25 @@ function run(app::Dict{String,Any})
   flush(stdout)
   # read instance
   instance_name = split(basename(app["instance"]), ".")[1]
-  data, ids, data′, paths = readSBRPData(app, true)
+  data, ids, data′, paths = readSBRPData(app)
+  println("|V| = $(length(data.D.V))")
+  println("|A| = $(length(data.D.A))")
+  println("|B| = $(length(data.B))")
+  println("|V′| = $(length(data′.D.V))")
+  println("|A′| = $(length(data′.D.A))")
+  for b in data.B
+    println(b)
+  end
+  # not solve
+  app["nosolve"] && return
   # solve models
   println("#######################SBRP#############################")
   (model, x) = build_model_sbrp(data, app)
   if solve(model) 
     println(objective_value(model)) 
+    tour = gettour(data, x)
+    println(tour)
+    check_sbrp_sol(data, tour)
 #    app["out"] != nothing && writesol(app["out"], data, x, model, app)
   else
     println("Model infeasible or unknown")
@@ -40,10 +56,14 @@ function run(app::Dict{String,Any})
   (model, x, y) = build_model_sbrp_complete(data′, app)
   if solve(model) 
     println(objective_value(model)) 
+    tour = gettour(data′, x)
+    println(tour)
+    check_sbrp_sol(data′, tour)
 #    app["out"] != nothing && writesol(app["out"], data′, x, model, app)
   else
     println("Model infeasible or unknown")
   end
+  #=
   println("#######################SBRP_ATSP########################")
   V, A, costs, Vb, Vb′ = build_atsp_instance(data′)
   (model, x, y) = build_model_atsp(V, A, costs, data′.depot)
@@ -59,6 +79,7 @@ function run(app::Dict{String,Any})
   else
     println("Model infeasible or unknown")
   end
+  =#
   #=
   println("#######################SBRP MAX#########################")
   (model_max, x, y) = build_model_max_profit_sbrp(data, app)

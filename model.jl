@@ -16,7 +16,7 @@ function bfs(A, i)
 end
 
 function bfs_sets(A, nodes, source::Int64)
-  sets = []
+  sets = Set{Set{Int64}}()
   for i in nodes
     S = bfs(A, i)
     (!in(source, S) && length(S) > 1) && push!(sets, S)
@@ -48,8 +48,8 @@ function build_model_sbrp(data::SBRPData, app::Dict{String,Any})
   @objective(model, Min, sum(time(data, a) * x[a] for a in A))
   @constraint(model, degree[i in V], sum(x[a] for a in δ⁻(A, i)) == sum(x[a] for a in δ⁺(A, i)))
   @constraint(model, block[block in B], sum(sum(x[a] for a in δ⁺(A, i)) for i in block) >= 1)
-  @constraint(model, sum(x[a] for a in A) <= T - sum(time_block(data, block) for block in B))
   @constraint(model, sum(x[a] for a in δ⁺(A, depot)) <= 1)
+#  @constraint(model, sum(x[a] for a in A) <= T - sum(time_block(data, block) for block in B))
   # connectivity
   # lazy
   function bfs_callback(cb_data::CPLEX.CallbackContext, context_id::Clong)
@@ -60,16 +60,19 @@ function build_model_sbrp(data::SBRPData, app::Dict{String,Any})
     x_val = callback_value.(Ref(cb_data), x)
     # bfs
     sets = bfs_sets([a for a in A if x_val[a] > 0.5], Vb, depot)
+    !isempty(sets) && println("=========Lazy callback==========")
     for S in sets
-      S in bfs_cuts && continue
+#      S in bfs_cuts && continue
       push!(bfs_cuts, S)
+      println(collect(S))
       # add ineq
       [MOI.submit(model, MOI.LazyConstraint(cb_data), @build_constraint(sum(x[a] for a in δ⁺(A, S)) >= x[(i, j)])) for (i, j) in A if i in S && j in S]
+ #     [MOI.submit(model, MOI.LazyConstraint(cb_data), @build_constraint(sum(x[a] for a in δ⁺(A, S)) >= sum(x[a] for a in δ⁺(A, i)))) for i in S]
     end
   end
-  #  MOI.set(model, MOI.LazyConstraintCallback(), bfs_callback)
   MOI.set(model, CPLEX.CallbackFunction(), bfs_callback)
   # user cut
+  #=
   function gh_callback(cb_data::CPLEX.CallbackContext, context_id::Clong)
     ispoint_p = Ref{CPXINT}()
     (CPXcallbackcandidateispoint(cb_data, ispoint_p) != 0 || ispoint_p[] == 0) && return 
@@ -89,12 +92,14 @@ function build_model_sbrp(data::SBRPData, app::Dict{String,Any})
       [MOI.submit(model, MOI.UserCut(cb_data), @build_constraint(sum(x[a′] for a′ in δ⁺(A, S)) >= x[(i, j)])) for (i, j) in A if i in S && j in S]
     end
   end
-#  MOI.set(model, CPLEX.CallbackFunction(), gh_callback)
+  MOI.set(model, CPLEX.CallbackFunction(), gh_callback)
+  =#
   return (model, x)
 end
 
 function build_model_sbrp_complete(data::SBRPData, app::Dict{String,Any})
-  B, A, T, V, depot, Vb, gh_cuts, bfs_cuts = data.B, data.D.A, data.T, 1:length(data.D.V), data.depot, Set{Int64}([i for b in data.B for i in b]), [], []
+  B, A, T, depot, Vb, gh_cuts, bfs_cuts = data.B, data.D.A, data.T, data.depot, Set{Int64}([i for b in data.B for i in b]), [], []
+  V = Set{Int64}(vcat([i for (i, j) in A], [j for (i, j) in A]))
   # Formulation
   model = direct_model(CPLEX.Optimizer())
   set_silent(model)
@@ -108,7 +113,7 @@ function build_model_sbrp_complete(data::SBRPData, app::Dict{String,Any})
   @constraint(model, mtz1[a in A], y[a] >= x[a])
   @constraint(model, mtz2[a in A], x[a] * length(V) >= y[a])
   @constraint(model, block[block in B], sum(sum(x[a] for a in δ⁺(A, i)) for i in block) == 1)
-  @constraint(model, sum(x[a] * time(data, a) for a in A) <= T - sum(time_block(data, block) for block in B))
+#  @constraint(model, sum(x[a] * time(data, a) for a in A) <= T - sum(time_block(data, block) for block in B))
   return (model, x, y)
 end
 
