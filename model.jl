@@ -1,8 +1,15 @@
+module Model
+
+using ..Data
+using ..Data.SBRP
 using CPLEX
 using JuMP
 using BenchmarkTools
+
+export ModelSBRP, get_max_flow_min_cut_cuts, bfs_sets, add_subtour_ineqs
+
 include("SparseMaxFlowMinCut.jl")
-include("data.jl")
+#include("data.jl")
 
 function bfs(A, i)
   S, q = Set{Int64}([i]), [i]
@@ -44,10 +51,15 @@ function gh_sets(x_val, sink::Int64, sources, n::Int64)
   return sets
 end
 
+function add_subtour_ineqs(model, x, sets, A::Array{Tuple{Int64, Int64}})
+  [@constraint(model, sum(x[a′] for a′ in δ⁺(A, S)) >= 1) for S in sets]
+end
+
 function get_max_flow_min_cut_cuts(data::SBRPData, model, x)
   A, B, depot, sets, n = data.D.A, data.B, data.depot, Set{Set{Int64}}(), length(data.D.V)
   while true
-    !solve(model) && error("The model could not be solved")
+    optimize!(model)
+    !in(termination_status(model), [MOI.OPTIMAL, MOI.TIME_LIMIT]) && error("The model could not be solved")
     # create dummy nodes
     Nb = Dict{Array{Int64, 1}, Int64}(B[i] => n + i for i in 1:length(B))
     ids = Set{Int64}(collect(values(Nb)))
@@ -71,114 +83,6 @@ function get_max_flow_min_cut_cuts(data::SBRPData, model, x)
     add_subtour_ineqs(model, x, sets″, A)
   end
   return sets
-end
-
-function add_subtour_ineqs(model, x, sets, A::Array{Tuple{Int64, Int64}})
-  [@constraint(model, sum(x[a′] for a′ in δ⁺(A, S)) >= 1) for S in sets]
-end
-
-function build_model_sbrp(data::SBRPData, app::Dict{String,Any})
-  B, A, T, V, depot, Vb, bfs_cuts = data.B, data.D.A, data.T, 1:length(data.D.V), data.depot, Set{Int64}([i for b in data.B for i in b]), [], Set{Set{Int64}}()
-  function add_basic_constraints(model)
-    @objective(model, Min, sum(time(data, a) * x[a] for a in A))
-    @constraint(model, degree[i in V], sum(x[a] for a in δ⁻(A, i)) == sum(x[a] for a in δ⁺(A, i)))
-    @constraint(model, block[block in B], sum(sum(x[a] for a in δ⁺(A, i)) for i in block) >= 1)
-    @constraint(model, block1[block in B], sum(x[a] for a in δ⁺(A, block))  >= 1)
-    @constraint(model, sum(x[a] for a in δ⁺(A, depot)) <= 1)
-#    @constraint(model, sum(x[a] for a in A) <= T - sum(time_block(data, block) for block in B))
-  end
-  # Formulation
-  # frac model - get max-flow/min-cut cuts
-  model = direct_model(CPLEX.Optimizer())
-  set_silent(model)
-  @variable(model, x[a in A], lower_bound = 0)
-  add_basic_constraints(model)
-  sets = get_max_flow_min_cut_cuts(data, model, x)
-  println("# Max-flow-min-cuts: $(length(sets))")
-  # integer model
-  model = direct_model(CPLEX.Optimizer())
-  set_silent(model)
-  MOI.set(model, MOI.NumberOfThreads(), 1)
-  @variable(model, x[a in A], Int, lower_bound = 0)
-  add_basic_constraints(model)
-  add_subtour_ineqs(model, x, sets, A)
-  # connectivity
-  # lazy
-  function bfs_callback(cb_data::CPLEX.CallbackContext, context_id::Clong)
-    # preliminary checkings
-    context_id != CPX_CALLBACKCONTEXT_CANDIDATE && return
-    ispoint_p = Ref{Cint}()
-    (CPXcallbackcandidateispoint(cb_data, ispoint_p) != 0 || ispoint_p[] == 0) && return 
-    # get values
-    CPLEX.load_callback_variable_primal(cb_data, context_id)
-    x_val = callback_value.(Ref(cb_data), x)
-    # create dummy nodes
-    n = length(V)
-    Nb = Dict{Array{Int64, 1}, Int64}(B[i] => n + i for i in 1:length(B))
-    ids = Set{Int64}(collect(values(Nb)))
-    # bfs
-    A′ = vcat([a for a in A if x_val[a] > 0.5], [(i, j) for (b, i) in Nb for j in b])
-    sets = bfs_sets(A′, ids, depot)
-#    !isempty(sets) && println("=========Lazy callback==========")
-    for S in sets
-      # remove dummy node
-      S′ = setdiff(S, ids)
-      # edge case
-      isempty(S′) && continue
-      # store
-      push!(bfs_cuts, S′)
-      println(collect(S′))
-      # add ineq
-      MOI.submit(model, MOI.LazyConstraint(cb_data), @build_constraint(sum(x[a] for a in δ⁺(A, S′)) >= 1))
-    end
-  end
-  MOI.set(model, CPLEX.CallbackFunction(), bfs_callback)
-  return (model, x)
-end
-
-function build_model_sbrp_complete(data::SBRPData, app::Dict{String,Any})
-  B, A, T, depot, Vb, gh_cuts, bfs_cuts = data.B, data.D.A, data.T, data.depot, Set{Int64}([i for b in data.B for i in b]), [], []
-  V = Set{Int64}(vcat([i for (i, j) in A], [j for (i, j) in A]))
-  # Formulation
-  model = direct_model(CPLEX.Optimizer())
-  set_silent(model)
-#  MOI.set(model, MOI.NumberOfThreads(), 1)
-  @variable(model, x[a in A], Bin)
-  @variable(model, y[a in A], lower_bound=0, upper_bound=length(V))
-  @objective(model, Min, sum(time(data, a) * x[a] for a in A))
-  @constraint(model, degree[i in V], sum(x[a] for a in δ⁻(A, i)) == sum(x[a] for a in δ⁺(A, i)))
-  @constraint(model, sum(x[a] for a in δ⁺(A, depot)) <= 1)
-  @constraint(model, mtz[i in Vb], sum(y[a] for a in δ⁺(A, i)) == sum(y[a] for a in δ⁻(A, i)) + sum(x[a] for a in δ⁺(A, i)))
-  @constraint(model, mtz1[a in A], y[a] >= x[a])
-  @constraint(model, mtz2[a in A], x[a] * length(V) >= y[a])
-  @constraint(model, block[block in B], sum(sum(x[a] for a in δ⁺(A, i)) for i in block) == 1)
-#  @constraint(model, sum(x[a] * time(data, a) for a in A) <= T - sum(time_block(data, block) for block in B))
-  return (model, x, y)
-end
-
-function build_atsp_instance(data::SBRPData)
-  # polynomial reduction 
-  # SBRP attrs
-  B, A, T, depot = data.B, data.D.A, data.T, data.depot
-  V = Set{Int64}(vcat([i for (i, j) in A], [j for (i, j) in A]))
-  # TSP attrs
-  Vb, Vb′, n = Dict{Tuple{Int64, Array{Int64, 1}}, Int64}(), Dict{Tuple{Int64, Array{Int64, 1}}, Int64}(), max(collect(V)...) + 1
-  # dummy nodes
-  [(Vb[(i, b)] = n; n = n + 1) for b in B for i in b]
-  [(Vb′[(i, b)] = n; n = n + 1) for b in B for i in b]
-  # weights
-  costs = merge!(
-    Dict{Tuple{Int64, Int64}, Float64}((Vb[(i, b)],       Vb′[(i, b)])       => 0                       for b in B for i in b), # cycle arcs
-    Dict{Tuple{Int64, Int64}, Float64}((Vb′[(b[i], b)],   Vb[(b[i + 1], b)]) => 0                       for b in B for i in 1:(length(b) - 1)), # cycle arcs
-    Dict{Tuple{Int64, Int64}, Float64}((Vb′[(b[end], b)], Vb[(b[begin], b)]) => 0                       for b in B), # cycle arcs
-    Dict{Tuple{Int64, Int64}, Float64}((Vb[(i, b)],       depot)             => 0                       for b in B for i in b), # depor arcs 
-    Dict{Tuple{Int64, Int64}, Float64}((depot,            Vb′[(i, b)])       => 0                       for b in B for i in b), # depor arcs 
-    Dict{Tuple{Int64, Int64}, Float64}((Vb[(i, b)],       Vb′[(j, b′)])      => time(data, (i, j)) for b in B for b′ in B for i in b for j in b′ if b != b′ && (i, j) in keys(data.D.distance)) # block arcs
-  )
-  # mip atsp
-  Aᵗ = collect(keys(costs))
-  Vᵗ = collect(Set{Int64}(vcat([i for (i, j) in Aᵗ], [j for (i, j) in Aᵗ])))
-  return Vᵗ, Aᵗ, costs, Vb, Vb′
 end
 
 function build_model_atsp(V::Array{Int64}, A::Array{Tuple{Int64, Int64}}, costs::Dict{Tuple{Int64, Int64}, Float64}, depot::Int64)
@@ -244,3 +148,9 @@ MOI.set(model, CPLEX.CallbackFunction(), gh_callback)
 return (model, x, y)
 end
 =#
+
+include("model_sbrp.jl")
+
+include("model_sbrp_complete.jl")
+
+end

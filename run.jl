@@ -1,9 +1,18 @@
-using ArgParse
+module Main
 
 include("data.jl")
 include("model.jl")
 include("solve.jl")
 include("sol.jl")
+
+using .Data
+using .Data.SBRP
+using .Model
+using .Model.ModelSBRP
+using .Model.ModelSBRP
+using .Model.ModelSBRPComplete
+using .Solution
+using ArgParse
 
 function parse_commandline(args_array::Array{String,1}, appfolder::String)
   s = ArgParseSettings(usage="  On interactive mode, call main([\"arg1\", ..., \"argn\"])", exit_after_help=false)
@@ -41,6 +50,7 @@ function run(app::Dict{String,Any})
   # not solve
   app["nosolve"] && return
   # solve models
+  #=
   println("#######################SBRP#############################")
   (model, x) = build_model_sbrp(data, app)
   if solve(model) 
@@ -52,6 +62,7 @@ function run(app::Dict{String,Any})
   else
     println("Model infeasible or unknown")
   end
+  =#
   println("#######################SBRP_COMPLETE####################")
   (model, x, y) = build_model_sbrp_complete(data′, app)
   if solve(model) 
@@ -111,8 +122,12 @@ function main(args)
    end
 end
 
+#=
 if isempty(ARGS)
    main(["--help"])
 else
    main(ARGS)
+end
+=#
+
 end

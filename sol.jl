@@ -1,5 +1,12 @@
+module Solution
+
+using ..Data
+using ..Data.SBRP
 using CPLEX
+using JuMP
 using DataStructures
+
+export writesol, gettour, check_sbrp_sol, check_atsp_sol
 
 function writesol(ids::Dict{Int64, Int64}, path::String, data::SBRPData, x, model, app::Dict{String, Any})
   tour = gettour(data, x)
@@ -82,4 +89,6 @@ function check_atsp_sol(tour::Array{Int64, 1}, Vb::Dict{Tuple{Int64, Array{Int64
     end
   end
   return true
+end
+
 end
