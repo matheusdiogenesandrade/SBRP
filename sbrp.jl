@@ -5,7 +5,7 @@ using ..Data
 
 export time_block, SBRPData, compact, readSBRPData, checkSBRPfeasibility
 
-time_block(data, block) = 4 * (sum(time(data, (block[i - 1], block[i])) for i in 2:length(block)) + time(data, (block[end], block[1])))
+time_block(data, block) = 4 * (sum(Data.time(data, (block[i - 1], block[i])) for i in 2:length(block)) + Data.time(data, (block[end], block[1])))
 
 mutable struct SBRPData
   D::Data.InputDigraph
@@ -89,7 +89,7 @@ function readSBRPData(app::Dict{String,Any})
       push!(blocks[id_block], a)
     end
   end
-  n_blocks, k = 6, 1
+  n_blocks, k = 24, 1
   # get blocks
   for (block, arcs) in blocks
     # get cycle     

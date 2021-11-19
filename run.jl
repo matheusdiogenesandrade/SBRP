@@ -37,43 +37,44 @@ function run(app::Dict{String,Any})
   end
   flush(stdout)
   # read instance
-  instance_name = split(basename(app["instance"]), ".")[1]
   data, ids, data′, paths = readSBRPData(app)
+  instance_name = split(basename(app["instance"]), ".")[1]
+  function log(info)
+    logColumns = ["model", "rootLP", "maxFlowCuts", "maxFlowCutsTime", "lazyCuts", "cost", "solverTime", "relativeGAP", "nodeCount"]
+    println("instance", [" & :" * column for column in logColumns]...)
+    println(instance_name, [" & " * (column in keys(info) ? string(info[column]) : "-") for column in logColumns]...)
+  end
   println("|V| = $(length(data.D.V))")
   println("|A| = $(length(data.D.A))")
   println("|B| = $(length(data.B))")
   println("|V′| = $(length(data′.D.V))")
   println("|A′| = $(length(data′.D.A))")
-  for b in data.B
-    println(b)
-  end
   # not solve
   app["nosolve"] && return
   # solve models
-  #=
-  println("#######################SBRP#############################")
-  (model, x) = build_model_sbrp(data, app)
-  if solve(model) 
-    println(objective_value(model)) 
-    tour = gettour(data, x)
-    println(tour)
-    check_sbrp_sol(data, tour)
-#    app["out"] != nothing && writesol(app["out"], data, x, model, app)
-  else
-    println("Model infeasible or unknown")
+  # SBRP
+  (model, x, info) = build_model_sbrp(data, app)
+  optimize!(model)
+  tour, info = gettour(data, x), merge(info, get_info(model))
+  info["model"] = "SBRP"
+  check_sbrp_sol(data, tour)
+  log(info)
+  if app["out"] != nothing
+    writesol(app["out"], [ids[i] for i in tour if i != depot])
+    writeGPX(app["out"] * ".gpx", [data.D.V[i] for i in tour if i != depot])
   end
-  =#
-  println("#######################SBRP_COMPLETE####################")
-  (model, x, y) = build_model_sbrp_complete(data′, app)
-  if solve(model) 
-    println(objective_value(model)) 
-    tour = gettour(data′, x)
-    println(tour)
-    check_sbrp_sol(data′, tour)
+  # SBRP complete 
+  (model, x, y, info) = build_model_sbrp_complete(data′, app)
+  optimize!(model)
+  tour, info = gettour(data′, x), merge(info, get_info(model))
+  info["model"] = "SBRPComplete"
+  check_sbrp_sol(data′, tour)
+  log(info)
+  if app["out"] != nothing
+    writesol(app["out"] * ".complete", [ids[i] for i in tour if i != depot])
+    writeGPX(app["out"] * ".complete.gpx", [data.D.V[i] for i in tour if i != depot])
+  end
 #    app["out"] != nothing && writesol(app["out"], data′, x, model, app)
-  else
-    println("Model infeasible or unknown")
-  end
   #=
   println("#######################SBRP_ATSP########################")
   V, A, costs, Vb, Vb′ = build_atsp_instance(data′)

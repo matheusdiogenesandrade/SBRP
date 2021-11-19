@@ -41,11 +41,11 @@ function gh_sets(x_val, sink::Int64, sources, n::Int64)
   # mouting graph
 #  [push!(g, SparseMaxFlowMinCut.ArcFlow(a[1], a[2], trunc(floor(value, digits=5) * M))) for (a, value) in x_val if value > 1e-3]
   [push!(g, SparseMaxFlowMinCut.ArcFlow(a[1], a[2], trunc(floor(v, digits=5) * M))) for (a, v) in x_val]
-  [push!(g, SparseMaxFlowMinCut.ArcFlow(a[2], a[1], trunc(floor(v, digits=5) * M))) for (a, v) in x_val]
+  [push!(g, SparseMaxFlowMinCut.ArcFlow(a[2], a[1], trunc(floor(v, digits=5) * M))) for (a, v) in x_val if !in(a[1], sources)]
   # get subsets
   for source in sources 
     maxFlow, flows, set = SparseMaxFlowMinCut.find_maxflow_mincut(SparseMaxFlowMinCut.Graph(n, g), source, sink)
-#    println(source, " to ", sink, " = ", maxFlow / M, " ", set[sink])
+#    ((maxFlow / M) < (2 - 1e-3) && set[sink] == 0) && println(source, " to ", sink, " = ", maxFlow / M, " ", set[sink], " ", Set{Int64}([i for i in 1:n if set[i] == 1]))
     ((maxFlow / M) < (2 - 1e-3) && set[sink] == 0) && push!(sets, Set{Int64}([i for i in 1:n if set[i] == 1]))
   end
   return sets
@@ -56,7 +56,8 @@ function add_subtour_ineqs(model, x, sets, A::Array{Tuple{Int64, Int64}})
 end
 
 function get_max_flow_min_cut_cuts(data::SBRPData, model, x)
-  A, B, depot, sets, n = data.D.A, data.B, data.depot, Set{Set{Int64}}(), length(data.D.V)
+  A, B, depot, sets = data.D.A, data.B, data.depot, Set{Set{Int64}}()
+  n = max([max(a...) for a in A]...)
   while true
     optimize!(model)
     !in(termination_status(model), [MOI.OPTIMAL, MOI.TIME_LIMIT]) && error("The model could not be solved")
@@ -76,7 +77,7 @@ function get_max_flow_min_cut_cuts(data::SBRPData, model, x)
     end
     # base case
     isempty(sets″) && break
-    println(sets″)
+#    println(sets″)
     # store sets″
     [push!(sets, S) for S in sets″]
     # add ineqs

@@ -6,13 +6,41 @@ using CPLEX
 using JuMP
 using DataStructures
 
-export writesol, gettour, check_sbrp_sol, check_atsp_sol
+export writesol, gettour, check_sbrp_sol, check_atsp_sol, get_info
 
-function writesol(ids::Dict{Int64, Int64}, path::String, data::SBRPData, x, model, app::Dict{String, Any})
-  tour = gettour(data, x)
+get_info(model) = Dict{String, String}(
+                                       "cost"         => string(objective_value(model)),
+                                       "solverTime"  => string(solve_time(model)),
+                                       "relativeGAP" => string(relative_gap(model)),
+                                       "nodeCount"   => string(node_count(model))
+                                      )
+
+function writeGPX(file_path::String, tour::Array{Vertex, 1})
+  open(file_path, "w") do f
+    write(f, """<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+    <gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" creator="Oregon 400t" version="1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www.garmin.com/xmlschemas/GpxExtensionsv3.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd">
+    <metadata>
+    <link href=\"http://www.garmin.com\">
+    <text>Garmin International</text>
+    </link>
+    <time>2009-10-17T22:58:43Z</time>
+    </metadata>
+    <trk>
+    <name>Example GPX Document</name>
+    <trkseg>""")
+    for v in tour 
+      write(f, """<trkpt lat="$(v.pos_y)" lon="$(v.pos_x)">
+            </trkpt>\n""")
+    end
+    write(f, """</trkseg>
+    </trk>
+    </gpx>""")
+  end
+end
+
+function writesol(path::String, tour::Array{Int64, 1})
   open(path, "w") do file
-    write(file, "$(objective_value(model))\n")
-    [write(file, "$node, ") for node in tour]
+    [write(file, "$(v), ") for v in tour]
   end
 end
 
@@ -58,14 +86,16 @@ end
 
 function check_sbrp_sol(data::SBRPData, tour::Array{Int64, 1})
   V′ = Set{Int64}()
+  # check arcs
   for i in 1:(length(tour) - 1)
     a = (tour[i], tour[i + 1])
     push!(V′, a[1])
     push!(V′, a[2])
-    !in(a, data.D.A) && println("Arc $a does not exists")
+    !in(a, data.D.A) && error("Arc $a does not exists")
   end
+  # check blocks
   for b in data.B
-    all(!in(i, V′) for i in b) && println("Block $b was not served")
+    all(!in(i, V′) for i in b) && error("Block $b was not served")
   end
 end
 

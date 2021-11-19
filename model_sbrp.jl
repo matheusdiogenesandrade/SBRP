@@ -9,7 +9,7 @@ using JuMP
 export build_model_sbrp
 
 function build_model_sbrp(data::SBRPData, app::Dict{String,Any})
-  B, A, T, V, depot, Vb, bfs_cuts = data.B, data.D.A, data.T, 1:length(data.D.V), data.depot, Set{Int64}([i for b in data.B for i in b]), [], Set{Set{Int64}}()
+  B, A, T, V, depot, Vb, info = data.B, data.D.A, data.T, 1:length(data.D.V), data.depot, Set{Int64}([i for b in data.B for i in b]), Dict{String, Any}("lazyCuts" => 0)
   function add_basic_constraints(model)
     @objective(model, Min, sum(Data.time(data, a) * x[a] for a in A))
     @constraint(model, degree[i in V], sum(x[a] for a in δ⁻(A, i)) == sum(x[a] for a in δ⁺(A, i)))
@@ -24,8 +24,8 @@ function build_model_sbrp(data::SBRPData, app::Dict{String,Any})
   set_silent(model)
   @variable(model, x[a in A], lower_bound = 0)
   add_basic_constraints(model)
-  sets = get_max_flow_min_cut_cuts(data, model, x)
-  println("# Max-flow-min-cuts: $(length(sets))")
+  info["maxFlowCutsTime"] = @elapsed sets = get_max_flow_min_cut_cuts(data, model, x)
+  info["maxFlowCuts"], info["rootLP"] = length(sets), objective_value(model)
   # integer model
   model = direct_model(CPLEX.Optimizer())
   set_silent(model)
@@ -56,15 +56,14 @@ function build_model_sbrp(data::SBRPData, app::Dict{String,Any})
       S′ = setdiff(S, ids)
       # edge case
       isempty(S′) && continue
-      # store
-      push!(bfs_cuts, S′)
-      println(collect(S′))
+#      println(collect(S′))
       # add ineq
       MOI.submit(model, MOI.LazyConstraint(cb_data), @build_constraint(sum(x[a] for a in δ⁺(A, S′)) >= 1))
+      info["lazyCuts"] = info["lazyCuts"] + 1
     end
   end
   MOI.set(model, CPLEX.CallbackFunction(), bfs_callback)
-  return (model, x)
+  return (model, x, info)
 end
 
 end
