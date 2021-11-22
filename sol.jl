@@ -6,7 +6,7 @@ using CPLEX
 using JuMP
 using DataStructures
 
-export writesol, gettour, check_sbrp_sol, check_atsp_sol, get_info
+export writesol, gettour, check_sbrp_sol, check_atsp_sol, get_info, writeGPX
 
 get_info(model) = Dict{String, String}(
                                        "cost"         => string(objective_value(model)),

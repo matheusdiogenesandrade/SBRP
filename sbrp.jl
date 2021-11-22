@@ -51,6 +51,11 @@ function compact(data::SBRPData, V′)
   # add arcs
   [(data′.D.distance[(data.depot, i)] = data′.D.distance[(i, data.depot)] = 0.0) for i in V′]
   data′.D.A = collect(keys(data′.D.distance))
+  # remove begins and ends of each path
+  for (a, path) in paths
+    popfirst!(path)
+    pop!(path)
+  end
   return data′, paths
 end
 
@@ -89,7 +94,7 @@ function readSBRPData(app::Dict{String,Any})
       push!(blocks[id_block], a)
     end
   end
-  n_blocks, k = 24, 1
+  n_blocks, k = 2, 1
   # get blocks
   for (block, arcs) in blocks
     # get cycle     
@@ -101,8 +106,8 @@ function readSBRPData(app::Dict{String,Any})
     end
     push!(data.B, cycle)
 
-    k >= n_blocks && break
-    k = k + 1
+#    k >= n_blocks && break
+#    k = k + 1
   end
   # add arcs
   data.D.A = [keys(data.D.distance)...]

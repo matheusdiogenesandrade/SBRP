@@ -60,19 +60,27 @@ function run(app::Dict{String,Any})
   check_sbrp_sol(data, tour)
   log(info)
   if app["out"] != nothing
-    writesol(app["out"], [ids[i] for i in tour if i != depot])
-    writeGPX(app["out"] * ".gpx", [data.D.V[i] for i in tour if i != depot])
+    writesol(app["out"], [ids[i] for i in tour if i != data.depot])
+    writeGPX(app["out"] * ".gpx", [data.D.V[i] for i in tour if i != data.depot])
   end
   # SBRP complete 
   (model, x, y, info) = build_model_sbrp_complete(data′, app)
   optimize!(model)
-  tour, info = gettour(data′, x), merge(info, get_info(model))
+  tour′, tour, info = gettour(data′, x), Array{Int64, 1}(), merge(info, get_info(model))
+  check_sbrp_sol(data′, tour′)
+  # replace compact paths
+  for i in 2:length(tour′)
+    push!(tour, tour′[i - 1])
+    a = (tour′[i - 1], tour′[i])
+    !in(a, data.D.A) && push!(tour, paths[a]...)
+  end
+  push!(tour, tour′[end])
   info["model"] = "SBRPComplete"
-  check_sbrp_sol(data′, tour)
+  check_sbrp_sol(data, tour)
   log(info)
   if app["out"] != nothing
-    writesol(app["out"] * ".complete", [ids[i] for i in tour if i != depot])
-    writeGPX(app["out"] * ".complete.gpx", [data.D.V[i] for i in tour if i != depot])
+    writesol(app["out"] * ".complete", [ids[i] for i in tour if i != data.depot])
+    writeGPX(app["out"] * ".complete.gpx", [data.D.V[i] for i in tour if i != data.depot])
   end
 #    app["out"] != nothing && writesol(app["out"], data′, x, model, app)
   #=
