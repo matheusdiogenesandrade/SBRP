@@ -45,9 +45,8 @@ function writesol(path::String, tour::Array{Int64, 1})
 end
 
 function gettour(data::SBRPData, x)
-  A, depot, tour = [a for a in data.D.A if value(x[a]) > 0.5], data.depot, []
+  A, B, depot, tour = [a for a in data.D.A if value(x[a]) > 0.5], data.B, data.depot, []
   V = Set{Int64}(vcat([i for (i, j) in A], [j for (i, j) in A]))
-#  println(A)
   #hierholzer's
   adjList, curr_path = Dict{Int64, Vector{Int64}}(i => [j for (i, j) in δ⁺(A, i) for i in 1:Int(floor(value(x[(i, j)]) + 0.5))] for i in V), Stack{Int}()
   push!(curr_path, depot)
@@ -61,7 +60,24 @@ function gettour(data::SBRPData, x)
       curr_v = pop!(curr_path)
     end
   end
-  return Array{Int64}(reverse(tour))
+  # reverse
+  tour = Array{Int64}(reverse(tour))
+#  println(tour)
+  # add blocks
+  tour′, node_blocks = Array{Int64, 1}(), Dict{Int64, Set{Int64}}(i => Set{Int64}() for b in B for i in b)
+  [push!(node_blocks[j], i) for i in 1:length(B) for j in B[i]] # populate dict
+  for i in tour
+    push!(tour′, i)
+    (!in(i, keys(node_blocks)) || isempty(node_blocks[i])) && continue # node has no blocks to serve
+    for j in node_blocks[i] # for every block
+      b = B[j]
+      index = first(findall(x -> x == i, b))
+      append!(tour′, [b[j] for j in (index + 1):length(b)]..., [b[j] for j in 1:index]...)
+      [delete!(node_blocks[k], j) for k in b] # remove block from remaining nodes
+    end
+    delete!(node_blocks, i) # remove node from dict
+  end
+  return tour′
 end
 
 #function gettour(data::SBRPData, x)
@@ -85,13 +101,13 @@ function gettour(V::Array{Int64}, A::Array{Tuple{Int64, Int64}}, depot::Int64, x
 end
 
 function check_sbrp_sol(data::SBRPData, tour::Array{Int64, 1})
-  V′ = Set{Int64}()
+  V′, A′ = Set{Int64}(), Set{Tuple{Int64, Int64}}(vcat(data.D.A, [(b[i - 1], b[i]) for b in data.B for i in 2:length(b)], [(b[end], b[begin]) for b in data.B]))
   # check arcs
   for i in 1:(length(tour) - 1)
     a = (tour[i], tour[i + 1])
     push!(V′, a[1])
     push!(V′, a[2])
-    !in(a, data.D.A) && error("Arc $a does not exists")
+    !in(a, A′) && error("Arc $a does not exists")
   end
   # check blocks
   for b in data.B

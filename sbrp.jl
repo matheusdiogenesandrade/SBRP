@@ -3,7 +3,7 @@ module SBRP
 using ..Data
 #import ..InputDigraph
 
-export time_block, SBRPData, compact, readSBRPData, checkSBRPfeasibility
+export time_block, SBRPData, compact, readSBRPDataCarlos, readSBRPDataMatheus, checkSBRPfeasibility
 
 time_block(data, block) = 4 * (sum(Data.time(data, (block[i - 1], block[i])) for i in 2:length(block)) + Data.time(data, (block[end], block[1])))
 
@@ -12,6 +12,7 @@ mutable struct SBRPData
   depot::Int64
   B::Array{Array{Int64, 1}}
   T::Float64
+  profits::Dict{Array{Int64, 1}, Float64}
 end
 
 function compact(data::SBRPData, V′)
@@ -21,7 +22,8 @@ function compact(data::SBRPData, V′)
                  Array{Tuple{Int64,Int64}, 1}(), 
                  Dict{Tuple{Int64, Int64}, Float64}()
                 ), 
-    data.depot, data.B, data.T # 2 hours
+    data.depot, data.B, data.T, # 2 hours
+    data.profits
   ), 1:length(data.D.V), Dict{Tuple{Int64, Int64}, Array{Int64}}()
   for i in V′
     # bfs
@@ -59,7 +61,7 @@ function compact(data::SBRPData, V′)
   return data′, paths
 end
 
-function readSBRPData(app::Dict{String,Any})
+function readSBRPDataCarlos(app::Dict{String,Any})
   depot = 1
   data, blocks, ids = SBRPData(
     Data.InputDigraph(
@@ -69,7 +71,8 @@ function readSBRPData(app::Dict{String,Any})
                 ), 
     depot,
     Array{Array{Int64, 1}, 1}(),
-    120.0 # 2 hours
+    120.0, # 2 hours
+    Dict{Array{Int64, 1}, Float64}()
   ), Dict{Int64, Array{Tuple{Int64, Int64}, 1}}(), Dict{Int64, Int64}()
 #  Vₘ = Dict{Int64, Int64}()
   open(app["instance"]) do f
@@ -78,15 +81,16 @@ function readSBRPData(app::Dict{String,Any})
     nNodes, nArcs, nBlocks = parse(Int64, parts[1]), parse(Int64, parts[2]), parse(Int64, parts[3])
     # get nodes
     for i in 1:nNodes
-      id = parse(Int64, split(readline(f), [' ']; limit=0, keepempty=false)[2])
+      parts = split(readline(f), [' ']; limit=0, keepempty=false)
+      id = parse(Int64, parts[2])
       ids[id] = i + 1
-      push!(data.D.V, Vertex(id, 0.0, 0.0))
+      push!(data.D.V, Vertex(id, parse(Float64, parts[4]), parse(Float64, parts[3])))
     end
     # get distances
     for i in 1:nArcs
       parts = split(readline(f), [' ']; limit=0, keepempty=false)
       a = (ids[parse(Int64, parts[2])], ids[parse(Int64, parts[3])])
-      data.D.distance[a] = parse(Float64, parts[4])
+      data.D.distance[a] = floor(Int64, parse(Float64, parts[4]))
       # get blocks
       parts[5] == "-1" && continue
       id_block = parse(Int64, parts[5])
@@ -106,8 +110,8 @@ function readSBRPData(app::Dict{String,Any})
     end
     push!(data.B, cycle)
 
-#    k >= n_blocks && break
-#    k = k + 1
+    k >= n_blocks && break
+    k = k + 1
   end
   # add arcs
   data.D.A = [keys(data.D.distance)...]
@@ -124,6 +128,71 @@ function readSBRPData(app::Dict{String,Any})
   [data.D.distance[(depot, i)] = data.D.distance[(i, depot)] = 0.0 for i in Vb]
   # check feasibility
   !checkSBRPfeasibility(data′, Vb) && error("The SBRP instance is not feasible")
+  # return
+  return data, Dict{Int64, Int64}(v => k for (k, v) in ids), data′, paths
+end
+
+function readSBRPDataMatheus(app::Dict{String,Any})
+  depot = 1
+  data, blocks, ids = SBRPData(
+    Data.InputDigraph(
+                 Array{Vertex, 1}([Vertex(-1, -1, -1)]), 
+                 Array{Tuple{Int64,Int64}, 1}(), 
+                 Dict{Tuple{Int64, Int64}, Float64}()
+                ), 
+    depot,
+    Array{Array{Int64, 1}, 1}(),
+    120.0, # 2 hours
+    Dict{Array{Int64, 1}, Float64}()
+  ), Dict{Int64, Array{Tuple{Int64, Int64}, 1}}(), Dict{Int64, Int64}()
+  open(app["instance"]) do f
+    # ignore the first two lines
+    readline(f)
+    readline(f)
+    nNodes, nArcs, nBlocks = parse(Int64, split(readline(f), [' ']; limit=0, keepempty=false)[end]), parse(Int64, split(readline(f), [' ']; limit=0, keepempty=false)[end]) + parse(Int64, split(readline(f), [' ']; limit=0, keepempty=false)[end]), parse(Int64, split(readline(f), [' ']; limit=0, keepempty=false)[end])
+    readline(f)
+    readline(f)
+    # get arcs
+    for n in 1:nArcs
+      parts = split(readline(f), ['(', ')', ' ', ',']; limit=0, keepempty=false)
+      data.D.distance[(parse(Int64, parts[1]), parse(Int64, parts[2]))] = floor(Int64, parse(Float64, parts[end]))
+    end
+    # get vertices
+    readline(f)
+    for i in 1:nNodes
+      parts = split(readline(f), [' ']; limit=0, keepempty=false)
+      id = parse(Int64, parts[1])
+      ids[id] = i + 1
+      push!(data.D.V, Vertex(id, parse(Float64, parts[2]), parse(Float64, parts[3])))
+    end
+    # get blocks
+    readline(f)
+    n_blocks, k = 2, 1
+    for i in 1:nBlocks
+      parts = split(readline(f), [',', ' ']; limit=0, keepempty=false)
+      push!(data.B, Array{Int64, 1}([ids[parse(Int64, part)] for part in parts]))
+#      k >= n_blocks && break
+      k = k + 1
+    end
+  end
+  # update arcs ids
+  data.D.distance = Dict{Tuple{Int64, Int64}, Float64}((ids[a[1]], ids[a[2]]) => distance for (a, distance) in data.D.distance)
+  data.D.A = collect(keys(data.D.distance))
+  # compact
+  Vb = Set{Int64}([i for b in data.B for i in b])
+  data′, paths = compact(data, Vb)
+  # update arcs
+  data.D.A = vcat(
+    collect(Set{Tuple{Int64, Int64}}([(path[i], path[i + 1]) for (a, path) in paths for i in 1:(length(path) - 1)])),
+    [(depot, i) for i in Vb],
+    [(i, depot) for i in Vb]
+  )
+  # dummy weights
+  [data.D.distance[(depot, i)] = data.D.distance[(i, depot)] = 0.0 for i in Vb]
+  # check feasibility
+  !checkSBRPfeasibility(data′, Vb) && error("The SBRP instance is not feasible")
+  # define profits
+  [data.profits[b] = 1.0 for b in data.B]
   # return
   return data, Dict{Int64, Int64}(v => k for (k, v) in ids), data′, paths
 end

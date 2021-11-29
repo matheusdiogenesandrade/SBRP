@@ -6,7 +6,7 @@ using CPLEX
 using JuMP
 using BenchmarkTools
 
-export ModelSBRP, get_max_flow_min_cut_cuts, bfs_sets, add_subtour_ineqs
+export ModelSBRP, get_max_flow_min_cut_cuts, bfs_sets, add_subtour_ineqs, SparseMaxFlowMinCut
 
 include("SparseMaxFlowMinCut.jl")
 #include("data.jl")
@@ -86,6 +86,7 @@ function get_max_flow_min_cut_cuts(data::SBRPData, model, x)
   return sets
 end
 
+#=
 function build_model_atsp(V::Array{Int64}, A::Array{Tuple{Int64, Int64}}, costs::Dict{Tuple{Int64, Int64}, Float64}, depot::Int64)
   Vₙ = [i for i in V if i != depot]
   model = direct_model(CPLEX.Optimizer())
@@ -100,6 +101,7 @@ function build_model_atsp(V::Array{Int64}, A::Array{Tuple{Int64, Int64}}, costs:
   @constraint(model, mtz2[a in A], x[a] * length(V) >= y[a])
   return (model, x, y)
 end
+=#
 
 #=
 function build_model_max_profit_sbrp(data::SBRPData, app::Dict{String,Any})
@@ -153,5 +155,9 @@ end
 include("model_sbrp.jl")
 
 include("model_sbrp_complete.jl")
+
+include("model_tsp.jl")
+
+include("model_sbrp_max.jl")
 
 end

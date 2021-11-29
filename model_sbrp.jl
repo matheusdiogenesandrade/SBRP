@@ -11,7 +11,7 @@ export build_model_sbrp
 function build_model_sbrp(data::SBRPData, app::Dict{String,Any})
   B, A, T, V, depot, Vb, info = data.B, data.D.A, data.T, 1:length(data.D.V), data.depot, Set{Int64}([i for b in data.B for i in b]), Dict{String, Any}("lazyCuts" => 0)
   function add_basic_constraints(model)
-    @objective(model, Min, sum(Data.time(data, a) * x[a] for a in A))
+    @objective(model, Min, sum(data.D.distance[a] * x[a] for a in A))
     @constraint(model, degree[i in V], sum(x[a] for a in δ⁻(A, i)) == sum(x[a] for a in δ⁺(A, i)))
     @constraint(model, block[block in B], sum(sum(x[a] for a in δ⁺(A, i)) for i in block) >= 1)
     @constraint(model, block1[block in B], sum(x[a] for a in δ⁺(A, block))  >= 1)

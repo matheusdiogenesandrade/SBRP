@@ -9,9 +9,9 @@ using .Data
 using .Data.SBRP
 using .Model
 using .Model.ModelSBRP
+using .Model.ModelSBRP
 using .Model.ModelSBRPComplete
 using .Model.ModelTSP
-using .Model.ModelSBRPMax
 using .Solution
 using ArgParse
 
@@ -57,10 +57,14 @@ function run(app::Dict{String,Any})
   for b in data.B
     println(b)
   end
+  Vb = Set{Int64}([i for b in data.B for i in b])
+  for i in Vb
+    println(i, " " , data.D.V[i].id_vertex, " ", data.D.V[i].pos_x, " ", data.D.V[i].pos_y)
+  end
   # not solve
   app["nosolve"] && return
-  # solve models
   #=
+  # solve models
   # SBRP
   (model, x, info) = build_model_sbrp(data, app)
   optimize!(model)
@@ -92,42 +96,11 @@ function run(app::Dict{String,Any})
     writesol(app["out"] * ".complete", [ids[i] for i in tour′ if i != data.depot])
     writeGPX(app["out"] * ".complete.gpx", [data.D.V[i] for i in tour′ if i != data.depot])
   end
+  =#
   # TSP
-  Vᵗ, Aᵗ, costs, Vb, Vb′ = build_atsp_instance(data′)
-  (model, x, y) = build_model_atsp(Vᵗ, Aᵗ, costs)
-  optimize!(model)
-  println(objective_value(model))
-
-  costs′ = from_atsp_to_tsp(Vᵗ, Aᵗ, costs)
-  n = length(costs′)
-  print("  ")
-  [print(i, "    ") for i in floor(Int64, n/2):n]
-  println()
-  for i in 1:floor(Int64, n/2)
-    print(i, " ")
-    for j in floor(Int64, n/2):n
-      d = costs′[i][j]
-      log10 = Base.log(10, d)
-      print(d, [" " for i in 1:(4 - (d != 0 ? floor(Int64, log10) : 0))]..., " ")
-    end
-    println()
-  end
-
-  print("   ")
-  [print(i, "     ") for i in 1:floor(Int64, n/2)]
-  println()
-  for i in floor(Int64, n/2):n
-    print(i, " ")
-    for j in 1:floor(Int64, n/2)
-      d = costs′[i][j]
-      log10 = Base.log(10, d)
-      print(d, [" " for i in 1:(4 - (d != 0 ? floor(Int64, log10) : 0))]..., " ")
-    end
-    println()
-  end
-  println(solve_tsp(costs′))
-  
+  Vᵗ, Aᵗ, costs, Vb, Vb′ = build_atsp_instance(data)
 #    app["out"] != nothing && writesol(app["out"], data′, x, model, app)
+  #=
   println("#######################SBRP_ATSP########################")
   V, A, costs, Vb, Vb′ = build_atsp_instance(data′)
   (model, x, y) = build_model_atsp(V, A, costs, data′.depot)
@@ -144,17 +117,6 @@ function run(app::Dict{String,Any})
     println("Model infeasible or unknown")
   end
   =#
-  (model, x, y, info) = build_model_sbrp_max(data′, app)
-  optimize!(model)
-#  tour, info = gettour(data, x), merge(info, get_info(model))
-  info = merge(info, get_info(model))
-  info["model"] = "SBRPMax"
-#  check_sbrp_sol(data, tour)
-  log(info)
-  if app["out"] != nothing
-    writesol(app["out"], [ids[i] for i in tour if i != data.depot])
-    writeGPX(app["out"] * ".gpx", [data.D.V[i] for i in tour if i != data.depot])
-  end
   #=
   println("#######################SBRP MAX#########################")
   (model_max, x, y) = build_model_max_profit_sbrp(data, app)
