@@ -21,9 +21,9 @@ end
 δ⁺(A::Array{Tuple{Int64, Int64}}, S::Set{Int64}) = [(i, j) for (i, j) in A if i in S && !in(j, S)]
 δ⁺(A::Array{Tuple{Int64, Int64}}, S::Array{Int64}) = [(i, j) for (i, j) in A if i in S && !in(j, S)]
 δ⁻(A::Array{Tuple{Int64, Int64}}, i::Int64) = [(j, k) for (j, k) in A if k == i]
-δ⁻(A::Array{Tuple{Int64, Int64}}, S::Set{Int64}) = [(j, k) for (j, k) in A if k == i]
-δ⁻(A::Array{Tuple{Int64, Int64}}, S::Array{Int64}) = [(j, k) for (j, k) in A if k == i]
-time(data, a) = data.D.distance[a] / 40.0
+δ⁻(A::Array{Tuple{Int64, Int64}}, S::Set{Int64}) = [(j, k) for (j, k) in A if !in(k, S)]
+δ⁻(A::Array{Tuple{Int64, Int64}}, S::Array{Int64}) = [(j, k) for (j, k) in A if !in(k, S)]
+time(data, a) = data.D.distance[a] / ((40.0 * 10^3)/60.0)
 
 include("sbrp.jl")
 

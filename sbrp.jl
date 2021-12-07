@@ -63,7 +63,7 @@ end
 
 function readSBRPDataCarlos(app::Dict{String,Any})
   depot = 1
-  data, blocks, ids = SBRPData(
+  data, blocks, ids, blocks_profits = SBRPData(
     Data.InputDigraph(
                  Array{Vertex, 1}([Vertex(-1, -1, -1)]), 
                  Array{Tuple{Int64,Int64}, 1}(), 
@@ -73,7 +73,7 @@ function readSBRPDataCarlos(app::Dict{String,Any})
     Array{Array{Int64, 1}, 1}(),
     120.0, # 2 hours
     Dict{Array{Int64, 1}, Float64}()
-  ), Dict{Int64, Array{Tuple{Int64, Int64}, 1}}(), Dict{Int64, Int64}()
+  ), Dict{Int64, Array{Tuple{Int64, Int64}, 1}}(), Dict{Int64, Int64}(), Dict{Int64, Int64}()
 #  Vₘ = Dict{Int64, Int64}()
   open(app["instance"]) do f
     parts = split(readline(f), [' ']; limit=0, keepempty=false)
@@ -95,7 +95,9 @@ function readSBRPDataCarlos(app::Dict{String,Any})
       parts[5] == "-1" && continue
       id_block = parse(Int64, parts[5])
       !haskey(blocks, id_block) && (blocks[id_block] = Array{Tuple{Int64, Int64}, 1}())
+      !haskey(blocks_profits, id_block) && (blocks_profits[id_block] = 0)
       push!(blocks[id_block], a)
+      blocks_profits[id_block] += parse(Int64, parts[6])
     end
   end
   n_blocks, k = 2, 1
@@ -109,8 +111,9 @@ function readSBRPDataCarlos(app::Dict{String,Any})
       curr, next = next, first(δ⁺(arcs, next))[2]
     end
     push!(data.B, cycle)
+    data.profits[cycle] = blocks_profits[block]
 
-    k >= n_blocks && break
+#    k >= n_blocks && break
     k = k + 1
   end
   # add arcs
@@ -182,11 +185,16 @@ function readSBRPDataMatheus(app::Dict{String,Any})
   Vb = Set{Int64}([i for b in data.B for i in b])
   data′, paths = compact(data, Vb)
   # update arcs
-  data.D.A = vcat(
-    collect(Set{Tuple{Int64, Int64}}([(path[i], path[i + 1]) for (a, path) in paths for i in 1:(length(path) - 1)])),
-    [(depot, i) for i in Vb],
-    [(i, depot) for i in Vb]
-  )
+  data.D.A = collect(Set{Tuple{Int64, Int64}}(vcat(
+    [(path[i], path[i + 1]) for (a, path) in paths for i in 1:(length(path) - 1)], # min paths arcs
+    [(a[1], path[begin]) for (a, path) in paths if !isempty(path)], # min paths arcs
+    [(path[end], a[2]) for (a, path) in paths if !isempty(path)], # min paths arcs
+    [a for (a, path) in paths if isempty(path)], # min paths arcs (edge case)
+    [(b[i], b[i + 1]) for b in data.B for i in 1:(length(b) - 1)], # blocks arcs
+    [(b[end], b[begin]) for b in data.B], # blocks arcs
+    [(depot, i) for i in Vb], # depot arcs
+    [(i, depot) for i in Vb] # depot arcs
+   )))
   # dummy weights
   [data.D.distance[(depot, i)] = data.D.distance[(i, depot)] = 0.0 for i in Vb]
   # check feasibility

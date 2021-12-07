@@ -146,14 +146,24 @@ function run(app::Dict{String,Any})
   =#
   (model, x, y, info) = build_model_sbrp_max(data′, app)
   optimize!(model)
-#  tour, info = gettour(data, x), merge(info, get_info(model))
-  info = merge(info, get_info(model))
+  B = get_blocks(data, y)
+  tour′, tour, info = gettour(data′, x, B), Array{Int64, 1}(), merge(info, get_info(model))
+  [println(b) for b in B]
+  check_sbrp_sol(data′, tour′, B)
+  # replace compact paths
+  for i in 2:length(tour′)
+    push!(tour, tour′[i - 1])
+    a = (tour′[i - 1], tour′[i])
+    !in(a, data.D.A) && push!(tour, paths[a]...)
+#    a in keys(paths) && push!(tour, paths[a]...)
+  end
+  push!(tour, tour′[end])
   info["model"] = "SBRPMax"
-#  check_sbrp_sol(data, tour)
+  check_sbrp_sol(data, tour, B)
   log(info)
   if app["out"] != nothing
-    writesol(app["out"], [ids[i] for i in tour if i != data.depot])
-    writeGPX(app["out"] * ".gpx", [data.D.V[i] for i in tour if i != data.depot])
+    writesol(app["out"] * ".max", [ids[i] for i in tour if i != data.depot])
+    writeGPX(app["out"] * ".max.gpx", [data.D.V[i] for i in tour if i != data.depot])
   end
   #=
   println("#######################SBRP MAX#########################")
