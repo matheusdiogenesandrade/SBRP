@@ -113,7 +113,7 @@ function readSBRPDataCarlos(app::Dict{String,Any})
     push!(data.B, cycle)
     data.profits[cycle] = blocks_profits[block]
 
-#    k >= n_blocks && break
+    k >= n_blocks && break
     k = k + 1
   end
   # add arcs
@@ -122,11 +122,16 @@ function readSBRPDataCarlos(app::Dict{String,Any})
   Vb = Set{Int64}([i for b in data.B for i in b])
   data′, paths = compact(data, Vb)
   # update arcs
-  data.D.A = vcat(
-    collect(Set{Tuple{Int64, Int64}}([(path[i], path[i + 1]) for (a, path) in paths for i in 1:(length(path) - 1)])),
-    [(depot, i) for i in Vb],
-    [(i, depot) for i in Vb]
-  )
+  data.D.A = collect(Set{Tuple{Int64, Int64}}(vcat(
+    [(path[i], path[i + 1]) for (a, path) in paths for i in 1:(length(path) - 1)], # min paths arcs
+    [(a[1], path[begin]) for (a, path) in paths if !isempty(path)], # min paths arcs
+    [(path[end], a[2]) for (a, path) in paths if !isempty(path)], # min paths arcs
+    [a for (a, path) in paths if isempty(path)], # min paths arcs (edge case)
+    [(b[i], b[i + 1]) for b in data.B for i in 1:(length(b) - 1)], # blocks arcs
+    [(b[end], b[begin]) for b in data.B], # blocks arcs
+    [(depot, i) for i in Vb], # depot arcs
+    [(i, depot) for i in Vb] # depot arcs
+   )))
   # dummy weights
   [data.D.distance[(depot, i)] = data.D.distance[(i, depot)] = 0.0 for i in Vb]
   # check feasibility

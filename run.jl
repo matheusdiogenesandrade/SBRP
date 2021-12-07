@@ -55,7 +55,10 @@ function run(app::Dict{String,Any})
   println("|V′| = $(length(data′.D.V))")
   println("|A′| = $(length(data′.D.A))")
   for b in data.B
-    println(b)
+    println("Block")
+    for i in b
+      println(data.D.V[ids[i]].pos_y, ", ", data.D.V[ids[i]].pos_x)
+    end
   end
   # not solve
   app["nosolve"] && return
