@@ -3,9 +3,7 @@ module SBRP
 using ..Data
 #import ..InputDigraph
 
-export time_block, SBRPData, compact, readSBRPDataCarlos, readSBRPDataMatheus, checkSBRPfeasibility
-
-time_block(data, block) = 4 * (sum(Data.time(data, (block[i - 1], block[i])) for i in 2:length(block)) + Data.time(data, (block[end], block[1])))
+export time_block, SBRPData, compact, readSBRPDataCarlos, readSBRPDataMatheus, distance_block, tour_distance, tour_time
 
 mutable struct SBRPData
   D::Data.InputDigraph
@@ -14,6 +12,12 @@ mutable struct SBRPData
   T::Float64
   profits::Dict{Array{Int64, 1}, Float64}
 end
+
+distance_block(data::SBRPData, block::Array{Int64, 1})                         = sum(data.D.distance[(block[i - 1], block[i])] for i in 2:length(block)) + data.D.distance[(block[end], block[begin])]
+time_block(data::SBRPData, block::Array{Int64, 1})                             = 4 * distance_block(data, block) / NORMAL_SPEED
+tour_distance(data::SBRPData, tour::Array{Int64, 1})                           = sum(data.D.distance[(tour[i - 1], tour[i])] for i in 2:length(tour))
+tour_time(data::SBRPData, tour::Array{Int64, 1}, B::Array{Array{Int64, 1}, 1}) = ((tour_distance(data, tour) - sum(distance_block(data, block) for block in B)) / NORMAL_SPEED) + sum(time_block(data, block) for block in B)
+
 
 function compact(data::SBRPData, V′)
   data′, V, paths = SBRPData(
@@ -100,7 +104,7 @@ function readSBRPDataCarlos(app::Dict{String,Any})
       blocks_profits[id_block] += parse(Int64, parts[6])
     end
   end
-  n_blocks, k = 2, 1
+  n_blocks, k = 16, 1
   # get blocks
   for (block, arcs) in blocks
     # get cycle     
@@ -113,7 +117,7 @@ function readSBRPDataCarlos(app::Dict{String,Any})
     push!(data.B, cycle)
     data.profits[cycle] = blocks_profits[block]
 
-    k >= n_blocks && break
+#    k >= n_blocks && break
     k = k + 1
   end
   # add arcs
@@ -135,7 +139,7 @@ function readSBRPDataCarlos(app::Dict{String,Any})
   # dummy weights
   [data.D.distance[(depot, i)] = data.D.distance[(i, depot)] = 0.0 for i in Vb]
   # check feasibility
-  !checkSBRPfeasibility(data′, Vb) && error("The SBRP instance is not feasible")
+  !check_sbrp_complete_feasibility(data′, Vb) && error("The SBRP instance is not feasible")
   # return
   return data, Dict{Int64, Int64}(v => k for (k, v) in ids), data′, paths
 end
@@ -203,16 +207,16 @@ function readSBRPDataMatheus(app::Dict{String,Any})
   # dummy weights
   [data.D.distance[(depot, i)] = data.D.distance[(i, depot)] = 0.0 for i in Vb]
   # check feasibility
-  !checkSBRPfeasibility(data′, Vb) && error("The SBRP instance is not feasible")
+  !check_sbrp_complete_feasibility(data′, Vb) && error("The Complete SBRP instance is not feasible")
   # define profits
   [data.profits[b] = 1.0 for b in data.B]
   # return
   return data, Dict{Int64, Int64}(v => k for (k, v) in ids), data′, paths
 end
 
-function checkSBRPfeasibility(data_complete::SBRPData, V′)
+function check_sbrp_complete_feasibility(data_complete::SBRPData, Vb)
   A′ = keys(data_complete.D.distance)
-  return all((i, j) in A′ && (j, i) in A′ for i in V′ for j in V′ if i < j)
+  return all((i, j) in A′ && (j, i) in A′ for i in Vb for j in Vb if i < j)
 end
 
 end

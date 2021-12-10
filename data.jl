@@ -1,6 +1,6 @@
 module Data
 
-export Vertex, InpuDigraph, δ⁺, δ⁻, time, SBRPData
+export Vertex, InpuDigraph, δ⁺, δ⁻, time, SBRPData, NORMAL_SPEED
 #export Vertex, InpuDigraph, δ⁺, δ⁻, time, time_block, SBRPData, compact, readSBRPData, checkSBRPfeasibility
 
 import Unicode
@@ -23,7 +23,8 @@ end
 δ⁻(A::Array{Tuple{Int64, Int64}}, i::Int64) = [(j, k) for (j, k) in A if k == i]
 δ⁻(A::Array{Tuple{Int64, Int64}}, S::Set{Int64}) = [(j, k) for (j, k) in A if !in(k, S)]
 δ⁻(A::Array{Tuple{Int64, Int64}}, S::Array{Int64}) = [(j, k) for (j, k) in A if !in(k, S)]
-time(data, a) = data.D.distance[a] / ((40.0 * 10^3)/60.0)
+NORMAL_SPEED = (40.0 * 10^3)/60.0
+time(data, a) = data.D.distance[a] / NORMAL_SPEED
 
 include("sbrp.jl")
 
