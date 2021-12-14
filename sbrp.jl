@@ -13,6 +13,9 @@ mutable struct SBRPData
   profits::Dict{Array{Int64, 1}, Float64}
 end
 
+NORMAL_SPEED = (40.0 * 10^3)/60.0
+
+time(data, a) = a[1] == a[2] ? 0.0 : data.D.distance[a] / NORMAL_SPEED
 distance_block(data::SBRPData, block::Array{Int64, 1})                         = sum(data.D.distance[(block[i - 1], block[i])] for i in 2:length(block)) + data.D.distance[(block[end], block[begin])]
 time_block(data::SBRPData, block::Array{Int64, 1})                             = 4 * distance_block(data, block) / NORMAL_SPEED
 tour_distance(data::SBRPData, tour::Array{Int64, 1})                           = sum(data.D.distance[(tour[i - 1], tour[i])] for i in 2:length(tour))

@@ -1,6 +1,7 @@
 module Main
 
 include("data.jl")
+include("nn_heuristic.jl")
 include("model.jl")
 include("solve.jl")
 include("sol.jl")
@@ -11,6 +12,7 @@ using .Model
 using .Model.ModelSBRPMax
 using .Model.ModelSBRPMaxComplete
 using .Solution
+using .NearestNeighborhoodHeuristic
 using ArgParse
 
 function parse_commandline(args_array::Array{String,1}, appfolder::String)
@@ -23,7 +25,7 @@ function parse_commandline(args_array::Array{String,1}, appfolder::String)
     default = "carlos"
     "--vehicle-time-limit"
     help = "Vehicle time limit in minutes"
-    default = 120.0
+    default = "120"
     "--nosolve"
     help = "Not solve flag"
     action = :store_true
@@ -104,7 +106,7 @@ function run(app::Dict{String,Any})
   # not solve
   app["nosolve"] && return
   # solve models
-  sbrp_max(app, data, ids)
+#  sbrp_max(app, data, ids)
   sbrp_max_complete(app, data, data′, ids, paths)
 end
 
