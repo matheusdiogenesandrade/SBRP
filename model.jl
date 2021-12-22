@@ -1,5 +1,6 @@
 module Model
 
+using ..Symbols
 using ..Data
 using ..Data.SBRP
 using ..NearestNeighborhoodHeuristic
@@ -7,7 +8,7 @@ using CPLEX
 using JuMP
 using BenchmarkTools
 
-export ModelSBRP, add_subtour_ineqs, SparseMaxFlowMinCut, EPS, lazy_separation, get_max_flow_min_cut_cuts, bfs_sets, blocks, get_cc_cuts, add_cc_ineqs
+export ModelSBRP, add_subtour_ineqs, SparseMaxFlowMinCut, EPS, lazy_separation, get_max_flow_min_cut_cuts, bfs_sets, blocks, get_cc_cuts, add_cc_ineqs, add_intersection_cuts
 
 include("SparseMaxFlowMinCut.jl")
 
@@ -56,7 +57,7 @@ function lazy_separation(data::SBRPData, Vb, info, model, x, y, cb_data::CPLEX.C
   # update info
   info["lazyCuts"] = info["lazyCuts"] + length(sets′)
   #
-  [println(collect(S), i, block) for (S, i, block) in sets′]
+#  [println(collect(S), i, block) for (S, i, block) in sets′]
 end
 
 function get_max_flow_min_cut_cuts(data::SBRPData, model, x, y, info::Dict{String, Any})
@@ -88,7 +89,7 @@ function get_max_flow_min_cut_cuts(data::SBRPData, model, x, y, info::Dict{Strin
     # base case
     isempty(sets′) && break
 #    println(length(sets′))
-    [println(S, i, block) for (S, i, block) in sets′]
+#    [println(S, i, block) for (S, i, block) in sets′]
     # update infos
     info["iteration_" * string(iteration) * "_time"], info["iteration_" * string(iteration) * "_cuts"], iteration = time, length(sets′), iteration + 1
     # store sets″
@@ -96,7 +97,7 @@ function get_max_flow_min_cut_cuts(data::SBRPData, model, x, y, info::Dict{Strin
     # add ineqs
     add_subtour_ineqs(model, x, y, sets′, A)
   end
-  info["maxFlowCuts"], info["rootLP"] = length(sets), objective_value(model)
+  info["maxFlowCuts"], info["maxFlowLP"] = length(sets), objective_value(model)
   return sets
 end
 
@@ -111,7 +112,7 @@ function get_cc_cuts(data::SBRPData, model, x, y, info::Dict{String, Any})
     x_val = Dict{Tuple{Int64, Int64}, Float64}(a => value(x[a]) for a in A)
     # model
     model_slave = direct_model(CPLEX.Optimizer())
-    set_silent(model)
+    set_silent(model_slave)
     @variable(model_slave, z[a in A], Bin)
     @variable(model_slave, w[i in V], Bin)
     @variable(model_slave, y[block in B], Bin)
@@ -141,6 +142,40 @@ function get_cc_cuts(data::SBRPData, model, x, y, info::Dict{String, Any})
   end
   info["cc_cuts"] = length(sets)
   return sets
+end
+
+function add_intersection_cuts(data::SBRPData, model, x, y)
+  # setup
+  B, A, n_cuts = data.B, data.D.A, 0
+  # max clique model
+  max_clique = direct_model(CPLEX.Optimizer())
+  set_silent(max_clique)
+  @variable(max_clique, z[block in B], Bin)
+  @objective(max_clique, Max, ∑(z[block] for block in B))
+  @constraint(max_clique, [(block, block′) in [(B[i], B[j]) for i in 1:length(B) for j in i + 1:length(B) if isempty(∩(B[i], B[j]))]], 1 >= z[block] + z[block′])
+  @constraint(max_clique, ∑(z[block] for block in B) >= 2)
+  while true
+    # solve
+    optimize!(max_clique)
+    # base case
+    termination_status(max_clique) == MOI.INFEASIBLE && break 
+    # get clique
+    B′ = filter(block -> value(z[block]) > 0.5, B)
+    intersection = ∩(B′...)
+    # check if it is a clique 
+#    println("Maximal clique: ", length(B′))
+#    println(∩(B′...))
+#    println(B′)
+    all([!isempty(∩(block, block′)) for block′ ∈ B for block ∈ B′ if block′ ≠ block]) && error("It is not a clique")
+    # add inquelity in the SBRP model
+    @constraint(model, [block in B′], 1 - ∑(x[a] for a ∈ δ⁺(A, intersection)) >= ∑(∑(x[a] for a ∈ δ⁺(A, i)) for i ∈ setdiff(block, intersection, ∪(i for block′ ∈ B′ for i in ∩(block′, block) if block′ ∉ B′))))
+    @constraint(model, [block in B′], ∑(∑(x[a] for a ∈ δ⁺(A, i) if a[2] ∈ intersection) for i ∈ intersection) == 0)
+    # update clique model
+    @constraint(max_clique, ∑(z[block] for block ∈ B′) ≤ length(B′) - 1)
+    # increase cuts number
+    n_cuts += 1
+  end
+  return n_cuts
 end
 
 include("model_sbrp_max.jl")

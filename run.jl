@@ -1,11 +1,14 @@
 module Main
 
+
+include("symbols.jl")
 include("data.jl")
 include("nn_heuristic.jl")
 include("model.jl")
 include("solve.jl")
 include("sol.jl")
 
+using .Symbols
 using .Data
 using .Data.SBRP
 using .Model
@@ -39,7 +42,7 @@ end
 
 # log function 
 function log(info)
-  logColumns = ["instance", "|V|", "|A|", "T", "model", "rootLP", "maxFlowCuts", "maxFlowCutsTime", "lazyCuts", "cost", "solverTime", "relativeGAP", "nodeCount", "meters", "tourMinutes", "blocksMeters"]
+  logColumns = ["instance", "|V|", "|A|", "|B|", "T", "model", "intersectionCuts", "intersectionCutsTime", "initialLP", "maxFlowLP", "maxFlowCuts", "maxFlowCutsTime", "lazyCuts", "cost", "solverTime", "relativeGAP", "nodeCount", "meters", "tourMinutes", "blocksMeters"]
   println([" & :" * column for column in logColumns]...)
   println([" & " * (column in keys(info) ? string(info[column]) : "-") for column in logColumns]...)
 end
@@ -48,13 +51,14 @@ function write_sol(app, tour, ids, data)
   app["out"] != nothing && (writesol(app["out"] * ".max", [ids[i] for i in tour if i != data.depot]), writeGPX(app["out"] * ".max.gpx", [data.D.V[i] for i in tour if i != data.depot])) # write output files
 end
 
+#=
 function sbrp_max(app::Dict{String, Any}, data::SBRPData, ids::Dict{Int64, Int64})
   println("###################SBRP MAX#############################")
   (model, x, y, info) = build_model_sbrp_max(data, app); optimize!(model) # solve model
   B = get_blocks(data, y) # get serviced blocks
 #  [println(block) for block in B]
   tour = gettour(data, x, B); check_sbrp_sol(data, tour, B) # get tour and check feasibility
-  info = merge(info, get_info(model, data, tour, B), Dict{String, String}("model" => "SBRPMax", "instance" => app["instance_name"], "|V|" => string(length(Set{Int64}(vcat([i for (i, j) in data.D.A], [j for (i, j) in data.D.A])))), "|A|" => string(length(data.D.A)), "|B|" => string(data.B), "T" => string(data.T))) # update info
+  info = merge(info, get_info(model, data, tour, B), Dict{String, String}("model" => "SBRPMax", "instance" => app["instance_name"], "|V|" => string(length(Set{Int64}(vcat([i for (i, j) in data.D.A], [j for (i, j) in data.D.A])))), "|A|" => string(length(data.D.A)), "|B|" => string(length(data.B)), "T" => string(data.T))) # update info
   log(info) # log
   write_sol(app, tour, ids, data)
   println("########################################################")
@@ -66,6 +70,7 @@ function sbrp_max(app::Dict{String, Any}, data::SBRPData, ids::Dict{Int64, Int64
   end
   =#
 end
+=#
  
 function sbrp_max_complete(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, ids::Dict{Int64, Int64}, paths::Dict{Tuple{Int64, Int64}, Array{Int64}})
   println("###################SBRP MAX Complete####################")
@@ -73,7 +78,7 @@ function sbrp_max_complete(app::Dict{String, Any}, data::SBRPData, data′::SBRP
   B = get_blocks(data, y) # get serviced blocks
   #  [println(block) for block in B]
   tour′ = gettour(data′, x, B); check_sbrp_sol(data′, tour′, B) # get tour and check feasibility
-  info = merge(info, get_info(model, data′, tour′, B), Dict{String, String}("model" => "SBRPMaxComplete", "instance" => app["instance_name"], "|V|" => string(length(Set{Int64}(vcat([i for (i, j) in data′.D.A], [j for (i, j) in data′.D.A])))), "|A|" => string(length(data′.D.A)), "|B|" => string(data.B), "T" => string(data.T))) # update info
+  info = merge(info, get_info(model, data′, tour′, B), Dict{String, String}("model" => "SBRPMaxComplete", "instance" => app["instance_name"], "|V|" => string(length(Set{Int64}(vcat([i for (i, j) in data′.D.A], [j for (i, j) in data′.D.A])))), "|A|" => string(length(data′.D.A)), "|B|" => string(length(data.B)), "T" => string(data.T))) # update info
   tour = Array{Int64, 1}(); [(push!(tour, tour′[i - 1]); !in((tour′[i - 1], tour′[i]), data.D.A) && push!(tour, paths[(tour′[i - 1], tour′[i])]...)) for i in 2:length(tour′)]; push!(tour, tour′[end]) # replace compact paths
   check_sbrp_sol(data, tour, B) # check feasibility
   log(info) # log

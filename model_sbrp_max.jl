@@ -29,7 +29,7 @@ function build_model_sbrp_max(data::SBRPData, app::Dict{String,Any})
   # frac model - get max-flow/min-cut cuts
   model, x, y = create_model(true)
   info["maxFlowCutsTime"] = @elapsed sets = get_max_flow_min_cut_cuts(data, model, x, y, info)
-  info["maxFlowCuts"], info["rootLP"] = length(sets), objective_value(model)
+  info["maxFlowCuts"], info["maxFlowLP"] = length(sets), objective_value(model)
   # integer model
   model, x, y = create_model()
   MOI.set(model, MOI.NumberOfThreads(), 1)

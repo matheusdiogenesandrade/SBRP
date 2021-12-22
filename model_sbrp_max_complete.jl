@@ -26,15 +26,19 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
     @constraint(model, block1[block in B], sum(x[a] for a in δ⁺(A, block)) >= y[block])
     @constraint(model, sum(Data.SBRP.time(data, a) * x[a] for a in A) <= T - sum(y[block] * time_block(data, block) for block in B))
     # improvements
-    @constraint(model, block2[block in B], sum(x[a] for a in δ⁺(A, block)) <= 1)
-    @constraint(model, block3[(i, block, a) in [(i, first(blocks), a) for (i, blocks) in nodes_blocks for a in vcat(δ⁺(A, i), δ⁻(A, i)) if length(blocks) == 1]], y[block] - x[a] >= 0)
+#    @constraint(model, block2[block in B], sum(x[a] for a in δ⁺(A, block)) <= 1)
+@constraint(model, block3[(i, block) in [(i, first(blocks)) for (i, blocks) in nodes_blocks if length(blocks) == 1]], y[block] - ∑(x[a] in vcat(δ⁺(A, i), δ⁻(A, i))) >= 0)
     @constraint(model, block4[block in [block for blocks in B if all([length(nodes_blocks[i]) == 1 for i in blocks])]], sum(x[(i, j)] for (i, j) in A if i in block && j in block) == 0)
     return model, x, y
   end
   # frac model - get max-flow/min-cut cuts and CC cuts
   model, x, y = create_model(true)
+  # get initial LP
+  optimize!(model); info["initialLP"] = objective_value(model)
+  # add cuts
   info["maxFlowCutsTime"] = @elapsed sets_max_flow = get_max_flow_min_cut_cuts(data, model, x, y, info)
   #info["CCcutsTime"] = @elapsed sets_cc = get_cc_cuts(data, model, x, y, info)
+  info["intersectionCutsTime"] = @elapsed info["intersectionCuts"] = add_intersection_cuts(data, model, x, y)
   # integer model
   model, x, y = create_model()
   MOI.set(model, MOI.NumberOfThreads(), 1)
