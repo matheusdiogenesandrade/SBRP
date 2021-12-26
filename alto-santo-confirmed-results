@@ -1,0 +1,26 @@
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :intersectionCuts & :intersectionCutsTime & :initialLP & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & alto-santo-1000-2016 & 327 & 106602 & 65 & 120.0 & SBRPMaxComplete & 264 & 38.343185969 & 256.0 & 256.0 & 71 & 18.926461035 & 404 & 256.0 & 25.122228860855103 & 0.0 & 11 & 41702.0 & 78.77550000000001 & 3605.0
+--
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :intersectionCuts & :intersectionCutsTime & :initialLP & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & alto-santo-1000-2017 & 327 & 106602 & 65 & 120.0 & SBRPMaxComplete & 264 & 37.005682927 & 1428.0 & 1428.0 & 264 & 35.643617445 & 114 & 1428.0 & 10.329605102539062 & 0.0 & 0 & 47107.0 & 114.88650000000001 & 9828.0
+--
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :intersectionCuts & :intersectionCutsTime & :initialLP & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & alto-santo-1000-2020 & 327 & 106602 & 65 & 120.0 & SBRPMaxComplete & 264 & 36.903369436 & 1452.0 & 1452.0 & 97 & 13.723255854 & 358 & 1452.0 & 12.159067869186401 & 0.0 & 0 & 39481.0 & 103.4475 & 9828.0
+--
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :intersectionCuts & :intersectionCutsTime & :initialLP & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & alto-santo-1000-2021 & 327 & 106602 & 65 & 120.0 & SBRPMaxComplete & 264 & 36.439004657 & 1475.0 & 1475.0 & 103 & 8.294070291 & 248 & 1475.0 & 20.234199047088623 & 0.0 & 14 & 48637.0 & 117.1815 & 9828.0
+--
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :intersectionCuts & :intersectionCutsTime & :initialLP & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & alto-santo-2000-2016 & 632 & 398792 & 83 & 120.0 & SBRPMaxComplete & 310 & 66.200419998 & 244.0 & 244.0 & 0 & 1.720252637 & 49 & 244.0 & 29.133605003356934 & 0.0 & 6 & 41594.0 & 78.825 & 3652.0
+--
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :intersectionCuts & :intersectionCutsTime & :initialLP & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & alto-santo-2000-2019 & 632 & 398792 & 83 & 120.0 & SBRPMaxComplete & 310 & 66.643888857 & 1496.0 & 1496.0 & 411 & 198.649597688 & 52 & 1496.0 & 99.2379240989685 & 0.0 & 0 & 37552.0 & 119.0535 & 13939.0
+--
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :intersectionCuts & :intersectionCutsTime & :initialLP & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & alto-santo-2000-2020 & 632 & 398792 & 83 & 120.0 & SBRPMaxComplete & 310 & 65.334689687 & 1516.0 & 1516.0 & 2647 & 3829.001314553 & 216 & 1516.0 & 298.7374699115753 & 0.0 & 39 & 36368.0 & 117.2775 & 13939.0
+--
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :intersectionCuts & :intersectionCutsTime & :initialLP & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & alto-santo-2000-2021 & 632 & 398792 & 83 & 120.0 & SBRPMaxComplete & 310 & 65.350896288 & 1708.0 & 1708.0 & 2139 & 2346.683727134 & 17 & 1708.0 & 64.87144207954407 & 0.0 & 0 & 37746.0 & 119.34450000000001 & 13939.0
+--
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :intersectionCuts & :intersectionCutsTime & :initialLP & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & alto-santo-3000-2016 & 1458 & 2124306 & 111 & 120.0 & SBRPMaxComplete & 342 & 169.761506317 & 289.0 & 289.0 & 75 & 766.107889382 & 12 & 289.0 & 518.1438279151917 & 0.0 & 10 & 67103.0 & 116.355 & 3489.0
