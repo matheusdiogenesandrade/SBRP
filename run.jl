@@ -42,7 +42,7 @@ end
 
 # log function 
 function log(info)
-  logColumns = ["instance", "|V|", "|A|", "|B|", "T", "model", "intersectionCuts", "intersectionCutsTime", "initialLP", "maxFlowLP", "maxFlowCuts", "maxFlowCutsTime", "lazyCuts", "cost", "solverTime", "relativeGAP", "nodeCount", "meters", "tourMinutes", "blocksMeters"]
+  logColumns = ["instance", "|V|", "|A|", "|B|", "T", "model", "initialLP", "yLP", "yLPTime", "intersectionCuts", "intersectionCutsTime", "maxFlowLP", "maxFlowCuts", "maxFlowCutsTime", "lazyCuts", "cost", "solverTime", "relativeGAP", "nodeCount", "meters", "tourMinutes", "blocksMeters"]
   println([" & :" * column for column in logColumns]...)
   println([" & " * (column in keys(info) ? string(info[column]) : "-") for column in logColumns]...)
 end

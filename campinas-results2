@@ -1,0 +1,121 @@
+WARNING: replacing module Main.
+WARNING: using JuMP.Model in module Main conflicts with an existing identifier.
+Application parameters:
+  batch  =>  nothing
+  instance  =>  "data/campinas/21.sbrp"
+  nosolve  =>  false
+  out  =>  "solutions/campinas21"
+  instance-type  =>  "matheus"
+  vehicle-time-limit  =>  "120"
+|V| = 724
+|A| = 2044
+|B| = 25
+|V′| = 155
+|A′| = 23870
+###################SBRP MAX Complete####################
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 21 & 155 & 23870 & 25 & 120.0 & SBRPMaxComplete & 25.0 & 25.0 & 1.4036e-5 & 3 & 0.01003066 & 25.0 & 257 & 10.788123862 & 24 & 25.0 & 6.511836051940918 & 0.0 & 0 & 47238.0 & 118.73700000000002 & 10640.0
+########################################################
+Application parameters:
+  batch  =>  nothing
+  instance  =>  "data/campinas/22.sbrp"
+  nosolve  =>  false
+  out  =>  "solutions/campinas22"
+  instance-type  =>  "matheus"
+  vehicle-time-limit  =>  "120"
+|V| = 665
+|A| = 1994
+|B| = 25
+|V′| = 208
+|A′| = 43056
+###################SBRP MAX Complete####################
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 22 & 208 & 43056 & 25 & 120.0 & SBRPMaxComplete & 25.0 & 25.0 & 1.1048e-5 & 2 & 0.010507583 & 25.0 & 116 & 4.73256322 & 41 & 25.0 & 2.208287000656128 & 0.0 & 0 & 47487.0 & 116.6175 & 10086.0
+########################################################
+Application parameters:
+  batch  =>  nothing
+  instance  =>  "data/campinas/23.sbrp"
+  nosolve  =>  false
+  out  =>  "solutions/campinas23"
+  instance-type  =>  "matheus"
+  vehicle-time-limit  =>  "120"
+|V| = 618
+|A| = 1962
+|B| = 25
+|V′| = 248
+|A′| = 61256
+###################SBRP MAX Complete####################
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 23 & 248 & 61256 & 25 & 120.0 & SBRPMaxComplete & 25.0 & 25.0 & 1.1115e-5 & 4 & 0.0260514 & 25.0 & 242 & 15.012958508 & 174 & 25.0 & 6.993962049484253 & 0.0 & 0 & 42842.0 & 117.69150000000002 & 11873.0
+########################################################
+Application parameters:
+  batch  =>  nothing
+  instance  =>  "data/campinas/24.sbrp"
+  nosolve  =>  false
+  out  =>  "solutions/campinas24"
+  instance-type  =>  "matheus"
+  vehicle-time-limit  =>  "120"
+|V| = 684
+|A| = 2002
+|B| = 25
+|V′| = 187
+|A′| = 34782
+###################SBRP MAX Complete####################
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 24 & 187 & 34782 & 25 & 120.0 & SBRPMaxComplete & 25.0 & 25.0 & 1.0933e-5 & 8 & 0.033415091 & 25.0 & 13 & 0.423484852 & 141 & 25.0 & 2.510551929473877 & 0.0 & 0 & 44504.0 & 115.50900000000001 & 10834.0
+########################################################
+Application parameters:
+  batch  =>  nothing
+  instance  =>  "data/campinas/25.sbrp"
+  nosolve  =>  false
+  out  =>  "solutions/campinas25"
+  instance-type  =>  "matheus"
+  vehicle-time-limit  =>  "120"
+|V| = 702
+|A| = 2106
+|B| = 25
+|V′| = 223
+|A′| = 49506
+###################SBRP MAX Complete####################
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 25 & 223 & 49506 & 25 & 120.0 & SBRPMaxComplete & 25.0 & 25.0 & 1.1645e-5 & 9 & 0.072544326 & 25.0 & 122 & 8.676037055 & 359 & 25.0 & 7.962663888931274 & 0.0 & 32 & 44273.0 & 119.05950000000001 & 11700.0
+########################################################
+Application parameters:
+  batch  =>  nothing
+  instance  =>  "data/campinas/26.sbrp"
+  nosolve  =>  false
+  out  =>  "solutions/campinas26"
+  instance-type  =>  "matheus"
+  vehicle-time-limit  =>  "120"
+|V| = 806
+|A| = 2492
+|B| = 30
+|V′| = 284
+|A′| = 80372
+###################SBRP MAX Complete####################
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 26 & 284 & 80372 & 30 & 120.0 & SBRPMaxComplete & 30.0 & 30.0 & 1.2178e-5 & 15 & 13.646070763 & 30.0 & 1285 & 1190.615550314 & 51 & 30.0 & 72.34164500236511 & 0.0 & 6 & 36614.0 & 118.60499999999999 & 14152.0
+########################################################
+Application parameters:
+  batch  =>  nothing
+  instance  =>  "data/campinas/27.sbrp"
+  nosolve  =>  false
+  out  =>  "solutions/campinas27"
+  instance-type  =>  "matheus"
+  vehicle-time-limit  =>  "120"
+|V| = 562
+|A| = 1818
+|B| = 30
+|V′| = 228
+|A′| = 51756
+###################SBRP MAX Complete####################
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 27 & 228 & 51756 & 30 & 120.0 & SBRPMaxComplete & 30.0 & 30.0 & 1.5362e-5 & 15 & 56.257247765 & 30.0 & 1701 & 6876.713043528 & 264 & 30.0 & 162.08832001686096 & 0.0 & 25 & 39106.0 & 117.61349999999999 & 13101.0
+########################################################
+Application parameters:
+  batch  =>  nothing
+  instance  =>  "data/campinas/28.sbrp"
+  nosolve  =>  false
+  out  =>  "solutions/campinas28"
+  instance-type  =>  "matheus"
+  vehicle-time-limit  =>  "120"

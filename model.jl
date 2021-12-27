@@ -169,7 +169,7 @@ function add_intersection_cuts(data::SBRPData, model, x, y)
     all([!isempty(∩(block, block′)) for block′ ∈ B for block ∈ B′ if block′ ≠ block]) && error("It is not a clique")
     # add inquelity in the SBRP model
     @constraint(model, [block in B′], 1 - ∑(x[a] for a ∈ δ⁺(A, intersection)) >= ∑(∑(x[a] for a ∈ δ⁺(A, i)) for i ∈ setdiff(block, intersection, ∪(i for block′ ∈ B′ for i in ∩(block′, block) if block′ ∉ B′))))
-    @constraint(model, [block in B′], ∑(∑(x[a] for a ∈ δ⁺(A, i) if a[2] ∈ intersection) for i ∈ intersection) == 0)
+    @constraint(model, [block in B′], ∑(∑(x[a] for a ∈ δ⁺(A, i) if a[2] ∈ intersection) for i ∈ setdiff(intersection, ∪(i for block′ ∈ B′ for i in ∩(block′, block) if block′ ∉ B′))) == 0)
     # update clique model
     @constraint(max_clique, ∑(z[block] for block ∈ B′) ≤ length(B′) - 1)
     # increase cuts number
