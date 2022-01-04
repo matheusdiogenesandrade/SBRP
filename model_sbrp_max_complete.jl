@@ -36,10 +36,17 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
     return model, x, y
   end
   # get init relaxation
+  println("Getting initial relaxation")
+  flush(stdout)
   model, x, y = create_model(true, true); optimize!(model); info["initialLP"] = objective_value(model)
+  println("Getting initial relaxation with y as integer")
+  flush(stdout)
   # get init relaxation with y integer
   model, x, y = create_model(true); optimize!(model); info["yLPTime"] = @elapsed info["yLP"] = objective_value(model)
+  println("Getting max-flow relaxation with y as integer")
+  flush(stdout)
   # get max-flow cuts 
+  model, x, y = create_model(true, true); optimize!(model)
   info["maxFlowCutsTime"] = @elapsed sets_max_flow = get_max_flow_min_cut_cuts(data, model, x, y, info)
   # get CC cuts
   #info["CCcutsTime"] = @elapsed sets_cc = get_cc_cuts(data, model, x, y, info)

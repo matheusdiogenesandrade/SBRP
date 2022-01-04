@@ -74,6 +74,7 @@ end
  
 function sbrp_max_complete(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, ids::Dict{Int64, Int64}, paths::Dict{Tuple{Int64, Int64}, Array{Int64}})
   println("###################SBRP MAX Complete####################")
+  flush(stdout)
   (model, x, y, info) = build_model_sbrp_max_complete(data′, app); optimize!(model) # solve model
   B = get_blocks(data, y) # get serviced blocks
   #  [println(block) for block in B]
@@ -84,6 +85,7 @@ function sbrp_max_complete(app::Dict{String, Any}, data::SBRPData, data′::SBRP
   log(info) # log
   write_sol(app, tour, ids, data)
   println("########################################################")
+  flush(stdout)
   #=
   i = 1
   while "iteration_" * string(i) * "_time" in keys(info)
@@ -106,6 +108,7 @@ function run(app::Dict{String,Any})
   println("|B| = $(length(data.B))")
   println("|V′| = $(length(Set{Int64}(vcat([i for (i, j) in data′.D.A], [j for (i, j) in data′.D.A]))))")
   println("|A′| = $(length(data′.D.A))")
+  flush(stdout)
   # set vehicle time limit
   data′.T = data.T = parse(Int64, app["vehicle-time-limit"])
   # not solve
@@ -113,6 +116,7 @@ function run(app::Dict{String,Any})
   # solve models
 #  sbrp_max(app, data, ids)
   sbrp_max_complete(app, data, data′, ids, paths)
+  flush(stdout)
 end
 
 end

@@ -57,7 +57,8 @@ function lazy_separation(data::SBRPData, Vb, info, model, x, y, cb_data::CPLEX.C
   # update info
   info["lazyCuts"] = info["lazyCuts"] + length(sets′)
   #
-#  [println(collect(S), i, block) for (S, i, block) in sets′]
+  [println(collect(S), i, block) for (S, i, block) in sets′]
+  flush(stdout)
 end
 
 function get_max_flow_min_cut_cuts(data::SBRPData, model, x, y, info::Dict{String, Any})
@@ -88,7 +89,8 @@ function get_max_flow_min_cut_cuts(data::SBRPData, model, x, y, info::Dict{Strin
     end
     # base case
     isempty(sets′) && break
-#    println(length(sets′))
+    println(length(sets′))
+    flush(stdout)
 #    [println(S, i, block) for (S, i, block) in sets′]
     # update infos
     info["iteration_" * string(iteration) * "_time"], info["iteration_" * string(iteration) * "_cuts"], iteration = time, length(sets′), iteration + 1
@@ -139,6 +141,7 @@ function get_cc_cuts(data::SBRPData, model, x, y, info::Dict{String, Any})
     add_cc_ineqs(model, x, A, [S]...)
 
     println(objective_value(model_slave), ": ", collect(S), ", ", length(S), ", ", δ⁺(A, S))
+    flush(stdout)
   end
   info["cc_cuts"] = length(sets)
   return sets
@@ -163,9 +166,9 @@ function add_intersection_cuts(data::SBRPData, model, x, y)
     B′ = filter(block -> value(z[block]) > 0.5, B)
     intersection = ∩(B′...)
     # check if it is a clique 
-#    println("Maximal clique: ", length(B′))
-#    println(∩(B′...))
-#    println(B′)
+    println("Maximal clique: ", length(B′))
+    println(B′)
+    flush(stdout)
     all([!isempty(∩(block, block′)) for block′ ∈ B for block ∈ B′ if block′ ≠ block]) && error("It is not a clique")
     # add inquelity in the SBRP model
     @constraint(model, [block in B′], 1 - ∑(x[a] for a ∈ δ⁺(A, intersection)) >= ∑(∑(x[a] for a ∈ δ⁺(A, i)) for i ∈ setdiff(block, intersection, ∪(i for block′ ∈ B′ for i in ∩(block′, block) if block′ ∉ B′))))
