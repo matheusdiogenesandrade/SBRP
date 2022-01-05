@@ -182,12 +182,12 @@ function readSBRPDataMatheus(app::Dict{String,Any})
     end
     # get blocks
     readline(f)
-    n_blocks, k = 2, 1
     for i in 1:nBlocks
       parts = split(readline(f), [',', ' ']; limit=0, keepempty=false)
-      push!(data.B, Array{Int64, 1}([ids[parse(Int64, part)] for part in parts]))
-#      k >= n_blocks && break
-      k = k + 1
+      block = Array{Int64, 1}([ids[parse(Int64, part)] for part in parts[1:length(parts) - 1]])
+      push!(data.B, block)
+      # define profit
+      data.profits[block] = parse(Float64, parts[end])
     end
   end
   # update arcs ids
@@ -211,8 +211,6 @@ function readSBRPDataMatheus(app::Dict{String,Any})
   [data.D.distance[(depot, i)] = data.D.distance[(i, depot)] = 0.0 for i in Vb]
   # check feasibility
   !check_sbrp_complete_feasibility(data′, Vb) && error("The Complete SBRP instance is not feasible")
-  # define profits
-  [data.profits[b] = 1.0 for b in data.B]
   # return
   return data, Dict{Int64, Int64}(v => k for (k, v) in ids), data′, paths
 end
