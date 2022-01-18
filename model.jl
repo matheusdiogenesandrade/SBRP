@@ -66,7 +66,7 @@ function get_max_flow_min_cut_cuts(data::SBRPData, model, x, y, info::Dict{Strin
   n, iteration = max(Set{Int64}(vcat([i for (i, j) in A], [j for (i, j) in A]))...), 1
   while true
     time = @elapsed optimize!(model)
-    !in(termination_status(model), [MOI.OPTIMAL, MOI.TIME_LIMIT]) && error("The model could not be solved")
+    !in(termination_status(model), [MOI.OPTIMAL, MOI.TIME_LIMIT, MOI.ALMOST_INFEASIBLE]) && error("The model could not be solved")
     # get values
     y_val = Dict{Array{Int64, 1}, Float64}(block => value(y[block]) for block in B)
     x_val = Dict{Tuple{Int64, Int64}, Float64}(a => value(x[a]) for a in A)
