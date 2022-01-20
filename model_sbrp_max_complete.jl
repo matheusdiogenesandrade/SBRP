@@ -32,7 +32,7 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
     # improvements
     @constraint(model, block3[block in B], y[block] - ∑(x[a] in δ⁺(A, i) for i in block if length(nodes_blocks) == 1) >= 0)
     @constraint(model, block4[block in B], sum(x[(i, j)] for (i, j) in A if i in block && j in block && nodes_blocks[i] == nodes_blocks[j] && length(nodes_blocks[j]) == 1) == 0)
-    info["intersectionCutsTime"] = @elapsed info["intersectionCuts"] = add_intersection_cuts(data, model, x, y) # get intersection cuts
+#    info["intersectionCutsTime"] = @elapsed info["intersectionCuts"] = add_intersection_cuts(data, model, x, y) # get intersection cuts
     return model, x, y
   end
   # get init relaxation
@@ -40,6 +40,7 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
   flush(stdout)
   model, x, y = create_model(true, true); optimize!(model); info["initialLP"] = objective_value(model)
   println("Getting initial relaxation with y as integer")
+  model, x, y = create_model(true); info["yLPTime"] = @elapsed optimize!(model); info["yLP"] = objective_value(model)
   flush(stdout)
   # get max-flow cuts 
   model, x, y = create_model(true, true); optimize!(model)
