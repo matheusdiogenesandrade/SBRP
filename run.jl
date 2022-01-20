@@ -55,6 +55,7 @@ end
 function sbrp_max(app::Dict{String, Any}, data::SBRPData, ids::Dict{Int64, Int64})
   println("###################SBRP MAX#############################")
   (model, x, y, info) = build_model_sbrp_max(data, app); optimize!(model) # solve model
+  println(objective_value(model))
   B = get_blocks(data, y) # get serviced blocks
 #  [println(block) for block in B]
   tour = gettour(data, x, B); check_sbrp_sol(data, tour, B) # get tour and check feasibility

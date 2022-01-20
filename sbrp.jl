@@ -184,7 +184,7 @@ function readSBRPDataMatheus(app::Dict{String,Any})
     readline(f)
     for i in 1:nBlocks
       parts = split(readline(f), [',', ' ']; limit=0, keepempty=false)
-      block = Array{Int64, 1}([ids[parse(Int64, part)] for part in parts])
+      block = Array{Int64, 1}([ids[parse(Int64, part)] for part in parts[begin:end - 1]])
       push!(data.B, block)
       # define profit
       data.profits[block] = parse(Float64, parts[end])
