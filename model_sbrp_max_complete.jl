@@ -43,7 +43,8 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
   model, x, y = create_model(true); info["yLPTime"] = @elapsed optimize!(model); info["yLP"] = objective_value(model)
   flush(stdout)
   # get max-flow cuts 
-  model, x, y = create_model(true, true); optimize!(model)
+  model, x, y = create_model(true); optimize!(model)
+#  model, x, y = create_model(true, true); optimize!(model)
   info["maxFlowCutsTime"] = @elapsed sets_max_flow = get_max_flow_min_cut_cuts(data, model, x, y, info)
   # integer model
   model, x, y = create_model(); MOI.set(model, MOI.NumberOfThreads(), 1); add_subtour_ineqs(model, x, y, sets_max_flow, A)
