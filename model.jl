@@ -108,7 +108,7 @@ function get_subtour_cuts(data::SBRPData, model, x, y, info::Dict{String, Any})
     # base case
     isempty(sets′) && break
 #    flush_println(length(sets′))
-#    [println(S, i, block) for (S, i, block) in sets′]
+#    [flush_println(S, i, block) for (S, i, block) in sets′]
     # update infos
     info["iteration_" * string(iteration) * "_time"], info["iteration_" * string(iteration) * "_cuts"], iteration = time, length(sets′), iteration + 1
     # store sets″

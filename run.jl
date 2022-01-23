@@ -35,6 +35,12 @@ function parse_commandline(args_array::Array{String,1}, appfolder::String)
     help = "Path to write the solution found"
     "--batch"
     help = "Batch file path"
+    "--intersection-cuts"
+    help = "Intersection model for the complete model"
+    action = :store_true
+    "--y-integer"
+    help = "Fix the variable y, for the complete model, when running the separation algorithm"
+    action = :store_true
   end
   return parse_args(args_array, s)
 end
@@ -73,19 +79,41 @@ end
 =#
  
 function sbrp_max_complete(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, ids::Dict{Int, Int}, paths::Dict{Tuple{Int, Int}, Vi})
-  println("###################SBRP MAX Complete####################")
-  flush(stdout)
-  (model, x, y, info) = build_model_sbrp_max_complete(data′, app); optimize!(model) # solve model
-  B = get_blocks(data, y) # get serviced blocks
-  #  [println(block) for block in B]
+  flush_println("###################SBRP MAX Complete####################")
+
+  # create and solve model
+  (model, x, y, info) = build_model_sbrp_max_complete(data′, app); 
+  optimize!(model) 
+
+  # get serviced blocks
+  B = get_blocks(data, y) 
+  #[flush_println(block) for block in B]
+
+  # get solution for complete model
   tour′ = gettour(data′, x, B); check_sbrp_sol(data′, tour′, B) # get tour and check feasibility
-  info = merge(info, get_info(model, data′, tour′, B), Dict{String, String}("model" => "SBRPMaxComplete", "instance" => app["instance_name"], "|V|" => string(length(Set{Int}(vcat([i for (i, j) in data′.D.A], [j for (i, j) in data′.D.A])))), "|A|" => string(length(data′.D.A)), "|B|" => string(length(data.B)), "T" => string(data.T))) # update info
-  tour = Vi(); [(push!(tour, tour′[i - 1]); !in((tour′[i - 1], tour′[i]), data.D.A) && push!(tour, paths[(tour′[i - 1], tour′[i])]...)) for i in 2:length(tour′)]; push!(tour, tour′[end]) # replace compact paths
-  check_sbrp_sol(data, tour, B) # check feasibility
-  log(info) # log
+
+  # get solution for original graph
+  tour = Vi()
+  [(push!(tour, tour′[i - 1]); !in((tour′[i - 1], tour′[i]), data.D.A) && push!(tour, paths[(tour′[i - 1], tour′[i])]...)) for i in 2:length(tour′)]
+  push!(tour, tour′[end]) 
+
+  # check feasibility
+  check_sbrp_sol(data, tour, B) 
+
+  # log
+  info = merge(info, get_info(model, data′, tour′, B), Dict{String, String}(
+               "model" => "SBRPMaxComplete", 
+               "instance" => app["instance_name"], 
+               "|V|" => string(length(Set{Int}(vcat([i for (i, j) in data′.D.A], [j for (i, j) in data′.D.A])))), 
+               "|A|" => string(length(data′.D.A)), 
+               "|B|" => string(length(data.B)), 
+               "T" => string(data.T))) 
+  log(info) 
+
+  # write solution
   write_sol(app, tour, ids, data)
-  println("########################################################")
-  flush(stdout)
+
+  flush_println("########################################################")
   #=
   i = 1
   while "iteration_" * string(i) * "_time" in keys(info)
@@ -100,7 +128,8 @@ function run(app::Dict{String,Any})
   [println("  $arg  =>  $(repr(val))") for (arg,val) in app]
   flush(stdout)
   # read instance
-  readInstanceFunction = app["instance-type"] == "carlos" ? readSBRPDataCarlos : readSBRPDataMatheus; data, ids, data′, paths = readInstanceFunction(app)
+  readInstanceFunction = app["instance-type"] == "carlos" ? readSBRPDataCarlos : readSBRPDataMatheus
+  data, ids, data′, paths = readInstanceFunction(app)
   app["instance_name"] = split(basename(app["instance"]), ".")[1]
   # instance data
   println("|V| = $(length(Set{Int}(vcat([i for (i, j) in data.D.A], [j for (i, j) in data.D.A]))))")
