@@ -6,20 +6,20 @@ const State = Dict{Any, Any}
 
 mutable struct Instance 
   empty_domain::Any
-  domain::Array{Any}
-  variables::Array{Any}
+  domain::Vector{Any}
+  variables::Vector{Any}
   initial_state::State
-  width_limit::Int64
+  width_limit::Int
   get_candidates
   get_next_state
   not_redundant_state
   compact_width 
-  states::Array{Array{State}} # idx - variable index
+  states::Vector{Vector{State}} # idx - variable index
   LOG::Bool
-  Instance(empty_domain::Any, domain::Array{Any}, variables::Array{Any}, initial_state::State, get_candidates, get_next_state, not_redundant_state) = new(empty_domain, domain, variables, initial_state, typemax(Int64), get_candidates, get_next_state, not_redundant_state, nothing, Array{Array{State}}([Array{State, 1}() for variable in variables]), false)
+  Instance(empty_domain::Any, domain::Vector{Any}, variables::Vector{Any}, initial_state::State, get_candidates, get_next_state, not_redundant_state) = new(empty_domain, domain, variables, initial_state, typemax(Int), get_candidates, get_next_state, not_redundant_state, nothing, Vector{Vector{State}}([Vector{State, 1}() for variable in variables]), false)
 end
 
-function forward(idx_variable::Int64, state::State, dd::Instance)
+function forward(idx_variable::Int, state::State, dd::Instance)
   candidates = dd.get_candidates(idx_variable, state, dd)  
   isempty(candidates) && push!(candidates, dd.empty_domain)
   dd.LOG && println("  - In $state we have the candidates $candidates")
@@ -30,12 +30,12 @@ function forward(idx_variable::Int64, state::State, dd::Instance)
   end
 end
 
-function add_state(idx_variable::Int64, state::State, dd::Instance)
+function add_state(idx_variable::Int, state::State, dd::Instance)
   states = dd.states[idx_variable]
   (!in(state, states) && dd.not_redundant_state(idx_variable, state, states)) && push!(states, state)
 end
 
-function compact_width(idx_variable::Int64, dd::Instance)
+function compact_width(idx_variable::Int, dd::Instance)
   n = length(dd.states[idx_variable])
   if n > dd.width_limit
     dd.compact_width == nothing && error("The index $idx_variable (with $n states) reached the width limit of $(dd.width_limit) and the `compact_width` function was not defined in the DecisionDiagram")

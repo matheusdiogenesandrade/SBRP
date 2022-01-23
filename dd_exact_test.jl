@@ -12,16 +12,16 @@ function knapsack_test(I, L)
   =#
   # parameters
   empty_domain = -1                            # any value is valid, since the domain 0 always will be available (check get_candidates function definition), this happens because the problem modeling guarantees this.
-  domain = Array{Any}([0, 1])                  # 0, if we do not select item, and 1 otherwise
-  variables = Array{Any}(weights)              # the items weights
+  domain = Vector{Any}([0, 1])                  # 0, if we do not select item, and 1 otherwise
+  variables = Vector{Any}(weights)              # the items weights
   initial_state = State("total_weight" => 0.0) # empty knapsack
 
   # callbacks
-  get_next_state(idx_variable::Int64, state::DecisionDiagram.State, candidate::Any, dd::DecisionDiagram.Instance) = State("total_weight" => state["total_weight"] + (candidate == 1 ? dd.variables[idx_variable] : 0.0)) 
+  get_next_state(idx_variable::Int, state::DecisionDiagram.State, candidate::Any, dd::DecisionDiagram.Instance) = State("total_weight" => state["total_weight"] + (candidate == 1 ? dd.variables[idx_variable] : 0.0)) 
 
-  get_candidates(idx_variable::Int64, state::DecisionDiagram.State, dd::DecisionDiagram.Instance) = state["total_weight"] + dd.variables[idx_variable] <= L ? [0, 1] : [0] 
+  get_candidates(idx_variable::Int, state::DecisionDiagram.State, dd::DecisionDiagram.Instance) = state["total_weight"] + dd.variables[idx_variable] <= L ? [0, 1] : [0] 
 
-  not_redundant_state(idx_variable::Int64, state::State, states::Array{State}) = true
+  not_redundant_state(idx_variable::Int, state::State, states::Vector{State}) = true
 
   dd = DecisionDiagram.Instance(empty_domain, domain, variables, initial_state, get_candidates, get_next_state, not_redundant_state)
   # dd.LOG = true
@@ -68,16 +68,16 @@ function set_covering_test(E, S)
   =#
   # parameters
   empty_domain = -1                            # any value is valid, since the domain 0 always will be available (check get_candidates function definition), this happens because the problem modeling guarantees this.
-  domain = Array{Any}([0, 1])                  # 0, if we do not select item, and 1 otherwise
-  variables = Array{Any}(E)                    # the elements
+  domain = Vector{Any}([0, 1])                  # 0, if we do not select item, and 1 otherwise
+  variables = Vector{Any}(E)                    # the elements
   initial_state = State("uncovered_sets" => S) # all sets are uncovered
 
   # callbacks
-  get_next_state(idx_variable::Int64, state::DecisionDiagram.State, candidate::Any, dd::DecisionDiagram.Instance) = candidate == 1 ? State("uncovered_sets" => [s for s in state["uncovered_sets"] if !in(dd.variables[idx_variable], s)]) : state
+  get_next_state(idx_variable::Int, state::DecisionDiagram.State, candidate::Any, dd::DecisionDiagram.Instance) = candidate == 1 ? State("uncovered_sets" => [s for s in state["uncovered_sets"] if !in(dd.variables[idx_variable], s)]) : state
 
-  get_candidates(idx_variable::Int64, state::DecisionDiagram.State, dd::DecisionDiagram.Instance) = isempty(findall(s -> last(s) == dd.variables[idx_variable], state["uncovered_sets"])) ? [0, 1] : [1] 
+  get_candidates(idx_variable::Int, state::DecisionDiagram.State, dd::DecisionDiagram.Instance) = isempty(findall(s -> last(s) == dd.variables[idx_variable], state["uncovered_sets"])) ? [0, 1] : [1] 
 
-  not_redundant_state(idx_variable::Int64, state::State, states::Array{State}) = true
+  not_redundant_state(idx_variable::Int, state::State, states::Vector{State}) = true
 
   dd = DecisionDiagram.Instance(empty_domain, domain, variables, initial_state, get_candidates, get_next_state, not_redundant_state)
   # dd.LOG = true
@@ -111,16 +111,16 @@ function packing_set_test(E, S)
   =#
   # parameters
   empty_domain = -1                            # any value is valid, since the domain 0 always will be available (check get_candidates function definition), this happens because the problem modeling guarantees this.
-  domain = Array{Any}([0, 1])                  # 0, if we do not select item, and 1 otherwise
-  variables = Array{Any}(E)                    # the elements
+  domain = Vector{Any}([0, 1])                  # 0, if we do not select item, and 1 otherwise
+  variables = Vector{Any}(E)                    # the elements
   initial_state = State("uncovered_sets" => S) # all sets are uncovered
 
   # callbacks
-  get_next_state(idx_variable::Int64, state::DecisionDiagram.State, candidate::Any, dd::DecisionDiagram.Instance) = State("uncovered_sets" => candidate == 1 ? [s for s in state["uncovered_sets"] if !in(dd.variables[idx_variable], s)] : filter(s -> last(s) != dd.variables[idx_variable], state["uncovered_sets"]))
+  get_next_state(idx_variable::Int, state::DecisionDiagram.State, candidate::Any, dd::DecisionDiagram.Instance) = State("uncovered_sets" => candidate == 1 ? [s for s in state["uncovered_sets"] if !in(dd.variables[idx_variable], s)] : filter(s -> last(s) != dd.variables[idx_variable], state["uncovered_sets"]))
 
-  get_candidates(idx_variable::Int64, state::DecisionDiagram.State, dd::DecisionDiagram.Instance) = isempty(findall(s -> !in(s, state["uncovered_sets"]) && dd.variables[idx_variable] in s, dd.initial_state["uncovered_sets"])) ? [0, 1] : [0] 
+  get_candidates(idx_variable::Int, state::DecisionDiagram.State, dd::DecisionDiagram.Instance) = isempty(findall(s -> !in(s, state["uncovered_sets"]) && dd.variables[idx_variable] in s, dd.initial_state["uncovered_sets"])) ? [0, 1] : [0] 
 
-  not_redundant_state(idx_variable::Int64, state::State, states::Array{State}) = true
+  not_redundant_state(idx_variable::Int, state::State, states::Vector{State}) = true
 
   dd = DecisionDiagram.Instance(empty_domain, domain, variables, initial_state, get_candidates, get_next_state, not_redundant_state)
   # dd.LOG = true
@@ -154,16 +154,16 @@ function indepedent_set_test(V, E)
   =#
   # parameters
   empty_domain = -1                            # any value is valid, since the domain 0 always will be available (check get_candidates function definition), this happens because the problem modeling guarantees this.
-  domain = Array{Any}([0, 1])                  # 0, if we do not select the node, and 1 otherwise
-  variables = Array{Any}(V)                    # the nodes
+  domain = Vector{Any}([0, 1])                  # 0, if we do not select the node, and 1 otherwise
+  variables = Vector{Any}(V)                    # the nodes
   initial_state = State("available_nodes" => V) # all nodes
 
   # callbacks
-  get_next_state(idx_variable::Int64, state::DecisionDiagram.State, candidate::Any, dd::DecisionDiagram.Instance) = State("available_nodes" => filter(i -> dd.variables[idx_variable] != i && (candidate == 0 || !in((dd.variables[idx_variable], i), E) && !in((i, dd.variables[idx_variable]), E)), state["available_nodes"]))
+  get_next_state(idx_variable::Int, state::DecisionDiagram.State, candidate::Any, dd::DecisionDiagram.Instance) = State("available_nodes" => filter(i -> dd.variables[idx_variable] != i && (candidate == 0 || !in((dd.variables[idx_variable], i), E) && !in((i, dd.variables[idx_variable]), E)), state["available_nodes"]))
 
-  get_candidates(idx_variable::Int64, state::DecisionDiagram.State, dd::DecisionDiagram.Instance) = dd.variables[idx_variable] in state["available_nodes"] ? [0, 1] : [0] 
+  get_candidates(idx_variable::Int, state::DecisionDiagram.State, dd::DecisionDiagram.Instance) = dd.variables[idx_variable] in state["available_nodes"] ? [0, 1] : [0] 
 
-  not_redundant_state(idx_variable::Int64, state::State, states::Array{State}) = true
+  not_redundant_state(idx_variable::Int, state::State, states::Vector{State}) = true
 
   dd = DecisionDiagram.Instance(empty_domain, domain, variables, initial_state, get_candidates, get_next_state, not_redundant_state)
   dd.LOG = true
@@ -196,16 +196,16 @@ function makespan_test(times)
   =#
   # parameters
   empty_domain = -1                             # any value is valid, since the domain 0 always will be available (check get_candidates function definition), this happens because the problem modeling guarantees this.
-  domain = Array{Any}(jobs)                     # the job to be placed in the in the i-th position, for all i in variables
-  variables = Array{Any}(positions)             # the available positions
+  domain = Vector{Any}(jobs)                     # the job to be placed in the in the i-th position, for all i in variables
+  variables = Vector{Any}(positions)             # the available positions
   initial_state = State("allocated_jobs" => []) # initially we have an 
 
   # callbacks
-  get_next_state(idx_variable::Int64, state::DecisionDiagram.State, candidate::Any, dd::DecisionDiagram.Instance) = State("allocated_jobs" => union(state["allocated_jobs"], [candidate])) 
+  get_next_state(idx_variable::Int, state::DecisionDiagram.State, candidate::Any, dd::DecisionDiagram.Instance) = State("allocated_jobs" => union(state["allocated_jobs"], [candidate])) 
 
-  get_candidates(idx_variable::Int64, state::DecisionDiagram.State, dd::DecisionDiagram.Instance) = filter(job -> !in(job, state["allocated_jobs"]), dd.domain)
+  get_candidates(idx_variable::Int, state::DecisionDiagram.State, dd::DecisionDiagram.Instance) = filter(job -> !in(job, state["allocated_jobs"]), dd.domain)
 
-  not_redundant_state(idx_variable::Int64, state::State, states::Array{State}) = all([Set{Int64}(state["allocated_jobs"]) != Set{Int64}(state′["allocated_jobs"]) for state′ in states])
+  not_redundant_state(idx_variable::Int, state::State, states::Vector{State}) = all([Set{Int}(state["allocated_jobs"]) != Set{Int}(state′["allocated_jobs"]) for state′ in states])
 
   dd = DecisionDiagram.Instance(empty_domain, domain, variables, initial_state, get_candidates, get_next_state, not_redundant_state)
   #dd.LOG = true

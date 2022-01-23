@@ -1,5 +1,7 @@
 module Solution
 
+include("symbols.jl")
+
 using ..Data
 using ..Data.SBRP
 using CPLEX
@@ -10,7 +12,7 @@ export writesol, gettour, check_sbrp_sol, check_atsp_sol, get_info, writeGPX, ge
 
 get_blocks(data::SBRPData, y) = [block for block in data.B if value(y[block]) > 0.5]
 
-get_info(model, data::SBRPData, tour::Array{Int64, 1}, B::Array{Array{Int64, 1}, 1}) = Dict{String, String}(
+get_info(model, data::SBRPData, tour::Vi, B::Vector{Vi}) = Dict{String, String}(
                                        "cost"         => string(objective_value(model)),
                                        "solverTime"   => string(solve_time(model)),
                                        "relativeGAP"  => string(relative_gap(model)),
@@ -20,7 +22,7 @@ get_info(model, data::SBRPData, tour::Array{Int64, 1}, B::Array{Array{Int64, 1},
                                        "blocksMeters" => string(sum(distance_block(data, block) for block in B))
                                       )
 
-function writeGPX(file_path::String, tour::Array{Vertex, 1})
+function writeGPX(file_path::String, tour::Vector{Vertex})
   open(file_path, "w") do f
     write(f, """<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
     <gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" creator="Oregon 400t" version="1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www.garmin.com/xmlschemas/GpxExtensionsv3.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd">
@@ -43,17 +45,17 @@ function writeGPX(file_path::String, tour::Array{Vertex, 1})
   end
 end
 
-function writesol(path::String, tour::Array{Int64, 1})
+function writesol(path::String, tour::Vi)
   open(path, "w") do file
     [write(file, "$(v), ") for v in tour]
   end
 end
 
-function gettour(data::SBRPData, x, B::Array{Array{Int64, 1}, 1})
+function gettour(data::SBRPData, x, B::Vector{Vi})
   A, depot, tour = [a for a in data.D.A if value(x[a]) > 0.5], data.depot, []
-  V = Set{Int64}(vcat([i for (i, j) in A], [j for (i, j) in A]))
+  V = Set{Int}(vcat([i for (i, j) in A], [j for (i, j) in A]))
   #hierholzer's
-  adjList, curr_path = Dict{Int64, Vector{Int64}}(i => [j for (i, j) in δ⁺(A, i) for i in 1:Int(floor(value(x[(i, j)]) + 0.5))] for i in V), Stack{Int}()
+  adjList, curr_path = Dict{Int, Vi}(i => [j for (i, j) in δ⁺(A, i) for i in 1:Int(floor(value(x[(i, j)]) + 0.5))] for i in V), Stack{Int}()
   curr_path = Stack{Int}()
   push!(curr_path, depot)
   curr_v = first(curr_path)
@@ -66,13 +68,13 @@ function gettour(data::SBRPData, x, B::Array{Array{Int64, 1}, 1})
       curr_v = pop!(curr_path)
     end
   end
-  return add_blocks(Array{Int64}(reverse(tour)), B)
-#  return Array{Int64}(reverse(tour))
+  return add_blocks(Vi(reverse(tour)), B)
+#  return Vi(reverse(tour))
 end
 
-function add_blocks(tour::Array{Int64}, B::Array{Array{Int64, 1}, 1})
+function add_blocks(tour::Vi, B::Vector{Vi})
   # add blocks
-  tour′, node_blocks = Array{Int64, 1}(), Dict{Int64, Set{Array{Int64}}}(i => Set{Array{Int64}}() for b in B for i in b)
+  tour′, node_blocks = Vi(), Dict{Int, Set{Vi}}(i => Set{Vi}() for b in B for i in b)
   [push!(node_blocks[j], b) for b in B for j in b] # populate dict
   for i in tour
     push!(tour′, i)
@@ -87,11 +89,11 @@ function add_blocks(tour::Array{Int64}, B::Array{Array{Int64, 1}, 1})
   return tour′
 end
 #=
-function gettour(V::Array{Int64}, A::Array{Tuple{Int64, Int64}}, depot::Int64, x)
+function gettour(V::Vi, A::Vector{Tuple{Int, Int}}, depot::Int, x)
 #  V, A, depot, tour = V, [a for a in data.D.A if value(x[a]) > 0.5], data.depot, []
-  A′, tour = [a for a in A if value(x[a]) > 0.5], Array{Int64, 1}()
+  A′, tour = [a for a in A if value(x[a]) > 0.5], Vi()
   #hierholzer's
-  adjList, curr_path = Dict{Int64, Vector{Int64}}(i => [j for (i, j) in δ⁺(A′, i) for i in 1:Int(floor(value(x[(i, j)]) + 0.5))] for i in V), Stack{Int}()
+  adjList, curr_path = Dict{Int, Vi}(i => [j for (i, j) in δ⁺(A′, i) for i in 1:Int(floor(value(x[(i, j)]) + 0.5))] for i in V), Stack{Int}()
   push!(curr_path, depot)
   curr_v = first(curr_path)
   while !isempty(curr_path)
@@ -103,11 +105,11 @@ function gettour(V::Array{Int64}, A::Array{Tuple{Int64, Int64}}, depot::Int64, x
       curr_v = pop!(curr_path)
     end
   end
-  return Array{Int64}(reverse(tour))
+  return Vi(reverse(tour))
 end
 =#
-function check_sbrp_sol(data::SBRPData, tour::Array{Int64, 1}, B::Array{Array{Int64, 1}, 1})
-  V, A = Set{Int64}(), Set{Tuple{Int64, Int64}}(data.D.A)
+function check_sbrp_sol(data::SBRPData, tour::Vi, B::Vector{Vi})
+  V, A = Set{Int}(), Set{Tuple{Int, Int}}(data.D.A)
   # check arcs
   for i in 1:(length(tour) - 1)
     a = (tour[i], tour[i + 1])
@@ -121,10 +123,10 @@ function check_sbrp_sol(data::SBRPData, tour::Array{Int64, 1}, B::Array{Array{In
   end
 end
 #=
-function check_atsp_sol(tour::Array{Int64, 1}, Vb::Dict{Tuple{Int64, Array{Int64, 1}}, Int64}, Vb′::Dict{Tuple{Int64, Array{Int64, 1}}, Int64})
+function check_atsp_sol(tour::Vi, Vb::Dict{Tuple{Int, Vi}, Int}, Vb′::Dict{Tuple{Int, Vi}, Int})
   Vₘ = merge(
-    Dict{Int64, Array{Int64, 1}}(Vb[(i, b)] => b for (i, b) in keys(Vb)),
-    Dict{Int64, Array{Int64, 1}}(Vb′[(i, b)] => b for (i, b) in keys(Vb′))
+    Dict{Int, Vi}(Vb[(i, b)] => b for (i, b) in keys(Vb)),
+    Dict{Int, Vi}(Vb′[(i, b)] => b for (i, b) in keys(Vb′))
   )
   i, n = 1, length(tour)
   while i <= n

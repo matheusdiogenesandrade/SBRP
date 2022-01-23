@@ -9,7 +9,7 @@ using JuMP
 export build_model_sbrp_max
 
 function build_model_sbrp_max(data::SBRPData, app::Dict{String,Any})
-  B, A, T, V, profits, Vb, info = data.B, data.D.A, data.T, Set{Int64}(vcat([i for (i, j) in data.D.A], [j for (i, j) in data.D.A])), data.profits, Set{Int64}([i for b in data.B for i in b]), Dict{String, Any}("lazyCuts" => 0)
+  B, A, T, V, profits, Vb, info = data.B, data.D.A, data.T, Set{Int}(vcat([i for (i, j) in data.D.A], [j for (i, j) in data.D.A])), data.profits, Set{Int}([i for b in data.B for i in b]), Dict{String, Any}("lazyCuts" => 0)
   function create_model(relax_x::Bool = false)
     model = direct_model(CPLEX.Optimizer())
     set_silent(model)

@@ -8,7 +8,6 @@ include("model.jl")
 include("solve.jl")
 include("sol.jl")
 
-using .Symbols
 using .Data
 using .Data.SBRP
 using .Model
@@ -52,14 +51,14 @@ function write_sol(app, tour, ids, data)
 end
 
 #=
-function sbrp_max(app::Dict{String, Any}, data::SBRPData, ids::Dict{Int64, Int64})
+function sbrp_max(app::Dict{String, Any}, data::SBRPData, ids::Dict{Int, Int})
   println("###################SBRP MAX#############################")
   (model, x, y, info) = build_model_sbrp_max(data, app); optimize!(model) # solve model
   println(objective_value(model))
   B = get_blocks(data, y) # get serviced blocks
 #  [println(block) for block in B]
   tour = gettour(data, x, B); check_sbrp_sol(data, tour, B) # get tour and check feasibility
-  info = merge(info, get_info(model, data, tour, B), Dict{String, String}("model" => "SBRPMax", "instance" => app["instance_name"], "|V|" => string(length(Set{Int64}(vcat([i for (i, j) in data.D.A], [j for (i, j) in data.D.A])))), "|A|" => string(length(data.D.A)), "|B|" => string(length(data.B)), "T" => string(data.T))) # update info
+  info = merge(info, get_info(model, data, tour, B), Dict{String, String}("model" => "SBRPMax", "instance" => app["instance_name"], "|V|" => string(length(Set{Int}(vcat([i for (i, j) in data.D.A], [j for (i, j) in data.D.A])))), "|A|" => string(length(data.D.A)), "|B|" => string(length(data.B)), "T" => string(data.T))) # update info
   log(info) # log
   write_sol(app, tour, ids, data)
   println("########################################################")
@@ -73,15 +72,15 @@ function sbrp_max(app::Dict{String, Any}, data::SBRPData, ids::Dict{Int64, Int64
 end
 =#
  
-function sbrp_max_complete(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, ids::Dict{Int64, Int64}, paths::Dict{Tuple{Int64, Int64}, Array{Int64}})
+function sbrp_max_complete(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, ids::Dict{Int, Int}, paths::Dict{Tuple{Int, Int}, Vi})
   println("###################SBRP MAX Complete####################")
   flush(stdout)
   (model, x, y, info) = build_model_sbrp_max_complete(data′, app); optimize!(model) # solve model
   B = get_blocks(data, y) # get serviced blocks
   #  [println(block) for block in B]
   tour′ = gettour(data′, x, B); check_sbrp_sol(data′, tour′, B) # get tour and check feasibility
-  info = merge(info, get_info(model, data′, tour′, B), Dict{String, String}("model" => "SBRPMaxComplete", "instance" => app["instance_name"], "|V|" => string(length(Set{Int64}(vcat([i for (i, j) in data′.D.A], [j for (i, j) in data′.D.A])))), "|A|" => string(length(data′.D.A)), "|B|" => string(length(data.B)), "T" => string(data.T))) # update info
-  tour = Array{Int64, 1}(); [(push!(tour, tour′[i - 1]); !in((tour′[i - 1], tour′[i]), data.D.A) && push!(tour, paths[(tour′[i - 1], tour′[i])]...)) for i in 2:length(tour′)]; push!(tour, tour′[end]) # replace compact paths
+  info = merge(info, get_info(model, data′, tour′, B), Dict{String, String}("model" => "SBRPMaxComplete", "instance" => app["instance_name"], "|V|" => string(length(Set{Int}(vcat([i for (i, j) in data′.D.A], [j for (i, j) in data′.D.A])))), "|A|" => string(length(data′.D.A)), "|B|" => string(length(data.B)), "T" => string(data.T))) # update info
+  tour = Vi(); [(push!(tour, tour′[i - 1]); !in((tour′[i - 1], tour′[i]), data.D.A) && push!(tour, paths[(tour′[i - 1], tour′[i])]...)) for i in 2:length(tour′)]; push!(tour, tour′[end]) # replace compact paths
   check_sbrp_sol(data, tour, B) # check feasibility
   log(info) # log
   write_sol(app, tour, ids, data)
@@ -104,14 +103,14 @@ function run(app::Dict{String,Any})
   readInstanceFunction = app["instance-type"] == "carlos" ? readSBRPDataCarlos : readSBRPDataMatheus; data, ids, data′, paths = readInstanceFunction(app)
   app["instance_name"] = split(basename(app["instance"]), ".")[1]
   # instance data
-  println("|V| = $(length(Set{Int64}(vcat([i for (i, j) in data.D.A], [j for (i, j) in data.D.A]))))")
+  println("|V| = $(length(Set{Int}(vcat([i for (i, j) in data.D.A], [j for (i, j) in data.D.A]))))")
   println("|A| = $(length(data.D.A))")
   println("|B| = $(length(data.B))")
-  println("|V′| = $(length(Set{Int64}(vcat([i for (i, j) in data′.D.A], [j for (i, j) in data′.D.A]))))")
+  println("|V′| = $(length(Set{Int}(vcat([i for (i, j) in data′.D.A], [j for (i, j) in data′.D.A]))))")
   println("|A′| = $(length(data′.D.A))")
   flush(stdout)
   # set vehicle time limit
-  data′.T = data.T = parse(Int64, app["vehicle-time-limit"])
+  data′.T = data.T = parse(Int, app["vehicle-time-limit"])
   # not solve
   app["nosolve"] && return
   # solve models

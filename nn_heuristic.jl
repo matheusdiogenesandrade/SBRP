@@ -1,14 +1,16 @@
 module NearestNeighborhoodHeuristic
 
+include("symbols.jl")
+
 using ..Data
 using ..Data.SBRP
 
-get_next_block(i::Int64, data::SBRPData, visited_blocks::Set{Array{Int64, 1}}) = min([(SBRP.time(data, (i, j)), j, block) for block in data.B for j in block if !in(block, visited_blocks)]..., (typemax(Float64), -1, []), (typemax(Float64), -1, []))[2:end]
+get_next_block(i::Int, data::SBRPData, visited_blocks::Set{Vi}) = min([(SBRP.time(data, (i, j)), j, block) for block in data.B for j in block if !in(block, visited_blocks)]..., (typemax(Float64), -1, []), (typemax(Float64), -1, []))[2:end]
 
 
 function solve(data::SBRPData)
   # setup
-  depot, visited_blocks = data.depot, Set{Array{Int64, 1}}()
+  depot, visited_blocks = data.depot, Set{Vi}()
   # greedy NN
   curr, tour, time, profit = depot, [depot], 0.0, 0.0
   while true
