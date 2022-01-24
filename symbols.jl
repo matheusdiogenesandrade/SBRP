@@ -26,7 +26,11 @@ const Vi = Vector{Int}
 end
 =#
 
-const ∑ = sum
+#const ∑ = sum
+const ∑(numbers::Vector) = isempty(numbers) ? 0.0 : sum(numbers)
+const ∑(numbers::Base.Generator) = ∑(collect(numbers))
+const ∑(numbers...) = ∑(collect(numbers))
+
 const ∧(x...) = all(x)
 const ∨(x...) = any(x)
 const →(a, b) = !a ∨ b
@@ -47,3 +51,5 @@ const flush_println(strings...) = (println(strings...); flush(stdout))
 const Arc = Tuple{Int, Int}
 const Arcs = Vector{Tuple{Int, Int}}
 const Vi = Vector{Int}
+const Si = Set{Int}
+const ArcCostMap = Dict{Arc, Real}
