@@ -5,9 +5,11 @@ include("symbols.jl")
 using ..Data
 #import ..InputDigraph
 
+using BrkgaMpIpr
+
 export time_block, SBRPData, compact, readSBRPDataCarlos, readSBRPDataMatheus, distance_block, tour_distance, tour_time
 
-mutable struct SBRPData
+mutable struct SBRPData <: AbstractInstance
   D::Data.InputDigraph
   depot::Int
   B::Vector{Vi}
@@ -18,10 +20,19 @@ end
 # 40 km / 60 min = 40 km/h
 NORMAL_SPEED = (40.0 * 1e3)/60.0
 
+# arc time in 40 km/h
 time(data, a) = a[1] == a[2] ? 0.0 : data.D.distance[a] / NORMAL_SPEED
-distance_block(data::SBRPData, block::Vi)                         = sum(data.D.distance[(block[i - 1], block[i])] for i in 2:length(block)) + data.D.distance[(block[end], block[begin])]
-time_block(data::SBRPData, block::Vi)                             = 4 * distance_block(data, block) / NORMAL_SPEED
-tour_distance(data::SBRPData, tour::Vi)                           = sum(data.D.distance[(tour[i - 1], tour[i])] for i in 2:length(tour))
+
+# block distance in meters
+distance_block(data::SBRPData, block::Vi) = sum(data.D.distance[(block[i - 1], block[i])] for i in 2:length(block)) + data.D.distance[(block[end], block[begin])]
+
+# block service time made in 10 km/h
+time_block(data::SBRPData, block::Vi) = 4 * distance_block(data, block) / NORMAL_SPEED 
+
+# distance of a tour
+tour_distance(data::SBRPData, tour::Vi) = sum(data.D.distance[(tour[i - 1], tour[i])] for i in 2:length(tour))
+
+# tour time considering the time to spraying all the blocks
 tour_time(data::SBRPData, tour::Vi, B::Vector{Vi}) = ((tour_distance(data, tour) - sum(distance_block(data, block) for block in B)) / NORMAL_SPEED) + sum(time_block(data, block) for block in B)
 
 

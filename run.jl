@@ -1,12 +1,12 @@
 module Main
 
-
 include("symbols.jl")
 include("data.jl")
 include("nn_heuristic.jl")
 include("model.jl")
 include("solve.jl")
 include("sol.jl")
+include("brkga.jl")
 
 using .Data
 using .Data.SBRP
@@ -15,6 +15,7 @@ using .Model.ModelSBRPMax
 using .Model.ModelSBRPMaxComplete
 using .Solution
 using .NearestNeighborhoodHeuristic
+using .BRKGA
 using ArgParse
 
 function parse_commandline(args_array::Array{String,1}, appfolder::String)
@@ -25,6 +26,15 @@ function parse_commandline(args_array::Array{String,1}, appfolder::String)
     "--instance-type"
     help = "Instance type (carlos, matheus)"
     default = "carlos"
+    "--complete"
+    help = "true if you want to run the model with complete digraph, and false otherwise"
+    action = :store_true
+    "--brkga"
+    help = "true if you want to run the BRKGA, and false otherwise"
+    action = :store_true
+    "--brkga-conf"
+    help = "BRKGA config file directory"
+    default = "conf/config.conf"
     "--vehicle-time-limit"
     help = "Vehicle time limit in minutes"
     default = "120"
@@ -124,19 +134,18 @@ function sbrp_max_complete(app::Dict{String, Any}, data::SBRPData, data′::SBRP
 end
 
 function run(app::Dict{String,Any})
-  println("Application parameters:")
-  [println("  $arg  =>  $(repr(val))") for (arg,val) in app]
-  flush(stdout)
+  flush_println("Application parameters:")
+  [flush_println("  $arg  =>  $(repr(val))") for (arg,val) in app]
   # read instance
   readInstanceFunction = app["instance-type"] == "carlos" ? readSBRPDataCarlos : readSBRPDataMatheus
   data, ids, data′, paths = readInstanceFunction(app)
   app["instance_name"] = split(basename(app["instance"]), ".")[1]
   # instance data
-  println("|V| = $(length(Set{Int}(vcat([i for (i, j) in data.D.A], [j for (i, j) in data.D.A]))))")
-  println("|A| = $(length(data.D.A))")
-  println("|B| = $(length(data.B))")
-  println("|V′| = $(length(Set{Int}(vcat([i for (i, j) in data′.D.A], [j for (i, j) in data′.D.A]))))")
-  println("|A′| = $(length(data′.D.A))")
+  flush_println("|V| = $(length(Set{Int}(vcat([i for (i, j) in data.D.A], [j for (i, j) in data.D.A]))))")
+  flush_println("|A| = $(length(data.D.A))")
+  flush_println("|B| = $(length(data.B))")
+  flush_println("|V′| = $(length(Set{Int}(vcat([i for (i, j) in data′.D.A], [j for (i, j) in data′.D.A]))))")
+  flush_println("|A′| = $(length(data′.D.A))")
   flush(stdout)
   # set vehicle time limit
   data′.T = data.T = parse(Int, app["vehicle-time-limit"])
@@ -144,8 +153,8 @@ function run(app::Dict{String,Any})
   app["nosolve"] && return
   # solve models
 #  sbrp_max(app, data, ids)
-  sbrp_max_complete(app, data, data′, ids, paths)
-  flush(stdout)
+  app["complete"] && sbrp_max_complete(app, data, data′, ids, paths)
+  app["brkga"] && run_brkga(app, data′)
 end
 
 end

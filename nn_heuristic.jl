@@ -20,7 +20,7 @@ function solve(data::SBRPData)
     push!(visited_blocks, block)                                                           # mark block as visited
     curr, time, profit = next, time + Data.SBRP.time(data, (curr, next)) + time_block(data, block), profit + data.profits[block] # update curr and time
   end
-  return profit, push!(tour, depot)
+  return profit, visited_blocks, push!(tour, depot)
 end
 
 end
