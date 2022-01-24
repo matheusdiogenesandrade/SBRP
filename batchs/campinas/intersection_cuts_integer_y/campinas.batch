@@ -1,34 +1,34 @@
-data/campinas/1.sbrp --instance-type matheus --out solutions/campinas1 --y-integer --intersection-cuts
-data/campinas/2.sbrp --instance-type matheus --out solutions/campinas2 --y-integer --intersection-cuts
-data/campinas/3.sbrp --instance-type matheus --out solutions/campinas3 --y-integer --intersection-cuts
-data/campinas/4.sbrp --instance-type matheus --out solutions/campinas4 --y-integer --intersection-cuts
-data/campinas/5.sbrp --instance-type matheus --out solutions/campinas5 --y-integer --intersection-cuts
-data/campinas/6.sbrp --instance-type matheus --out solutions/campinas6 --y-integer --intersection-cuts
-data/campinas/7.sbrp --instance-type matheus --out solutions/campinas7 --y-integer --intersection-cuts
-data/campinas/8.sbrp --instance-type matheus --out solutions/campinas8 --y-integer --intersection-cuts
-data/campinas/9.sbrp --instance-type matheus --out solutions/campinas9 --y-integer --intersection-cuts
-data/campinas/10.sbrp --instance-type matheus --out solutions/campinas10 --y-integer --intersection-cuts
-data/campinas/11.sbrp --instance-type matheus --out solutions/campinas11 --y-integer --intersection-cuts
-data/campinas/12.sbrp --instance-type matheus --out solutions/campinas12 --y-integer --intersection-cuts
-data/campinas/13.sbrp --instance-type matheus --out solutions/campinas13 --y-integer --intersection-cuts
-data/campinas/14.sbrp --instance-type matheus --out solutions/campinas14 --y-integer --intersection-cuts
-data/campinas/15.sbrp --instance-type matheus --out solutions/campinas15 --y-integer --intersection-cuts
-data/campinas/16.sbrp --instance-type matheus --out solutions/campinas16 --y-integer --intersection-cuts
-data/campinas/17.sbrp --instance-type matheus --out solutions/campinas17 --y-integer --intersection-cuts
-data/campinas/18.sbrp --instance-type matheus --out solutions/campinas18 --y-integer --intersection-cuts
-data/campinas/19.sbrp --instance-type matheus --out solutions/campinas19 --y-integer --intersection-cuts
-data/campinas/20.sbrp --instance-type matheus --out solutions/campinas20 --y-integer --intersection-cuts
-data/campinas/21.sbrp --instance-type matheus --out solutions/campinas21 --y-integer --intersection-cuts
-data/campinas/22.sbrp --instance-type matheus --out solutions/campinas22 --y-integer --intersection-cuts
-data/campinas/23.sbrp --instance-type matheus --out solutions/campinas23 --y-integer --intersection-cuts
-data/campinas/24.sbrp --instance-type matheus --out solutions/campinas24 --y-integer --intersection-cuts
-data/campinas/25.sbrp --instance-type matheus --out solutions/campinas25 --y-integer --intersection-cuts
-data/campinas/26.sbrp --instance-type matheus --out solutions/campinas26 --y-integer --intersection-cuts
-data/campinas/27.sbrp --instance-type matheus --out solutions/campinas27 --y-integer --intersection-cuts
-data/campinas/28.sbrp --instance-type matheus --out solutions/campinas28 --y-integer --intersection-cuts
-data/campinas/29.sbrp --instance-type matheus --out solutions/campinas29 --y-integer --intersection-cuts
-data/campinas/30.sbrp --instance-type matheus --out solutions/campinas30 --y-integer --intersection-cuts
-data/campinas/31.sbrp --instance-type matheus --out solutions/campinas31 --y-integer --intersection-cuts
+#  data/campinas/1.sbrp --instance-type matheus --out solutions/campinas1 --y-integer --intersection-cuts
+#  data/campinas/2.sbrp --instance-type matheus --out solutions/campinas2 --y-integer --intersection-cuts
+#  data/campinas/3.sbrp --instance-type matheus --out solutions/campinas3 --y-integer --intersection-cuts
+#  data/campinas/4.sbrp --instance-type matheus --out solutions/campinas4 --y-integer --intersection-cuts
+#  data/campinas/5.sbrp --instance-type matheus --out solutions/campinas5 --y-integer --intersection-cuts
+#  data/campinas/6.sbrp --instance-type matheus --out solutions/campinas6 --y-integer --intersection-cuts
+#  data/campinas/7.sbrp --instance-type matheus --out solutions/campinas7 --y-integer --intersection-cuts
+#  data/campinas/8.sbrp --instance-type matheus --out solutions/campinas8 --y-integer --intersection-cuts
+#  data/campinas/9.sbrp --instance-type matheus --out solutions/campinas9 --y-integer --intersection-cuts
+#  data/campinas/10.sbrp --instance-type matheus --out solutions/campinas10 --y-integer --intersection-cuts
+#  data/campinas/11.sbrp --instance-type matheus --out solutions/campinas11 --y-integer --intersection-cuts
+#  data/campinas/12.sbrp --instance-type matheus --out solutions/campinas12 --y-integer --intersection-cuts
+#  data/campinas/13.sbrp --instance-type matheus --out solutions/campinas13 --y-integer --intersection-cuts
+#  data/campinas/14.sbrp --instance-type matheus --out solutions/campinas14 --y-integer --intersection-cuts
+#  data/campinas/15.sbrp --instance-type matheus --out solutions/campinas15 --y-integer --intersection-cuts
+#  data/campinas/16.sbrp --instance-type matheus --out solutions/campinas16 --y-integer --intersection-cuts
+#  data/campinas/17.sbrp --instance-type matheus --out solutions/campinas17 --y-integer --intersection-cuts
+#  data/campinas/18.sbrp --instance-type matheus --out solutions/campinas18 --y-integer --intersection-cuts
+#  data/campinas/19.sbrp --instance-type matheus --out solutions/campinas19 --y-integer --intersection-cuts
+#  data/campinas/20.sbrp --instance-type matheus --out solutions/campinas20 --y-integer --intersection-cuts
+#  data/campinas/21.sbrp --instance-type matheus --out solutions/campinas21 --y-integer --intersection-cuts
+#  data/campinas/22.sbrp --instance-type matheus --out solutions/campinas22 --y-integer --intersection-cuts
+#  data/campinas/23.sbrp --instance-type matheus --out solutions/campinas23 --y-integer --intersection-cuts
+#  data/campinas/24.sbrp --instance-type matheus --out solutions/campinas24 --y-integer --intersection-cuts
+#  data/campinas/25.sbrp --instance-type matheus --out solutions/campinas25 --y-integer --intersection-cuts
+#  data/campinas/26.sbrp --instance-type matheus --out solutions/campinas26 --y-integer --intersection-cuts
+#  data/campinas/27.sbrp --instance-type matheus --out solutions/campinas27 --y-integer --intersection-cuts
+#  data/campinas/28.sbrp --instance-type matheus --out solutions/campinas28 --y-integer --intersection-cuts
+#  data/campinas/29.sbrp --instance-type matheus --out solutions/campinas29 --y-integer --intersection-cuts
+#  data/campinas/30.sbrp --instance-type matheus --out solutions/campinas30 --y-integer --intersection-cuts
+#  data/campinas/31.sbrp --instance-type matheus --out solutions/campinas31 --y-integer --intersection-cuts
 data/campinas/32.sbrp --instance-type matheus --out solutions/campinas32 --y-integer --intersection-cuts
 data/campinas/33.sbrp --instance-type matheus --out solutions/campinas33 --y-integer --intersection-cuts
 data/campinas/34.sbrp --instance-type matheus --out solutions/campinas34 --y-integer --intersection-cuts
