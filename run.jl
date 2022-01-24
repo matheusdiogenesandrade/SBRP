@@ -100,7 +100,8 @@ function sbrp_max_complete(app::Dict{String, Any}, data::SBRPData, data′::SBRP
   #[flush_println(block) for block in B]
 
   # get solution for complete model
-  tour′ = gettour(data′, x, B); check_sbrp_sol(data′, tour′, B) # get tour and check feasibility
+  tour′ = gettour(data′, x, B)
+  check_sbrp_sol(data′, tour′, B) # get tour and check feasibility
 
   # get solution for original graph
   tour = Vi()
@@ -133,6 +134,47 @@ function sbrp_max_complete(app::Dict{String, Any}, data::SBRPData, data′::SBRP
   =#
 end
 
+function brkga(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, ids::Dict{Int, Int}, paths::Dict{Tuple{Int, Int}, Vi})
+  flush_println("###################BRKGA####################")
+
+  # solve model
+  tour′, info, B = run_brkga(app["brkga-conf"], data′)
+
+  # get tour 
+  push!(tour′, data.depot)
+  pushfirst!(tour′, data.depot)
+
+  # check feasibility
+  check_sbrp_sol(data′, tour′, B) 
+
+  # get solution for original graph
+  tour = Vi()
+  [(push!(tour, tour′[i - 1]); !in((tour′[i - 1], tour′[i]), data.D.A) && push!(tour, paths[(tour′[i - 1], tour′[i])]...)) for i in 2:length(tour′)]
+  push!(tour, tour′[end]) 
+
+  # check feasibility
+  check_sbrp_sol(data, tour, B) 
+
+  # log
+  info = merge(info, Dict{String, String}(
+                                          "model" => "BKRGA", 
+                                          "instance" => app["instance_name"], 
+                                          "|V|" => string(length(Set{Int}(vcat([i for (i, j) in data′.D.A], [j for (i, j) in data′.D.A])))), 
+                                          "|A|" => string(length(data′.D.A)), 
+                                          "|B|" => string(length(data.B)), 
+                                          "T" => string(data.T),
+                                          "meters" => string(tour_distance(data, tour)),
+                                          "tourMinutes" => string(tour_time(data, tour, B)),
+                                          "blocksMeters" => string(sum(distance_block(data, block) for block in B))
+                                         )) 
+  log(info) 
+
+  # write solution
+  write_sol(app, tour, ids, data)
+
+  flush_println("########################################################")
+end
+
 function run(app::Dict{String,Any})
   flush_println("Application parameters:")
   [flush_println("  $arg  =>  $(repr(val))") for (arg,val) in app]
@@ -154,7 +196,7 @@ function run(app::Dict{String,Any})
   # solve models
 #  sbrp_max(app, data, ids)
   app["complete"] && sbrp_max_complete(app, data, data′, ids, paths)
-  app["brkga"] && run_brkga(app, data′)
+  app["brkga"] && brkga(app, data, data′, ids, paths)
 end
 
 end

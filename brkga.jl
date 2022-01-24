@@ -45,7 +45,7 @@ function dijkstra(data::SBRPData, idxs_blocks::Vi)
   m = length(idxs_blocks)
 
   # edge case
-  m == 0 && return 0.0
+  m == 0 && return 0.0, nothing
 
   # attrs
   B, A, T, first_idx = data.B, data.D.A, data.T, first(idxs_blocks)
@@ -59,8 +59,8 @@ function dijkstra(data::SBRPData, idxs_blocks::Vi)
 
   # BFS
   for i in 1:m - 1
-    idx_curr_block = idxs_blocks[i]
-    idx_next_block = idxs_blocks[i + 1]
+    # get indexes
+    idx_curr_block, idx_next_block = idxs_blocks[i], idxs_blocks[i + 1]
 
     # get curr and next blocks
     curr_block, next_block = B[idx_curr_block], B[idx_next_block]
@@ -76,15 +76,63 @@ function dijkstra(data::SBRPData, idxs_blocks::Vi)
     end
   end
   
-  return min([consumed_times[(last(idxs_blocks), i)] for i in B[last(idxs_blocks)]]...)
+  return min([consumed_times[(last(idxs_blocks), i)] for i in B[last(idxs_blocks)]]...), consumed_times
+end
+
+function get_dijkstra_route(data::SBRPData, consumed_times::Dict{Tuple{Int, Int}, Real}, idxs_blocks::Vi)
+
+  tour, m = Vi(), length(idxs_blocks)
+
+  # edge case
+  m == 0 && return tour
+
+  # attrs
+  B, A, T, first_idx, last_idx = data.B, data.D.A, data.T, first(idxs_blocks), last(idxs_blocks)
+
+  # initialize tour
+  
+  push!(tour, findmin([(consumed_times[(last_idx, i)], i) for i in B[last_idx]])[1][2])
+
+  # BFS
+  for i in reverse(2:m)
+    # get indexes
+    idx_curr_block, idx_prev_block = idxs_blocks[i], idxs_blocks[i - 1]
+
+    # get curr and prev blocks
+    curr_block, prev_block = B[idx_curr_block], B[idx_prev_block]
+
+    # get intersection
+    intersection = ∩(curr_block, prev_block)
+
+    # if no intersecting nodes push backwards candidate
+    isempty(intersection) && push!(tour, first([i for (i, j) in δ⁻(A, last(tour)) if i in prev_block && consumed_times[(idx_prev_block, i)] + Data.SBRP.time(data, (i, j)) == consumed_times[(idx_curr_block, j)]]))
+
+  end
+
+  return reverse(tour)
+   
 end
 
 """
 Countings
 """
-N_FEASIBLE = 0
-N_INFEASIBLE = 0
-DECODING_TIME = 0.0
+N_FEASIBLE, N_INFEASIBLE, DECODING_TIME = 0, 0, 0.0
+
+function get_idxs_blocks(chromosome::Array{Float64}, data::SBRPData)
+  # attrs
+  m = length(data.B)
+
+  # get all the alleles with weight > 0.5 and sort them in reversed order 
+  permutation = Array{Tuple{Float64, Int64}}(undef, m)
+  [permutation[idx] = (key, idx) for (idx, key) in enumerate(chromosome)]
+  sort!(permutation, rev = true)
+
+  # consider only blocks with allele > 0.5
+  filter!(s -> s[1] > 0.5, permutation)
+
+  # return indexes of the selected blocks
+  return [idx for (key, idx) in permutation]
+end
 
 function decode!(chromosome::Array{Float64}, data::SBRPData, rewrite::Bool)::Float64
   # inport blogal variables
@@ -96,24 +144,13 @@ function decode!(chromosome::Array{Float64}, data::SBRPData, rewrite::Bool)::Flo
 
     # attrs
     B = data.B
-    m, tour_time = length(B), 0.0
-
-    # get all the alleles with weight > 0.5 and sort them in reversed order 
-    permutation = Array{Tuple{Float64, Int64}}(undef, m)
-    [permutation[idx] = (key, idx) for (idx, key) in enumerate(chromosome)]
-    sort!(permutation, rev = true)
-
-    # consider only blocks with allele > 0.5
-    filter!(s -> s[1] > 0.5, permutation)
 
     # get min tour time
-    idxs_blocks = [idx for (key, idx) in permutation]
-    tour_time = dijkstra(data, idxs_blocks)
+    idxs_blocks = get_idxs_blocks(chromosome, data)
+    tour_time, consumed_times = dijkstra(data, idxs_blocks)
 
-    #  flush_println(idxs_blocks, " ", tour_time, " ", sum(data.profits[B[idx]] for idx in idxs_blocks))
-
-    # check feasibility
-    if tour_time > data.T
+    
+    if tour_time > data.T # check feasibility
 
       N_INFEASIBLE += 1
       return -∞
@@ -127,36 +164,18 @@ function decode!(chromosome::Array{Float64}, data::SBRPData, rewrite::Bool)::Flo
   end
 end
 
-function run_brkga(app::Dict{String, Any}, data::SBRPData)
-  #= 
-  # params
-  seed, configuration_file, num_generations = parse(Int64, app["brkga-seed"]), app["brkga-conf"], parse(Int, app["krkga-ngenerations"])
+function run_brkga(conf_dir::String, data::SBRPData)
 
-  seed              = parse(Int64, retrieve(conf, "seed"))
-
-  # build 
-  brkga_data, control_params = build_brkga(data, decode!, MAXIMIZE, seed, length(data.B), configuration_file)
-
-  # init
-  initialize!(brkga_data)
-
-  # ...
-  evolve!(brkga_data, num_generations)
-
-  best_cost = get_best_fitness(brkga_data)
-
-  @show best_cost
-  =#
+  # attrs
   B = data.B
   m = length(B)
-
-  verbose = false 
+  verbose, info = false, Dict{String, String}()
 
   ########################################
   # Load configuration file and show basic info.
   ########################################
 
-  conf              = ConfParse(app["brkga-conf"])
+  conf              = ConfParse(conf_dir)
   parse_conf!(conf)
 
   seed              = Base.parse(Int64, retrieve(conf, "seed"))
@@ -177,7 +196,7 @@ function run_brkga(app::Dict{String, Any}, data::SBRPData)
   verbose && flush_println("""
     ------------------------------------------------------
     > Experiment started at $(Dates.now())
-    > Configuration: $(app["brkga-conf"])
+    > Configuration: $conf_dir
     > Algorithm Parameters:
     """)
 
@@ -391,8 +410,24 @@ function run_brkga(app::Dict{String, Any}, data::SBRPData)
   ########################################
   # Extracting the solution
   ########################################
-  
-#  "$(@sprintf("%.2f", total_elapsed_time)) & " *
+   
+  # get blocks indexes
+  idxs_blocks = get_idxs_blocks(best_chromosome, data)
+
+  # get dijkstra time matrix
+  tour_time, consumed_times = dijkstra(data, idxs_blocks)
+
+  # get tour
+  tour = get_dijkstra_route(data, consumed_times, idxs_blocks)
+
+  # get visited blocks
+  blocks = [B[idx_block] for idx_block in idxs_blocks]
+
+  # log
+  info["cost"], info["solverTime"] = string(∑(data.profits[block] for block in blocks)), string(total_elapsed_time)
+
+  return tour, info, blocks
+
 end
 
 end
