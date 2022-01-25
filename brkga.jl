@@ -166,6 +166,12 @@ end
 
 function run_brkga(conf_dir::String, data::SBRPData)
 
+  global N_FEASIBLE
+  global N_INFEASIBLE 
+  global DECODING_TIME 
+
+  N_FEASIBLE, N_INFEASIBLE, DECODING_TIME = 0, 0, 0.0
+
   # attrs
   B = data.B
   m = length(B)
