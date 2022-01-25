@@ -105,7 +105,7 @@ function get_dijkstra_route(data::SBRPData, consumed_times::Dict{Tuple{Int, Int}
     intersection = ∩(curr_block, prev_block)
 
     # if no intersecting nodes push backwards candidate
-    isempty(intersection) && push!(tour, first([i for (i, j) in δ⁻(A, last(tour)) if i in prev_block && consumed_times[(idx_prev_block, i)] + Data.SBRP.time(data, (i, j)) == consumed_times[(idx_curr_block, j)]]))
+    !in(last(tour), intersection) && push!(tour, first([i for (i, j) in δ⁻(A, last(tour)) if i in prev_block && consumed_times[(idx_prev_block, i)] + Data.SBRP.time(data, (i, j)) == consumed_times[(idx_curr_block, j)]]))
 
   end
 
