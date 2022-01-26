@@ -1,0 +1,384 @@
+WARNING: replacing module Main.
+WARNING: using JuMP.Model in module Main conflicts with an existing identifier.
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/1.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components1"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 454
+|A| = 986
+|B| = 5
+|V′| = 25
+|A′| = 600
+###################SBRP MAX Complete####################
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 1 & 25 & 600 & 5 & 120.0 & SBRPMaxComplete & 15.0 & 15.0 & 0.038325175 & - & - & 15.0 & 0 & 1.84733509 & 17 & 15.0 & 2.4981870651245117 & 0.0 & 0 & 33844.0 & 56.197500000000005 & 1207.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/2.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components2"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 344
+|A| = 820
+|B| = 5
+|V′| = 55
+|A′| = 2970
+###################SBRP MAX Complete####################
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 2 & 55 & 2970 & 5 & 120.0 & SBRPMaxComplete & 19.0 & 19.0 & 0.035565294 & - & - & 19.0 & 0 & 0.025873164 & 2 & 19.0 & 0.10068511962890625 & 0.0 & 0 & 64517.0 & 108.732 & 2657.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/3.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components3"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 1284
+|A| = 2700
+|B| = 5
+|V′| = 45
+|A′| = 1980
+###################SBRP MAX Complete####################
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 3 & 45 & 1980 & 5 & 120.0 & SBRPMaxComplete & 19.0 & 19.0 & 0.023319001 & - & - & 19.0 & 0 & 0.069024586 & 31 & 19.0 & 0.08298277854919434 & 0.0 & 0 & 37553.0 & 62.350500000000004 & 1338.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/4.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components4"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 1364
+|A| = 2868
+|B| = 5
+|V′| = 51
+|A′| = 2550
+###################SBRP MAX Complete####################
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 4 & 51 & 2550 & 5 & 120.0 & SBRPMaxComplete & 22.0 & 22.0 & 0.030334371 & - & - & 22.0 & 0 & 0.092642503 & 12 & 22.0 & 0.06845998764038086 & 0.0 & 0 & 72150.0 & 119.80350000000001 & 2573.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/5.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components5"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 578
+|A| = 1260
+|B| = 5
+|V′| = 35
+|A′| = 1190
+###################SBRP MAX Complete####################
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 5 & 35 & 1190 & 5 & 120.0 & SBRPMaxComplete & 16.0 & 16.0 & 0.014789806 & - & - & 16.0 & 0 & 0.036319023 & 5 & 16.0 & 0.025573015213012695 & 0.0 & 0 & 12310.0 & 22.641000000000002 & 928.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/6.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components6"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 1674
+|A| = 3662
+|B| = 10
+|V′| = 94
+|A′| = 8742
+###################SBRP MAX Complete####################
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 6 & 94 & 8742 & 10 & 120.0 & SBRPMaxComplete & 48.0 & 48.0 & 0.106771945 & - & - & 48.0 & 93 & 4.402113735 & 143 & 48.0 & 0.7109329700469971 & 0.0 & 4 & 63472.0 & 113.136 & 3984.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/7.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components7"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 1203
+|A| = 2830
+|B| = 10
+|V′| = 142
+|A′| = 20022
+###################SBRP MAX Complete####################
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 7 & 142 & 20022 & 10 & 120.0 & SBRPMaxComplete & 33.0 & 33.0 & 0.348075945 & - & - & 33.0 & 378 & 45.592311977 & 586 & 33.0 & 4.518487930297852 & 0.0 & 7 & 60844.0 & 113.7885 & 5005.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/8.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components8"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 1724
+|A| = 3732
+|B| = 10
+|V′| = 81
+|A′| = 6480
+###################SBRP MAX Complete####################
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 8 & 81 & 6480 & 10 & 120.0 & SBRPMaxComplete & 37.0 & 37.0 & 0.075022714 & - & - & 37.0 & 64 & 1.4870309 & 40 & 37.0 & 0.21594905853271484 & 0.0 & 0 & 55179.0 & 101.718 & 4211.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/9.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components9"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 847
+|A| = 2004
+|B| = 10
+|V′| = 91
+|A′| = 8190
+###################SBRP MAX Complete####################
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 9 & 91 & 8190 & 10 & 120.0 & SBRPMaxComplete & 35.0 & 35.0 & 0.094312983 & - & - & 35.0 & 4 & 0.244839515 & 30 & 35.0 & 0.2433769702911377 & 0.0 & 0 & 60601.0 & 106.854 & 3545.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/10.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components10"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 1820
+|A| = 3990
+|B| = 10
+|V′| = 125
+|A′| = 15500
+###################SBRP MAX Complete####################
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 10 & 125 & 15500 & 10 & 120.0 & SBRPMaxComplete & 37.0 & 37.0 & 0.19816044 & - & - & 37.0 & 3072 & 386.653778772 & 24 & 37.0 & 0.45659303665161133 & 0.0 & 0 & 53353.0 & 107.601 & 6127.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/11.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components11"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 2227
+|A| = 4978
+|B| = 15
+|V′| = 155
+|A′| = 23870
+###################SBRP MAX Complete####################
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 11 & 155 & 23870 & 15 & 120.0 & SBRPMaxComplete & 65.0 & 65.0 & 0.504024931 & - & - & 65.0 & 327 & 42.003441299 & 12 & 65.0 & 1.4397001266479492 & 0.0 & 0 & 52835.0 & 113.03399999999999 & 7507.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/12.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components12"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 1725
+|A| = 3939
+|B| = 15
+|V′| = 138
+|A′| = 18906
+###################SBRP MAX Complete####################
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 12 & 138 & 18906 & 15 & 120.0 & SBRPMaxComplete & 59.0 & 59.0 & 0.2604566 & - & - & 59.0 & 115 & 6.259059857 & 426 & 59.0 & 4.983926057815552 & 0.0 & 7 & 56093.0 & 116.5485 & 7202.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/13.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components13"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 2429
+|A| = 5556
+|B| = 15
+|V′| = 256
+|A′| = 65280
+###################SBRP MAX Complete####################
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 13 & 256 & 65280 & 15 & 120.0 & SBRPMaxComplete & 63.0 & 63.0 & 1.394470445 & - & - & 63.0 & 114 & 46.791020053 & 66 & 63.0 & 3.0031368732452393 & 0.0 & 0 & 50304.0 & 110.4435 & 7775.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/14.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components14"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 2894
+|A| = 6574
+|B| = 15
+|V′| = 257
+|A′| = 65792
+###################SBRP MAX Complete####################
+Getting initial relaxation
+Getting initial relaxation with y as integer
+WARNING: Force throwing a SIGINT
+WARNING: Force throwing a SIGINT
+<unknown>:0: error: starting new .cfi frame before finishing the previous one
+LLVM ERROR: Error parsing inline asm
+
+
+signal (6): Aborted
+in expression starting at none:0
+gsignal at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+abort at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+_ZN4llvm18report_fatal_errorERKNS_5TwineEb at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+_ZN4llvm18report_fatal_errorEPKcb at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+_ZNK4llvm10AsmPrinter13emitInlineAsmENS_9StringRefERKNS_15MCSubtargetInfoERKNS_15MCTargetOptionsEPKNS_6MDNodeENS_9InlineAsm10AsmDialectE at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+_ZNK4llvm10AsmPrinter13emitInlineAsmEPKNS_12MachineInstrE at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+_ZN4llvm10AsmPrinter16emitFunctionBodyEv at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+_ZN4llvm13X86AsmPrinter20runOnMachineFunctionERNS_15MachineFunctionE at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+_ZN4llvm19MachineFunctionPass13runOnFunctionERNS_8FunctionE at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+_ZN4llvm13FPPassManager13runOnFunctionERNS_8FunctionE at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+_ZN4llvm13FPPassManager11runOnModuleERNS_6ModuleE at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+_ZN4llvm6legacy15PassManagerImpl3runERNS_6ModuleE at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+operator() at /buildworker/worker/package_linux64/build/src/jitlayers.cpp:613
+_ZN4llvm3orc14IRCompileLayer4emitENS0_29MaterializationResponsibilityENS0_16ThreadSafeModuleE at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+_ZN4llvm3orc31BasicIRLayerMaterializationUnit11materializeENS0_29MaterializationResponsibilityE at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+_ZN4llvm3orc16ExecutionSession26materializeOnCurrentThreadESt10unique_ptrINS0_19MaterializationUnitESt14default_deleteIS3_EENS0_29MaterializationResponsibilityE at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+_ZNSt17_Function_handlerIFvSt10unique_ptrIN4llvm3orc19MaterializationUnitESt14default_deleteIS3_EENS2_29MaterializationResponsibilityEEPS8_E9_M_invokeERKSt9_Any_dataOS6_OS7_ at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+_ZN4llvm3orc16ExecutionSession17runOutstandingMUsEv at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+_ZN4llvm3orc16ExecutionSession6lookupENS0_10LookupKindERKSt6vectorISt4pairIPNS0_8JITDylibENS0_19JITDylibLookupFlagsEESaIS8_EENS0_15SymbolLookupSetENS0_11SymbolStateENS_15unique_functionIFvNS_8ExpectedINS_8DenseMapINS0_15SymbolStringPtrENS_18JITEvaluatedSymbolENS_12DenseMapInfoISI_EENS_6detail12DenseMapPairISI_SJ_EEEEEEEEESt8functionIFvRKNSH_IS6_NS_8DenseSetISI_SL_EENSK_IS6_EENSN_IS6_SV_EEEEEE at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+_ZN4llvm3orc16ExecutionSession6lookupERKSt6vectorISt4pairIPNS0_8JITDylibENS0_19JITDylibLookupFlagsEESaIS7_EERKNS0_15SymbolLookupSetENS0_10LookupKindENS0_11SymbolStateESt8functionIFvRKNS_8DenseMapIS5_NS_8DenseSetINS0_15SymbolStringPtrENS_12DenseMapInfoISK_EEEENSL_IS5_EENS_6detail12DenseMapPairIS5_SN_EEEEEE at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+_ZN4llvm3orc16ExecutionSession6lookupERKSt6vectorISt4pairIPNS0_8JITDylibENS0_19JITDylibLookupFlagsEESaIS7_EENS0_15SymbolStringPtrENS0_11SymbolStateE at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+_ZN4llvm3orc16ExecutionSession6lookupENS_8ArrayRefIPNS0_8JITDylibEEENS0_15SymbolStringPtrENS0_11SymbolStateE at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+_ZN4llvm3orc16ExecutionSession6lookupENS_8ArrayRefIPNS0_8JITDylibEEENS_9StringRefENS0_11SymbolStateE at /opt/julia-1.6.3/bin/../lib/julia/libLLVM-11jl.so (unknown line)
+addModule at /buildworker/worker/package_linux64/build/src/jitlayers.cpp:788
+jl_add_to_ee at /buildworker/worker/package_linux64/build/src/jitlayers.cpp:1067
+jl_add_to_ee at /buildworker/worker/package_linux64/build/src/jitlayers.cpp:1111
+jl_add_to_ee at /buildworker/worker/package_linux64/build/src/jitlayers.cpp:1133 [inlined]
+_jl_compile_codeinst at /buildworker/worker/package_linux64/build/src/jitlayers.cpp:154
+jl_generate_fptr at /buildworker/worker/package_linux64/build/src/jitlayers.cpp:352
+jl_compile_method_internal at /buildworker/worker/package_linux64/build/src/gf.c:1970
+jl_compile_method_internal at /buildworker/worker/package_linux64/build/src/gf.c:2236 [inlined]
+_jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2229 [inlined]
+jl_apply_generic at /buildworker/worker/package_linux64/build/src/gf.c:2419
+show_exception_stack at ./errorshow.jl:874
+display_error at ./client.jl:104
+_jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2237 [inlined]
+jl_apply_generic at /buildworker/worker/package_linux64/build/src/gf.c:2419
+display_error at ./client.jl:107
+_jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2237 [inlined]
+jl_apply_generic at /buildworker/worker/package_linux64/build/src/gf.c:2419
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1703 [inlined]
+jl_f__call_latest at /buildworker/worker/package_linux64/build/src/builtins.c:714
+#invokelatest#2 at ./essentials.jl:708 [inlined]
+invokelatest at ./essentials.jl:706 [inlined]
+_start at ./client.jl:487
+jfptr__start_43689.clone_1 at /opt/julia-1.6.3/lib/julia/sys.so (unknown line)
+_jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2237 [inlined]
+jl_apply_generic at /buildworker/worker/package_linux64/build/src/gf.c:2419
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1703 [inlined]
+true_main at /buildworker/worker/package_linux64/build/src/jlapi.c:560
+repl_entrypoint at /buildworker/worker/package_linux64/build/src/jlapi.c:702
+main at /buildworker/worker/package_linux64/build/cli/loader_exe.c:51
+__libc_start_main at /lib/x86_64-linux-gnu/libc.so.6 (unknown line)
+_start at /opt/julia-1.6.3/bin/julia (unknown line)
+Allocations: 1016609915 (Pool: 982467369; Big: 34142546); GC: 8251

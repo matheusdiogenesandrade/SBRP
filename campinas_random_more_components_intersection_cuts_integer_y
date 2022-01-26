@@ -1,0 +1,356 @@
+WARNING: replacing module Main.
+WARNING: using JuMP.Model in module Main conflicts with an existing identifier.
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/1.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components1"
+  instance-type  =>  "matheus"
+  y-integer  =>  true
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 454
+|A| = 986
+|B| = 5
+|V′| = 25
+|A′| = 600
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 1 & 25 & 600 & 5 & 120.0 & SBRPMaxComplete & 15.0 & 15.0 & 0.010027108 & 0 & 2.061259144 & 15.0 & 6 & 2.106661605 & 17 & 15.0 & 2.4150381088256836 & 0.0 & 0 & 33844.0 & 56.197500000000005 & 1207.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/2.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components2"
+  instance-type  =>  "matheus"
+  y-integer  =>  true
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 344
+|A| = 820
+|B| = 5
+|V′| = 55
+|A′| = 2970
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 2 & 55 & 2970 & 5 & 120.0 & SBRPMaxComplete & 19.0 & 19.0 & 0.033536042 & 0 & 0.002947871 & 19.0 & 0 & 0.026604453 & 2 & 19.0 & 0.1000669002532959 & 0.0 & 0 & 64517.0 & 108.732 & 2657.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/3.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components3"
+  instance-type  =>  "matheus"
+  y-integer  =>  true
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 1284
+|A| = 2700
+|B| = 5
+|V′| = 45
+|A′| = 1980
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 3 & 45 & 1980 & 5 & 120.0 & SBRPMaxComplete & 19.0 & 19.0 & 0.022608926 & 0 & 0.002551512 & 19.0 & 0 & 0.075843067 & 31 & 19.0 & 0.08708405494689941 & 0.0 & 0 & 37553.0 & 62.350500000000004 & 1338.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/4.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components4"
+  instance-type  =>  "matheus"
+  y-integer  =>  true
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 1364
+|A| = 2868
+|B| = 5
+|V′| = 51
+|A′| = 2550
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 4 & 51 & 2550 & 5 & 120.0 & SBRPMaxComplete & 22.0 & 22.0 & 0.030189044 & 0 & 0.002779874 & 22.0 & 0 & 0.097150406 & 12 & 22.0 & 0.06830191612243652 & 0.0 & 0 & 72150.0 & 119.80350000000001 & 2573.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/5.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components5"
+  instance-type  =>  "matheus"
+  y-integer  =>  true
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 578
+|A| = 1260
+|B| = 5
+|V′| = 35
+|A′| = 1190
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 5 & 35 & 1190 & 5 & 120.0 & SBRPMaxComplete & 16.0 & 16.0 & 0.013111447 & 0 & 0.002962388 & 16.0 & 68 & 0.496633819 & 5 & 16.0 & 0.025403976440429688 & 0.0 & 0 & 12310.0 & 22.641000000000002 & 928.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/6.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components6"
+  instance-type  =>  "matheus"
+  y-integer  =>  true
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 1674
+|A| = 3662
+|B| = 10
+|V′| = 94
+|A′| = 8742
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 6 & 94 & 8742 & 10 & 120.0 & SBRPMaxComplete & 48.0 & 48.0 & 0.10512066 & 0 & 0.003523391 & 48.0 & 174 & 5.356737452 & 143 & 48.0 & 0.7101969718933105 & 0.0 & 4 & 63472.0 & 113.136 & 3984.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/7.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components7"
+  instance-type  =>  "matheus"
+  y-integer  =>  true
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 1203
+|A| = 2830
+|B| = 10
+|V′| = 142
+|A′| = 20022
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 7 & 142 & 20022 & 10 & 120.0 & SBRPMaxComplete & 33.0 & 33.0 & 0.262712548 & 0 & 0.003558434 & 33.0 & 8 & 0.76624263 & 586 & 33.0 & 4.589164972305298 & 0.0 & 7 & 60844.0 & 113.7885 & 5005.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/8.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components8"
+  instance-type  =>  "matheus"
+  y-integer  =>  true
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 1724
+|A| = 3732
+|B| = 10
+|V′| = 81
+|A′| = 6480
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 8 & 81 & 6480 & 10 & 120.0 & SBRPMaxComplete & 37.0 & 37.0 & 0.073093321 & 0 & 0.003367158 & 37.0 & 51 & 1.066788425 & 40 & 37.0 & 0.2118980884552002 & 0.0 & 0 & 55179.0 & 101.718 & 4211.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/9.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components9"
+  instance-type  =>  "matheus"
+  y-integer  =>  true
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 847
+|A| = 2004
+|B| = 10
+|V′| = 91
+|A′| = 8190
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 9 & 91 & 8190 & 10 & 120.0 & SBRPMaxComplete & 35.0 & 35.0 & 0.092039483 & 0 & 0.003623194 & 35.0 & 172 & 5.494176906 & 30 & 35.0 & 0.23891711235046387 & 0.0 & 0 & 60601.0 & 106.854 & 3545.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/10.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components10"
+  instance-type  =>  "matheus"
+  y-integer  =>  true
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 1820
+|A| = 3990
+|B| = 10
+|V′| = 125
+|A′| = 15500
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Maximal clique: 2
+[1566, 682, 538, 388, 41]
+[63, 446, 388, 240, 1077, 1679, 1658, 1169, 29, 81, 67]
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 10 & 125 & 15500 & 10 & 120.0 & SBRPMaxComplete & 37.0 & 37.0 & 0.20754012 & 2 & 0.487661643 & 37.0 & 439 & 41.532096594 & 24 & 37.0 & 0.44814300537109375 & 0.0 & 0 & 53353.0 & 107.601 & 6127.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/11.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components11"
+  instance-type  =>  "matheus"
+  y-integer  =>  true
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 2227
+|A| = 4978
+|B| = 15
+|V′| = 155
+|A′| = 23870
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Maximal clique: 2
+[2117, 1486, 383, 1731, 1860, 1806, 1887, 523, 965, 1330, 1132, 394, 605, 1189, 1628, 1760, 1074]
+[2117, 1074, 2094, 2081, 1248]
+Maximal clique: 2
+[789, 481, 2208, 2166]
+[789, 928, 149, 292]
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 11 & 155 & 23870 & 15 & 120.0 & SBRPMaxComplete & 65.0 & 65.0 & 0.35537454 & 4 & 0.01271205 & 65.0 & 317 & 29.186079351 & 12 & 65.0 & 1.4281468391418457 & 0.0 & 0 & 52835.0 & 113.03399999999999 & 7507.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/12.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components12"
+  instance-type  =>  "matheus"
+  y-integer  =>  true
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 1725
+|A| = 3939
+|B| = 15
+|V′| = 138
+|A′| = 18906
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 12 & 138 & 18906 & 15 & 120.0 & SBRPMaxComplete & 59.0 & 59.0 & 0.256350522 & 0 & 0.004072551 & 59.0 & 64 & 3.477469509 & 426 & 59.0 & 4.92200493812561 & 0.0 & 7 & 56093.0 & 116.5485 & 7202.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/13.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components13"
+  instance-type  =>  "matheus"
+  y-integer  =>  true
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 2429
+|A| = 5556
+|B| = 15
+|V′| = 256
+|A′| = 65280
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Maximal clique: 2
+[1175, 2211, 230, 1877, 1155]
+[1155, 1877, 1195, 1250, 727, 1263, 643, 422]
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 13 & 256 & 65280 & 15 & 120.0 & SBRPMaxComplete & 63.0 & 63.0 & 1.394598119 & 2 & 0.009877169 & 63.0 & 376 & 80.709603484 & 66 & 63.0 & 2.900080919265747 & 0.0 & 0 & 50304.0 & 110.4435 & 7775.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  instance  =>  "data/campinas-random-more-components/14.sbrp"
+  brkga  =>  false
+  out  =>  "solutions/campinas-random-more-components14"
+  instance-type  =>  "matheus"
+  y-integer  =>  true
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+|V| = 2894
+|A| = 6574
+|B| = 15
+|V′| = 257
+|A′| = 65792
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Maximal clique: 2
+[592, 1383, 727, 1840, 607, 2625, 2016, 2364, 302, 330, 2898, 1426, 2643, 1801, 2092, 1531, 2821, 2189, 327, 2619, 82, 155, 2207, 2054]
+[2248, 1693, 1668, 1760, 832, 1760, 1812, 468, 1871, 2157, 2292, 904, 1958, 2642, 569, 2642, 1958, 904, 2292, 2157, 1871, 727, 2587]
+Getting initial relaxation
+Getting initial relaxation with y as integer
+WARNING: Force throwing a SIGINT
+julia: ../nptl/pthread_mutex_lock.c:81: __pthread_mutex_lock: Assertion `mutex->__data.__owner == 0' failed.
+
+signal (6): Aborted
+in expression starting at none:0
+Allocations: 1524117091 (Pool: 1470265941; Big: 53851150); GC: 12700

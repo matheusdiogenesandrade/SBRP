@@ -103,7 +103,7 @@ function get_dijkstra_route(data::SBRPData, consumed_times::Dict{Tuple{Int, Int}
 
     # get intersection
     intersection = ∩(curr_block, prev_block)
-
+      
     # if no intersecting nodes push backwards candidate
     !in(last(tour), intersection) && push!(tour, first([i for (i, j) in δ⁻(A, last(tour)) if i in prev_block && consumed_times[(idx_prev_block, i)] + Data.SBRP.time(data, (i, j)) == consumed_times[(idx_curr_block, j)]]))
 
@@ -307,7 +307,7 @@ function run_brkga(conf_dir::String, data::SBRPData)
 
     # Checks the current results and holds the best.
     fitness = get_best_fitness(brkga_data)
-    if fitness < best_cost
+    if fitness > best_cost
       last_update_time = time() - start_time
       update_offset = iteration - last_update_iteration
 
@@ -318,6 +318,7 @@ function run_brkga(conf_dir::String, data::SBRPData)
       best_chromosome = get_best_chromosome(brkga_data)
 
       verbose && @printf("* %d | %.0f | %.2f \n", iteration, best_cost, last_update_time)
+      
     end
 
     iter_without_improvement = iteration - last_update_iteration

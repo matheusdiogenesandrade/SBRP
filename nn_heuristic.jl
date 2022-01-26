@@ -11,15 +11,26 @@ get_next_block(i::Int, data::SBRPData, visited_blocks::Set{Vi}) = min([(SBRP.tim
 function solve(data::SBRPData)
   # setup
   depot, visited_blocks = data.depot, Set{Vi}()
-  # greedy NN
   curr, tour, time, profit = depot, [depot], 0.0, 0.0
+
+  # greedy NN
   while true
-    (next, block) = get_next_block(curr, data, visited_blocks)                             # get next node and block
-    (next == -1 || time + SBRP.time(data, (curr, next)) + time_block(data, block) > data.T) && break # base case (feasibility check)
-    push!(tour, next)                                                                      # save next  
-    push!(visited_blocks, block)                                                           # mark block as visited
-    curr, time, profit = next, time + Data.SBRP.time(data, (curr, next)) + time_block(data, block), profit + data.profits[block] # update curr and time
+    # get next node and block
+    (next, block) = get_next_block(curr, data, visited_blocks)                             
+
+    # base case (feasibility check)
+    (next == -1 || time + SBRP.time(data, (curr, next)) + time_block(data, block) > data.T) && break 
+
+    # save next  
+    push!(tour, next)                                                                      
+
+    # mark block as visited
+    push!(visited_blocks, block)                                                           
+
+    # update curr and time
+    curr, time, profit = next, time + Data.SBRP.time(data, (curr, next)) + time_block(data, block), profit + data.profits[block] 
   end
+
   return profit, visited_blocks, push!(tour, depot)
 end
 
