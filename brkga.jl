@@ -65,14 +65,17 @@ function dijkstra(data::SBRPData, idxs_blocks::Vi)
     # get curr and next blocks
     curr_block, next_block = B[idx_curr_block], B[idx_next_block]
 
+    # calculate nest block service time
+    next_block_time = time_block(data, B[idx_next_block])
+
     # intersecting nodes
     for i in ∩(curr_block, next_block)
-      consumed_times[(idx_next_block, i)] = min(consumed_times[(idx_next_block, i)], consumed_times[(idx_curr_block, i)])
+      consumed_times[(idx_next_block, i)] = next_block_time + min(consumed_times[(idx_next_block, i)], consumed_times[(idx_curr_block, i)])
     end
 
     # non intersecting nodes
     for (i, j) in δ⁺(A, curr_block)
-      j in next_block && (consumed_times[(idx_next_block, j)] = min(consumed_times[(idx_next_block, j)], consumed_times[(idx_curr_block, i)] + Data.SBRP.time(data, (i, j))))
+      j in next_block && (consumed_times[(idx_next_block, j)] = next_block_time + min(consumed_times[(idx_next_block, j)], consumed_times[(idx_curr_block, i)] + Data.SBRP.time(data, (i, j))))
     end
   end
   
@@ -103,9 +106,14 @@ function get_dijkstra_route(data::SBRPData, consumed_times::Dict{Tuple{Int, Int}
 
     # get intersection
     intersection = ∩(curr_block, prev_block)
-      
+
+    # get block time
+    curr_block_time = time_block(data, B[idx_curr_block])
+
+#    println("In block ", idx_curr_block, " previous node ", last(tour))
+
     # if no intersecting nodes push backwards candidate
-    !in(last(tour), intersection) && push!(tour, first([i for (i, j) in δ⁻(A, last(tour)) if i in prev_block && consumed_times[(idx_prev_block, i)] + Data.SBRP.time(data, (i, j)) == consumed_times[(idx_curr_block, j)]]))
+    !in(last(tour), intersection) && push!(tour, first([i for (i, j) in δ⁻(A, last(tour)) if i in prev_block && consumed_times[(idx_prev_block, i)] + Data.SBRP.time(data, (i, j)) + curr_block_time <= consumed_times[(idx_curr_block, j)]]))
 
   end
 
@@ -152,11 +160,13 @@ function decode!(chromosome::Array{Float64}, data::SBRPData, rewrite::Bool)::Flo
     
     if tour_time > data.T # check feasibility
 
+#      println("Infeasile with time ", tour_time)
       N_INFEASIBLE += 1
       return -∞
 
     else # return profit
 
+#      println("Feasile with time ", tour_time)
       N_FEASIBLE += 1
       return ∑(data.profits[B[idx]] for idx in idxs_blocks)
 
@@ -176,6 +186,38 @@ function run_brkga(conf_dir::String, data::SBRPData)
   B = data.B
   m = length(B)
   verbose, info = false, Dict{String, String}()
+
+  ########################################
+  #=
+  best_chromosome = [0.5673095448480054, 0.5690631386950107, 0.9094092031508971, 0.8929281134444553, 0.7610922072371944, 0.7013879248672727, 0.6990824292873064, 0.7363129841204665, 0.7828106247743807, 0.8481750617782906, 0.8004900833604567, 0.8556448369668621, 0.5577955890720041, 0.8687603573861247, 0.9977297995411569, 0.6876207987811895, 0.7416181901188621, 0.7957481070659045, 0.5341816494879854, 0.6840264609523561, 0.9160761042702021, 0.7077171913438292, 0.8481974075330707, 0.5246843974117401, 0.573311562327449]
+  # get blocks indexes
+  idxs_blocks = get_idxs_blocks(best_chromosome, data)
+
+  # get dijkstra time matrix
+  tour_time, consumed_times = dijkstra(data, idxs_blocks)
+
+  for i in 2:length(idxs_blocks)
+    idx_block, idx_prev_block = idxs_blocks[i], idxs_blocks[i - 1]
+    curr_block_time = time_block(data, B[idx_block])
+    println("ID block ", idx_block)
+    for i in B[idx_block]
+      rs = consumed_times[(idx_block, i)]
+      println("\t", i, ": ", rs)
+      for j in B[idx_prev_block]
+        ls = consumed_times[(idx_prev_block, j)] + Data.SBRP.time(data, (j, i)) + curr_block_time
+        if ls == rs
+          println("\t\t", j, " is a predecessor, since ", ls, " == ", rs)
+        else
+          println("\t\t", j, " is not a predecessor, since ", ls, " != ", rs)
+        end
+      end
+    end
+  end
+
+  # get tour
+  tour = get_dijkstra_route(data, consumed_times, idxs_blocks)
+  error("stop here")
+  =#
 
   ########################################
   # Load configuration file and show basic info.
@@ -417,7 +459,6 @@ function run_brkga(conf_dir::String, data::SBRPData)
   ########################################
   # Extracting the solution
   ########################################
-   
   # get blocks indexes
   idxs_blocks = get_idxs_blocks(best_chromosome, data)
 

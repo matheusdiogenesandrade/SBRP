@@ -19,7 +19,7 @@ Application parameters:
 |A′| = 1980
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-24T23:53:33.209
+> Experiment started at 2022-01-26T20:20:29.660
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -46,42 +46,41 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[23:53:33.551] Generating initial tour...
+[20:20:30.004] Generating initial tour...
 Initial profit: 5.0
 
-[23:53:34.715] Building BRKGA data...
+[20:20:31.175] Building BRKGA data...
 New population size: 50
 
-[23:53:34.995] Initializing BRKGA data...
+[20:20:31.457] Initializing BRKGA data...
 
-[23:53:35.545] Warming up...
+[20:20:32.01] Warming up...
 
-[23:53:36.831] Evolving...
+[20:20:33.311] Evolving...
 * Iteration | Cost | CurrentTime
-Performing path relink at 200...
-- No improvement found | Elapsed time: 0.48
-Performing path relink at 400...
+* 1 | 5 | 0.02 
+Performing path relink at 201...
+- No improvement found | Elapsed time: 0.49
+Performing path relink at 401...
 - No improvement found | Elapsed time: 0.01
-Performing path relink at 600...
-- No improvement found | Elapsed time: 0.02
-Performing path relink at 800...
+Performing path relink at 601...
 - No improvement found | Elapsed time: 0.01
-Performing path relink at 1000...
+Performing path relink at 801...
 - No improvement found | Elapsed time: 0.01
-[23:54:06.544] End of optimization
+[20:21:02.611] End of optimization
 
 Total number of iterations: 1000
-Last update iteration: 0
-Total optimization time: 29.71
-Last update time: 0.00
-Large number of iterations between improvements: 0
-Total path relink time: 0.54
-Total path relink calls: 5
+Last update iteration: 1
+Total optimization time: 29.30
+Last update time: 0.02
+Large number of iterations between improvements: 1
+Total path relink time: 0.51
+Total path relink calls: 4
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 1 & 45 & 1980 & 5 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 5.0 & 29.71241307258606 & - & - & 3967.0 & 16.017 & 2237.0
+ & 1 & 45 & 1980 & 5 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 5.0 & 29.3003089427948 & - & - & 4242.0 & 16.4295 & 2237.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -102,7 +101,7 @@ Application parameters:
 |A′| = 420
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-24T23:54:07.115
+> Experiment started at 2022-01-26T20:21:03.311
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -129,42 +128,41 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[23:54:07.116] Generating initial tour...
+[20:21:03.312] Generating initial tour...
 Initial profit: 5.0
 
-[23:54:07.48] Building BRKGA data...
+[20:21:03.678] Building BRKGA data...
 New population size: 50
 
-[23:54:07.48] Initializing BRKGA data...
+[20:21:03.679] Initializing BRKGA data...
 
-[23:54:07.503] Warming up...
+[20:21:03.702] Warming up...
 
-[23:54:07.54] Evolving...
+[20:21:03.739] Evolving...
 * Iteration | Cost | CurrentTime
-Performing path relink at 200...
+* 1 | 5 | 0.00 
+Performing path relink at 201...
 - No improvement found | Elapsed time: 0.00
-Performing path relink at 400...
+Performing path relink at 401...
+- No improvement found | Elapsed time: 0.02
+Performing path relink at 601...
 - No improvement found | Elapsed time: 0.00
-Performing path relink at 600...
+Performing path relink at 801...
 - No improvement found | Elapsed time: 0.00
-Performing path relink at 800...
-- No improvement found | Elapsed time: 0.00
-Performing path relink at 1000...
-- No improvement found | Elapsed time: 0.00
-[23:54:14.941] End of optimization
+[20:21:11.08] End of optimization
 
 Total number of iterations: 1000
-Last update iteration: 0
-Total optimization time: 7.40
+Last update iteration: 1
+Total optimization time: 7.34
 Last update time: 0.00
-Large number of iterations between improvements: 0
-Total path relink time: 0.01
-Total path relink calls: 5
+Large number of iterations between improvements: 1
+Total path relink time: 0.02
+Total path relink calls: 4
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 2 & 21 & 420 & 5 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 5.0 & 7.400891065597534 & - & - & 5904.0 & 16.393500000000003 & 1675.0
+ & 2 & 21 & 420 & 5 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 5.0 & 7.340138912200928 & - & - & 4455.0 & 14.22 & 1675.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -185,7 +183,7 @@ Application parameters:
 |A′| = 870
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-24T23:54:15.132
+> Experiment started at 2022-01-26T20:21:11.247
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -212,42 +210,41 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[23:54:15.133] Generating initial tour...
+[20:21:11.247] Generating initial tour...
 Initial profit: 5.0
 
-[23:54:15.215] Building BRKGA data...
+[20:21:11.33] Building BRKGA data...
 New population size: 50
 
-[23:54:15.215] Initializing BRKGA data...
+[20:21:11.33] Initializing BRKGA data...
 
-[23:54:15.237] Warming up...
+[20:21:11.351] Warming up...
 
-[23:54:15.26] Evolving...
+[20:21:11.373] Evolving...
 * Iteration | Cost | CurrentTime
-Performing path relink at 200...
-- No improvement found | Elapsed time: 0.00
-Performing path relink at 400...
+* 1 | 5 | 0.01 
+Performing path relink at 201...
 - No improvement found | Elapsed time: 0.01
-Performing path relink at 600...
+Performing path relink at 401...
 - No improvement found | Elapsed time: 0.00
-Performing path relink at 800...
-- No improvement found | Elapsed time: 0.01
-Performing path relink at 1000...
+Performing path relink at 601...
 - No improvement found | Elapsed time: 0.00
-[23:54:27.816] End of optimization
+Performing path relink at 801...
+- No improvement found | Elapsed time: 0.00
+[20:21:23.584] End of optimization
 
 Total number of iterations: 1000
-Last update iteration: 0
-Total optimization time: 12.56
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Last update iteration: 1
+Total optimization time: 12.21
+Last update time: 0.01
+Large number of iterations between improvements: 1
 Total path relink time: 0.02
-Total path relink calls: 5
+Total path relink calls: 4
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 3 & 30 & 870 & 5 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 5.0 & 12.556089878082275 & - & - & 2564.0 & 12.0 & 1812.0
+ & 3 & 30 & 870 & 5 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 5.0 & 12.210978031158447 & - & - & 3503.0 & 13.4085 & 1812.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -268,7 +265,7 @@ Application parameters:
 |A′| = 2862
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-24T23:54:27.993
+> Experiment started at 2022-01-26T20:21:23.790
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -295,42 +292,41 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[23:54:27.993] Generating initial tour...
+[20:21:23.79] Generating initial tour...
 Initial profit: 5.0
 
-[23:54:27.994] Building BRKGA data...
+[20:21:23.79] Building BRKGA data...
 New population size: 50
 
-[23:54:27.994] Initializing BRKGA data...
+[20:21:23.791] Initializing BRKGA data...
 
-[23:54:28.104] Warming up...
+[20:21:23.918] Warming up...
 
-[23:54:28.177] Evolving...
+[20:21:23.988] Evolving...
 * Iteration | Cost | CurrentTime
-Performing path relink at 200...
+* 1 | 5 | 0.02 
+Performing path relink at 201...
+- No improvement found | Elapsed time: 0.02
+Performing path relink at 401...
 - No improvement found | Elapsed time: 0.01
-Performing path relink at 400...
-- No improvement found | Elapsed time: 0.02
-Performing path relink at 600...
-- No improvement found | Elapsed time: 0.02
-Performing path relink at 800...
-- No improvement found | Elapsed time: 0.02
-Performing path relink at 1000...
+Performing path relink at 601...
 - No improvement found | Elapsed time: 0.01
-[23:55:10.403] End of optimization
+Performing path relink at 801...
+- No improvement found | Elapsed time: 0.01
+[20:22:03.787] End of optimization
 
 Total number of iterations: 1000
-Last update iteration: 0
-Total optimization time: 42.23
-Last update time: 0.00
-Large number of iterations between improvements: 0
-Total path relink time: 0.08
-Total path relink calls: 5
+Last update iteration: 1
+Total optimization time: 39.80
+Last update time: 0.02
+Large number of iterations between improvements: 1
+Total path relink time: 0.05
+Total path relink calls: 4
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 4 & 54 & 2862 & 5 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 5.0 & 42.225260972976685 & - & - & 2658.0 & 11.871 & 1752.0
+ & 4 & 54 & 2862 & 5 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 5.0 & 39.799099922180176 & - & - & 2526.0 & 11.673000000000002 & 1752.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -351,7 +347,7 @@ Application parameters:
 |A′| = 2070
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-24T23:55:10.565
+> Experiment started at 2022-01-26T20:22:03.906
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -378,42 +374,41 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[23:55:10.565] Generating initial tour...
+[20:22:03.906] Generating initial tour...
 Initial profit: 5.0
 
-[23:55:10.79] Building BRKGA data...
+[20:22:04.134] Building BRKGA data...
 New population size: 50
 
-[23:55:10.79] Initializing BRKGA data...
+[20:22:04.134] Initializing BRKGA data...
 
-[23:55:10.844] Warming up...
+[20:22:04.206] Warming up...
 
-[23:55:10.898] Evolving...
+[20:22:04.258] Evolving...
 * Iteration | Cost | CurrentTime
-Performing path relink at 200...
+* 1 | 5 | 0.02 
+Performing path relink at 201...
 - No improvement found | Elapsed time: 0.01
-Performing path relink at 400...
+Performing path relink at 401...
 - No improvement found | Elapsed time: 0.01
-Performing path relink at 600...
+Performing path relink at 601...
 - No improvement found | Elapsed time: 0.01
-Performing path relink at 800...
+Performing path relink at 801...
 - No improvement found | Elapsed time: 0.01
-Performing path relink at 1000...
-- No improvement found | Elapsed time: 0.01
-[23:55:40.512] End of optimization
+[20:22:32.544] End of optimization
 
 Total number of iterations: 1000
-Last update iteration: 0
-Total optimization time: 29.61
-Last update time: 0.00
-Large number of iterations between improvements: 0
-Total path relink time: 0.06
-Total path relink calls: 5
+Last update iteration: 1
+Total optimization time: 28.29
+Last update time: 0.02
+Large number of iterations between improvements: 1
+Total path relink time: 0.04
+Total path relink calls: 4
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 5 & 46 & 2070 & 5 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 5.0 & 29.61396598815918 & - & - & 6084.0 & 19.3185 & 2265.0
+ & 5 & 46 & 2070 & 5 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 5.0 & 28.286128044128418 & - & - & 4626.0 & 17.131500000000003 & 2265.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -434,7 +429,7 @@ Application parameters:
 |A′| = 13110
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-24T23:55:40.775
+> Experiment started at 2022-01-26T20:22:32.809
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -461,32 +456,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[23:55:40.775] Generating initial tour...
+[20:22:32.809] Generating initial tour...
 Initial profit: 10.0
 
-[23:55:40.777] Building BRKGA data...
+[20:22:32.81] Building BRKGA data...
 New population size: 100
 
-[23:55:40.777] Initializing BRKGA data...
+[20:22:32.81] Initializing BRKGA data...
 
-[23:55:41.29] Warming up...
+[20:22:33.273] Warming up...
 
-[23:55:42.568] Evolving...
+[20:22:34.45] Evolving...
 * Iteration | Cost | CurrentTime
-[23:56:43.175] End of optimization
+* 1 | 10 | 0.35 
+[20:23:34.877] End of optimization
 
-Total number of iterations: 97
-Last update iteration: 0
-Total optimization time: 60.61
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 108
+Last update iteration: 1
+Total optimization time: 60.43
+Last update time: 0.35
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 6 & 115 & 13110 & 10 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 10.0 & 60.6070339679718 & - & - & 6758.0 & 41.592000000000006 & 6990.0
+ & 6 & 115 & 13110 & 10 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 10.0 & 60.427096128463745 & - & - & 6850.0 & 41.730000000000004 & 6990.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -507,7 +503,7 @@ Application parameters:
 |A′| = 5700
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-24T23:56:43.505
+> Experiment started at 2022-01-26T20:23:35.230
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -534,34 +530,35 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[23:56:43.505] Generating initial tour...
+[20:23:35.231] Generating initial tour...
 Initial profit: 10.0
 
-[23:56:43.56] Building BRKGA data...
+[20:23:35.286] Building BRKGA data...
 New population size: 100
 
-[23:56:43.561] Initializing BRKGA data...
+[20:23:35.286] Initializing BRKGA data...
 
-[23:56:43.802] Warming up...
+[20:23:35.478] Warming up...
 
-[23:56:44.267] Evolving...
+[20:23:35.919] Evolving...
 * Iteration | Cost | CurrentTime
-Performing path relink at 200...
+* 1 | 10 | 0.13 
+Performing path relink at 201...
 - No improvement found | Elapsed time: 0.17
-[23:57:44.307] End of optimization
+[20:24:35.969] End of optimization
 
-Total number of iterations: 277
-Last update iteration: 0
-Total optimization time: 60.04
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 304
+Last update iteration: 1
+Total optimization time: 60.05
+Last update time: 0.13
+Large number of iterations between improvements: 1
 Total path relink time: 0.17
 Total path relink calls: 1
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 7 & 76 & 5700 & 10 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 10.0 & 60.040339946746826 & - & - & 6895.0 & 32.7075 & 4970.0
+ & 7 & 76 & 5700 & 10 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 10.0 & 60.05056190490723 & - & - & 7101.0 & 33.0165 & 4970.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -582,7 +579,7 @@ Application parameters:
 |A′| = 10920
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-24T23:57:44.723
+> Experiment started at 2022-01-26T20:24:36.335
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -609,32 +606,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[23:57:44.723] Generating initial tour...
+[20:24:36.335] Generating initial tour...
 Initial profit: 10.0
 
-[23:57:44.724] Building BRKGA data...
+[20:24:36.336] Building BRKGA data...
 New population size: 100
 
-[23:57:44.724] Initializing BRKGA data...
+[20:24:36.336] Initializing BRKGA data...
 
-[23:57:45.142] Warming up...
+[20:24:36.72] Warming up...
 
-[23:57:46.168] Evolving...
+[20:24:37.611] Evolving...
 * Iteration | Cost | CurrentTime
-[23:58:46.514] End of optimization
+* 1 | 10 | 0.28 
+[20:25:37.727] End of optimization
 
-Total number of iterations: 124
-Last update iteration: 0
-Total optimization time: 60.35
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 138
+Last update iteration: 1
+Total optimization time: 60.12
+Last update time: 0.28
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 8 & 105 & 10920 & 10 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 10.0 & 60.34580707550049 & - & - & 6750.0 & 32.6475 & 5005.0
+ & 8 & 105 & 10920 & 10 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 10.0 & 60.115530014038086 & - & - & 8427.0 & 35.163000000000004 & 5005.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -655,7 +653,7 @@ Application parameters:
 |A′| = 8930
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-24T23:58:46.884
+> Experiment started at 2022-01-26T20:25:37.988
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -682,32 +680,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[23:58:46.885] Generating initial tour...
+[20:25:37.989] Generating initial tour...
 Initial profit: 10.0
 
-[23:58:46.886] Building BRKGA data...
+[20:25:37.989] Building BRKGA data...
 New population size: 100
 
-[23:58:46.886] Initializing BRKGA data...
+[20:25:37.99] Initializing BRKGA data...
 
-[23:58:47.176] Warming up...
+[20:25:38.254] Warming up...
 
-[23:58:47.98] Evolving...
+[20:25:38.963] Evolving...
 * Iteration | Cost | CurrentTime
-[23:59:48.001] End of optimization
+* 1 | 10 | 0.22 
+[20:26:39.162] End of optimization
 
-Total number of iterations: 167
-Last update iteration: 0
-Total optimization time: 60.02
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 186
+Last update iteration: 1
+Total optimization time: 60.20
+Last update time: 0.22
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 9 & 95 & 8930 & 10 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 10.0 & 60.021416902542114 & - & - & 7386.0 & 31.324500000000004 & 4499.0
+ & 9 & 95 & 8930 & 10 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 10.0 & 60.19879913330078 & - & - & 8012.0 & 32.26350000000001 & 4499.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -728,7 +727,7 @@ Application parameters:
 |A′| = 4290
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-24T23:59:48.172
+> Experiment started at 2022-01-26T20:26:39.401
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -755,34 +754,35 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[23:59:48.173] Generating initial tour...
+[20:26:39.401] Generating initial tour...
 Initial profit: 10.0
 
-[23:59:48.173] Building BRKGA data...
+[20:26:39.402] Building BRKGA data...
 New population size: 100
 
-[23:59:48.173] Initializing BRKGA data...
+[20:26:39.402] Initializing BRKGA data...
 
-[23:59:48.384] Warming up...
+[20:26:39.58] Warming up...
 
-[23:59:48.728] Evolving...
+[20:26:39.878] Evolving...
 * Iteration | Cost | CurrentTime
-Performing path relink at 200...
-- No improvement found | Elapsed time: 0.14
-[00:00:48.862] End of optimization
+* 1 | 10 | 0.10 
+Performing path relink at 201...
+- No improvement found | Elapsed time: 0.12
+[20:27:39.984] End of optimization
 
-Total number of iterations: 367
-Last update iteration: 0
-Total optimization time: 60.13
-Last update time: 0.00
-Large number of iterations between improvements: 0
-Total path relink time: 0.14
+Total number of iterations: 397
+Last update iteration: 1
+Total optimization time: 60.11
+Last update time: 0.10
+Large number of iterations between improvements: 1
+Total path relink time: 0.12
 Total path relink calls: 1
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 10 & 66 & 4290 & 10 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 10.0 & 60.133517026901245 & - & - & 9432.0 & 28.237500000000004 & 3131.0
+ & 10 & 66 & 4290 & 10 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 10.0 & 60.105194091796875 & - & - & 9997.0 & 29.085 & 3131.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -803,7 +803,7 @@ Application parameters:
 |A′| = 17822
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:00:49.406
+> Experiment started at 2022-01-26T20:27:40.594
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -830,32 +830,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:00:49.406] Generating initial tour...
+[20:27:40.595] Generating initial tour...
 Initial profit: 15.0
 
-[00:00:49.408] Building BRKGA data...
+[20:27:40.597] Building BRKGA data...
 New population size: 150
 
-[00:00:49.408] Initializing BRKGA data...
+[20:27:40.597] Initializing BRKGA data...
 
-[00:00:50.562] Warming up...
+[20:27:41.612] Warming up...
 
-[00:00:54.535] Evolving...
+[20:27:45.015] Evolving...
 * Iteration | Cost | CurrentTime
-[00:01:55.393] End of optimization
+* 1 | 15 | 0.84 
+[20:28:45.784] End of optimization
 
-Total number of iterations: 44
-Last update iteration: 0
-Total optimization time: 60.86
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 50
+Last update iteration: 1
+Total optimization time: 60.77
+Last update time: 0.84
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 11 & 134 & 17822 & 15 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 15.0 & 60.85785698890686 & - & - & 10930.0 & 41.9955 & 5689.0
+ & 11 & 134 & 17822 & 15 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 15.0 & 60.76869297027588 & - & - & 13923.0 & 46.485 & 5689.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -876,7 +877,7 @@ Application parameters:
 |A′| = 20880
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:01:55.800
+> Experiment started at 2022-01-26T20:28:46.328
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -903,32 +904,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:01:55.8] Generating initial tour...
+[20:28:46.328] Generating initial tour...
 Initial profit: 15.0
 
-[00:01:55.802] Building BRKGA data...
+[20:28:46.33] Building BRKGA data...
 New population size: 150
 
-[00:01:55.802] Initializing BRKGA data...
+[20:28:46.33] Initializing BRKGA data...
 
-[00:01:57.124] Warming up...
+[20:28:47.472] Warming up...
 
-[00:02:01.318] Evolving...
+[20:28:51.046] Evolving...
 * Iteration | Cost | CurrentTime
-[00:03:02.722] End of optimization
+* 1 | 15 | 0.96 
+[20:29:51.738] End of optimization
 
-Total number of iterations: 37
-Last update iteration: 0
-Total optimization time: 61.40
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 42
+Last update iteration: 1
+Total optimization time: 60.69
+Last update time: 0.96
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 12 & 145 & 20880 & 15 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 15.0 & 61.40405082702637 & - & - & 14443.0 & 43.3185 & 4812.0
+ & 12 & 145 & 20880 & 15 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 15.0 & 60.69195008277893 & - & - & 14252.0 & 43.03200000000001 & 4812.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -949,7 +951,7 @@ Application parameters:
 |A′| = 14042
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:03:03.277
+> Experiment started at 2022-01-26T20:29:52.235
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -976,32 +978,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:03:03.277] Generating initial tour...
+[20:29:52.235] Generating initial tour...
 Initial profit: 15.0
 
-[00:03:03.443] Building BRKGA data...
+[20:29:52.415] Building BRKGA data...
 New population size: 150
 
-[00:03:03.443] Initializing BRKGA data...
+[20:29:52.415] Initializing BRKGA data...
 
-[00:03:04.295] Warming up...
+[20:29:53.163] Warming up...
 
-[00:03:07.071] Evolving...
+[20:29:55.569] Evolving...
 * Iteration | Cost | CurrentTime
-[00:04:07.095] End of optimization
+* 1 | 15 | 0.63 
+[20:30:55.611] End of optimization
 
-Total number of iterations: 57
-Last update iteration: 0
-Total optimization time: 60.02
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 64
+Last update iteration: 1
+Total optimization time: 60.04
+Last update time: 0.63
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 13 & 119 & 14042 & 15 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 15.0 & 60.02395820617676 & - & - & 15249.0 & 50.791500000000006 & 6204.0
+ & 13 & 119 & 14042 & 15 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 15.0 & 60.041637897491455 & - & - & 16741.0 & 53.0295 & 6204.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -1022,7 +1025,7 @@ Application parameters:
 |A′| = 10920
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:04:07.367
+> Experiment started at 2022-01-26T20:30:55.981
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -1049,32 +1052,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:04:07.367] Generating initial tour...
+[20:30:55.981] Generating initial tour...
 Initial profit: 15.0
 
-[00:04:07.368] Building BRKGA data...
+[20:30:55.982] Building BRKGA data...
 New population size: 150
 
-[00:04:07.368] Initializing BRKGA data...
+[20:30:55.982] Initializing BRKGA data...
 
-[00:04:07.958] Warming up...
+[20:30:56.52] Warming up...
 
-[00:04:09.948] Evolving...
+[20:30:58.233] Evolving...
 * Iteration | Cost | CurrentTime
-[00:05:10.191] End of optimization
+* 1 | 15 | 0.46 
+[20:31:58.26] End of optimization
 
-Total number of iterations: 80
-Last update iteration: 0
-Total optimization time: 60.24
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 89
+Last update iteration: 1
+Total optimization time: 60.03
+Last update time: 0.46
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 14 & 105 & 10920 & 15 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 15.0 & 60.24265098571777 & - & - & 12368.0 & 46.461 & 6202.0
+ & 14 & 105 & 10920 & 15 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 15.0 & 60.02723693847656 & - & - & 11923.0 & 45.793499999999995 & 6202.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -1095,7 +1099,7 @@ Application parameters:
 |A′| = 24806
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:05:10.939
+> Experiment started at 2022-01-26T20:31:59.168
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -1122,32 +1126,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:05:10.939] Generating initial tour...
+[20:31:59.168] Generating initial tour...
 Initial profit: 15.0
 
-[00:05:10.942] Building BRKGA data...
+[20:31:59.171] Building BRKGA data...
 New population size: 150
 
-[00:05:10.942] Initializing BRKGA data...
+[20:31:59.171] Initializing BRKGA data...
 
-[00:05:12.676] Warming up...
+[20:32:00.634] Warming up...
 
-[00:05:18.134] Evolving...
+[20:32:05.515] Evolving...
 * Iteration | Cost | CurrentTime
-[00:06:19.549] End of optimization
+* 1 | 15 | 1.23 
+[20:33:07.343] End of optimization
 
-Total number of iterations: 29
-Last update iteration: 0
-Total optimization time: 61.41
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 34
+Last update iteration: 1
+Total optimization time: 61.83
+Last update time: 1.23
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 15 & 158 & 24806 & 15 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 15.0 & 61.41449499130249 & - & - & 14460.0 & 56.28150000000001 & 7687.0
+ & 15 & 158 & 24806 & 15 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 15.0 & 61.82730197906494 & - & - & 13359.0 & 54.63000000000001 & 7687.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -1168,7 +1173,7 @@ Application parameters:
 |A′| = 43890
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:06:20.837
+> Experiment started at 2022-01-26T20:33:08.392
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -1195,32 +1200,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:06:20.838] Generating initial tour...
+[20:33:08.392] Generating initial tour...
 Initial profit: 20.0
 
-[00:06:20.842] Building BRKGA data...
+[20:33:08.396] Building BRKGA data...
 New population size: 200
 
-[00:06:20.842] Initializing BRKGA data...
+[20:33:08.396] Initializing BRKGA data...
 
-[00:06:26.352] Warming up...
+[20:33:13.125] Warming up...
 
-[00:06:44.518] Evolving...
+[20:33:28.963] Evolving...
 * Iteration | Cost | CurrentTime
-[00:07:48.433] End of optimization
+* 1 | 20 | 3.56 
+[20:34:33.796] End of optimization
 
-Total number of iterations: 11
-Last update iteration: 0
-Total optimization time: 63.91
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 13
+Last update iteration: 1
+Total optimization time: 64.83
+Last update time: 3.56
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 16 & 210 & 43890 & 20 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 20.0 & 63.914369106292725 & - & - & 15951.0 & 58.783500000000004 & 7746.0
+ & 16 & 210 & 43890 & 20 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 20.0 & 64.8328709602356 & - & - & 19666.0 & 64.356 & 7746.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -1241,7 +1247,7 @@ Application parameters:
 |A′| = 23562
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:07:49.061
+> Experiment started at 2022-01-26T20:34:34.356
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -1268,32 +1274,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:07:49.061] Generating initial tour...
+[20:34:34.356] Generating initial tour...
 Initial profit: 20.0
 
-[00:07:49.189] Building BRKGA data...
+[20:34:34.484] Building BRKGA data...
 New population size: 200
 
-[00:07:49.189] Initializing BRKGA data...
+[20:34:34.485] Initializing BRKGA data...
 
-[00:07:51.585] Warming up...
+[20:34:36.562] Warming up...
 
-[00:07:59.71] Evolving...
+[20:34:44.059] Evolving...
 * Iteration | Cost | CurrentTime
-[00:09:02.279] End of optimization
+* 1 | 20 | 1.66 
+[20:35:45.838] End of optimization
 
-Total number of iterations: 22
-Last update iteration: 0
-Total optimization time: 62.57
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 25
+Last update iteration: 1
+Total optimization time: 61.78
+Last update time: 1.66
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 17 & 154 & 23562 & 20 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 20.0 & 62.56848692893982 & - & - & 20290.0 & 71.5155 & 9129.0
+ & 17 & 154 & 23562 & 20 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 20.0 & 61.77849793434143 & - & - & 19148.0 & 69.80250000000001 & 9129.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -1314,7 +1321,7 @@ Application parameters:
 |A′| = 17556
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:09:02.629
+> Experiment started at 2022-01-26T20:35:46.187
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -1341,32 +1348,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:09:02.63] Generating initial tour...
+[20:35:46.187] Generating initial tour...
 Initial profit: 20.0
 
-[00:09:02.71] Building BRKGA data...
+[20:35:46.267] Building BRKGA data...
 New population size: 200
 
-[00:09:02.71] Initializing BRKGA data...
+[20:35:46.267] Initializing BRKGA data...
 
-[00:09:04.344] Warming up...
+[20:35:47.697] Warming up...
 
-[00:09:10.448] Evolving...
+[20:35:52.944] Evolving...
 * Iteration | Cost | CurrentTime
-[00:10:11.572] End of optimization
+* 1 | 20 | 1.13 
+[20:36:53.088] End of optimization
 
-Total number of iterations: 31
-Last update iteration: 0
-Total optimization time: 61.12
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 35
+Last update iteration: 1
+Total optimization time: 60.14
+Last update time: 1.13
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 18 & 133 & 17556 & 20 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 20.0 & 61.12455081939697 & - & - & 15974.0 & 54.7815 & 6849.0
+ & 18 & 133 & 17556 & 20 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 20.0 & 60.14475893974304 & - & - & 17094.0 & 56.4615 & 6849.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -1387,7 +1395,7 @@ Application parameters:
 |A′| = 22952
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:10:12.157
+> Experiment started at 2022-01-26T20:36:53.773
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -1414,32 +1422,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:10:12.157] Generating initial tour...
+[20:36:53.774] Generating initial tour...
 Initial profit: 20.0
 
-[00:10:12.16] Building BRKGA data...
+[20:36:53.776] Building BRKGA data...
 New population size: 200
 
-[00:10:12.16] Initializing BRKGA data...
+[20:36:53.776] Initializing BRKGA data...
 
-[00:10:14.397] Warming up...
+[20:36:55.704] Warming up...
 
-[00:10:22.399] Evolving...
+[20:37:02.38] Evolving...
 * Iteration | Cost | CurrentTime
-[00:11:22.553] End of optimization
+* 1 | 20 | 1.51 
+[20:38:03.857] End of optimization
 
-Total number of iterations: 23
-Last update iteration: 0
-Total optimization time: 60.15
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 27
+Last update iteration: 1
+Total optimization time: 61.48
+Last update time: 1.51
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 19 & 152 & 22952 & 20 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 20.0 & 60.153172969818115 & - & - & 14700.0 & 61.84350000000001 & 8843.0
+ & 19 & 152 & 22952 & 20 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 20.0 & 61.4767701625824 & - & - & 16136.0 & 63.99750000000001 & 8843.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -1460,7 +1469,7 @@ Application parameters:
 |A′| = 25122
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:11:23.117
+> Experiment started at 2022-01-26T20:38:04.364
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -1487,32 +1496,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:11:23.117] Generating initial tour...
+[20:38:04.364] Generating initial tour...
 Initial profit: 20.0
 
-[00:11:23.271] Building BRKGA data...
+[20:38:04.536] Building BRKGA data...
 New population size: 200
 
-[00:11:23.271] Initializing BRKGA data...
+[20:38:04.536] Initializing BRKGA data...
 
-[00:11:25.967] Warming up...
+[20:38:06.829] Warming up...
 
-[00:11:35.263] Evolving...
+[20:38:14.745] Evolving...
 * Iteration | Cost | CurrentTime
-[00:12:38.424] End of optimization
+* 1 | 20 | 1.84 
+[20:39:17.323] End of optimization
 
-Total number of iterations: 20
-Last update iteration: 0
-Total optimization time: 63.16
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 23
+Last update iteration: 1
+Total optimization time: 62.58
+Last update time: 1.84
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 20 & 159 & 25122 & 20 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 20.0 & 63.1615149974823 & - & - & 17036.0 & 67.242 & 9264.0
+ & 20 & 159 & 25122 & 20 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 20.0 & 62.57789397239685 & - & - & 20543.0 & 72.5025 & 9264.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -1533,7 +1543,7 @@ Application parameters:
 |A′| = 23870
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:12:39.400
+> Experiment started at 2022-01-26T20:39:18.184
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -1560,32 +1570,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:12:39.4] Generating initial tour...
+[20:39:18.184] Generating initial tour...
 Initial profit: 25.0
 
-[00:12:39.403] Building BRKGA data...
+[20:39:18.187] Building BRKGA data...
 New population size: 250
 
-[00:12:39.403] Initializing BRKGA data...
+[20:39:18.188] Initializing BRKGA data...
 
-[00:12:42.552] Warming up...
+[20:39:20.901] Warming up...
 
-[00:12:54.581] Evolving...
+[20:39:31.55] Evolving...
 * Iteration | Cost | CurrentTime
-[00:13:55.202] End of optimization
+* 1 | 25 | 2.17 
+[20:40:33.627] End of optimization
 
-Total number of iterations: 17
-Last update iteration: 0
-Total optimization time: 60.62
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 20
+Last update iteration: 1
+Total optimization time: 62.08
+Last update time: 2.17
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 21 & 155 & 23870 & 25 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 25.0 & 60.62080121040344 & - & - & 24858.0 & 85.167 & 10640.0
+ & 21 & 155 & 23870 & 25 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 25.0 & 62.07668995857239 & - & - & 22307.0 & 81.34049999999999 & 10640.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -1606,7 +1617,7 @@ Application parameters:
 |A′| = 43056
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:13:56.447
+> Experiment started at 2022-01-26T20:40:34.688
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -1633,32 +1644,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:13:56.447] Generating initial tour...
+[20:40:34.688] Generating initial tour...
 Initial profit: 25.0
 
-[00:13:56.451] Building BRKGA data...
+[20:40:34.693] Building BRKGA data...
 New population size: 250
 
-[00:13:56.452] Initializing BRKGA data...
+[20:40:34.693] Initializing BRKGA data...
 
-[00:14:03.232] Warming up...
+[20:40:40.255] Warming up...
 
-[00:14:24.453] Evolving...
+[20:40:59.895] Evolving...
 * Iteration | Cost | CurrentTime
-[00:15:26.795] End of optimization
+* 1 | 25 | 4.48 
+[20:42:06.031] End of optimization
 
-Total number of iterations: 9
-Last update iteration: 0
-Total optimization time: 62.34
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 11
+Last update iteration: 1
+Total optimization time: 66.14
+Last update time: 4.48
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 22 & 208 & 43056 & 25 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 25.0 & 62.341630935668945 & - & - & 21012.0 & 76.905 & 10086.0
+ & 22 & 208 & 43056 & 25 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 25.0 & 66.13588309288025 & - & - & 20528.0 & 76.179 & 10086.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -1679,7 +1691,7 @@ Application parameters:
 |A′| = 61256
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:15:27.985
+> Experiment started at 2022-01-26T20:42:07.254
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -1706,32 +1718,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:15:27.985] Generating initial tour...
+[20:42:07.254] Generating initial tour...
 Initial profit: 25.0
 
-[00:15:27.99] Building BRKGA data...
+[20:42:07.259] Building BRKGA data...
 New population size: 250
 
-[00:15:27.991] Initializing BRKGA data...
+[20:42:07.259] Initializing BRKGA data...
 
-[00:15:38.493] Warming up...
+[20:42:16.392] Warming up...
 
-[00:16:06.37] Evolving...
+[20:42:41.161] Evolving...
 * Iteration | Cost | CurrentTime
-[00:17:07.93] End of optimization
+* 1 | 25 | 7.08 
+[20:43:42.39] End of optimization
 
-Total number of iterations: 6
-Last update iteration: 0
-Total optimization time: 61.56
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 7
+Last update iteration: 1
+Total optimization time: 61.23
+Last update time: 7.08
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 23 & 248 & 61256 & 25 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 25.0 & 61.55939984321594 & - & - & 19627.0 & 82.869 & 11873.0
+ & 23 & 248 & 61256 & 25 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 25.0 & 61.22927403450012 & - & - & 21677.0 & 85.94399999999999 & 11873.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -1752,7 +1765,7 @@ Application parameters:
 |A′| = 34782
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:17:08.965
+> Experiment started at 2022-01-26T20:43:43.445
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -1779,32 +1792,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:17:08.965] Generating initial tour...
+[20:43:43.445] Generating initial tour...
 Initial profit: 25.0
 
-[00:17:08.97] Building BRKGA data...
+[20:43:43.45] Building BRKGA data...
 New population size: 250
 
-[00:17:08.97] Initializing BRKGA data...
+[20:43:43.45] Initializing BRKGA data...
 
-[00:17:14.595] Warming up...
+[20:43:48.021] Warming up...
 
-[00:17:33.803] Evolving...
+[20:44:05.795] Evolving...
 * Iteration | Cost | CurrentTime
-[00:18:38.305] End of optimization
+* 1 | 25 | 3.68 
+[20:45:05.848] End of optimization
 
-Total number of iterations: 11
-Last update iteration: 0
-Total optimization time: 64.50
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 12
+Last update iteration: 1
+Total optimization time: 60.05
+Last update time: 3.68
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 24 & 187 & 34782 & 25 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 25.0 & 64.50247406959534 & - & - & 24050.0 & 84.828 & 10834.0
+ & 24 & 187 & 34782 & 25 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 25.0 & 60.05315613746643 & - & - & 23900.0 & 84.60300000000002 & 10834.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -1825,7 +1839,7 @@ Application parameters:
 |A′| = 49506
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:18:39.507
+> Experiment started at 2022-01-26T20:45:07.138
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -1852,32 +1866,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:18:39.508] Generating initial tour...
+[20:45:07.138] Generating initial tour...
 Initial profit: 25.0
 
-[00:18:39.513] Building BRKGA data...
+[20:45:07.143] Building BRKGA data...
 New population size: 250
 
-[00:18:39.513] Initializing BRKGA data...
+[20:45:07.143] Initializing BRKGA data...
 
-[00:18:47.951] Warming up...
+[20:45:14.183] Warming up...
 
-[00:19:12.271] Evolving...
+[20:45:36.075] Evolving...
 * Iteration | Cost | CurrentTime
-[00:20:21.573] End of optimization
+* 1 | 25 | 5.65 
+[20:46:42.196] End of optimization
 
-Total number of iterations: 8
-Last update iteration: 0
-Total optimization time: 69.30
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 9
+Last update iteration: 1
+Total optimization time: 66.12
+Last update time: 5.65
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 25 & 223 & 49506 & 25 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 25.0 & 69.30184698104858 & - & - & 19994.0 & 82.641 & 11700.0
+ & 25 & 223 & 49506 & 25 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 25.0 & 66.1207640171051 & - & - & 21255.0 & 84.5325 & 11700.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -1898,7 +1913,7 @@ Application parameters:
 |A′| = 80372
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:20:23.798
+> Experiment started at 2022-01-26T20:46:44.420
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -1925,32 +1940,35 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:20:23.798] Generating initial tour...
+[20:46:44.42] Generating initial tour...
 Initial profit: 30.0
 
-[00:20:23.806] Building BRKGA data...
+[20:46:44.428] Building BRKGA data...
 New population size: 300
 
-[00:20:23.806] Initializing BRKGA data...
+[20:46:44.428] Initializing BRKGA data...
 
-[00:20:44.151] Warming up...
+[20:47:01.377] Warming up...
 
-[00:21:27.201] Evolving...
+[20:47:38.961] Evolving...
 * Iteration | Cost | CurrentTime
-[00:22:38.358] End of optimization
+* 1 | 25 | 13.14 
+* 2 | 26 | 27.40 
+* 4 | 27 | 58.54 
+[20:48:54.306] End of optimization
 
-Total number of iterations: 4
-Last update iteration: 0
-Total optimization time: 71.16
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 5
+Last update iteration: 4
+Total optimization time: 75.35
+Last update time: 58.54
+Large number of iterations between improvements: 2
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 26 & 284 & 80372 & 30 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 30.0 & 71.1570291519165 & - & - & 32032.0 & 111.732 & 14152.0
+ & 26 & 284 & 80372 & 30 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 27.0 & 75.34559202194214 & - & - & 26462.0 & 96.2445 & 12567.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -1971,7 +1989,7 @@ Application parameters:
 |A′| = 51756
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:22:39.276
+> Experiment started at 2022-01-26T20:48:55.185
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -1998,32 +2016,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:22:39.277] Generating initial tour...
+[20:48:55.185] Generating initial tour...
 Initial profit: 30.0
 
-[00:22:39.283] Building BRKGA data...
+[20:48:55.191] Building BRKGA data...
 New population size: 300
 
-[00:22:39.283] Initializing BRKGA data...
+[20:48:55.191] Initializing BRKGA data...
 
-[00:22:51.025] Warming up...
+[20:49:05.177] Warming up...
 
-[00:23:20.171] Evolving...
+[20:49:31.367] Evolving...
 * Iteration | Cost | CurrentTime
-[00:24:25.7] End of optimization
+* 1 | 30 | 7.79 
+[20:50:37.81] End of optimization
 
-Total number of iterations: 6
-Last update iteration: 0
-Total optimization time: 65.53
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 7
+Last update iteration: 1
+Total optimization time: 66.44
+Last update time: 7.79
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 27 & 228 & 51756 & 30 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 30.0 & 65.52854084968567 & - & - & 19765.0 & 88.602 & 13101.0
+ & 27 & 228 & 51756 & 30 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 30.0 & 66.44277906417847 & - & - & 22021.0 & 91.98599999999998 & 13101.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -2044,7 +2063,7 @@ Application parameters:
 |A′| = 95172
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:24:27.952
+> Experiment started at 2022-01-26T20:50:40.030
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -2071,32 +2090,34 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:24:27.953] Generating initial tour...
+[20:50:40.03] Generating initial tour...
 Initial profit: 30.0
 
-[00:24:27.961] Building BRKGA data...
+[20:50:40.039] Building BRKGA data...
 New population size: 300
 
-[00:24:27.961] Initializing BRKGA data...
+[20:50:40.039] Initializing BRKGA data...
 
-[00:24:53.021] Warming up...
+[20:51:00.918] Warming up...
 
-[00:25:43.266] Evolving...
+[20:51:44.38] Evolving...
 * Iteration | Cost | CurrentTime
-[00:26:45.927] End of optimization
+* 1 | 25 | 16.01 
+* 4 | 26 | 71.61 
+[20:52:55.986] End of optimization
 
-Total number of iterations: 3
-Last update iteration: 0
-Total optimization time: 62.66
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 4
+Last update iteration: 4
+Total optimization time: 71.61
+Last update time: 71.61
+Large number of iterations between improvements: 3
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 28 & 309 & 95172 & 30 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 30.0 & 62.66100215911865 & - & - & 26730.0 & 110.20049999999999 & 15579.0
+ & 28 & 309 & 95172 & 30 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 26.0 & 71.6060791015625 & - & - & 22995.0 & 92.16900000000001 & 12817.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -2117,7 +2138,7 @@ Application parameters:
 |A′| = 73712
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:26:47.405
+> Experiment started at 2022-01-26T20:52:57.511
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -2144,32 +2165,35 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:26:47.405] Generating initial tour...
+[20:52:57.512] Generating initial tour...
 Initial profit: 30.0
 
-[00:26:47.414] Building BRKGA data...
+[20:52:57.521] Building BRKGA data...
 New population size: 300
 
-[00:26:47.415] Initializing BRKGA data...
+[20:52:57.521] Initializing BRKGA data...
 
-[00:27:07.466] Warming up...
+[20:53:14.483] Warming up...
 
-[00:27:49.775] Evolving...
+[20:53:51.851] Evolving...
 * Iteration | Cost | CurrentTime
-[00:28:59.337] End of optimization
+* 1 | 25 | 13.09 
+* 2 | 26 | 27.27 
+* 4 | 28 | 58.12 
+[20:55:06.826] End of optimization
 
-Total number of iterations: 4
-Last update iteration: 0
-Total optimization time: 69.56
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 5
+Last update iteration: 4
+Total optimization time: 74.97
+Last update time: 58.12
+Large number of iterations between improvements: 2
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 29 & 272 & 73712 & 30 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 30.0 & 69.56128311157227 & - & - & 21124.0 & 93.00750000000002 & 13627.0
+ & 29 & 272 & 73712 & 30 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 28.0 & 74.97406077384949 & - & - & 21826.0 & 90.87 & 12918.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -2190,7 +2214,7 @@ Application parameters:
 |A′| = 44310
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:29:00.843
+> Experiment started at 2022-01-26T20:55:08.070
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -2217,32 +2241,36 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:29:00.843] Generating initial tour...
+[20:55:08.07] Generating initial tour...
 Initial profit: 30.0
 
-[00:29:00.91] Building BRKGA data...
+[20:55:08.137] Building BRKGA data...
 New population size: 300
 
-[00:29:00.91] Initializing BRKGA data...
+[20:55:08.137] Initializing BRKGA data...
 
-[00:29:10.024] Warming up...
+[20:55:15.775] Warming up...
 
-[00:29:35.029] Evolving...
+[20:55:38.418] Evolving...
 * Iteration | Cost | CurrentTime
-[00:30:36.407] End of optimization
+* 1 | 25 | 6.02 
+* 2 | 26 | 12.58 
+* 4 | 28 | 26.89 
+* 6 | 29 | 42.67 
+[20:56:46.581] End of optimization
 
-Total number of iterations: 7
-Last update iteration: 0
-Total optimization time: 61.38
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 9
+Last update iteration: 6
+Total optimization time: 68.16
+Last update time: 42.67
+Large number of iterations between improvements: 2
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 30 & 211 & 44310 & 30 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 30.0 & 61.37746500968933 & - & - & 26093.0 & 99.8265 & 13486.0
+ & 30 & 211 & 44310 & 30 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 29.0 & 68.16277384757996 & - & - & 25899.0 & 93.55950000000001 & 12158.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -2263,7 +2291,7 @@ Application parameters:
 |A′| = 93330
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:30:38.428
+> Experiment started at 2022-01-26T20:56:48.518
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -2290,32 +2318,35 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:30:38.428] Generating initial tour...
+[20:56:48.518] Generating initial tour...
 Initial profit: 35.0
 
-[00:30:38.437] Building BRKGA data...
+[20:56:48.527] Building BRKGA data...
 New population size: 350
 
-[00:30:38.437] Initializing BRKGA data...
+[20:56:48.527] Initializing BRKGA data...
 
-[00:31:08.77] Warming up...
+[20:57:13.231] Warming up...
 
-[00:32:07.458] Evolving...
+[20:58:03.244] Evolving...
 * Iteration | Cost | CurrentTime
-[00:33:23.391] End of optimization
+* 1 | 28 | 19.08 
+* 2 | 29 | 39.92 
+* 3 | 31 | 62.22 
+[20:59:05.462] End of optimization
 
 Total number of iterations: 3
-Last update iteration: 0
-Total optimization time: 75.93
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Last update iteration: 3
+Total optimization time: 62.22
+Last update time: 62.22
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 31 & 306 & 93330 & 35 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 35.0 & 75.93258118629456 & - & - & 30286.0 & 111.33599999999998 & 14646.0
+ & 31 & 306 & 93330 & 35 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 31.0 & 62.21787405014038 & - & - & 27150.0 & 97.28100000000002 & 12568.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -2336,7 +2367,7 @@ Application parameters:
 |A′| = 89700
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:33:26.470
+> Experiment started at 2022-01-26T20:59:08.499
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -2363,32 +2394,34 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:33:26.47] Generating initial tour...
+[20:59:08.499] Generating initial tour...
 Initial profit: 35.0
 
-[00:33:26.479] Building BRKGA data...
+[20:59:08.507] Building BRKGA data...
 New population size: 350
 
-[00:33:26.479] Initializing BRKGA data...
+[20:59:08.507] Initializing BRKGA data...
 
-[00:33:54.576] Warming up...
+[20:59:31.5] Warming up...
 
-[00:34:49.579] Evolving...
+[21:00:18.597] Evolving...
 * Iteration | Cost | CurrentTime
-[00:35:59.478] End of optimization
+* 1 | 27 | 17.74 
+* 3 | 29 | 57.46 
+[21:01:37.515] End of optimization
 
-Total number of iterations: 3
-Last update iteration: 0
-Total optimization time: 69.90
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 4
+Last update iteration: 3
+Total optimization time: 78.92
+Last update time: 57.46
+Large number of iterations between improvements: 2
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 32 & 300 & 89700 & 35 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 35.0 & 69.89876008033752 & - & - & 36700.0 & 125.30399999999997 & 15612.0
+ & 32 & 300 & 89700 & 35 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 29.0 & 78.91792798042297 & - & - & 27731.0 & 95.45249999999999 & 11968.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -2409,7 +2442,7 @@ Application parameters:
 |A′| = 112560
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:36:02.354
+> Experiment started at 2022-01-26T21:01:40.440
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -2436,32 +2469,34 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:36:02.354] Generating initial tour...
+[21:01:40.441] Generating initial tour...
 Initial profit: 35.0
 
-[00:36:02.365] Building BRKGA data...
+[21:01:40.452] Building BRKGA data...
 New population size: 350
 
-[00:36:02.366] Initializing BRKGA data...
+[21:01:40.452] Initializing BRKGA data...
 
-[00:36:44.591] Warming up...
+[21:02:14.898] Warming up...
 
-[00:38:02.335] Evolving...
+[21:03:19.613] Evolving...
 * Iteration | Cost | CurrentTime
-[00:39:09.99] End of optimization
+* 1 | 27 | 26.35 
+* 2 | 28 | 54.85 
+[21:04:44.887] End of optimization
 
-Total number of iterations: 2
-Last update iteration: 0
-Total optimization time: 67.65
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 3
+Last update iteration: 2
+Total optimization time: 85.27
+Last update time: 54.85
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 33 & 336 & 112560 & 35 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 35.0 & 67.65497183799744 & - & - & 36890.0 & 124.39649999999997 & 15347.0
+ & 33 & 336 & 112560 & 35 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 28.0 & 85.27325296401978 & - & - & 23809.0 & 94.011 & 12955.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -2482,7 +2517,7 @@ Application parameters:
 |A′| = 109892
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:39:13.252
+> Experiment started at 2022-01-26T21:04:48.142
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -2509,32 +2544,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:39:13.252] Generating initial tour...
+[21:04:48.142] Generating initial tour...
 Initial profit: 35.0
 
-[00:39:13.261] Building BRKGA data...
+[21:04:48.151] Building BRKGA data...
 New population size: 350
 
-[00:39:13.261] Initializing BRKGA data...
+[21:04:48.151] Initializing BRKGA data...
 
-[00:39:49.129] Warming up...
+[21:05:17.329] Warming up...
 
-[00:40:57.05] Evolving...
+[21:06:14.516] Evolving...
 * Iteration | Cost | CurrentTime
-[00:42:27.376] End of optimization
+* 1 | 28 | 22.58 
+[21:07:27.667] End of optimization
 
 Total number of iterations: 3
-Last update iteration: 0
-Total optimization time: 90.33
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Last update iteration: 1
+Total optimization time: 73.15
+Last update time: 22.58
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 34 & 332 & 109892 & 35 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 35.0 & 90.32609701156616 & - & - & 34104.0 & 122.53050000000003 & 15861.0
+ & 34 & 332 & 109892 & 35 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 28.0 & 73.15123200416565 & - & - & 24794.0 & 91.31700000000001 & 12028.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -2555,7 +2591,7 @@ Application parameters:
 |A′| = 74802
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:42:29.201
+> Experiment started at 2022-01-26T21:07:29.397
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -2582,32 +2618,36 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:42:29.201] Generating initial tour...
+[21:07:29.397] Generating initial tour...
 Initial profit: 35.0
 
-[00:42:29.208] Building BRKGA data...
+[21:07:29.405] Building BRKGA data...
 New population size: 350
 
-[00:42:29.209] Initializing BRKGA data...
+[21:07:29.405] Initializing BRKGA data...
 
-[00:42:51.742] Warming up...
+[21:07:47.982] Warming up...
 
-[00:43:37.733] Evolving...
+[21:08:27.684] Evolving...
 * Iteration | Cost | CurrentTime
-[00:44:54.902] End of optimization
+* 1 | 27 | 14.28 
+* 2 | 28 | 29.59 
+* 3 | 29 | 45.85 
+* 4 | 30 | 62.93 
+[21:09:30.61] End of optimization
 
 Total number of iterations: 4
-Last update iteration: 0
-Total optimization time: 77.17
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Last update iteration: 4
+Total optimization time: 62.93
+Last update time: 62.93
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 35 & 274 & 74802 & 35 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 35.0 & 77.16844582557678 & - & - & 28353.0 & 115.26749999999998 & 16164.0
+ & 35 & 274 & 74802 & 35 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 30.0 & 62.92575407028198 & - & - & 26790.0 & 96.32249999999998 & 12475.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -2628,7 +2668,7 @@ Application parameters:
 |A′| = 117306
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:44:57.864
+> Experiment started at 2022-01-26T21:09:33.483
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -2655,32 +2695,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:44:57.865] Generating initial tour...
+[21:09:33.484] Generating initial tour...
 Initial profit: 39.0
 
-[00:44:57.877] Building BRKGA data...
+[21:09:33.496] Building BRKGA data...
 New population size: 400
 
-[00:44:57.877] Initializing BRKGA data...
+[21:09:33.496] Initializing BRKGA data...
 
-[00:45:47.26] Warming up...
+[21:10:14.311] Warming up...
 
-[00:47:16.509] Evolving...
+[21:11:29.726] Evolving...
 * Iteration | Cost | CurrentTime
-[00:48:35.667] End of optimization
+* 1 | 30 | 31.59 
+[21:12:34.763] End of optimization
 
 Total number of iterations: 2
-Last update iteration: 0
-Total optimization time: 79.16
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Last update iteration: 1
+Total optimization time: 65.04
+Last update time: 31.59
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 36 & 343 & 117306 & 40 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 39.0 & 79.15801405906677 & - & - & 29581.0 & 123.07649999999998 & 17490.0
+ & 36 & 343 & 117306 & 40 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 30.0 & 65.03631615638733 & - & - & 28306.0 & 96.24300000000002 & 11952.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -2701,7 +2742,7 @@ Application parameters:
 |A′| = 113232
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:48:38.661
+> Experiment started at 2022-01-26T21:12:37.709
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -2728,32 +2769,34 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:48:38.662] Generating initial tour...
+[21:12:37.709] Generating initial tour...
 Initial profit: 40.0
 
-[00:48:38.674] Building BRKGA data...
+[21:12:37.721] Building BRKGA data...
 New population size: 400
 
-[00:48:38.674] Initializing BRKGA data...
+[21:12:37.721] Initializing BRKGA data...
 
-[00:49:27.664] Warming up...
+[21:13:18.032] Warming up...
 
-[00:50:57.043] Evolving...
+[21:14:32.828] Evolving...
 * Iteration | Cost | CurrentTime
-[00:52:16.338] End of optimization
+* 1 | 30 | 31.30 
+* 2 | 31 | 64.83 
+[21:15:37.658] End of optimization
 
 Total number of iterations: 2
-Last update iteration: 0
-Total optimization time: 79.29
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Last update iteration: 2
+Total optimization time: 64.83
+Last update time: 64.83
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 37 & 337 & 113232 & 40 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 40.0 & 79.29457402229309 & - & - & 31877.0 & 122.3355 & 16560.0
+ & 37 & 337 & 113232 & 40 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 31.0 & 64.82915806770325 & - & - & 27130.0 & 98.0385 & 12743.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -2774,7 +2817,7 @@ Application parameters:
 |A′| = 113232
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:52:18.763
+> Experiment started at 2022-01-26T21:15:40.075
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -2801,32 +2844,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:52:18.764] Generating initial tour...
+[21:15:40.075] Generating initial tour...
 Initial profit: 40.0
 
-[00:52:18.775] Building BRKGA data...
+[21:15:40.087] Building BRKGA data...
 New population size: 400
 
-[00:52:18.775] Initializing BRKGA data...
+[21:15:40.087] Initializing BRKGA data...
 
-[00:53:07.079] Warming up...
+[21:16:19.327] Warming up...
 
-[00:54:34.838] Evolving...
+[21:17:32.19] Evolving...
 * Iteration | Cost | CurrentTime
-[00:55:52.479] End of optimization
+* 1 | 31 | 30.34 
+[21:18:35.007] End of optimization
 
 Total number of iterations: 2
-Last update iteration: 0
-Total optimization time: 77.64
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Last update iteration: 1
+Total optimization time: 62.82
+Last update time: 30.34
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 38 & 337 & 113232 & 40 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 40.0 & 77.64042901992798 & - & - & 35649.0 & 125.29349999999995 & 15960.0
+ & 38 & 337 & 113232 & 40 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 31.0 & 62.81653189659119 & - & - & 26079.0 & 94.63950000000003 & 12338.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -2847,7 +2891,7 @@ Application parameters:
 |A′| = 82082
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:55:54.125
+> Experiment started at 2022-01-26T21:18:36.627
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -2874,32 +2918,35 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:55:54.125] Generating initial tour...
+[21:18:36.627] Generating initial tour...
 Initial profit: 40.0
 
-[00:55:54.136] Building BRKGA data...
+[21:18:36.638] Building BRKGA data...
 New population size: 400
 
-[00:55:54.136] Initializing BRKGA data...
+[21:18:36.638] Initializing BRKGA data...
 
-[00:56:27.592] Warming up...
+[21:19:04.336] Warming up...
 
-[00:57:31.013] Evolving...
+[21:19:58.249] Evolving...
 * Iteration | Cost | CurrentTime
-[00:58:53.866] End of optimization
+* 1 | 31 | 21.16 
+* 2 | 32 | 43.91 
+* 3 | 33 | 68.27 
+[21:21:06.52] End of optimization
 
 Total number of iterations: 3
-Last update iteration: 0
-Total optimization time: 82.85
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Last update iteration: 3
+Total optimization time: 68.27
+Last update time: 68.27
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 39 & 287 & 82082 & 40 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 40.0 & 82.85280179977417 & - & - & 33361.0 & 120.97950000000002 & 15764.0
+ & 39 & 287 & 82082 & 40 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 33.0 & 68.27132797241211 & - & - & 24448.0 & 94.71300000000002 & 12898.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -2920,7 +2967,7 @@ Application parameters:
 |A′| = 105300
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T00:58:56.516
+> Experiment started at 2022-01-26T21:21:09.102
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -2947,32 +2994,34 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:58:56.516] Generating initial tour...
+[21:21:09.102] Generating initial tour...
 Initial profit: 40.0
 
-[00:58:56.527] Building BRKGA data...
+[21:21:09.113] Building BRKGA data...
 New population size: 400
 
-[00:58:56.527] Initializing BRKGA data...
+[21:21:09.113] Initializing BRKGA data...
 
-[00:59:39.08] Warming up...
+[21:21:43.988] Warming up...
 
-[01:00:57.824] Evolving...
+[21:22:49.821] Evolving...
 * Iteration | Cost | CurrentTime
-[01:02:06.449] End of optimization
+* 1 | 30 | 27.07 
+* 3 | 31 | 86.03 
+[21:24:15.853] End of optimization
 
-Total number of iterations: 2
-Last update iteration: 0
-Total optimization time: 68.63
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 3
+Last update iteration: 3
+Total optimization time: 86.03
+Last update time: 86.03
+Large number of iterations between improvements: 2
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 40 & 325 & 105300 & 40 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 40.0 & 68.62517499923706 & - & - & 39401.0 & 135.3855 & 16952.0
+ & 40 & 325 & 105300 & 40 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 31.0 & 86.03189206123352 & - & - & 28430.0 & 96.29849999999999 & 11923.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -2993,7 +3042,7 @@ Application parameters:
 |A′| = 127092
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T01:02:09.612
+> Experiment started at 2022-01-26T21:24:18.995
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -3020,32 +3069,34 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[01:02:09.612] Generating initial tour...
+[21:24:18.996] Generating initial tour...
 Initial profit: 42.0
 
-[01:02:09.626] Building BRKGA data...
+[21:24:19.009] Building BRKGA data...
 New population size: 450
 
-[01:02:09.626] Initializing BRKGA data...
+[21:24:19.009] Initializing BRKGA data...
 
-[01:03:13.423] Warming up...
+[21:25:11.789] Warming up...
 
-[01:05:04.596] Evolving...
+[21:26:43.956] Evolving...
 * Iteration | Cost | CurrentTime
-[01:06:45.633] End of optimization
+* 1 | 32 | 40.12 
+* 2 | 33 | 81.97 
+[21:28:05.923] End of optimization
 
 Total number of iterations: 2
-Last update iteration: 0
-Total optimization time: 101.04
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Last update iteration: 2
+Total optimization time: 81.97
+Last update time: 81.97
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 41 & 357 & 127092 & 45 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 42.0 & 101.03611493110657 & - & - & 38011.0 & 135.591 & 17461.0
+ & 41 & 357 & 127092 & 45 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 33.0 & 81.96649599075317 & - & - & 26253.0 & 94.15800000000002 & 12173.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -3066,7 +3117,7 @@ Application parameters:
 |A′| = 104006
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T01:06:48.544
+> Experiment started at 2022-01-26T21:28:08.780
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -3093,32 +3144,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[01:06:48.544] Generating initial tour...
+[21:28:08.78] Generating initial tour...
 Initial profit: 44.0
 
-[01:06:48.556] Building BRKGA data...
+[21:28:08.792] Building BRKGA data...
 New population size: 450
 
-[01:06:48.556] Initializing BRKGA data...
+[21:28:08.792] Initializing BRKGA data...
 
-[01:07:38.773] Warming up...
+[21:28:50.365] Warming up...
 
-[01:09:08.352] Evolving...
+[21:30:05.965] Evolving...
 * Iteration | Cost | CurrentTime
-[01:10:27.757] End of optimization
+* 1 | 33 | 31.91 
+[21:31:11.424] End of optimization
 
 Total number of iterations: 2
-Last update iteration: 0
-Total optimization time: 79.41
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Last update iteration: 1
+Total optimization time: 65.46
+Last update time: 31.91
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 42 & 323 & 104006 & 45 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 44.0 & 79.40552711486816 & - & - & 41197.0 & 138.6465 & 17078.0
+ & 42 & 323 & 104006 & 45 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 33.0 & 65.45851182937622 & - & - & 22311.0 & 94.158 & 13487.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -3139,7 +3191,7 @@ Application parameters:
 |A′| = 142506
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T01:10:31.009
+> Experiment started at 2022-01-26T21:31:14.574
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -3166,32 +3218,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[01:10:31.009] Generating initial tour...
+[21:31:14.575] Generating initial tour...
 Initial profit: 38.0
 
-[01:10:31.022] Building BRKGA data...
+[21:31:14.588] Building BRKGA data...
 New population size: 450
 
-[01:10:31.022] Initializing BRKGA data...
+[21:31:14.588] Initializing BRKGA data...
 
-[01:11:48.836] Warming up...
+[21:32:18.408] Warming up...
 
-[01:14:02.513] Evolving...
+[21:34:06.694] Evolving...
 * Iteration | Cost | CurrentTime
-[01:16:06.011] End of optimization
+* 1 | 31 | 48.35 
+[21:35:44.953] End of optimization
 
 Total number of iterations: 2
-Last update iteration: 0
-Total optimization time: 123.50
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Last update iteration: 1
+Total optimization time: 98.26
+Last update time: 48.35
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 43 & 378 & 142506 & 45 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 38.0 & 123.49802899360657 & - & - & 25860.0 & 118.91250000000001 & 17805.0
+ & 43 & 378 & 142506 & 45 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 31.0 & 98.25863599777222 & - & - & 27051.0 & 97.06050000000002 & 12552.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -3212,7 +3265,7 @@ Application parameters:
 |A′| = 146306
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T01:16:10.091
+> Experiment started at 2022-01-26T21:35:48.951
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -3239,32 +3292,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[01:16:10.092] Generating initial tour...
+[21:35:48.952] Generating initial tour...
 Initial profit: 35.0
 
-[01:16:10.104] Building BRKGA data...
+[21:35:48.964] Building BRKGA data...
 New population size: 450
 
-[01:16:10.104] Initializing BRKGA data...
+[21:35:48.965] Initializing BRKGA data...
 
-[01:17:28.571] Warming up...
+[21:36:52.572] Warming up...
 
-[01:19:43.224] Evolving...
+[21:38:37.494] Evolving...
 * Iteration | Cost | CurrentTime
-[01:20:43.609] End of optimization
+* 1 | 29 | 46.74 
+[21:40:12.173] End of optimization
 
-Total number of iterations: 1
-Last update iteration: 0
-Total optimization time: 60.38
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 2
+Last update iteration: 1
+Total optimization time: 94.68
+Last update time: 46.74
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 44 & 383 & 146306 & 45 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 35.0 & 60.38466286659241 & - & - & 26216.0 & 121.2105 & 18197.0
+ & 44 & 383 & 146306 & 45 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 29.0 & 94.67907404899597 & - & - & 23492.0 & 96.15000000000002 & 13536.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -3285,7 +3339,7 @@ Application parameters:
 |A′| = 120062
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T01:20:46.454
+> Experiment started at 2022-01-26T21:40:14.987
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -3312,32 +3366,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[01:20:46.455] Generating initial tour...
+[21:40:14.987] Generating initial tour...
 Initial profit: 37.0
 
-[01:20:46.465] Building BRKGA data...
+[21:40:14.998] Building BRKGA data...
 New population size: 450
 
-[01:20:46.465] Initializing BRKGA data...
+[21:40:14.998] Initializing BRKGA data...
 
-[01:21:44.827] Warming up...
+[21:41:02.458] Warming up...
 
-[01:23:27.665] Evolving...
+[21:42:26.688] Evolving...
 * Iteration | Cost | CurrentTime
-[01:25:00.362] End of optimization
+* 1 | 31 | 36.11 
+[21:43:40.75] End of optimization
 
 Total number of iterations: 2
-Last update iteration: 0
-Total optimization time: 92.70
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Last update iteration: 1
+Total optimization time: 74.06
+Last update time: 36.11
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 45 & 347 & 120062 & 45 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 37.0 & 92.69691610336304 & - & - & 24020.0 & 113.66399999999999 & 17252.0
+ & 45 & 347 & 120062 & 45 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 31.0 & 74.06199312210083 & - & - & 20646.0 & 93.7035 & 13941.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -3358,7 +3413,7 @@ Application parameters:
 |A′| = 154056
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T01:25:04.018
+> Experiment started at 2022-01-26T21:43:44.372
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -3385,32 +3440,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[01:25:04.018] Generating initial tour...
+[21:43:44.372] Generating initial tour...
 Initial profit: 42.0
 
-[01:25:04.032] Building BRKGA data...
+[21:43:44.386] Building BRKGA data...
 New population size: 500
 
-[01:25:04.032] Initializing BRKGA data...
+[21:43:44.386] Initializing BRKGA data...
 
-[01:26:37.099] Warming up...
+[21:44:59.374] Warming up...
 
-[01:29:14.911] Evolving...
+[21:47:04.928] Evolving...
 * Iteration | Cost | CurrentTime
-[01:30:26.287] End of optimization
+* 1 | 33 | 55.87 
+[21:48:59.77] End of optimization
 
-Total number of iterations: 1
-Last update iteration: 0
-Total optimization time: 71.38
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Total number of iterations: 2
+Last update iteration: 1
+Total optimization time: 114.84
+Last update time: 55.87
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 46 & 393 & 154056 & 50 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 42.0 & 71.37523603439331 & - & - & 34336.0 & 131.29799999999997 & 17732.0
+ & 46 & 393 & 154056 & 50 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 33.0 & 114.8419041633606 & - & - & 25037.0 & 96.67649999999999 & 13138.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -3431,7 +3487,7 @@ Application parameters:
 |A′| = 100806
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T01:30:28.570
+> Experiment started at 2022-01-26T21:49:02.011
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -3458,32 +3514,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[01:30:28.571] Generating initial tour...
+[21:49:02.011] Generating initial tour...
 Initial profit: 45.0
 
-[01:30:28.582] Building BRKGA data...
+[21:49:02.023] Building BRKGA data...
 New population size: 500
 
-[01:30:28.583] Initializing BRKGA data...
+[21:49:02.023] Initializing BRKGA data...
 
-[01:31:24.227] Warming up...
+[21:49:47.944] Warming up...
 
-[01:33:01.915] Evolving...
+[21:51:07.692] Evolving...
 * Iteration | Cost | CurrentTime
-[01:34:29.46] End of optimization
+* 1 | 33 | 34.19 
+[21:52:17.583] End of optimization
 
 Total number of iterations: 2
-Last update iteration: 0
-Total optimization time: 87.54
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Last update iteration: 1
+Total optimization time: 69.89
+Last update time: 34.19
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 47 & 318 & 100806 & 50 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 45.0 & 87.54483199119568 & - & - & 35714.0 & 132.402 & 17518.0
+ & 47 & 318 & 100806 & 50 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 33.0 & 69.89089703559875 & - & - & 30768.0 & 96.993 & 11298.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -3504,7 +3561,7 @@ Application parameters:
 |A′| = 124256
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T01:34:32.378
+> Experiment started at 2022-01-26T21:52:20.447
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -3531,32 +3588,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[01:34:32.378] Generating initial tour...
+[21:52:20.447] Generating initial tour...
 Initial profit: 43.0
 
-[01:34:32.391] Building BRKGA data...
+[21:52:20.461] Building BRKGA data...
 New population size: 500
 
-[01:34:32.392] Initializing BRKGA data...
+[21:52:20.461] Initializing BRKGA data...
 
-[01:35:43.989] Warming up...
+[21:53:19.539] Warming up...
 
-[01:37:47.462] Evolving...
+[21:54:59.309] Evolving...
 * Iteration | Cost | CurrentTime
-[01:39:40.867] End of optimization
+* 1 | 34 | 43.94 
+[21:56:29.137] End of optimization
 
 Total number of iterations: 2
-Last update iteration: 0
-Total optimization time: 113.40
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Last update iteration: 1
+Total optimization time: 89.83
+Last update time: 43.94
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 48 & 353 & 124256 & 50 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 43.0 & 113.404855966568 & - & - & 31326.0 & 127.65150000000001 & 17925.0
+ & 48 & 353 & 124256 & 50 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 34.0 & 89.82788586616516 & - & - & 23802.0 & 91.395 & 12376.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -3577,7 +3635,7 @@ Application parameters:
 |A′| = 194922
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T01:39:45.529
+> Experiment started at 2022-01-26T21:56:33.787
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -3604,32 +3662,33 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[01:39:45.529] Generating initial tour...
+[21:56:33.787] Generating initial tour...
 Initial profit: 35.0
 
-[01:39:45.546] Building BRKGA data...
+[21:56:33.804] Building BRKGA data...
 New population size: 500
 
-[01:39:45.546] Initializing BRKGA data...
+[21:56:33.804] Initializing BRKGA data...
 
-[01:42:01.722] Warming up...
+[21:58:27.338] Warming up...
 
-[01:45:47.319] Evolving...
+[22:01:15.449] Evolving...
 * Iteration | Cost | CurrentTime
-[01:47:31.668] End of optimization
+* 1 | 31 | 78.74 
+[22:02:34.185] End of optimization
 
 Total number of iterations: 1
-Last update iteration: 0
-Total optimization time: 104.35
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Last update iteration: 1
+Total optimization time: 78.74
+Last update time: 78.74
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 49 & 442 & 194922 & 50 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 35.0 & 104.34922504425049 & - & - & 20876.0 & 112.95750000000001 & 18143.0
+ & 49 & 442 & 194922 & 50 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 31.0 & 78.73543691635132 & - & - & 24819.0 & 96.74550000000002 & 13226.0
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
@@ -3650,7 +3709,7 @@ Application parameters:
 |A′| = 111222
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2022-01-25T01:47:34.479
+> Experiment started at 2022-01-26T22:02:36.913
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -3677,30 +3736,32 @@ Application parameters:
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[01:47:34.48] Generating initial tour...
+[22:02:36.913] Generating initial tour...
 Initial profit: 40.0
 
-[01:47:34.49] Building BRKGA data...
+[22:02:36.924] Building BRKGA data...
 New population size: 500
 
-[01:47:34.491] Initializing BRKGA data...
+[22:02:36.924] Initializing BRKGA data...
 
-[01:48:36.668] Warming up...
+[22:03:27.896] Warming up...
 
-[01:50:25.151] Evolving...
+[22:04:53.005] Evolving...
 * Iteration | Cost | CurrentTime
-[01:52:03.517] End of optimization
+* 1 | 32 | 36.85 
+* 2 | 33 | 75.08 
+[22:06:08.083] End of optimization
 
 Total number of iterations: 2
-Last update iteration: 0
-Total optimization time: 98.37
-Last update time: 0.00
-Large number of iterations between improvements: 0
+Last update iteration: 2
+Total optimization time: 75.08
+Last update time: 75.08
+Large number of iterations between improvements: 1
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & 50 & 334 & 111222 & 50 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 40.0 & 98.36588096618652 & - & - & 33065.0 & 131.3535 & 18168.0
+ & 50 & 334 & 111222 & 50 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & 33.0 & 75.07802486419678 & - & - & 28294.0 & 96.792 & 12078.0
 ########################################################
