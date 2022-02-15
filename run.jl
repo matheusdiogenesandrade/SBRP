@@ -27,7 +27,13 @@ function parse_commandline(args_array::Array{String,1}, appfolder::String)
     help = "Instance type (carlos, matheus)"
     default = "carlos"
     "--complete"
-    help = "true if you want to run the model with complete digraph, and false otherwise"
+    help = "true if you want to run the model with the complete digraph, and false otherwise"
+    action = :store_true
+    "--no-one-degree-path"
+    help = "true if you want to run the model with the no one degree path digraph, and false otherwise"
+    action = :store_true
+    "--normal"
+    help = "true if you want to run the model with the original digraph, and false otherwise"
     action = :store_true
     "--brkga"
     help = "true if you want to run the BRKGA, and false otherwise"
@@ -62,21 +68,49 @@ function log(info)
   println([" & " * (column in keys(info) ? string(info[column]) : "-") for column in logColumns]...)
 end
 
-function write_sol(app, tour, ids, data)
-  app["out"] != nothing && (writesol(app["out"] * ".max", [ids[i] for i in tour if i != data.depot]), writeGPX(app["out"] * ".max.gpx", [data.D.V[i] for i in tour if i != data.depot])) # write output files
+function write_sol(app, tour, data)
+  if app["out"] != nothing 
+    writesol(app["out"] * ".sol", [i for i in tour if i != data.depot])
+    # write output files
+    writeGPX(app["out"] * ".gpx", [data.D.V[i] for i in tour if i != data.depot]) 
+  end
 end
 
-#=
-function sbrp_max(app::Dict{String, Any}, data::SBRPData, ids::Dict{Int, Int})
+function sbrp_max(app::Dict{String, Any}, data::SBRPData)
   println("###################SBRP MAX#############################")
-  (model, x, y, info) = build_model_sbrp_max(data, app); optimize!(model) # solve model
+
+  # create model
+  (model, x, y, z, info) = build_model_sbrp_max(data, app)
+
+  # solve model
+  optimize!(model)
   println(objective_value(model))
-  B = get_blocks(data, y) # get serviced blocks
+
+  # get serviced blocks
+  B = get_blocks(data, y)
 #  [println(block) for block in B]
-  tour = gettour(data, x, B); check_sbrp_sol(data, tour, B) # get tour and check feasibility
-  info = merge(info, get_info(model, data, tour, B), Dict{String, String}("model" => "SBRPMax", "instance" => app["instance_name"], "|V|" => string(length(Set{Int}(vcat([i for (i, j) in data.D.A], [j for (i, j) in data.D.A])))), "|A|" => string(length(data.D.A)), "|B|" => string(length(data.B)), "T" => string(data.T))) # update info
-  log(info) # log
-  write_sol(app, tour, ids, data)
+
+  # get tour
+  tour = gettour(data, x, B)
+
+  # check feasibility
+  check_sbrp_sol(data, tour, B)
+
+  # update info
+  info = merge(info, get_info(model, data, tour, B), Dict{String, String}(
+              "model" => "SBRPMax", 
+              "instance" => app["instance_name"], 
+              "|V|" => string(length(Set{Int}(vcat([i for (i, j) in data.D.A], [j for (i, j) in data.D.A])))), 
+              "|A|" => string(length(data.D.A)), 
+              "|B|" => string(length(data.B)), 
+              "T" => string(data.T))) 
+
+  # log
+  log(info)
+
+  # solution
+  write_sol(app, tour, data)
+
   println("########################################################")
   #=
   i = 1
@@ -86,26 +120,29 @@ function sbrp_max(app::Dict{String, Any}, data::SBRPData, ids::Dict{Int, Int})
   end
   =#
 end
-=#
  
-function sbrp_max_complete(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, ids::Dict{Int, Int}, paths::Dict{Tuple{Int, Int}, Vi})
+function sbrp_max_complete(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, paths::Dict{Tuple{Int, Int}, Vi})
   flush_println("###################SBRP MAX Complete####################")
 
   # create and solve model
-  (model, x, y, info) = build_model_sbrp_max_complete(data′, app); 
+  (model, x, y, info) = build_model_sbrp_max_complete(data′, app)
   optimize!(model) 
 
   # get serviced blocks
   B = get_blocks(data, y) 
-  #[flush_println(block) for block in B]
-
+  
   # get solution for complete model
   tour′ = gettour(data′, x, B)
-  check_sbrp_sol(data′, tour′, B) # get tour and check feasibility
+
+  # check feasibility
+  check_sbrp_sol(data′, tour′, B) 
 
   # get solution for original graph
   tour = Vi()
-  [(push!(tour, tour′[i - 1]); !in((tour′[i - 1], tour′[i]), data.D.A) && push!(tour, paths[(tour′[i - 1], tour′[i])]...)) for i in 2:length(tour′)]
+  for i in 2:length(tour′)
+    push!(tour, tour′[i - 1])
+    !in((tour′[i - 1], tour′[i]), data.D.A) && push!(tour, paths[(tour′[i - 1], tour′[i])]...)
+  end
   push!(tour, tour′[end]) 
 
   # check feasibility
@@ -115,14 +152,15 @@ function sbrp_max_complete(app::Dict{String, Any}, data::SBRPData, data′::SBRP
   info = merge(info, get_info(model, data′, tour′, B), Dict{String, String}(
                "model" => "SBRPMaxComplete", 
                "instance" => app["instance_name"], 
-               "|V|" => string(length(Set{Int}(vcat([i for (i, j) in data′.D.A], [j for (i, j) in data′.D.A])))), 
+               "|V|" => string(length(data′.D.V)), 
                "|A|" => string(length(data′.D.A)), 
                "|B|" => string(length(data.B)), 
                "T" => string(data.T))) 
+
   log(info) 
 
   # write solution
-  write_sol(app, tour, ids, data)
+  write_sol(app, tour, data)
 
   flush_println("########################################################")
   #=
@@ -134,7 +172,7 @@ function sbrp_max_complete(app::Dict{String, Any}, data::SBRPData, data′::SBRP
   =#
 end
 
-function brkga(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, ids::Dict{Int, Int}, paths::Dict{Tuple{Int, Int}, Vi})
+function brkga(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, paths::Dict{Tuple{Int, Int}, Vi})
   flush_println("###################BRKGA####################")
 
   # solve model
@@ -149,7 +187,10 @@ function brkga(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, ids::D
 
   # get solution for original graph
   tour = Vi()
-  [(push!(tour, tour′[i - 1]); !in((tour′[i - 1], tour′[i]), data.D.A) && push!(tour, paths[(tour′[i - 1], tour′[i])]...)) for i in 2:length(tour′)]
+  for i in 2:length(tour′)
+    push!(tour, tour′[i - 1])
+    !in((tour′[i - 1], tour′[i]), data.D.A) && push!(tour, paths[(tour′[i - 1], tour′[i])]...)
+  end
   push!(tour, tour′[end]) 
 
   # check feasibility
@@ -159,7 +200,7 @@ function brkga(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, ids::D
   info = merge(info, Dict{String, String}(
                                           "model" => "BKRGA", 
                                           "instance" => app["instance_name"], 
-                                          "|V|" => string(length(Set{Int}(vcat([i for (i, j) in data′.D.A], [j for (i, j) in data′.D.A])))), 
+                                          "|V|" => string(length(data′.D.V)), 
                                           "|A|" => string(length(data′.D.A)), 
                                           "|B|" => string(length(data.B)), 
                                           "T" => string(data.T),
@@ -170,33 +211,101 @@ function brkga(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, ids::D
   log(info) 
 
   # write solution
-  write_sol(app, tour, ids, data)
+  write_sol(app, tour, data)
 
   flush_println("########################################################")
+end
+
+function sbrp_max_no_one_degree_path(app::Dict{String, Any}, data::SBRPData, data″::SBRPData, paths″::Dict{Arc, Vi})
+
+  flush_println("#############SBRP MAX NO ONE DEGREE PATH################")
+
+  # create model
+  (model, x, y, z, info) = build_model_sbrp_max(data″, app)
+
+  # solve model
+  optimize!(model) 
+  println(objective_value(model))
+
+  # get serviced blocks
+  B = get_blocks(data, y) 
+#  [println(block) for block in B]
+
+  # get tour for the processed digraph
+  tour″ = gettour(data″, x, B)
+
+  # check feasibility
+  check_sbrp_sol(data″, tour″, B) 
+
+  # get solution for the original graph
+  tour = Vi()
+  for i in 2:length(tour″)
+    a = curr, next = tour″[i - 1], tour″[i]
+    # store node
+    push!(tour, curr)
+
+    # check if there is some path
+    !in(a, data.D.A) && push!(tour, paths″[a]...)
+  end
+  push!(tour, tour″[end]) 
+
+  # check feasibility
+  check_sbrp_sol(data, tour, B) 
+
+  # log
+  info = merge(info, get_info(model, data″, tour″, B), Dict{String, String}(
+               "model" => "SBRPMaxNoOneDegreePath", 
+               "instance" => app["instance_name"], 
+               "|V|" => string(length(data″.D.V)), 
+               "|A|" => string(length(data″.D.A)), 
+               "|B|" => string(length(data″.B)), 
+               "T" => string(data″.T))) 
+
+  log(info) 
+
+  # write solution
+  write_sol(app, tour, data)
+
+  flush_println("########################################################")
+  #=
+  i = 1
+  while "iteration_" * string(i) * "_time" in keys(info)
+    println(i, ": ", info["iteration_" * string(i) * "_time"], ", ", info["iteration_" * string(i) * "_cuts"])
+    i += 1
+  end
+  =#
 end
 
 function run(app::Dict{String,Any})
   flush_println("Application parameters:")
   [flush_println("  $arg  =>  $(repr(val))") for (arg,val) in app]
+
   # read instance
   readInstanceFunction = app["instance-type"] == "carlos" ? readSBRPDataCarlos : readSBRPDataMatheus
-  data, ids, data′, paths = readInstanceFunction(app)
+  data, data′, paths′, data″, paths″ = readInstanceFunction(app)
   app["instance_name"] = split(basename(app["instance"]), ".")[1]
+
   # instance data
-  flush_println("|V| = $(length(Set{Int}(vcat([i for (i, j) in data.D.A], [j for (i, j) in data.D.A]))))")
-  flush_println("|A| = $(length(data.D.A))")
   flush_println("|B| = $(length(data.B))")
-  flush_println("|V′| = $(length(Set{Int}(vcat([i for (i, j) in data′.D.A], [j for (i, j) in data′.D.A]))))")
+  flush_println("|V| = $(length(data.D.V))")
+  flush_println("|A| = $(length(data.D.A))")
+  flush_println("|V′| = $(length(data′.D.V))")
   flush_println("|A′| = $(length(data′.D.A))")
-  flush(stdout)
+  flush_println("|V″| = $(length(data″.D.V))")
+  flush_println("|A″| = $(length(data″.D.A))")
+
   # set vehicle time limit
-  data′.T = data.T = parse(Int, app["vehicle-time-limit"])
+  data″.T = data′.T = data.T = parse(Int, app["vehicle-time-limit"])
+
   # not solve
   app["nosolve"] && return
+
   # solve models
-#  sbrp_max(app, data, ids)
-  app["complete"] && sbrp_max_complete(app, data, data′, ids, paths)
-  app["brkga"] && brkga(app, data, data′, ids, paths)
+  app["normal"] && sbrp_max(app, data)
+  app["no-one-degree-path"] && sbrp_max_no_one_degree_path(app, data, data″, paths″)
+  app["complete"] && sbrp_max_complete(app, data, data′, paths′)
+  app["brkga"] && brkga(app, data, data′, paths′)
+
 end
 
 end

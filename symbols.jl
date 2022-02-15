@@ -46,10 +46,14 @@ const ≠(a, b) = a != b
 const ≤(a, b) = a <= b
 const ≥(a, b) = a >= b
 const ∞ = typemax(Float64)
+const χ(x) = [(i, j) for i in x for j in x]
+const ∅(x) = isempty(x)
 
 const flush_println(strings...) = (println(strings...); flush(stdout))
 const Arc = Tuple{Int, Int}
 const Arcs = Vector{Tuple{Int, Int}}
+const ArcsSet = Set{Tuple{Int, Int}}
 const Vi = Vector{Int}
+const VVi = Vector{Vector{Int}}
 const Si = Set{Int}
 const ArcCostMap = Dict{Arc, Real}
