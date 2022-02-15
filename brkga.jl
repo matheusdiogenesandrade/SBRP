@@ -7,6 +7,7 @@ export run_brkga
 using ..Data
 using ..Data.SBRP
 using ..NearestNeighborhoodHeuristic
+using ..Solution
 
 using BrkgaMpIpr
 using ConfParser
@@ -66,16 +67,19 @@ function dijkstra(data::SBRPData, idxs_blocks::Vi)
     curr_block, next_block = B[idx_curr_block], B[idx_next_block]
 
     # calculate nest block service time
-    next_block_time = time_block(data, B[idx_next_block])
+    next_block_time = time_block(data, next_block)
 
     # intersecting nodes
-    for i in ∩(curr_block, next_block)
-      consumed_times[(idx_next_block, i)] = next_block_time + min(consumed_times[(idx_next_block, i)], consumed_times[(idx_curr_block, i)])
+    intersection = Si(∩(curr_block, next_block))
+    for j in intersection
+      consumed_times[(idx_next_block, j)] = next_block_time + consumed_times[(idx_curr_block, j)]
     end
 
     # non intersecting nodes
-    for (i, j) in δ⁺(A, curr_block)
-      j in next_block && (consumed_times[(idx_next_block, j)] = next_block_time + min(consumed_times[(idx_next_block, j)], consumed_times[(idx_curr_block, i)] + Data.SBRP.time(data, (i, j))))
+    for i in curr_block
+      for j in next_block
+        (i, j) in keys(data.D.distance) && (consumed_times[(idx_next_block, j)] = min(consumed_times[(idx_next_block, j)], consumed_times[(idx_curr_block, i)] + Data.SBRP.time(data, (i, j)) + next_block_time))
+      end
     end
   end
   
@@ -189,7 +193,50 @@ function run_brkga(conf_dir::String, data::SBRPData)
 
   ########################################
   #=
-  best_chromosome = [0.5673095448480054, 0.5690631386950107, 0.9094092031508971, 0.8929281134444553, 0.7610922072371944, 0.7013879248672727, 0.6990824292873064, 0.7363129841204665, 0.7828106247743807, 0.8481750617782906, 0.8004900833604567, 0.8556448369668621, 0.5577955890720041, 0.8687603573861247, 0.9977297995411569, 0.6876207987811895, 0.7416181901188621, 0.7957481070659045, 0.5341816494879854, 0.6840264609523561, 0.9160761042702021, 0.7077171913438292, 0.8481974075330707, 0.5246843974117401, 0.573311562327449]
+  profit, visited_blocks, tour = NearestNeighborhoodHeuristic.solve(data)
+  visited_blocks_weights = Dict{Vi, Real}(visited_blocks[i] => 1 - i * 1e-3 for i in 1:length(visited_blocks))
+  initial_chromosome = [block in keys(visited_blocks_weights) ? visited_blocks_weights[block] : 0.0 for block in B]
+
+  tour = add_blocks(tour, visited_blocks)
+  println(Data.SBRP.tour_time(data, tour, visited_blocks))
+
+  # get blocks indexes
+  idxs_blocks = get_idxs_blocks(initial_chromosome, data)
+  println([findall(block′ -> block′ == block, B)[1] for block in visited_blocks])
+  println(idxs_blocks)
+
+  # get dijkstra time matrix
+  tour_time, consumed_times = dijkstra(data, idxs_blocks)
+  println(tour_time)
+
+  for i in 2:length(idxs_blocks)
+    idx_block, idx_prev_block = idxs_blocks[i], idxs_blocks[i - 1]
+    curr_block_time = time_block(data, B[idx_block])
+    println("ID block ", idx_block)
+    for i in B[idx_block]
+      rs = consumed_times[(idx_block, i)]
+      println("\t", i, ": ", rs)
+      for j in B[idx_prev_block]
+        ls = consumed_times[(idx_prev_block, j)] + Data.SBRP.time(data, (j, i)) + curr_block_time
+        if ls == rs
+          println("\t\t", j, " is a predecessor, since ", ls, " == ", rs)
+        else
+          println("\t\t", j, " is not a predecessor, since ", ls, " != ", rs)
+        end
+      end
+    end
+  end
+
+  # get tour
+  tour = get_dijkstra_route(data, consumed_times, idxs_blocks)
+  tour = add_blocks(tour, visited_blocks)
+  println(Data.SBRP.tour_time(data, tour, visited_blocks))
+  error("stop here")
+  =#
+
+  #=
+  best_chromosome = [0.3589048242785371, 0.6319804041946304, 0.020200574214842337, 0.5084282197994525, 0.17132376723018838, 0.37440283851827494, 0.7616929330314515, 0.2051392112493251, 0.668209909295016, 0.1805155431288492, 0.605231415945501, 0.538706206753417, 0.643018709267497, 0.1052176490620893, 0.49865714857109733, 0.6203897012759658, 0.9649904947753347, 0.4654304539026679, 0.8277325292779287, 0.2817681302706594, 0.9441870264105543, 0.8417186847833293, 0.3046339513279499, 0.6076865663630291, 0.4873328865981925, 0.3277004411277693, 0.17926631433639972, 0.43547549746888614, 0.7786574742039711, 0.2726097587101328, 0.6273702912610448, 0.005491993320564159, 0.6610746153847575, 0.255518541943349, 0.4894043201742333, 0.11360851299666863, 0.7494590712211553, 0.881969426902371, 0.35435521386670077, 0.7235108062951003, 0.38944198819446996, 0.04768164110918938, 0.3324132325220943, 0.060793222727230756, 0.9712003842759238, 0.8285673944159864, 0.14717881496546692, 0.8982163374481262, 0.4816582024717766, 0.5132717889739846]  
+
   # get blocks indexes
   idxs_blocks = get_idxs_blocks(best_chromosome, data)
 
@@ -292,7 +339,10 @@ function run_brkga(conf_dir::String, data::SBRPData)
   # To inject the initial tour, we need to create chromosome representing that
   # solution. First, we create a set of keys to be used in the chromosome.
   # Then, we visit each required and profitable arc in the routes and assign to they keys.
-  initial_chromosome = [(rand()%0.5) + (block in visited_blocks ?  0.5 : 0.0) for block in B]
+  visited_blocks_weights = Dict{Vi, Real}(visited_blocks[i] => 1 - i * 1e-3 for i in 1:length(visited_blocks))
+  initial_chromosome = [block in keys(visited_blocks_weights) ? visited_blocks_weights[block] : 0.0 for block in B]
+#  initial_chromosome = [(rand()%0.5) + (block in visited_blocks ?  0.5 : 0.0) for block in B]
+
 
   # Inject the warm start solution in the initial population.
   set_initial_population!(brkga_data, [initial_chromosome])
@@ -324,7 +374,8 @@ function run_brkga(conf_dir::String, data::SBRPData)
   verbose && flush_println("\n[$(Dates.Time(Dates.now()))] Evolving...")
   verbose && flush_println("* Iteration | Cost | CurrentTime")
 
-  best_cost = -Inf
+#  best_cost = -Inf
+  best_cost = profit
   best_chromosome = initial_chromosome
 
   iteration = 0
@@ -459,6 +510,7 @@ function run_brkga(conf_dir::String, data::SBRPData)
   ########################################
   # Extracting the solution
   ########################################
+
   # get blocks indexes
   idxs_blocks = get_idxs_blocks(best_chromosome, data)
 

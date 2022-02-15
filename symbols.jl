@@ -22,6 +22,7 @@ const flush_println(str) = (println(str); flush(stdout))
 const Arc = Tuple{Int, Int}
 const Arcs = Vector{Tuple{Int, Int}}
 const Vi = Vector{Int}
+const Si = Set{Int}
 
 end
 =#
