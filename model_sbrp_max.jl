@@ -87,7 +87,7 @@ function get_subtour_cuts(data::SBRPData, model, info::Dict{String, Any})
 
       # base case 2
 #      length(S) <= 1 && continue
-      println(length(S))
+      flush_println(length(S))
 
       # get components
       [push!(newComponents, (S, i, block)) for block in blocks(B, S) for i in intersect(block, S) if z_val[i] + y_val[block] - 1 > flow + 1e-2]

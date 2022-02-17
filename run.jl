@@ -316,8 +316,15 @@ function main(args)
   appfolder = dirname(@__FILE__)
   app = Main.parse_commandline(args, appfolder)
   isnothing(app) && return
-  app["batch"] != nothing &&  ([Main.run(Main.parse_commandline([String(s) for s in split(line)], appfolder)) for line in readlines(app["batch"]) if !isempty(strip(line)) && strip(line)[1] != '#']; return)
-  Main.run(app)
+  if app["batch"] != nothing 
+    for line in readlines(app["batch"]) 
+      if !isempty(strip(line)) && strip(line)[1] != '#'
+        Main.run(Main.parse_commandline([String(s) for s in split(line)], appfolder))
+      end
+    end
+  else
+    Main.run(app)
+  end
 end
 
 if isempty(ARGS)
