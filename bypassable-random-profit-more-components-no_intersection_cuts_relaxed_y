@@ -1,0 +1,29 @@
+WARNING: replacing module Main.
+
+signal (2): Interrupt
+in expression starting at /home/matheusdiogenesandrade/SBRP/model.jl:8
+int64hash at /buildworker/worker/package_linux64/build/src/support/hashing.c:34
+bitmix at /buildworker/worker/package_linux64/build/src/support/hashing.h:31 [inlined]
+typekey_hash at /buildworker/worker/package_linux64/build/src/jltypes.c:997 [inlined]
+lookup_type at /buildworker/worker/package_linux64/build/src/jltypes.c:585
+recache_datatype at /buildworker/worker/package_linux64/build/src/dump.c:2326 [inlined]
+jl_recache_types at /buildworker/worker/package_linux64/build/src/dump.c:2357 [inlined]
+_jl_restore_incremental at /buildworker/worker/package_linux64/build/src/dump.c:2550
+jl_restore_incremental at /buildworker/worker/package_linux64/build/src/dump.c:2605
+_include_from_serialized at ./loading.jl:680
+_require_search_from_serialized at ./loading.jl:782
+_tryrequire_from_serialized at ./loading.jl:711
+_require_search_from_serialized at ./loading.jl:771
+_require at ./loading.jl:1020
+require at ./loading.jl:936
+require at ./loading.jl:923
+_jl_invoke at /buildworker/worker/package_linux64/build/src/gf.c:2237 [inlined]
+jl_apply_generic at /buildworker/worker/package_linux64/build/src/gf.c:2419
+jl_apply at /buildworker/worker/package_linux64/build/src/julia.h:1703 [inlined]
+call_require at /buildworker/worker/package_linux64/build/src/toplevel.c:421 [inlined]
+eval_import_path at /buildworker/worker/package_linux64/build/src/toplevel.c:458
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:684
+jl_eval_module_expr at /buildworker/worker/package_linux64/build/src/toplevel.c:195 [inlined]
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:668
+jl_toplevel_eval_flex at /buildworker/worker/package_linux64/build/src/toplevel.c:825
+jl_toplevel_eval_in at /buildworker/worker/package_linux64/build/src/toplevel.c:929

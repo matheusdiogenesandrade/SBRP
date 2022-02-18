@@ -1,0 +1,14 @@
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 1 & 98 & 274 & 5 & 120.0 & SBRPMaxNoOneDegreePath & 15.0 & 15.0 & 0.034671083 & - & - & 15.0 & 544 & 4.050017534 & 675 & 15.0 & 2.8467020988464355 & 0.0 & 0 & 16673.0 & 30.441000000000003 & 1207
+--
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 2 & 104 & 340 & 5 & 120.0 & SBRPMaxNoOneDegreePath & 19.0 & 19.0 & 0.007467532 & - & - & 19.0 & 1103 & 2.869247988 & 480 & 19.0 & 0.0733330249786377 & 0.0 & 0 & 17658.0 & 38.4435 & 2657
+--
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 3 & 150 & 432 & 5 & 120.0 & SBRPMaxNoOneDegreePath & 19.0 & 19.0 & 0.008993358 & - & - & 19.0 & 5866 & 69.609595889 & 753 & 19.0 & 0.10872602462768555 & 0.0 & 0 & 38950.0 & 64.44600000000001 & 1338
+--
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 4 & 143 & 426 & 5 & 120.0 & SBRPMaxNoOneDegreePath & 22.0 & 22.0 & 0.009079968 & - & - & 22.0 & 1739 & 9.212628497 & 2788 & 22.0 & 1.0862410068511963 & 0.0 & 15 & 34293.0 & 63.01800000000001 & 2573
+--
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 5 & 117 & 338 & 5 & 120.0 & SBRPMaxNoOneDegreePath & 16.0 & 16.0 & 0.005756726 & - & - & 16.0 & 467 & 0.972209677 & 495 & 16.0 & 0.09488892555236816 & 0.0 & 0 & 16286.0 & 28.605000000000004 & 928
