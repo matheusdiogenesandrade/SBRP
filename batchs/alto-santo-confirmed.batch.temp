@@ -1,0 +1,2 @@
+data/instances-dengue-ARP/real_instances/complete/alto-santo-confirmed/alto-santo-1000-2016.txt --instance-type carlos --out solutions/alto-santo-1000-2016-confirmed 
+data/instances-dengue-ARP/real_instances/complete/alto-santo-confirmed/alto-santo-1000-2017.txt --instance-type carlos --out solutions/alto-santo-1000-2017-confirmed 

@@ -12,11 +12,13 @@ using BenchmarkTools
 export EPS,                   # decimal tolerance rate
        blocks,                # returns all the blocks with at least one node in S
        bfs_sets,              # ...
-       add_cuts              # adds generic cuts (rhs >= lhs) to a given model
+       add_cuts,              # adds generic cuts (rhs >= lhs) to a given model
+       blocks_nodes           # get nodes of a block set
 
 EPS = 1e-4
 
-blocks(B::Vector{Vi}, S::Set{Int}) = Vector{Vi}([b for b in B if any([i in S for i in b])])
+blocks(B::VVi, S::Si) = VVi([b for b in B if any([i in S for i in b])])
+blocks_nodes(B::VVi) = Vi([i for b in B for i in b])
 
 add_cuts(model, cuts) = [@constraint(model, lhs >= rhs) for (lhs, rhs) in cuts]
 

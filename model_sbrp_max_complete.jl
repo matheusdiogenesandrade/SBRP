@@ -14,9 +14,10 @@ include("SparseMaxFlowMinCut.jl")
 
 add_intersection_cuts(model, cuts::Vector{Tuple{Arcs, Arcs}}) = add_cuts(model, [(- 1 + sum(model[:x][a] for a in lhs), - sum(model[:x][a] for a in rhs)) for (lhs, rhs) in cuts])
 
-add_subtour_cuts(model, x, y, sets::Set{Tuple{Set{Int}, Int, Vi}}, A::Arcs) = add_cuts(model, [(sum(x[a] for a in δ⁺(A, S)), sum(x[(i, j)] for (i, j) in δ⁺(A, i) if j in S) + y[block] - 1) for (S, i, block) in sets])
+add_subtour_cuts(model, sets::Set{Tuple{Arcs, Arcs}}) = add_cuts(model, [(∑(model[:x][a] for a in Aₛ), ∑(∑(model[:x][a] for a in Aᵢ))) for (Aₛ, Aᵢ) in sets])
 
-function lazy_separation(data::SBRPData, Vb, info, model, x, y, cb_data::CPLEX.CallbackContext, context_id::Clong)
+function lazy_separation(data::SBRPData, Vb, info, model, cb_data::CPLEX.CallbackContext, context_id::Clong)
+  x, y = model[:x], model[:y]
 
   # preliminary checkings
   context_id != CPX_CALLBACKCONTEXT_CANDIDATE && return
@@ -33,23 +34,33 @@ function lazy_separation(data::SBRPData, Vb, info, model, x, y, cb_data::CPLEX.C
   sets = bfs_sets(A′, Vb, data.depot)
 
   # get valid components
-  sets′ = Set{Tuple{Set{Int}, Int, Vi}}((S, i, block) for S in sets for block in blocks(data.B, S) for i in intersect(block, S) if y_val[block] + sum(x_val[(i, j)] for (i, j) in δ⁺(A, i) if j in S && x_val[(i, j)] > EPS) - 1 > length(δ⁺(A′, S)) + 0.5)
+#  components = Set{Tuple{Si, Int, Vi}}((S, i, block) for S in sets for block in blocks(data.B, S) for i in intersect(block, S) if z_val[i] + y_val[block] - 1 > length(δ⁺(A′, S)) + 0.5) 
+  components = Set{Tuple{Arcs, Arcs}}()
+  for S in sets 
+    lhs = ∑(x_val[a] for a in δ⁺(A′, S))
+    Aₛ, A′ₛ = δ⁺(A, S), δ⁺(A′, S) 
+    for i in S 
+      A′ᵢ = δ⁺(A′, i)
+      if i in Vb && ∑(x_val[a] for a in A′ₛ) + 0.5 < ∑(x_val[a] for a in A′ᵢ)
+        Aᵢ = δ⁺(A, i)
+        push!(components, (Aₛ, Aᵢ))
+        MOI.submit(model, MOI.LazyConstraint(cb_data), @build_constraint(Σ(x[a] for a in Aₛ) >= Σ(x[a] for a in Aᵢ))) 
+      end
+    end
+  end
 
   # add ineqs
-  [MOI.submit(model, MOI.LazyConstraint(cb_data), @build_constraint(sum(x[a] for a in δ⁺(A, S)) >= y[block] + sum(x[(i, j)] for (i, j) in δ⁺(A, i) if j in S) - 1)) for (S, i, block) in sets′]
+#  [MOI.submit(model, MOI.LazyConstraint(cb_data), @build_constraint(Σ(x[a] for a in δ⁺(A, S)) >= z[i] + y[block] - 1)) for (S, i, block) in components]
 
   # update info
-  info["lazyCuts"] = info["lazyCuts"] + length(sets′)
-
-  #
-#  [flush_println(collect(S), i, block) for (S, i, block) in sets′]
+  info["lazyCuts"] = info["lazyCuts"] + length(components)
 end
 
-function get_subtour_cuts(data::SBRPData, model, x, y, info::Dict{String, Any})
+function get_subtour_cuts(data::SBRPData, model, info::Dict{String, Any})
+  x, y = model[:x], model[:y]
 
   # setup
-  A, B, depot, components, Vb = data.D.A, data.B, data.depot, Set{Tuple{Si, Int, Vi}}(), Si([i for b in data.B for i in b])
-  n, iteration = max(Si(vcat([i for (i, j) in A], [j for (i, j) in A]))...), 1
+  A, B, depot, components, Vb = data.D.A, data.B, data.depot, Set{Tuple{Arcs, Arcs}}(), blocks_nodes(data.B) 
   Vₘ = Dict{Int, Int}(i => idx for (idx, i) in enumerate(keys(data.D.V)))
   Vₘʳ = Dict{Int, Int}(idx => i for (idx, i) in enumerate(keys(data.D.V)))
   n, iteration = length(Vₘ), 1
@@ -67,10 +78,11 @@ function get_subtour_cuts(data::SBRPData, model, x, y, info::Dict{String, Any})
     x_val = ArcCostMap(a => value(x[a]) for a in A)
 
     # get subsets
-    g, M, newComponents = SparseMaxFlowMinCut.ArcFlow[], 100000, Set{Tuple{Si, Int, Vi}}()
+    g, M, newComponents = SparseMaxFlowMinCut.ArcFlow[], 100000, Set{Tuple{Arcs, Arcs}}()
+    A′ = [a for a in A if x_val[a] > EPS]
 
-    # mouting graph
-    [push!(g, SparseMaxFlowMinCut.ArcFlow(Vₘ[a[1]], Vₘ[a[2]], trunc(floor(x_val[a], digits=5) * M))) for a in A if x_val[a] > EPS]
+    # mounting graph
+    [push!(g, SparseMaxFlowMinCut.ArcFlow(Vₘ[a[1]], Vₘ[a[2]], trunc(floor(x_val[a], digits=5) * M))) for a in A′]
 
     # get subsets
     for source in Vb 
@@ -82,37 +94,49 @@ function get_subtour_cuts(data::SBRPData, model, x, y, info::Dict{String, Any})
       # base case 1
       (flow >= 1 - 1e-2 || set[Vₘ[depot]] == 1) && continue
 
-      # get set
+      # base case 2
+      A′ᵢ = δ⁺(A′, source)
+      rhs = ∑(x_val[a] for a in A′ᵢ)
+        # get set
       S = Si([Vₘʳ[i] for i in 1:n if set[i] == 1])
 
-      # base case 2
-      length(S) <= 1 && continue
-#      println(length(S) == length(Vb))
+      flow + 1e2 >= rhs && continue
+
+      # base case 3
+#      length(S) <= 1 && continue
+      flush_println(length(S))
 
       # get components
-      [push!(newComponents, (S, i, block)) for block in blocks(B, S) for i in intersect(block, S) if y_val[block] + sum(x_val[(i, j)] for (i, j) in δ⁺(A, i) if j in S) - 1 > flow + 1e-2]
+#      [push!(newComponents, (S, i, block)) for block in blocks(B, S) for i in intersect(block, S) if z_val[i] + y_val[block] - 1 > flow + 1e-2]
+      Aₛ = δ⁺(A, S)
+      push!(newComponents, (Aₛ, Aᵢ))
+      add_cuts(model, [(∑(x[a] for a in Aₛ), Σ(x[a] for a in Aᵢ))])
+
     end
 
     # base case
     isempty(newComponents) && break
-#    flush_println(length(newComponents))
-#    [flush_println(S, i, block) for (S, i, block) in newComponents]
+#    flush_println(length(sets′))
+#    [flush_println(S, i, block) for (S, i, block) in sets′]
 
     # update infos
 #    info["iteration_" * string(iteration) * "_time"], info["iteration_" * string(iteration) * "_cuts"], iteration = time, length(sets′), iteration + 1
 
-    # store sets″
+    # store components
     union!(components, newComponents)
 
     # add ineqs
-    add_subtour_cuts(model, x, y, newComponents, A)
+    add_subtour_cuts(model, components)
   end
-  return components 
+  return components
 end
 
-function get_intersection_cuts(data::SBRPData, model, x, y)
+function get_intersection_cuts(data::SBRPData, model)
+  x, y = model[:x], model[:y]
+
   # setup
   B, A, cuts = data.B, data.D.A, Vector{Tuple{Arcs, Arcs}}()
+
   # max clique model
   max_clique = direct_model(CPLEX.Optimizer())
   set_silent(max_clique)
@@ -120,6 +144,7 @@ function get_intersection_cuts(data::SBRPData, model, x, y)
   @objective(max_clique, Max, ∑(z[block] for block in B))
   @constraint(max_clique, [(block, block′) in [(B[i], B[j]) for i in 1:length(B) for j in i + 1:length(B) if isempty(∩(B[i], B[j]))]], 1 >= z[block] + z[block′])
   @constraint(max_clique, ∑(z[block] for block in B) >= 2)
+
   while true
     # solve
     optimize!(max_clique)
@@ -148,12 +173,12 @@ function get_intersection_cuts(data::SBRPData, model, x, y)
 end
 
 intersection_cuts = Vector{Tuple{Arcs, Arcs}}()
-subtour_cuts = Set{Tuple{Set{Int}, Int, Vi}}()
+subtour_cuts = Set{Tuple{Arcs, Arcs}}()
 
 function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
-  B, A, T, V, profits, Vb, info = data.B, data.D.A, data.T, Set{Int}(vcat([i for (i, j) in data.D.A], [j for (i, j) in data.D.A])), data.profits, Set{Int}([i for b in data.B for i in b]), Dict{String, Any}("lazyCuts" => 0)
+  B, A, T, V, profits, Vb, info = data.B, data.D.A, data.T, data.D.V, data.profits, blocks_nodes(data.B), Dict{String, Any}("lazyCuts" => 0)
 
-  nodes_blocks = Dict{Int, Vector{Vi}}(i => [block for block in B if i in B] for i in Vb)
+  nodes_blocks = Dict{Int, VVi}(i => [block for block in B if i in B] for i in Vb)
 
   function create_model(relax_x::Bool = false, relax_y::Bool = false)
     global intersection_cuts, subtour_cuts
@@ -170,8 +195,8 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
       @variable(model, y[b in B], Bin)
     end
     @objective(model, Max, sum(data.profits[b] * y[b] for b in B))
-    @constraint(model, degree[i in V], sum(x[a] for a in δ⁻(A, i)) == sum(x[a] for a in δ⁺(A, i)))
-    @constraint(model, degree_at_most_once[i in V], sum(x[a] for a in δ⁺(A, i)) <= 1)
+    @constraint(model, degree[i in keys(V)], sum(x[a] for a in δ⁻(A, i)) == sum(x[a] for a in δ⁺(A, i)))
+    @constraint(model, degree_at_most_once[i in keys(V)], sum(x[a] for a in δ⁺(A, i)) <= 1)
     @constraint(model, block1[block in B], sum(x[a] for a in δ⁺(A, block)) >= y[block])
     @constraint(model, sum(Data.SBRP.time(data, a) * x[a] for a in A) <= T - sum(y[block] * time_block(data, block) for block in B))
     # improvements
@@ -180,7 +205,7 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
     # intersection cuts
     add_intersection_cuts(model, intersection_cuts)
     # subtour cuts
-    add_subtour_cuts(model, x, y, subtour_cuts, A) 
+    add_subtour_cuts(model, subtour_cuts) 
     # registries
     model[:x], model[:y] = x, y
     return model, x, y
@@ -191,7 +216,7 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
   # getting intersection cuts
   if app["intersection-cuts"]
     flush_println("Getting intersection cuts")
-    info["intersectionCutsTime"] = @elapsed intersection_cuts = get_intersection_cuts(data, model, x, y) # get intersection cuts
+    info["intersectionCutsTime"] = @elapsed intersection_cuts = get_intersection_cuts(data, model) # get intersection cuts
     info["intersectionCuts"] = length(intersection_cuts)
     # adding intersection cuts to the recently create model
     add_intersection_cuts(model, intersection_cuts)
@@ -211,13 +236,13 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
   # get max-flow cuts with x and y relaxed or integer
   model, x, y = create_model(true, !app["y-integer"])
   optimize!(model)
-  info["maxFlowCutsTime"] = @elapsed subtour_cuts = get_subtour_cuts(data, model, x, y, info)
+  info["maxFlowCutsTime"] = @elapsed subtour_cuts = get_subtour_cuts(data, model, info)
   info["maxFlowCuts"], info["maxFlowLP"] = length(subtour_cuts), objective_value(model)
 
   # integer model
-  model, x, y = create_model(); 
-  MOI.set(model, MOI.NumberOfThreads(), 1); # thread numbers
-  MOI.set(model, CPLEX.CallbackFunction(), (cb_data, context_id) -> lazy_separation(data, Vb, info, model, x, y, cb_data, context_id)) # lazy callback
+  model, x, y = create_model()
+  MOI.set(model, MOI.NumberOfThreads(), 1) # thread numbers
+  MOI.set(model, CPLEX.CallbackFunction(), (cb_data, context_id) -> lazy_separation(data, Vb, info, model, cb_data, context_id)) # lazy callback
 
   # return
   return (model, x, y, info)
