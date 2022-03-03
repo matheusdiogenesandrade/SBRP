@@ -72,10 +72,15 @@ function gettour(data::SBRPData, x, B::Vector{Vi})
 #  return Vi(reverse(tour))
 end
 
-function add_blocks(tour::Vi, B::Vector{Vi})
+function add_blocks(tour::Vi, B::VVi)
   # add blocks
   tour′, node_blocks = Vi(), Dict{Int, Set{Vi}}(i => Set{Vi}() for b in B for i in b)
-  [push!(node_blocks[j], b) for b in B for j in b] # populate dict
+  # edge case
+  for block in B
+    !any([i in tour for i in block]) && error("Street block $block is not being serviced")
+  end
+  # populate dict
+  [push!(node_blocks[j], b) for b in B for j in b]
   for i in tour
     push!(tour′, i)
     (!in(i, keys(node_blocks)) || isempty(node_blocks[i])) && continue # node has no blocks to serve
@@ -108,7 +113,7 @@ function gettour(V::Vi, A::Vector{Tuple{Int, Int}}, depot::Int, x)
   return Vi(reverse(tour))
 end
 =#
-function check_sbrp_sol(data::SBRPData, tour::Vi, B::Vector{Vi})
+function check_sbrp_sol(data::SBRPData, tour::Vi, B::VVi)
   V, A = Set{Int}(), Set{Tuple{Int, Int}}(data.D.A)
   # check arcs
   for i in 1:(length(tour) - 1)

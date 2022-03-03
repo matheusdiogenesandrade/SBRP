@@ -7,6 +7,7 @@ include("model.jl")
 include("solve.jl")
 include("sol.jl")
 include("brkga.jl")
+include("dd_sbrp.jl")
 
 using .Data
 using .Data.SBRP
@@ -16,6 +17,7 @@ using .Model.ModelSBRPMaxComplete
 using .Solution
 using .NearestNeighborhoodHeuristic
 using .BRKGA
+using .DD_SBRP
 using ArgParse
 
 function parse_commandline(args_array::Array{String,1}, appfolder::String)
@@ -41,6 +43,9 @@ function parse_commandline(args_array::Array{String,1}, appfolder::String)
     "--brkga-conf"
     help = "BRKGA config file directory"
     default = "conf/config.conf"
+    "--dd"
+    help = "true if you want to run the Decision Diagram, and false otherwise"
+    action = :store_true
     "--vehicle-time-limit"
     help = "Vehicle time limit in minutes"
     default = "120"
@@ -53,6 +58,12 @@ function parse_commandline(args_array::Array{String,1}, appfolder::String)
     help = "Batch file path"
     "--intersection-cuts"
     help = "Intersection model for the complete model"
+    action = :store_true
+    "--arcs-mtz"
+    help = "MTZ on the arcs for the complete model"
+    action = :store_true
+    "--subcycle-separation"
+    help = "Subcycle separation with max-flow at the B&B root node for the complete model"
     action = :store_true
     "--y-integer"
     help = "Fix the variable y, for the complete model, when running the separation algorithm"
@@ -276,6 +287,45 @@ function sbrp_max_no_one_degree_path(app::Dict{String, Any}, data::SBRPData, dat
   =#
 end
 
+function dd(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, paths::Dict{Tuple{Int, Int}, Vi})
+  flush_println("###################BRKGA####################")
+
+  tour′, info, B = run_dd(data′)
+
+  # check feasibility
+  check_sbrp_sol(data′, tour′, B) 
+
+  # get solution for original graph
+  tour = Vi()
+  for i in 2:length(tour′)
+    push!(tour, tour′[i - 1])
+    !in((tour′[i - 1], tour′[i]), data.D.A) && push!(tour, paths[(tour′[i - 1], tour′[i])]...)
+  end
+  push!(tour, tour′[end]) 
+
+  # check feasibility
+  check_sbrp_sol(data, tour, B) 
+
+  # log
+  info = merge(info, Dict{String, String}(
+                                          "model" => "DD", 
+                                          "instance" => app["instance_name"], 
+                                          "|V|" => string(length(data′.D.V)), 
+                                          "|A|" => string(length(data′.D.A)), 
+                                          "|B|" => string(length(data.B)), 
+                                          "T" => string(data.T),
+                                          "meters" => string(tour_distance(data, tour)),
+                                          "tourMinutes" => string(tour_time(data, tour, B)),
+                                          "blocksMeters" => string(sum(distance_block(data, block) for block in B))
+                                         )) 
+  log(info) 
+
+  # write solution
+  write_sol(app, tour, data)
+
+  flush_println("########################################################")
+end
+
 function run(app::Dict{String,Any})
   flush_println("Application parameters:")
   [flush_println("  $arg  =>  $(repr(val))") for (arg,val) in app]
@@ -305,6 +355,7 @@ function run(app::Dict{String,Any})
   app["no-one-degree-path"] && sbrp_max_no_one_degree_path(app, data, data″, paths″)
   app["complete"] && sbrp_max_complete(app, data, data′, paths′)
   app["brkga"] && brkga(app, data, data′, paths′)
+  app["dd"] && dd(app, data, data′, paths′)
 
 end
 
