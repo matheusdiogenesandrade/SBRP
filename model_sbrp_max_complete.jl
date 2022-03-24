@@ -12,7 +12,12 @@ export build_model_sbrp_max_complete
 
 include("SparseMaxFlowMinCut.jl")
 
-add_intersection_cuts(model, cuts::Vector{Tuple{Arcs, Arcs}}) = add_cuts(model, [(- 1 + sum(model[:x][a] for a in lhs), - sum(model[:x][a] for a in rhs)) for (lhs, rhs) in cuts])
+function add_intersection_cuts1(model, cuts::Vector{Arcs})
+  add_cuts(model, [(sum(model[:x][a] for a in arcs), 0) for arcs in cuts])
+  add_cuts(model, [(0, sum(model[:x][a] for a in arcs)) for arcs in cuts])
+end
+
+add_intersection_cuts2(model, cuts::Vector{Arcs}) = add_cuts(model, [(1, sum(model[:x][a] for a in arcs)) for arcs in cuts])
 
 add_subtour_cuts(model, sets::Set{Tuple{Arcs, Arcs}}) = add_cuts(model, [(∑(model[:x][a] for a in Aₛ), ∑(∑(model[:x][a] for a in Aᵢ))) for (Aₛ, Aᵢ) in sets])
 
@@ -135,11 +140,11 @@ function get_intersection_cuts(data::SBRPData, model)
   x, y = model[:x], model[:y]
 
   # setup
-  B, A, cuts = data.B, data.D.A, Vector{Tuple{Arcs, Arcs}}()
+  B, A, cuts1, cuts2, cliques = data.B, data.D.A, Vector{Arcs}(), Vector{Arcs}(), Vector{VVi}()
 
   # max clique model
   max_clique = direct_model(CPLEX.Optimizer())
-  set_silent(max_clique)
+#  set_silent(max_clique)
   @variable(max_clique, z[block in B], Bin)
   @objective(max_clique, Max, ∑(z[block] for block in B))
   @constraint(max_clique, [(block, block′) in [(B[i], B[j]) for i in 1:length(B) for j in i + 1:length(B) if isempty(∩(B[i], B[j]))]], 1 >= z[block] + z[block′])
@@ -154,25 +159,48 @@ function get_intersection_cuts(data::SBRPData, model)
     B′ = filter(block -> value(z[block]) > 0.5, B)
     # check if it is a clique 
     all([!isempty(∩(block, block′)) for block′ ∈ B for block ∈ B′ if block′ ≠ block]) && error("It is not a clique")
-    # get intersection
-    intersection = ∩(B′...)
-    flush_println("Maximal clique: ", length(B′))
-    # add inquelity in the SBRP model
-    for block in B′
-      rhs = Arcs([a for i ∈ setdiff(block, intersection, ∪(i for block′ ∈ B′ for i in ∩(block′, block) if block′ ∉ B′)) for a ∈ δ⁺(A, i)])
-      isempty(rhs) && continue
-      push!(cuts, (Arcs([a for a ∈ δ⁺(A, intersection)]), rhs))
-      flush_println(block)
-    end
-    @constraint(model, [block in B′], ∑(∑(x[a] for a ∈ δ⁺(A, i) if a[2] ∈ intersection) for i ∈ setdiff(intersection, ∪(i for block′ ∈ B′ for i in ∩(block′, block) if block′ ∉ B′))) == 0)
+    # store clique
+    push!(cliques, B′)
     # update clique model
     @constraint(max_clique, ∑(z[block] for block ∈ B′) ≤ length(B′) - 1)
-    # increase cuts number
   end
-  return cuts
+
+  # get nodes of each block
+  Vb = blocks_nodes(B)
+  nodes_blocks = Dict{Int, VVi}(i => [block for block in B if i in block] for i in Vb)
+
+  # get cuts
+  for clique in cliques
+    # get intersection
+    intersection = ∩(clique...)
+
+    ######## intersection cuts 1 ########
+    
+    isolated_intersection = setdiff(intersection, ∪(i for block ∈ setdiff(B, clique) for i in block))
+#    isolated_intersection = sediff(intersection, ∪(block... for block ∈ setdiff(B, clique)))
+    length(isolated_intersection) > 1 && push!(cuts1, Arcs([(i, j) for (i, j) in χ(isolated_intersection) if i ≠ j]))
+
+    flush_println("Isolated clique: ", isolated_intersection)
+
+    ######## intersection cuts 2 ########
+    
+    flush_println("Clique: ", length(clique))
+
+    for block in clique
+      # get arcs incident to nodes that belong exclusively to the block 
+      independent_arcs = [a for (i, blocks) in nodes_blocks for a in δ⁺(A, i) if ∧(length(blocks) == 1, block ∈ blocks)]
+
+      # edge case
+      isempty(independent_arcs) && continue
+
+      # store
+      push!(cuts2, Arcs(∪([a for i ∈ intersection for a ∈ δ⁺(A, i)], independent_arcs)))
+    end
+  end
+  return cuts1, cuts2
 end
 
-intersection_cuts = Vector{Tuple{Arcs, Arcs}}()
+intersection_cuts1, intersection_cuts2 = Vector{Arcs}(), Vector{Arcs}()
 subtour_cuts = Set{Tuple{Arcs, Arcs}}()
 
 function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
@@ -180,10 +208,10 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
   A′, V′ = filter(a -> a[2] != depot, A), setdiff(keys(V), depot)
   P′ = filter(a -> a[1] < a[2], χ(V′))
 
-  nodes_blocks = Dict{Int, VVi}(i => [block for block in B if i in B] for i in Vb)
+  nodes_blocks = Dict{Int, VVi}(i => [block for block in B if i in block] for i in Vb)
 
   function create_model(relax_x::Bool = false, relax_y::Bool = false)
-    global intersection_cuts, subtour_cuts
+    global intersection_cuts1, intersection_cuts2, subtour_cuts
     model = direct_model(CPLEX.Optimizer())
 #    set_silent(model)
     if relax_x
@@ -223,7 +251,8 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
       @constraint(model, ub3[i in V′], t[i] <= sum(x[a] for a in δ⁻(A, i)) * T)
     end
     # intersection cuts
-    add_intersection_cuts(model, intersection_cuts)
+    add_intersection_cuts1(model, intersection_cuts1)
+    add_intersection_cuts2(model, intersection_cuts2)
     # subtour cuts
     add_subtour_cuts(model, subtour_cuts) 
     # registries
@@ -236,10 +265,11 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
   # getting intersection cuts
   if app["intersection-cuts"]
     flush_println("Getting intersection cuts")
-    info["intersectionCutsTime"] = @elapsed intersection_cuts = get_intersection_cuts(data, model) # get intersection cuts
-    info["intersectionCuts"] = length(intersection_cuts)
+    info["intersectionCutsTime"] = @elapsed intersection_cuts1, intersection_cuts2 = get_intersection_cuts(data, model) # get intersection cuts
+    info["intersectionCuts1"], info["intersectionCuts2"] = length(intersection_cuts1), length(intersection_cuts2)
     # adding intersection cuts to the recently create model
-    add_intersection_cuts(model, intersection_cuts)
+    add_intersection_cuts1(model, intersection_cuts1)
+    add_intersection_cuts2(model, intersection_cuts2)
   end
 
   # getting initial relaxation with both variables <x and y> relaxed

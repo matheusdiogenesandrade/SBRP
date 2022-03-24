@@ -74,7 +74,7 @@ end
 
 # log function 
 function log(info)
-  logColumns = ["instance", "|V|", "|A|", "|B|", "T", "model", "initialLP", "yLP", "yLPTime", "intersectionCuts", "intersectionCutsTime", "maxFlowLP", "maxFlowCuts", "maxFlowCutsTime", "lazyCuts", "cost", "solverTime", "relativeGAP", "nodeCount", "meters", "tourMinutes", "blocksMeters"]
+  logColumns = ["instance", "|V|", "|A|", "|B|", "T", "model", "initialLP", "yLP", "yLPTime", "intersectionCuts1", "intersectionCuts2", "intersectionCutsTime", "maxFlowLP", "maxFlowCuts", "maxFlowCutsTime", "lazyCuts", "cost", "solverTime", "relativeGAP", "nodeCount", "meters", "tourMinutes", "blocksMeters"]
   println([" & :" * column for column in logColumns]...)
   println([" & " * (column in keys(info) ? string(info[column]) : "-") for column in logColumns]...)
 end
@@ -351,11 +351,11 @@ function run(app::Dict{String,Any})
   app["nosolve"] && return
 
   # solve models
-  app["normal"] && sbrp_max(app, data)
-  app["no-one-degree-path"] && sbrp_max_no_one_degree_path(app, data, data″, paths″)
-  app["complete"] && sbrp_max_complete(app, data, data′, paths′)
-  app["brkga"] && brkga(app, data, data′, paths′)
-  app["dd"] && dd(app, data, data′, paths′)
+  app["normal"] && return sbrp_max(app, data)
+  app["no-one-degree-path"] && return sbrp_max_no_one_degree_path(app, data, data″, paths″)
+  app["complete"] && return sbrp_max_complete(app, data, data′, paths′)
+  app["brkga"] && return brkga(app, data, data′, paths′)
+  app["dd"] && return dd(app, data, data′, paths′)
 
 end
 

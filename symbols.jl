@@ -52,9 +52,9 @@ const ∅(x) = isempty(x)
 
 const flush_println(strings...) = (println(strings...); flush(stdout))
 const Arc = Tuple{Int, Int}
-const Arcs = Vector{Tuple{Int, Int}}
-const ArcsSet = Set{Tuple{Int, Int}}
+const Arcs = Vector{Arc}
+const ArcsSet = Set{Arc}
 const Vi = Vector{Int}
-const VVi = Vector{Vector{Int}}
+const VVi = Vector{Vi}
 const Si = Set{Int}
 const ArcCostMap = Dict{Arc, Real}

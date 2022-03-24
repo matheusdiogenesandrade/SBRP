@@ -12,7 +12,7 @@ using BenchmarkTools
 export EPS,                   # decimal tolerance rate
        blocks,                # returns all the blocks with at least one node in S
        bfs_sets,              # ...
-       add_cuts,              # adds generic cuts (rhs >= lhs) to a given model
+       add_cuts,              # adds generic cuts (lhs >= rhs) to a given model
        blocks_nodes           # get nodes of a block set
 
 EPS = 1e-4
