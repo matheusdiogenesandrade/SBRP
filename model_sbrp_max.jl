@@ -131,7 +131,7 @@ function build_model_sbrp_max(data::SBRPData, app::Dict{String,Any})
   function create_model(relax_x::Bool = false, relax_y::Bool = false, relax_z::Bool = false)
     global subtour_cuts
     model = direct_model(CPLEX.Optimizer())
-#    set_silent(model)
+    set_silent(model)
 
     if relax_x
       @variable(model, x[a in A], lower_bound = 0, upper_bound = 1)
@@ -156,7 +156,7 @@ function build_model_sbrp_max(data::SBRPData, app::Dict{String,Any})
     @constraint(model, sum(x[a] for a in δ⁺(A, data.depot)) == 1)
     @constraint(model, block[block in B], sum(x[a] for i in block for a in δ⁺(A, i)) >= y[block])
     @constraint(model, sum(Data.SBRP.time(data, a) * x[a] for a in A) <= T - sum(y[block] * time_block(data, block) for block in B))
-    @constraint(model, update_z[i in Vb], sum(x[a] for a in δ⁺(A, i)) <= (length(Vb)^2) * z[i])
+    @constraint(model, update_z[i in Vb], sum(x[a] for a in δ⁺(A, i)) <= (length(Vb) - 2) * z[i])
     # subtour cuts
     add_subtour_cuts(model, subtour_cuts) 
     # registries

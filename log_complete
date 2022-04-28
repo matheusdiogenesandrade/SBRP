@@ -1,0 +1,2916 @@
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/1.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas1"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 5
+|V| = 226
+|A| = 582
+|V′| = 45
+|A′| = 1980
+|V″| = 126
+|A″| = 386
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 1 & 45 & 1980 & 5 & 120.0 & SBRPMaxComplete & 5.0 & 5.0 & 0.068841504 & 0 & 0 & 2.488552584 & - & - & - & 0 & 5.0 & 0.19022703170776367 & 0.0 & 0 & 6748.0 & 20.1885 & 2237.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/2.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas2"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 5
+|V| = 192
+|A| = 454
+|V′| = 21
+|A′| = 420
+|V″| = 78
+|A″| = 226
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1619330799, 1619330828]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 2 & 21 & 420 & 5 & 120.0 & SBRPMaxComplete & 5.0 & 5.0 & 0.014678724 & 1 & 2 & 0.308689122 & - & - & - & 0 & 5.0 & 0.0413820743560791 & 0.0 & 0 & 6618.0 & 17.4645 & 1675.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/3.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas3"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 5
+|V| = 102
+|A| = 282
+|V′| = 30
+|A′| = 870
+|V″| = 56
+|A″| = 190
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 3 & 30 & 870 & 5 & 120.0 & SBRPMaxComplete & 5.0 & 5.0 & 0.026126274 & 0 & 0 & 0.002758698 & - & - & - & 0 & 5.0 & 0.06973409652709961 & 0.0 & 0 & 9214.0 & 21.975 & 1812.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/4.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas4"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 5
+|V| = 143
+|A| = 422
+|V′| = 54
+|A′| = 2862
+|V″| = 100
+|A″| = 336
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 4 & 54 & 2862 & 5 & 120.0 & SBRPMaxComplete & 5.0 & 5.0 & 0.075085482 & 0 & 0 & 0.002912191 & - & - & - & 0 & 5.0 & 0.27704405784606934 & 0.0 & 0 & 7046.0 & 18.453000000000003 & 1752.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/5.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas5"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 5
+|V| = 227
+|A| = 576
+|V′| = 46
+|A′| = 2070
+|V″| = 93
+|A″| = 308
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 5 & 46 & 2070 & 5 & 120.0 & SBRPMaxComplete & 5.0 & 5.0 & 0.058756406 & 0 & 0 & 0.002771255 & - & - & - & 0 & 5.0 & 0.2325899600982666 & 0.0 & 0 & 15160.0 & 32.932500000000005 & 2265.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/6.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas6"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 10
+|V| = 257
+|A| = 840
+|V′| = 115
+|A′| = 13110
+|V″| = 198
+|A″| = 722
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1553068510]
+Clique: 2
+Isolated clique: [1550929811, 2056632340]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 6 & 115 & 13110 & 10 & 120.0 & SBRPMaxComplete & 10.0 & 10.0 & 0.47726879 & 1 & 4 & 0.045640273 & - & - & - & 0 & 10.0 & 1.9439380168914795 & 0.0 & 0 & 17550.0 & 57.78000000000001 & 6990.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/7.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas7"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 10
+|V| = 347
+|A| = 955
+|V′| = 76
+|A′| = 5700
+|V″| = 203
+|A″| = 667
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1553111889, 2025981920, 1553119543]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 7 & 76 & 5700 & 10 & 120.0 & SBRPMaxComplete & 10.0 & 10.0 & 0.193401826 & 1 & 2 & 0.008021669 & - & - & - & 0 & 10.0 & 0.7050719261169434 & 0.0 & 0 & 17094.0 & 48.006 & 4970.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/8.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas8"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 10
+|V| = 385
+|A| = 1094
+|V′| = 105
+|A′| = 10920
+|V″| = 263
+|A″| = 850
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [5182288233, 5182288243, 5182288234, 7292135225, 7292135224, 7292135223, 7292135222, 5539086178]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 8 & 105 & 10920 & 10 & 120.0 & SBRPMaxComplete & 10.0 & 10.0 & 0.387710642 & 1 & 2 & 0.010215034 & - & - & - & 0 & 10.0 & 1.4529080390930176 & 0.0 & 0 & 26685.0 & 62.550000000000004 & 5005.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/9.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas9"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 10
+|V| = 366
+|A| = 1014
+|V′| = 95
+|A′| = 8930
+|V″| = 238
+|A″| = 758
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1552927688]
+Clique: 2
+Isolated clique: [1621757795, 1621757797]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 9 & 95 & 8930 & 10 & 120.0 & SBRPMaxComplete & 10.0 & 10.0 & 0.302640342 & 1 & 4 & 0.015831847 & - & - & - & 0 & 10.0 & 1.0043470859527588 & 0.0 & 0 & 14655.0 & 42.228 & 4499.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/10.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas10"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 10
+|V| = 364
+|A| = 934
+|V′| = 66
+|A′| = 4290
+|V″| = 214
+|A″| = 638
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [2662733330, 7279756964, 7279756965, 2662733328, 1621757867]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 10 & 66 & 4290 & 10 & 120.0 & SBRPMaxComplete & 10.0 & 10.0 & 0.145103392 & 1 & 2 & 0.008176282 & - & - & - & 0 & 10.0 & 0.4994850158691406 & 0.0 & 0 & 20393.0 & 44.679 & 3131.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/11.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas11"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 15
+|V| = 532
+|A| = 1490
+|V′| = 134
+|A′| = 17822
+|V″| = 341
+|A″| = 1108
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1552927722]
+Clique: 2
+Isolated clique: [1550929835, 1553119526]
+Clique: 2
+Isolated clique: [1552927681, 1550929797]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 11 & 134 & 17822 & 15 & 120.0 & SBRPMaxComplete & 15.0 & 15.0 & 0.684854587 & 2 & 6 & 0.037645152 & - & - & - & 0 & 15.0 & 2.9376049041748047 & 0.0 & 0 & 28603.0 & 68.505 & 5689.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/12.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas12"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 15
+|V| = 492
+|A| = 1412
+|V′| = 145
+|A′| = 20880
+|V″| = 349
+|A″| = 1138
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1553068465]
+Clique: 2
+Isolated clique: [1552927711, 1553035144]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 12 & 145 & 20880 & 15 & 120.0 & SBRPMaxComplete & 15.0 & 15.0 & 0.818931678 & 1 & 4 & 0.028109777 & - & - & - & 0 & 15.0 & 4.748365879058838 & 0.0 & 0 & 37948.0 & 78.57600000000001 & 4812.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/13.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas13"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 15
+|V| = 639
+|A| = 1698
+|V′| = 119
+|A′| = 14042
+|V″| = 403
+|A″| = 1232
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1277671117, 3646931993, 1553068519, 1553068498]
+Clique: 2
+Isolated clique: [1550929857, 1277671246, 8656632564]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 13 & 119 & 14042 & 15 & 120.0 & SBRPMaxComplete & 15.0 & 15.0 & 0.545967889 & 2 & 4 & 0.021959474 & - & - & - & 0 & 15.0 & 2.0799920558929443 & 0.0 & 0 & 43408.0 & 93.03 & 6204.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/14.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas14"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 15
+|V| = 406
+|A| = 1172
+|V′| = 105
+|A′| = 10920
+|V″| = 287
+|A″| = 934
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1621757835, 1621757829]
+Clique: 2
+Isolated clique: [1550929811, 2056632340]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 14 & 105 & 10920 & 15 & 120.0 & SBRPMaxComplete & 15.0 & 15.0 & 0.401840322 & 2 & 4 & 0.018258007 & - & - & - & 0 & 15.0 & 2.3596439361572266 & 0.0 & 0 & 34466.0 & 79.608 & 6202.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/15.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas15"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 15
+|V| = 654
+|A| = 1830
+|V′| = 158
+|A′| = 24806
+|V″| = 461
+|A″| = 1450
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 15 & 158 & 24806 & 15 & 120.0 & SBRPMaxComplete & 15.0 & 15.0 & 1.019768141 & 0 & 0 & 0.004280034 & - & - & - & 0 & 15.0 & 4.891408205032349 & 0.0 & 0 & 54130.0 & 115.78650000000002 & 7687.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/16.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas16"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 20
+|V| = 701
+|A| = 2020
+|V′| = 210
+|A′| = 43890
+|V″| = 461
+|A″| = 1558
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [5182288241, 5182288242]
+Clique: 2
+Isolated clique: [1621757784, 8633082954, 1621757894]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 16 & 210 & 43890 & 20 & 120.0 & SBRPMaxComplete & 20.0 & 20.0 & 1.938586556 & 2 & 4 & 0.063646054 & - & - & - & 0 & 20.0 & 11.772626161575317 & 0.0 & 0 & 55593.0 & 118.2465 & 7746.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/17.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas17"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 20
+|V| = 574
+|A| = 1668
+|V′| = 154
+|A′| = 23562
+|V″| = 407
+|A″| = 1344
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1550929797]
+Clique: 3
+Isolated clique: [1619381064]
+Clique: 3
+Isolated clique: [1552927681]
+Clique: 2
+Isolated clique: [1619381054]
+Clique: 2
+Isolated clique: [1550929870]
+Clique: 2
+Isolated clique: [8156854621]
+Clique: 2
+Isolated clique: [1550929815]
+Clique: 2
+Isolated clique: [8156854622, 8652302884]
+Clique: 2
+Isolated clique: [1619381059, 8652302880, 3646903544, 8652302883, 3646903543, 1619381087]
+Clique: 2
+Isolated clique: [1552927709]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 17 & 154 & 23562 & 20 & 120.0 & SBRPMaxComplete & 20.0 & 20.0 & 0.990052142 & 2 & 22 & 0.198903493 & - & - & - & 0 & 20.0 & 5.77688193321228 & 0.0 & 0 & 41279.0 & 102.999 & 9129.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/18.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas18"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 20
+|V| = 468
+|A| = 1371
+|V′| = 133
+|A′| = 17556
+|V″| = 332
+|A″| = 1109
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [3647664906, 2657136834]
+Clique: 2
+Isolated clique: [3646950059]
+Clique: 2
+Isolated clique: [2657136831, 2657136832]
+Clique: 2
+Isolated clique: [1621757795, 8653312254, 1621757840]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 18 & 133 & 17556 & 20 & 120.0 & SBRPMaxComplete & 20.0 & 20.0 & 0.788772196 & 3 & 8 & 0.048783569 & - & - & - & 0 & 20.0 & 3.107006072998047 & 0.0 & 0 & 50356.0 & 106.3545 & 6849.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/19.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas19"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 20
+|V| = 624
+|A| = 1755
+|V′| = 152
+|A′| = 22952
+|V″| = 416
+|A″| = 1339
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [3646939639, 3646939641]
+Clique: 2
+Isolated clique: [1553068467, 1553068477]
+Clique: 2
+Isolated clique: [5182288237, 5182288238]
+Clique: 2
+Isolated clique: [1552927705]
+Clique: 2
+Isolated clique: [1621461863, 1621461884]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 19 & 152 & 22952 & 20 & 120.0 & SBRPMaxComplete & 20.0 & 20.0 & 0.956315087 & 4 & 10 & 0.076649798 & - & - & - & 0 & 20.0 & 4.731343984603882 & 0.0 & 0 & 32463.0 & 88.48800000000001 & 8843.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/20.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas20"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 20
+|V| = 534
+|A| = 1586
+|V′| = 159
+|A′| = 25122
+|V″| = 388
+|A″| = 1294
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1553035031]
+Clique: 2
+Isolated clique: [6226273627, 2657136806, 3646886616, 1619363925, 1619363959]
+Clique: 2
+Isolated clique: [1552927684, 1553068461]
+Clique: 2
+Isolated clique: [8156986309]
+Clique: 2
+Isolated clique: [1553035028, 8156986308]
+Clique: 2
+Isolated clique: [1277671259]
+Clique: 2
+Isolated clique: [2662733312, 2662733310]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 20 & 159 & 25122 & 20 & 120.0 & SBRPMaxComplete & 20.0 & 20.0 & 1.041334082 & 4 & 12 & 0.117573137 & - & - & - & 0 & 20.0 & 4.489840984344482 & 0.0 & 0 & 47655.0 & 113.1705 & 9264.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/21.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas21"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 25
+|V| = 724
+|A| = 2044
+|V′| = 155
+|A′| = 23870
+|V″| = 505
+|A″| = 1606
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [3480028986, 1553119552]
+Clique: 2
+Isolated clique: [1621451885, 1621451972]
+Clique: 2
+Isolated clique: [1619363836, 1619330842]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 21 & 155 & 23870 & 25 & 120.0 & SBRPMaxComplete & 25.0 & 25.0 & 0.999620011 & 3 & 6 & 0.057125967 & - & - & - & 0 & 25.0 & 5.536198139190674 & 0.0 & 0 & 45076.0 & 115.49400000000003 & 10640.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/22.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas22"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 25
+|V| = 665
+|A| = 1994
+|V′| = 208
+|A′| = 43056
+|V″| = 474
+|A″| = 1612
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1552927705, 1553068595]
+Clique: 2
+Isolated clique: [1553034956]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 22 & 208 & 43056 & 25 & 120.0 & SBRPMaxComplete & 25.0 & 25.0 & 2.018687383 & 1 & 4 & 0.061673176 & - & - & - & 0 & 25.0 & 13.475234985351562 & 0.0 & 0 & 47020.0 & 115.917 & 10086.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/23.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas23"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 25
+|V| = 618
+|A| = 1962
+|V′| = 248
+|A′| = 61256
+|V″| = 466
+|A″| = 1658
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1550929827]
+Clique: 2
+Isolated clique: [2056632338]
+Clique: 2
+Isolated clique: [1553112001, 1553111899, 7279824650, 7279824648, 7279824649, 1553111917, 1553111911]
+Clique: 2
+Isolated clique: [1553111886, 1553112011]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 23 & 248 & 61256 & 25 & 120.0 & SBRPMaxComplete & 25.0 & 25.0 & 3.272690759 & 2 & 8 & 0.178077923 & - & - & - & 0 & 25.0 & 28.529766082763672 & 0.0 & 0 & 44207.0 & 119.73900000000002 & 11873.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/24.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas24"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 25
+|V| = 684
+|A| = 2000
+|V′| = 187
+|A′| = 34782
+|V″| = 477
+|A″| = 1586
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1553111886, 1553112022]
+Clique: 2
+Isolated clique: [3646950060, 3646950059]
+Clique: 2
+Isolated clique: [1552927724]
+Clique: 2
+Isolated clique: [1621757914]
+Clique: 2
+Isolated clique: [1621757798]
+Clique: 2
+Isolated clique: [6224223243, 3646926891, 3646926892, 1277671240, 7292377309, 1277671284, 3646931995]
+Clique: 2
+Isolated clique: [3646939640, 3646939641]
+Clique: 2
+Isolated clique: [1550929867]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 24 & 187 & 34782 & 25 & 120.0 & SBRPMaxComplete & 25.0 & 25.0 & 1.569699456 & 4 & 14 & 0.220702395 & - & - & - & 0 & 25.0 & 12.038909196853638 & 0.0 & 0 & 45443.0 & 116.91750000000002 & 10834.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/25.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas25"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 25
+|V| = 703
+|A| = 2107
+|V′| = 223
+|A′| = 49506
+|V″| = 507
+|A″| = 1715
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1550929808]
+Clique: 3
+Isolated clique: [1553034956]
+Clique: 3
+Isolated clique: [1553133818]
+Clique: 2
+Isolated clique: [1552927703, 3646938446, 3646938447, 1553035016]
+Clique: 2
+Isolated clique: [1550929829]
+Clique: 2
+Isolated clique: [1550929827]
+Clique: 2
+Isolated clique: [8653361865, 8653361866, 3646903540]
+Clique: 2
+Isolated clique: [1552927694, 3480503252, 3646938449, 3646938448]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 25 & 223 & 49506 & 25 & 120.0 & SBRPMaxComplete & 25.0 & 25.0 & 2.316073076 & 3 & 15 & 0.373973583 & - & - & - & 0 & 25.0 & 29.663669109344482 & 0.0 & 0 & 44476.0 & 119.364 & 11700.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/26.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas26"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 30
+|V| = 806
+|A| = 2490
+|V′| = 284
+|A′| = 80372
+|V″| = 620
+|A″| = 2118
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [3646932004]
+Clique: 3
+Isolated clique: [1550929815]
+Clique: 3
+Isolated clique: [3646932001]
+Clique: 2
+Isolated clique: [3646932005]
+Clique: 2
+Isolated clique: [1550929814]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1619330791, 1619330776]
+Clique: 2
+Isolated clique: [1552927707]
+Clique: 2
+Isolated clique: [1553119526, 3480028986]
+Clique: 2
+Isolated clique: [1552927695]
+Clique: 2
+Isolated clique: [2299747840]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1550929812, 8273260703]
+Clique: 2
+Isolated clique: [1550929835, 1553119552, 3480028987]
+Clique: 2
+Isolated clique: [1553068592, 1553068483]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 26 & 284 & 80372 & 30 & 120.0 & SBRPMaxComplete & 30.0 & 30.0 & 5.099564759 & 5 & 26 & 1.490037932 & - & - & - & 0 & 30.0 & 35.73463988304138 & 0.0 & 0 & 35669.0 & 117.1875 & 14152.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/27.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas27"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 30
+|V| = 562
+|A| = 1819
+|V′| = 228
+|A′| = 51756
+|V″| = 433
+|A″| = 1561
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1984069173]
+Clique: 3
+Isolated clique: [1553035112, 1553035059]
+Clique: 3
+Isolated clique: [1553111923, 3646950079, 1553111972, 1553133834, 1553112032]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1550929876]
+Clique: 2
+Isolated clique: [1550929783, 7292135255]
+Clique: 2
+Isolated clique: [1553119551, 3646950081, 1553119560, 7309054231]
+Clique: 2
+Isolated clique: [3646939638, 2299637965]
+Clique: 2
+Isolated clique: [1553068467]
+Clique: 2
+Isolated clique: [1553035019, 1553035026]
+Clique: 2
+Isolated clique: [1553035240]
+Clique: 2
+Isolated clique: [1553034929, 3646938488, 1553035219, 1553035062, 3646938489, 1553035187, 1553035140, 1553035216, 1553035181, 3646938487]
+Clique: 2
+Isolated clique: [1553068461, 1553111890]
+Clique: 2
+Isolated clique: [1553119542, 3646950080, 1553119543, 1984069174, 7309054237]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 27 & 228 & 51756 & 30 & 120.0 & SBRPMaxComplete & 30.0 & 30.0 & 2.781568774 & 9 & 25 & 0.596399125 & - & - & - & 0 & 30.0 & 23.04415512084961 & 0.0 & 0 & 40030.0 & 118.9995 & 13101.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/28.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas28"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 30
+|V| = 777
+|A| = 2488
+|V′| = 309
+|A′| = 95172
+|V″| = 596
+|A″| = 2126
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1553068592]
+Clique: 3
+Isolated clique: [1621461863, 1621461884]
+Clique: 2
+Isolated clique: [1553068483]
+Clique: 2
+Isolated clique: [1553068513]
+Clique: 2
+Isolated clique: [1550929783, 1550929788]
+Clique: 2
+Isolated clique: [1553035072, 5182288232, 5182288230]
+Clique: 2
+Isolated clique: [1553034993, 2657136834]
+Clique: 2
+Isolated clique: [1621757784, 8633082954, 1621757894]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 28 & 309 & 95172 & 30 & 120.0 & SBRPMaxComplete & 30.0 & 30.0 & 6.120010034 & 5 & 17 & 0.663750975 & - & - & - & 0 & 30.0 & 121.04597115516663 & 0.0 & 0 & 32532.0 & 118.90350000000002 & 15579.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/29.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas29"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 30
+|V| = 634
+|A| = 2062
+|V′| = 272
+|A′| = 73712
+|V″| = 513
+|A″| = 1820
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1621757840]
+Clique: 3
+Isolated clique: [1553034924]
+Clique: 3
+Isolated clique: [1553112017]
+Clique: 3
+Isolated clique: [1621776480]
+Clique: 3
+Isolated clique: [1621757803]
+Clique: 3
+Isolated clique: [1621757839]
+Clique: 3
+Isolated clique: [1621757854]
+Clique: 3
+Isolated clique: [1621757869]
+Clique: 3
+Isolated clique: [1553133826, 1553133832]
+Clique: 2
+Isolated clique: [1621757910, 3646938490, 1621757810, 7279762286, 7279762285]
+Clique: 2
+Isolated clique: [3646938492, 7279756984, 3646938491]
+Clique: 2
+Isolated clique: [1621757795, 8653312254]
+Clique: 2
+Isolated clique: [1621757925, 2299637965]
+Clique: 2
+Isolated clique: [3646950065]
+Clique: 2
+Isolated clique: [1621757893]
+Clique: 2
+Isolated clique: [5182288247, 7292135215, 7292135216, 7292135217, 5182288248, 5182288250, 8269129112, 8269129111, 7292135210, 7292135211, 7292135212, 7292135213, 7292135214]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [3646939607, 3646939610, 3646939611, 3646939612]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1621757829]
+Clique: 2
+Isolated clique: [1621757894]
+Clique: 2
+Isolated clique: [1553035026]
+Clique: 2
+Isolated clique: [1553119526]
+Clique: 2
+Isolated clique: [1550929876]
+Clique: 2
+Isolated clique: [1553111870, 1553111936, 3646939594, 1553112028, 3646939595]
+Clique: 2
+Isolated clique: [8633082955, 8633082956, 1621757898]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1621757805]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 29 & 272 & 73712 & 30 & 120.0 & SBRPMaxComplete & 30.0 & 30.0 & 4.317094337 & 9 & 62 & 2.626333126 & - & - & - & 0 & 30.0 & 32.42180395126343 & 0.0 & 0 & 38896.0 & 119.66549999999998 & 13627.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/30.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas30"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 30
+|V| = 710
+|A| = 2114
+|V′| = 211
+|A′| = 44310
+|V″| = 485
+|A″| = 1664
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1553068552, 1553068492]
+Clique: 2
+Isolated clique: [2056632344, 2056632343]
+Clique: 2
+Isolated clique: [1553111976, 1553133820]
+Clique: 2
+Isolated clique: [1552927688]
+Clique: 2
+Isolated clique: [2056632337]
+Clique: 2
+Isolated clique: [2025981913, 2025981914]
+Clique: 2
+Isolated clique: [2662733314, 2662733311]
+Clique: 2
+Isolated clique: [1554751659, 2056632348]
+Clique: 2
+Isolated clique: [1553119551]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 30 & 211 & 44310 & 30 & 120.0 & SBRPMaxComplete & 30.0 & 30.0 & 2.207717262 & 6 & 18 & 0.266987221 & - & - & - & 0 & 30.0 & 18.750348806381226 & 0.0 & 0 & 38229.0 & 118.03049999999999 & 13486.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/31.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas31"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 35
+|V| = 749
+|A| = 2390
+|V′| = 306
+|A′| = 93330
+|V″| = 573
+|A″| = 2038
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1553068507, 1552927679, 1552927684]
+Clique: 2
+Isolated clique: [1550929783, 1550929788]
+Clique: 2
+Isolated clique: [1550929811, 2056632340]
+Clique: 2
+Isolated clique: [1552927719, 3646938434, 3646938433, 7292135258]
+Clique: 2
+Isolated clique: [2025981915]
+Clique: 2
+Isolated clique: [1552927688, 1552927693]
+Clique: 2
+Isolated clique: [1553068486]
+Clique: 2
+Isolated clique: [1553068465, 1553068531]
+Clique: 2
+Isolated clique: [1619363959, 1619363765]
+Clique: 2
+Isolated clique: [1550929863, 1552927695]
+Clique: 2
+Isolated clique: [1277671259]
+Clique: 2
+Isolated clique: [1553111975, 1553133820]
+Clique: 2
+Isolated clique: [2299747840, 3646938423, 7292135254, 1552927715, 1552927705]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 31 & 306 & 93330 & 35 & 120.0 & SBRPMaxComplete & 35.0 & 35.0 & 5.266671518 & 10 & 24 & 1.325769912 & - & - & - & 0 & 35.0 & 217.6080460548401 & 0.0 & 121 & 36004.0 & 119.91300000000001 & 14646.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/32.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas32"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 35
+|V| = 947
+|A| = 2852
+|V′| = 300
+|A′| = 89700
+|V″| = 676
+|A″| = 2320
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1550929782]
+Clique: 3
+Isolated clique: [1552927718]
+Clique: 3
+Isolated clique: [1552927696]
+Clique: 2
+Isolated clique: [1619381130, 1619381063, 1619381078]
+Clique: 2
+Isolated clique: [1553133818, 1553133819]
+Clique: 2
+Isolated clique: [7291461429, 8186703300]
+Clique: 2
+Isolated clique: [3646932005, 3646932004]
+Clique: 2
+Isolated clique: [1550929775]
+Clique: 2
+Isolated clique: [1550929814]
+Clique: 2
+Isolated clique: [1277671207, 1550929871]
+Clique: 2
+Isolated clique: [1553111896, 1621343420]
+Clique: 2
+Isolated clique: [1550929809]
+Clique: 2
+Isolated clique: [1550929857]
+Clique: 2
+Isolated clique: [8633082953, 2657136820, 8633082950, 3647664902]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [2056632344]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 32 & 300 & 89700 & 35 & 120.0 & SBRPMaxComplete & 35.0 & 35.0 & 6.001880161 & 7 & 34 & 1.565025299 & - & - & - & 0 & 35.0 & 66.1534960269928 & 0.0 & 0 & 32851.0 & 119.53050000000002 & 15612.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/33.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas33"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 35
+|V| = 842
+|A| = 2665
+|V′| = 336
+|A′| = 112560
+|V″| = 644
+|A″| = 2267
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [5182288241]
+Clique: 3
+Isolated clique: [2657136800]
+Clique: 3
+Isolated clique: [1553112032]
+Clique: 2
+Isolated clique: [2657136823, 2657136824]
+Clique: 2
+Isolated clique: [1621451953, 1621451951]
+Clique: 2
+Isolated clique: [8273260704, 1552927681]
+Clique: 2
+Isolated clique: [1550929834, 8186703301]
+Clique: 2
+Isolated clique: [6224223243, 1553068519]
+Clique: 2
+Isolated clique: [1619381087, 3646903547, 8154336938]
+Clique: 2
+Isolated clique: [5182288235, 7292135228, 7292135227, 7292135226, 5182288237, 5182288238, 7292135229, 7292135230, 7292135231, 7292135232, 5182288236]
+Clique: 2
+Isolated clique: [1553035026]
+Clique: 2
+Isolated clique: [2657136801]
+Clique: 2
+Isolated clique: [2657136807]
+Clique: 2
+Isolated clique: [5182288244, 5182288242]
+Clique: 2
+Isolated clique: [1554751659]
+Clique: 2
+Isolated clique: [3647664902, 2657136818]
+Clique: 2
+Isolated clique: [7285606736, 1621461843]
+Clique: 2
+Isolated clique: [5182288243]
+Clique: 2
+Isolated clique: [1553111976, 1553111881, 3646950068, 1553111918, 3646950069, 1553111908, 1553119551]
+Clique: 2
+Isolated clique: [1277671259]
+Clique: 2
+Isolated clique: [5182288231, 8288267330, 6868062252, 5182288233, 8288267331, 6868062258]
+Clique: 2
+Isolated clique: [1552927708, 1552927721]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 33 & 336 & 112560 & 35 & 120.0 & SBRPMaxComplete & 35.0 & 35.0 & 6.759533982 & 13 & 42 & 2.39245481 & - & - & - & 0 & 35.0 & 513.7880308628082 & 0.0 & 2179 & 32897.0 & 118.40700000000002 & 15347.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/34.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas34"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 35
+|V| = 888
+|A| = 2780
+|V′| = 332
+|A′| = 109892
+|V″| = 667
+|A″| = 2348
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [3646932004]
+Clique: 3
+Isolated clique: [1553111974]
+Clique: 2
+Isolated clique: [3480038100]
+Clique: 2
+Isolated clique: [1619381087, 3646903547, 8154336938, 2657136800]
+Clique: 2
+Isolated clique: [3646932005]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1553112022, 1553111911]
+Clique: 2
+Isolated clique: [1552927691]
+Clique: 2
+Isolated clique: [3646932001]
+Clique: 2
+Isolated clique: [3646926890, 3646926889]
+Clique: 2
+Isolated clique: [3646950065, 3646939619]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 34 & 332 & 109892 & 35 & 120.0 & SBRPMaxComplete & 35.0 & 35.0 & 7.941695486 & 4 & 23 & 1.352360941 & - & - & - & 0 & 35.0 & 1448.476646900177 & 0.0 & 10055 & 32126.0 & 119.5635 & 15861.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/35.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas35"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 35
+|V| = 719
+|A| = 2267
+|V′| = 274
+|A′| = 74802
+|V″| = 561
+|A″| = 1957
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1552927711]
+Clique: 3
+Isolated clique: [1550929808, 1550929829, 1553034956]
+Clique: 2
+Isolated clique: [1550929816, 1552927696]
+Clique: 2
+Isolated clique: [2056632343, 2056632344]
+Clique: 2
+Isolated clique: [1553035144]
+Clique: 2
+Isolated clique: [1553068588]
+Clique: 2
+Isolated clique: [1550816032, 2662733307]
+Clique: 2
+Isolated clique: [1553035031]
+Clique: 2
+Isolated clique: [1621343418, 3647664903, 7279756968, 3647664910]
+Clique: 2
+Isolated clique: [1552927694, 1552927703]
+Clique: 2
+Isolated clique: [2056632347, 2056632349]
+Clique: 2
+Isolated clique: [1553068465]
+Clique: 2
+Isolated clique: [2056632348, 2056632350]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 35 & 274 & 74802 & 35 & 120.0 & SBRPMaxComplete & 35.0 & 35.0 & 4.755309578 & 8 & 27 & 0.858806805 & - & - & - & 0 & 35.0 & 47.36140203475952 & 0.0 & 0 & 31423.0 & 119.8725 & 16164.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/36.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas36"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 40
+|V| = 838
+|A| = 2714
+|V′| = 343
+|A′| = 117306
+|V″| = 686
+|A″| = 2418
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [5182288233]
+Clique: 3
+Isolated clique: [2662733315, 2662733314]
+Clique: 2
+Isolated clique: [8156986309]
+Clique: 2
+Isolated clique: [2056632336, 2056632337]
+Clique: 2
+Isolated clique: [1621451953, 1621451951]
+Clique: 2
+Isolated clique: [1553035072, 1553068560]
+Clique: 2
+Isolated clique: [2657136807, 2657136800]
+Clique: 2
+Isolated clique: [1619363795, 1619363953]
+Clique: 2
+Isolated clique: [1621776480]
+Clique: 2
+Isolated clique: [2662733311, 2662733312]
+Clique: 2
+Isolated clique: [5182288244]
+Clique: 2
+Isolated clique: [1553035028, 8156986308]
+Clique: 2
+Isolated clique: [1552927697, 1553068522, 5539086177]
+Clique: 2
+Isolated clique: [1553035240]
+Clique: 2
+Isolated clique: [5539086178, 7292135222, 7292135223, 7292135224, 7292135225, 5182288234, 5182288243]
+Clique: 2
+Isolated clique: [1550929827, 1553034991]
+Clique: 2
+Isolated clique: [5182288231, 8288267330, 6868062252, 5182288241, 8288267331, 6868062258]
+Clique: 2
+Isolated clique: [1553068492]
+Clique: 2
+Isolated clique: [1550816032, 2662733308]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 36 & 343 & 117306 & 40 & 120.0 & SBRPMaxComplete & 40.0 & 40.0 & 11.015283213 & 13 & 28 & 2.268537664 & - & - & - & 0 & 33.0 & 3601.9562261104584 & 0.2121212121205693 & 8296 & 33555.0 & 113.9085 & 14128.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/37.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas37"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 40
+|V| = 848
+|A| = 2706
+|V′| = 337
+|A′| = 113232
+|V″| = 660
+|A″| = 2330
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1552927707]
+Clique: 3
+Isolated clique: [1552927680]
+Clique: 3
+Isolated clique: [1550929815]
+Clique: 3
+Isolated clique: [1553112034]
+Clique: 3
+Isolated clique: [1553111867]
+Clique: 3
+Isolated clique: [2056632338, 1552927685]
+Clique: 2
+Isolated clique: [1550929809, 1552927709]
+Clique: 2
+Isolated clique: [7292135258]
+Clique: 2
+Isolated clique: [1553119565, 1553119567]
+Clique: 2
+Isolated clique: [1553119571, 1553133827]
+Clique: 2
+Isolated clique: [1553035019, 1553034979]
+Clique: 2
+Isolated clique: [1619381030, 2657136801]
+Clique: 2
+Isolated clique: [1550929865, 2056632336]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1550929787, 2025981915]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1550929793, 2056632337]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1550929776, 1550929814, 1550929810, 3646938428, 3646938429, 1550929859, 1550929799, 3646938430, 1550929860, 3646938431]
+Clique: 2
+Isolated clique: [1619363765, 1619363959]
+Clique: 2
+Isolated clique: [1553111944, 1553111999, 8653268000]
+Clique: 2
+Isolated clique: [1553034926, 1553035164, 3646938482, 1553035109, 8653268001, 1553035111, 3646938483, 1553034983, 3646938484, 1553034953, 1553035212, 3646938481]
+Clique: 2
+Isolated clique: [1553112004, 1553111904]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [3480005791]
+Clique: 2
+Isolated clique: [8273260704, 8273260703]
+Clique: 2
+Isolated clique: [2299747840]
+Clique: 2
+Isolated clique: [1553035144]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 37 & 337 & 113232 & 40 & 120.0 & SBRPMaxComplete & 40.0 & 40.0 & 8.806582722 & 15 & 44 & 3.306167285 & - & - & - & 0 & 40.0 & 1801.1722688674927 & 0.0 & 9801 & 30275.0 & 119.93249999999999 & 16560.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/38.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas38"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 40
+|V| = 731
+|A| = 2448
+|V′| = 337
+|A′| = 113232
+|V″| = 577
+|A″| = 2140
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [3647664908]
+Clique: 4
+Isolated clique: Int64[]
+Clique: 3
+Isolated clique: Int64[]
+Clique: 3
+Isolated clique: Int64[]
+Clique: 3
+Isolated clique: Int64[]
+Clique: 3
+Isolated clique: Int64[]
+Clique: 3
+Isolated clique: [1553068467]
+Clique: 3
+Isolated clique: [1553068531, 1553068588]
+Clique: 2
+Isolated clique: [5182288243, 5182288241]
+Clique: 2
+Isolated clique: [8186703300, 8272769021, 8272769022, 8186703301]
+Clique: 2
+Isolated clique: [1550929775, 1552927718]
+Clique: 2
+Isolated clique: [1553068553, 7303939156, 3646938452, 7299450136, 7303939155, 3646938451, 1550929833]
+Clique: 2
+Isolated clique: [1621343420, 8630078336, 1553035190]
+Clique: 2
+Isolated clique: [1550929787, 2025981915]
+Clique: 2
+Isolated clique: [8633082952, 8633082951, 8633082953]
+Clique: 2
+Isolated clique: [2657136822]
+Clique: 2
+Isolated clique: [1553112032, 1553133823]
+Clique: 2
+Isolated clique: [1621451885, 1553112011]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1550929844, 3480005791]
+Clique: 2
+Isolated clique: [1553035059, 1553035112]
+Clique: 2
+Isolated clique: [1552927713]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1553068477]
+Clique: 2
+Isolated clique: [3647664902, 3647664909, 3647664903]
+Clique: 2
+Isolated clique: [1553111896, 1550929868, 3646938479, 3646938480, 1550929853]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [2657136819, 1621343418]
+Clique: 2
+Isolated clique: [1621343614]
+Clique: 2
+Isolated clique: [3647664907, 1553034993]
+Clique: 2
+Isolated clique: [6226384011, 3480038100]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 38 & 337 & 113232 & 40 & 120.0 & SBRPMaxComplete & 40.0 & 40.0 & 7.384287572 & 17 & 70 & 3.824746949 & - & - & - & 0 & 40.0 & 1675.412535905838 & 0.0 & 7029 & 32059.0 & 119.90849999999999 & 15960.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/39.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas39"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 40
+|V| = 682
+|A| = 2198
+|V′| = 287
+|A′| = 82082
+|V″| = 522
+|A″| = 1878
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [5182288243]
+Clique: 3
+Isolated clique: [2056632344]
+Clique: 3
+Isolated clique: [1621757829]
+Clique: 3
+Isolated clique: [1552927724]
+Clique: 2
+Isolated clique: [2662733315, 2662733314]
+Clique: 2
+Isolated clique: [5182288244]
+Clique: 2
+Isolated clique: [1552927692]
+Clique: 2
+Isolated clique: [1621757894, 8633082954, 1621757784]
+Clique: 2
+Isolated clique: [1621757835]
+Clique: 2
+Isolated clique: [1552927697, 6868062258]
+Clique: 2
+Isolated clique: [2056632338]
+Clique: 2
+Isolated clique: [5182288233, 5539086178, 7292135222, 7292135223, 7292135224, 7292135225, 5182288234]
+Clique: 2
+Isolated clique: [1621757797, 1621757795]
+Clique: 2
+Isolated clique: [1621757803]
+Clique: 2
+Isolated clique: [1621757840, 3646938492, 7279756984, 3646938491]
+Clique: 2
+Isolated clique: [1621757839]
+Clique: 2
+Isolated clique: [1553068516, 1552927712]
+Clique: 2
+Isolated clique: [1550929809, 1552927696]
+Clique: 2
+Isolated clique: [1553111944, 1553111999, 8653268000, 1553112034]
+Clique: 2
+Isolated clique: [2657136829, 2657136830]
+Clique: 2
+Isolated clique: [2657136819, 2657136818]
+Clique: 2
+Isolated clique: [1621757805]
+Clique: 2
+Isolated clique: [5182288241]
+Clique: 2
+Isolated clique: [1621757867]
+Clique: 2
+Isolated clique: [1553068522, 5182288231]
+Clique: 2
+Isolated clique: [2056632340]
+Clique: 2
+Isolated clique: [1552927718, 1550929782]
+Clique: 2
+Isolated clique: [1550929793, 1552927707, 2056632337]
+Clique: 2
+Isolated clique: [1550929871]
+Clique: 2
+Isolated clique: [8186703300, 8272769021, 8272769022, 8186703301]
+Clique: 2
+Isolated clique: [2056632345]
+Clique: 2
+Isolated clique: [1621461843, 1277671271, 3646932021, 1277671274, 3646932023, 1277671115, 3253806861, 1277671133, 3646932112, 7291461430, 2056632348]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 39 & 287 & 82082 & 40 & 120.0 & SBRPMaxComplete & 40.0 & 40.0 & 5.12913509 & 16 & 62 & 2.562382348 & - & - & - & 0 & 40.0 & 60.78463697433472 & 0.0 & 0 & 32348.0 & 119.46000000000004 & 15764.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/40.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas40"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 40
+|V| = 802
+|A| = 2578
+|V′| = 325
+|A′| = 105300
+|V″| = 622
+|A″| = 2218
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1552927722]
+Clique: 3
+Isolated clique: [1553068483]
+Clique: 3
+Isolated clique: [1621757854]
+Clique: 3
+Isolated clique: [1621757869]
+Clique: 3
+Isolated clique: [1554751556, 3646931995]
+Clique: 2
+Isolated clique: [1552927691]
+Clique: 2
+Isolated clique: [1552927719, 1553068461]
+Clique: 2
+Isolated clique: [1553068467, 1552927713]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1553034986, 1553111904]
+Clique: 2
+Isolated clique: [1550929798, 1553035144]
+Clique: 2
+Isolated clique: [1552927705]
+Clique: 2
+Isolated clique: [2662733308, 2662733307]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1619363811, 1619363922]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [3646950065]
+Clique: 2
+Isolated clique: [8633082955, 8633082956, 1621757898]
+Clique: 2
+Isolated clique: [1621757893]
+Clique: 2
+Isolated clique: [3646939619, 8633082962, 3646950061]
+Clique: 2
+Isolated clique: [1621776480, 3646939612, 3646939611, 3646939610, 3646939607]
+Clique: 2
+Isolated clique: [2056632344, 1552927718]
+Clique: 2
+Isolated clique: [1553068592]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 40 & 325 & 105300 & 40 & 120.0 & SBRPMaxComplete & 40.0 & 40.0 & 8.797402842 & 11 & 47 & 2.804849601 & - & - & - & 0 & 39.0 & 3601.271104812622 & 0.025641025640959894 & 4234 & 30593.0 & 119.73 & 16409.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/41.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas41"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 45
+|V| = 825
+|A| = 2715
+|V′| = 357
+|A′| = 127092
+|V″| = 671
+|A″| = 2407
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1621343418]
+Clique: 3
+Isolated clique: [2657136819]
+Clique: 2
+Isolated clique: [1621343614]
+Clique: 2
+Isolated clique: [1553035241, 8653268002, 6199946417, 8156986309]
+Clique: 2
+Isolated clique: [3480038100]
+Clique: 2
+Isolated clique: [1621757805]
+Clique: 2
+Isolated clique: [1621461843]
+Clique: 2
+Isolated clique: [1621757914]
+Clique: 2
+Isolated clique: [1553111867]
+Clique: 2
+Isolated clique: [1553034986, 1553111904]
+Clique: 2
+Isolated clique: [1553035240]
+Clique: 2
+Isolated clique: [1621757867, 1621757831]
+Clique: 2
+Isolated clique: [1553035144, 1553035214]
+Clique: 2
+Isolated clique: [3647664903, 7279756968, 3647664910]
+Clique: 2
+Isolated clique: [1553068492, 3646938436, 1553068510]
+Clique: 2
+Isolated clique: [2025981913]
+Clique: 2
+Isolated clique: [3646886619, 1619381130]
+Clique: 2
+Isolated clique: [1550929853, 3646938461, 1550929869, 1550929827]
+Clique: 2
+Isolated clique: [1553133827, 1553133823]
+Clique: 2
+Isolated clique: [2657136825, 2657136827]
+Clique: 2
+Isolated clique: [1619363959, 1619363765]
+Clique: 2
+Isolated clique: [1552927685, 1552927707]
+Clique: 2
+Isolated clique: [1552927691]
+Clique: 2
+Isolated clique: [1621757803, 1621757839]
+Clique: 2
+Isolated clique: [3646950060, 3646939640]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 41 & 357 & 127092 & 45 & 120.0 & SBRPMaxComplete & 44.97719298245614 & 45.0 & 15.244239401 & 14 & 51 & 3.171063611 & - & - & - & 0 & 41.0 & 3602.2382571697235 & 0.07317073170713947 & 6914 & 31551.0 & 119.2185 & 15976.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/42.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas42"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 45
+|V| = 834
+|A| = 2654
+|V′| = 323
+|A′| = 104006
+|V″| = 646
+|A″| = 2288
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [3647664902]
+Clique: 3
+Isolated clique: [2657136818]
+Clique: 3
+Isolated clique: [1550929811]
+Clique: 3
+Isolated clique: [3647664903]
+Clique: 3
+Isolated clique: [1621757805]
+Clique: 3
+Isolated clique: [3646939620]
+Clique: 3
+Isolated clique: [2056632338]
+Clique: 2
+Isolated clique: [1550929809]
+Clique: 2
+Isolated clique: [2056632340]
+Clique: 2
+Isolated clique: [1552927685, 1552927707]
+Clique: 2
+Isolated clique: [3647664901]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1553133826, 1553133832]
+Clique: 2
+Isolated clique: [2657136819]
+Clique: 2
+Isolated clique: [8156986309]
+Clique: 2
+Isolated clique: [5182288241, 5182288242]
+Clique: 2
+Isolated clique: [8633082953, 2657136820, 8633082950]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [3647664904, 1621343614]
+Clique: 2
+Isolated clique: [1552927709]
+Clique: 2
+Isolated clique: [1553035112, 3646938488, 1553034929, 3646938487, 1553035181, 1553035216, 1553035140, 1553035187, 3646938489, 1553035062, 1553035219, 1553035059]
+Clique: 2
+Isolated clique: [2056632348, 1554751659]
+Clique: 2
+Isolated clique: [1621343418, 7279756968, 3647664910]
+Clique: 2
+Isolated clique: [1552927719, 3646938434, 3646938433, 7292135258]
+Clique: 2
+Isolated clique: [3647664909]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [3646950063, 3646950064, 3646950065]
+Clique: 2
+Isolated clique: [3646939619]
+Clique: 2
+Isolated clique: [3646950062]
+Clique: 2
+Isolated clique: [1621757803, 1621757839]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 42 & 323 & 104006 & 45 & 120.0 & SBRPMaxComplete & 45.0 & 45.0 & 9.810531348 & 11 & 48 & 3.557672034 & - & - & - & 0 & 44.0 & 3600.7008759975433 & 0.022727272727221075 & 12517 & 29242.0 & 116.92050000000003 & 16235.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/43.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas43"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 45
+|V| = 800
+|A| = 2682
+|V′| = 378
+|A′| = 142506
+|V″| = 630
+|A″| = 2342
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1553119551]
+Clique: 4
+Isolated clique: Int64[]
+Clique: 3
+Isolated clique: Int64[]
+Clique: 3
+Isolated clique: [3647664901]
+Clique: 3
+Isolated clique: [1550929835]
+Clique: 3
+Isolated clique: Int64[]
+Clique: 3
+Isolated clique: Int64[]
+Clique: 3
+Isolated clique: [1552927709]
+Clique: 3
+Isolated clique: [1553035144]
+Clique: 2
+Isolated clique: [1553111908, 3646950069, 1553111918, 3646950068, 1553111881, 1553111976]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [7309054236, 1553119530, 1553119568, 3646950066, 1553119566, 3480028989, 7309054233, 7309054232, 1553119529]
+Clique: 2
+Isolated clique: [1553119552, 3480028987]
+Clique: 2
+Isolated clique: [2025981913]
+Clique: 2
+Isolated clique: [3647664900, 3647664899, 3647664898, 3647664897]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [2657136818]
+Clique: 2
+Isolated clique: [1553034993]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1621757833, 1621757835]
+Clique: 2
+Isolated clique: [3646938484, 1553035147, 3646938485, 1553035113, 1553035103, 1553035026]
+Clique: 2
+Isolated clique: [1550929815, 2299747840]
+Clique: 2
+Isolated clique: [1619381098, 2299747816]
+Clique: 2
+Isolated clique: [5182288231, 1553068483]
+Clique: 2
+Isolated clique: [2056632340]
+Clique: 2
+Isolated clique: [1553119543]
+Clique: 2
+Isolated clique: [1619330799, 1619330828]
+Clique: 2
+Isolated clique: [5182288244, 5182288233]
+Clique: 2
+Isolated clique: [1553034988, 1553035241]
+Clique: 2
+Isolated clique: [1277671259]
+Clique: 2
+Isolated clique: [1550929857, 1550929814]
+Clique: 2
+Isolated clique: [2056632342]
+Clique: 2
+Isolated clique: [1553119526]
+Clique: 2
+Isolated clique: [1552927708, 1552927721]
+Clique: 2
+Isolated clique: [1550929797]
+Clique: 2
+Isolated clique: [1550929811]
+Clique: 2
+Isolated clique: [1984069173, 7309054231, 1553119560, 3646950081]
+Clique: 2
+Isolated clique: [2657136817]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 43 & 378 & 142506 & 45 & 120.0 & SBRPMaxComplete & 43.59528469383542 & 43.0 & 10.43691906 & 15 & 85 & 6.468394292 & - & - & - & 0 & 27.0 & 3601.923492908478 & 0.5934478403404032 & 6982 & 38339.0 & 117.54750000000001 & 13342.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/44.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas44"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 45
+|V| = 927
+|A| = 3008
+|V′| = 383
+|A′| = 146306
+|V″| = 721
+|A″| = 2596
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1553034993]
+Clique: 3
+Isolated clique: [1553068522]
+Clique: 3
+Isolated clique: [1553068483]
+Clique: 3
+Isolated clique: [5182288231]
+Clique: 3
+Isolated clique: [1619381087, 2657136800, 8154336938, 3646903547]
+Clique: 2
+Isolated clique: [1553111904, 1553112004]
+Clique: 2
+Isolated clique: [1552927718, 2056632344]
+Clique: 2
+Isolated clique: [1550929809, 1552927696]
+Clique: 2
+Isolated clique: [2657136834]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1553068510]
+Clique: 2
+Isolated clique: [1553111944, 1553111999, 8653268000, 1553112034]
+Clique: 2
+Isolated clique: [2662733311, 2662733309]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [2025981913]
+Clique: 2
+Isolated clique: [1553068595]
+Clique: 2
+Isolated clique: [1553035190, 2657136833]
+Clique: 2
+Isolated clique: [1550929772, 3646938425, 1550929847, 1550929840, 3646938426, 1550929819, 1550929839, 3646938427, 1550929857, 2299747840, 1550929780, 3646938424]
+Clique: 2
+Isolated clique: [1552927697, 5539086177]
+Clique: 2
+Isolated clique: [3647664907, 3647664906]
+Clique: 2
+Isolated clique: [1552927705, 8656632564, 8656632560, 8656496828, 1553068479]
+Clique: 2
+Isolated clique: [2657136830, 2657136832]
+Clique: 2
+Isolated clique: [1619330831]
+Clique: 2
+Isolated clique: [1553068492]
+Clique: 2
+Isolated clique: [1621757894]
+Clique: 2
+Isolated clique: [1553068592]
+Clique: 2
+Isolated clique: [1550929834, 8186703301]
+Clique: 2
+Isolated clique: [8273260704, 1550929812]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [6868062258, 8288267331, 5182288241, 5182288233, 6868062252, 8288267330]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 44 & 383 & 146306 & 45 & 120.0 & SBRPMaxComplete & 42.43344304260377 & 42.0 & 10.886019529 & 15 & 60 & 5.020782074 & - & - & - & 0 & 22.0 & 3601.649934053421 & 0.9100319801205016 & 6193 & 48209.0 & 118.92900000000002 & 10359.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/45.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas45"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 45
+|V| = 802
+|A| = 2631
+|V′| = 347
+|A′| = 120062
+|V″| = 623
+|A″| = 2273
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [3485292654, 1552927725]
+Clique: 2
+Isolated clique: [1621757875, 3647664897]
+Clique: 2
+Isolated clique: [1553112032, 1553133823]
+Clique: 2
+Isolated clique: [1550929835, 7309054236, 1553119530, 1553119568, 3646950066, 1553119566, 3480028989, 7309054233, 7309054232, 1553119529, 1553119551]
+Clique: 2
+Isolated clique: [1553112017]
+Clique: 2
+Isolated clique: [1553133816, 1553133827]
+Clique: 2
+Isolated clique: [1553068496]
+Clique: 2
+Isolated clique: [1621451885, 1553112011]
+Clique: 2
+Isolated clique: [1553068492]
+Clique: 2
+Isolated clique: [1553133826, 1553133832]
+Clique: 2
+Isolated clique: [1552927688]
+Clique: 2
+Isolated clique: [3646939638, 2299637965]
+Clique: 2
+Isolated clique: [1552927693]
+Clique: 2
+Isolated clique: [1553068531]
+Clique: 2
+Isolated clique: [1552927691, 1553111964]
+Clique: 2
+Isolated clique: [1553111975, 1553133820]
+Clique: 2
+Isolated clique: [1553111885, 1984069174]
+Clique: 2
+Isolated clique: [1553068486]
+Clique: 2
+Isolated clique: [1553119543]
+Clique: 2
+Isolated clique: [1277671173, 3646926882, 1277671287, 3646926890, 7292377308]
+Clique: 2
+Isolated clique: [2657136825, 2657136826]
+Clique: 2
+Isolated clique: [1553068465, 1553035134]
+Clique: 2
+Isolated clique: [1553034993, 1621757894]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 45 & 347 & 120062 & 45 & 120.0 & SBRPMaxComplete & 44.02405902480754 & 44.0 & 10.281811086 & 15 & 46 & 2.948696734 & - & - & - & 0 & 28.0 & 3601.6250989437103 & 0.5547609685681413 & 6537 & 40958.0 & 119.2125 & 12839.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/46.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas46"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 50
+|V| = 873
+|A| = 2895
+|V′| = 393
+|A′| = 154056
+|V″| = 704
+|A″| = 2557
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1550929787]
+Clique: 4
+Isolated clique: [2662733315]
+Clique: 3
+Isolated clique: [1621757803]
+Clique: 3
+Isolated clique: [1553035144]
+Clique: 3
+Isolated clique: Int64[]
+Clique: 3
+Isolated clique: Int64[]
+Clique: 3
+Isolated clique: Int64[]
+Clique: 3
+Isolated clique: Int64[]
+Clique: 3
+Isolated clique: [5182288241]
+Clique: 3
+Isolated clique: [2025981915]
+Clique: 3
+Isolated clique: [1553111975]
+Clique: 2
+Isolated clique: [2662733314]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1550929818, 3646938468, 1550929875, 3646938467, 1550929832, 7291461415, 3646938469, 1550929844]
+Clique: 2
+Isolated clique: [1552927711]
+Clique: 2
+Isolated clique: [1621757893, 1621757907]
+Clique: 2
+Isolated clique: [1552927700]
+Clique: 2
+Isolated clique: [1621757829]
+Clique: 2
+Isolated clique: [1552927716]
+Clique: 2
+Isolated clique: [3646939638, 3646939639]
+Clique: 2
+Isolated clique: [1550929798]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [2662733312]
+Clique: 2
+Isolated clique: [1550929816]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [5182288243]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1619363990, 1619363953]
+Clique: 2
+Isolated clique: [1621757795, 3646938484]
+Clique: 2
+Isolated clique: [1621757839]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [8633082953, 2657136820, 8633082950, 3647664902]
+Clique: 2
+Isolated clique: [1621757797, 1621757731]
+Clique: 2
+Isolated clique: [1550929876, 1553112017]
+Clique: 2
+Isolated clique: [5182288242]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1552927697, 1553068522, 5539086177]
+Clique: 2
+Isolated clique: [1553034924, 1553035026]
+Clique: 2
+Isolated clique: [1621757805]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 46 & 393 & 154056 & 50 & 120.0 & SBRPMaxComplete & 48.08589743589745 & 48.0 & 11.875679129 & 10 & 80 & 7.231229675 & - & - & - & 0 & 14.0 & 3601.7641060352325 & 2.4227265345191538 & 5316 & 60037.0 & 119.73750000000001 & 6596.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/47.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas47"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 50
+|V| = 741
+|A| = 2443
+|V′| = 318
+|A′| = 100806
+|V″| = 591
+|A″| = 2143
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1553111885]
+Clique: 3
+Isolated clique: [1550929814]
+Clique: 3
+Isolated clique: [1553034956]
+Clique: 3
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1984069174]
+Clique: 2
+Isolated clique: [1552927719, 1553111893]
+Clique: 2
+Isolated clique: [1550929865, 2056632336, 1552927680]
+Clique: 2
+Isolated clique: [1619330799, 1619330828]
+Clique: 2
+Isolated clique: [1553035144]
+Clique: 2
+Isolated clique: [1552927711, 1553068588]
+Clique: 2
+Isolated clique: [1621757798, 1621757893]
+Clique: 2
+Isolated clique: [1553034986, 1553035240]
+Clique: 2
+Isolated clique: [2657136827, 2657136828]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [2056632343, 2056632344]
+Clique: 2
+Isolated clique: [1619330791, 1619330863]
+Clique: 2
+Isolated clique: [3646939638]
+Clique: 2
+Isolated clique: [1621757925, 2299637963]
+Clique: 2
+Isolated clique: [1552927703, 1553035016, 3646938447, 3646938446]
+Clique: 2
+Isolated clique: [8633082953]
+Clique: 2
+Isolated clique: [1550929808, 1550929829]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [2056632345, 2056632347]
+Clique: 2
+Isolated clique: [1550929787]
+Clique: 2
+Isolated clique: [1553111886, 1553112022]
+Clique: 2
+Isolated clique: [1550929776, 3646938431, 1550929860, 3646938430, 1550929799, 1550929859, 3646938429, 3646938428, 1550929810, 1550929815]
+Clique: 2
+Isolated clique: [1550929797, 1550929870]
+Clique: 2
+Isolated clique: [1553035028, 1553035214]
+Clique: 2
+Isolated clique: [1552927716, 1552927700]
+Clique: 2
+Isolated clique: [3646932005]
+Clique: 2
+Isolated clique: [1553035059, 1553035112]
+Clique: 2
+Isolated clique: [1553119552]
+Clique: 2
+Isolated clique: [1553035019, 1553111904]
+Clique: 2
+Isolated clique: [2056632349]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 47 & 318 & 100806 & 50 & 120.0 & SBRPMaxComplete & 49.73516626333244 & 49.0 & 11.266009576 & 20 & 73 & 3.889365904 & - & - & - & 0 & 40.0 & 3606.697846889496 & 0.2249999999994391 & 9296 & 33467.0 & 119.118 & 15315.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/48.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas48"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 50
+|V| = 804
+|A| = 2682
+|V′| = 353
+|A′| = 124256
+|V″| = 660
+|A″| = 2394
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1552927693]
+Clique: 3
+Isolated clique: [2025981914]
+Clique: 3
+Isolated clique: [2025981913]
+Clique: 3
+Isolated clique: [1553111964]
+Clique: 3
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1552927696]
+Clique: 2
+Isolated clique: [2056632338]
+Clique: 2
+Isolated clique: [2657136807, 2657136800]
+Clique: 2
+Isolated clique: [1553034993]
+Clique: 2
+Isolated clique: [3646932004, 3646932001]
+Clique: 2
+Isolated clique: [1552927712]
+Clique: 2
+Isolated clique: [1552927688]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1553034924, 1621757894]
+Clique: 2
+Isolated clique: [3647664907, 3647664906]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [2657136819, 2657136818]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [3647664902, 3647664909, 3647664903]
+Clique: 2
+Isolated clique: [1553111873, 1553111905, 1553112014, 7291461426, 1553111986]
+Clique: 2
+Isolated clique: [1553034988, 1553035240]
+Clique: 2
+Isolated clique: [1619381030, 2657136801]
+Clique: 2
+Isolated clique: [1552927711, 1553068465]
+Clique: 2
+Isolated clique: [1550929790]
+Clique: 2
+Isolated clique: [1552927691]
+Clique: 2
+Isolated clique: [1621757837, 3646938491]
+Clique: 2
+Isolated clique: [3646939641]
+Clique: 2
+Isolated clique: [8156986308, 8156986309]
+Clique: 2
+Isolated clique: [1553035026]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 48 & 353 & 124256 & 50 & 120.0 & SBRPMaxComplete & 48.81168122270743 & 48.0 & 8.911782312 & 12 & 47 & 3.723343355 & - & - & - & 0 & 36.0 & 3601.801862001419 & 0.33333333333240717 & 7759 & 40111.0 & 119.88600000000001 & 13271.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/49.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas49"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 50
+|V| = 924
+|A| = 3091
+|V′| = 442
+|A′| = 194922
+|V″| = 708
+|A″| = 2659
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1621757914]
+Clique: 3
+Isolated clique: [1550929783]
+Clique: 3
+Isolated clique: [1552927721]
+Clique: 3
+Isolated clique: [1552927708]
+Clique: 3
+Isolated clique: [1552927695]
+Clique: 3
+Isolated clique: [5182288246, 8269129111, 8269129112, 7292135202, 7292135203, 7292135204, 7292135205, 7292135206, 5182288249, 7292135207, 7292135208, 7292135209]
+Clique: 2
+Isolated clique: [1552927700]
+Clique: 2
+Isolated clique: [1277671061, 1619363920, 1277671114]
+Clique: 2
+Isolated clique: [1621757798]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1553035026]
+Clique: 2
+Isolated clique: [1553068510, 1553068573, 5182288254, 1553068519]
+Clique: 2
+Isolated clique: [1552927684]
+Clique: 2
+Isolated clique: [1621757831, 1621757839]
+Clique: 2
+Isolated clique: [1621757756, 1621757913, 3646939617, 1621757905, 3646939615, 3647664897, 1621757870, 3646939616]
+Clique: 2
+Isolated clique: [3646950059, 3646950060]
+Clique: 2
+Isolated clique: [1621451917, 1621451951]
+Clique: 2
+Isolated clique: [2657136801]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [2056632342]
+Clique: 2
+Isolated clique: [2056632343]
+Clique: 2
+Isolated clique: [1550929863]
+Clique: 2
+Isolated clique: [1619381087, 3646903543, 8652302883, 3646903544, 8652302880, 1619381059]
+Clique: 2
+Isolated clique: [1553035240]
+Clique: 2
+Isolated clique: [1550929811]
+Clique: 2
+Isolated clique: [1553111976, 1553111962, 1553133819]
+Clique: 2
+Isolated clique: [1553035028, 8156986308]
+Clique: 2
+Isolated clique: [1553035072, 1553068486]
+Clique: 2
+Isolated clique: [1554715155]
+Clique: 2
+Isolated clique: [7279756967, 3646939618, 1621757833]
+Clique: 2
+Isolated clique: [7292135255]
+Clique: 2
+Isolated clique: [1550929788]
+Clique: 2
+Isolated clique: [3646950062]
+Clique: 2
+Isolated clique: [1553034993]
+Clique: 2
+Isolated clique: [1552927709]
+Clique: 2
+Isolated clique: [1554751659]
+Clique: 2
+Isolated clique: [1553112034, 1553034979, 1553035019]
+Clique: 2
+Isolated clique: [2657136802, 1619381034]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [2056632350]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 49 & 442 & 194922 & 50 & 120.0 & SBRPMaxComplete & 44.88948457486834 & 45.0 & 14.057857132 & 14 & 86 & 10.283987519 & - & - & - & 0 & 21.0 & 3601.538923025131 & 1.1428571428517007 & 6848 & 44906.0 & 114.843 & 10552.0
+########################################################
+Application parameters:
+  intersection-cuts  =>  true
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas/50.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  false
+  dd  =>  false
+  out  =>  "solutions/complete_campinas50"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  true
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 50
+|V| = 810
+|A| = 2643
+|V′| = 334
+|A′| = 111222
+|V″| = 635
+|A″| = 2307
+###################SBRP MAX Complete####################
+Getting intersection cuts
+Isolated clique: [1553035240]
+Clique: 4
+Isolated clique: Int64[]
+Clique: 3
+Isolated clique: Int64[]
+Clique: 3
+Isolated clique: Int64[]
+Clique: 3
+Isolated clique: Int64[]
+Clique: 3
+Isolated clique: [1553133832]
+Clique: 3
+Isolated clique: [1472123011, 8653361864, 1472123040, 3646886622, 1472123397, 2441824241, 2441824239, 3485292653, 1472123643, 1472123372, 1472124792]
+Clique: 2
+Isolated clique: [1552927725, 2441824244, 1552927694]
+Clique: 2
+Isolated clique: [1621757833, 1621757835]
+Clique: 2
+Isolated clique: [1553034993, 1621757894]
+Clique: 2
+Isolated clique: [3646950062, 1621757914]
+Clique: 2
+Isolated clique: [1553133816]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1553034986]
+Clique: 2
+Isolated clique: [2657136814, 2657136816]
+Clique: 2
+Isolated clique: [1552927712]
+Clique: 2
+Isolated clique: [1553034988]
+Clique: 2
+Isolated clique: [2056632337]
+Clique: 2
+Isolated clique: [1552927697, 6868062258]
+Clique: 2
+Isolated clique: [3646939640, 3646939641]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1552927703, 3646938438, 3646938440, 3646938442, 3646938444, 1553035031]
+Clique: 2
+Isolated clique: [2025981913]
+Clique: 2
+Isolated clique: [2056632344, 2056632345]
+Clique: 2
+Isolated clique: Int64[]
+Clique: 2
+Isolated clique: [1552927707]
+Clique: 2
+Isolated clique: [1553035026]
+Clique: 2
+Isolated clique: [1553133826]
+Clique: 2
+Isolated clique: [8156986308]
+Clique: 2
+Isolated clique: [5182288233, 5539086178, 7292135222, 7292135223, 7292135224, 7292135225, 5182288234, 5182288243]
+Clique: 2
+Getting initial relaxation
+Getting initial relaxation with y as integer
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 50 & 334 & 111222 & 50 & 120.0 & SBRPMaxComplete & 47.63356080916403 & 47.0 & 7.955749478 & 11 & 67 & 3.824802618 & - & - & - & 0 & 39.0 & 3612.0471229553223 & 0.20512820512767987 & 10753 & 39351.0 & 118.61099999999999 & 13241.0
+########################################################

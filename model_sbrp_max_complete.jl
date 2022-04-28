@@ -144,7 +144,7 @@ function get_intersection_cuts(data::SBRPData, model)
 
   # max clique model
   max_clique = direct_model(CPLEX.Optimizer())
-#  set_silent(max_clique)
+  set_silent(max_clique)
   @variable(max_clique, z[block in B], Bin)
   @objective(max_clique, Max, ∑(z[block] for block in B))
   @constraint(max_clique, [(block, block′) in [(B[i], B[j]) for i in 1:length(B) for j in i + 1:length(B) if isempty(∩(B[i], B[j]))]], 1 >= z[block] + z[block′])
@@ -213,7 +213,8 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
   function create_model(relax_x::Bool = false, relax_y::Bool = false)
     global intersection_cuts1, intersection_cuts2, subtour_cuts
     model = direct_model(CPLEX.Optimizer())
-#    set_silent(model)
+    set_parameters(model, "CPX_PARAM_TILIM" => 3600)
+    set_silent(model)
     if relax_x
       @variable(model, x[a in A], lower_bound = 0, upper_bound = 1)
     else
