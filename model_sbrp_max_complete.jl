@@ -136,8 +136,7 @@ function get_subtour_cuts(data::SBRPData, model, info::Dict{String, Any})
   return components
 end
 
-function get_intersection_cuts(data::SBRPData, model)
-  x, y = model[:x], model[:y]
+function get_intersection_cuts(data::SBRPData)
 
   # setup
   B, A, cuts1, cuts2, cliques = data.B, data.D.A, Vector{Arcs}(), Vector{Arcs}(), Vector{VVi}()
@@ -266,7 +265,7 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
   # getting intersection cuts
   if app["intersection-cuts"]
     flush_println("Getting intersection cuts")
-    info["intersectionCutsTime"] = @elapsed intersection_cuts1, intersection_cuts2 = get_intersection_cuts(data, model) # get intersection cuts
+    info["intersectionCutsTime"] = @elapsed intersection_cuts1, intersection_cuts2 = get_intersection_cuts(data) # get intersection cuts
     info["intersectionCuts1"], info["intersectionCuts2"] = length(intersection_cuts1), length(intersection_cuts2)
     # adding intersection cuts to the recently create model
     add_intersection_cuts1(model, intersection_cuts1)
