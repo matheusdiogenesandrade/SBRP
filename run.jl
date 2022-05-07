@@ -28,6 +28,9 @@ function parse_commandline(args_array::Array{String,1}, appfolder::String)
     "--instance-type"
     help = "Instance type (carlos, matheus)"
     default = "carlos"
+    "--unitary-profits"
+    help = "true if you want to consider the blocks' profitsas 1, and false otherwise"
+    action = :store_true
     "--complete"
     help = "true if you want to run the model with the complete digraph, and false otherwise"
     action = :store_true

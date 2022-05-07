@@ -19,6 +19,8 @@ end
 
 add_intersection_cuts2(model, cuts::Vector{Arcs}) = add_cuts(model, [(1, sum(model[:x][a] for a in arcs)) for arcs in cuts])
 
+add_intersection_cuts3(model, cuts::Vector{Tuple{Arcs, VVi}}) = add_cuts(model, [(sum(model[:y][block] for block in blocks), sum(model[:x][a] for a in arcs)) for (arcs, blocks) in cuts])
+
 add_subtour_cuts(model, sets::Set{Tuple{Arcs, Arcs}}) = add_cuts(model, [(∑(model[:x][a] for a in Aₛ), ∑(∑(model[:x][a] for a in Aᵢ))) for (Aₛ, Aᵢ) in sets])
 
 function lazy_separation(data::SBRPData, Vb, info, model, cb_data::CPLEX.CallbackContext, context_id::Clong)
@@ -139,7 +141,7 @@ end
 function get_intersection_cuts(data::SBRPData)
 
   # setup
-  B, A, cuts1, cuts2, cliques = data.B, data.D.A, Vector{Arcs}(), Vector{Arcs}(), Vector{VVi}()
+  B, A, cuts1, cuts2, cuts3, cliques = data.B, data.D.A, Vector{Arcs}(), Vector{Arcs}(), Vector{Tuple{Arcs, VVi}}(), Vector{VVi}()
 
   # max clique model
   max_clique = direct_model(CPLEX.Optimizer())
@@ -195,11 +197,17 @@ function get_intersection_cuts(data::SBRPData)
       # store
       push!(cuts2, Arcs(∪([a for i ∈ intersection for a ∈ δ⁺(A, i)], independent_arcs)))
     end
+
+    ######## intersection cuts 3 ########
+    
+    length(isolated_intersection) > 1 && push!(cuts3, (Arcs([a for i ∈ isolated_intersection for a ∈ δ⁺(A, i)]), clique))
+
   end
-  return cuts1, cuts2
+
+  return cuts1, cuts2, cuts3
 end
 
-intersection_cuts1, intersection_cuts2 = Vector{Arcs}(), Vector{Arcs}()
+intersection_cuts1, intersection_cuts2, intersection_cuts3 = Vector{Arcs}(), Vector{Arcs}(), Vector{Tuple{Arcs, VVi}}()
 subtour_cuts = Set{Tuple{Arcs, Arcs}}()
 
 function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
@@ -210,7 +218,7 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
   nodes_blocks = Dict{Int, VVi}(i => [block for block in B if i in block] for i in Vb)
 
   function create_model(relax_x::Bool = false, relax_y::Bool = false)
-    global intersection_cuts1, intersection_cuts2, subtour_cuts
+    global intersection_cuts1, intersection_cuts2, intersection_cuts3, subtour_cuts
     model = direct_model(CPLEX.Optimizer())
     set_parameters(model, "CPX_PARAM_TILIM" => 3600)
     set_silent(model)
@@ -250,9 +258,6 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
       @constraint(model, ub2[i in V′], t[i] <= sum(x[a] for a in δ⁺(A, i)) * T)
       @constraint(model, ub3[i in V′], t[i] <= sum(x[a] for a in δ⁻(A, i)) * T)
     end
-    # intersection cuts
-    add_intersection_cuts1(model, intersection_cuts1)
-    add_intersection_cuts2(model, intersection_cuts2)
     # subtour cuts
     add_subtour_cuts(model, subtour_cuts) 
     # registries
@@ -265,11 +270,12 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
   # getting intersection cuts
   if app["intersection-cuts"]
     flush_println("Getting intersection cuts")
-    info["intersectionCutsTime"] = @elapsed intersection_cuts1, intersection_cuts2 = get_intersection_cuts(data) # get intersection cuts
-    info["intersectionCuts1"], info["intersectionCuts2"] = length(intersection_cuts1), length(intersection_cuts2)
+    info["intersectionCutsTime"] = @elapsed intersection_cuts1, intersection_cuts2, intersection_cuts3 = get_intersection_cuts(data) # get intersection cuts
+    info["intersectionCuts1"], info["intersectionCuts2"], info["intersectionCuts3"] = length(intersection_cuts1), length(intersection_cuts2), length(intersection_cuts3)
     # adding intersection cuts to the recently create model
     add_intersection_cuts1(model, intersection_cuts1)
     add_intersection_cuts2(model, intersection_cuts2)
+    add_intersection_cuts3(model, intersection_cuts3)
   end
 
   # getting initial relaxation with both variables <x and y> relaxed

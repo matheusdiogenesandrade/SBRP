@@ -321,7 +321,8 @@ function readSBRPDataMatheus(app::Dict{String,Any})
       push!(data.B, block)
 
       # define profit
-      data.profits[block] = parse(Float64, parts[end])
+      data.profits[block] = app["unitary-profits"] ? 1.0 : parse(Float64, parts[end])
+      
     end
 
   end
