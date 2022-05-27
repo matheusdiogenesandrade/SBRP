@@ -61,9 +61,6 @@ function parse_commandline(args_array::Array{String,1}, appfolder::String)
     "--y-integer"
     help = "Fix the variable y, for the complete model, when running the separation algorithm"
     action = :store_true
-    "--n-vehicles"
-    help = "Number of vehicles"
-    default = "1"
   end
   return parse_args(args_array, s)
 end
@@ -83,7 +80,7 @@ function write_sol(app, tour, data)
   end
 end
  
-function sbrp(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, paths::Dict{Tuple{Int, Int}, Vi})
+function ip(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, paths::Dict{Tuple{Int, Int}, Vi})
   flush_println("###################SBRP####################")
 
   # create and solve model
@@ -232,7 +229,7 @@ function run(app::Dict{String,Any})
   app["nosolve"] && return
 
   # solve models
-  app["ip"] && return sbrp_max(app, data, data′, paths′)
+  app["ip"] && return ip(app, data, data′, paths′)
   app["brkga"] && return brkga(app, data, data′, paths′)
   app["dd"] && return dd(app, data, data′, paths′)
 

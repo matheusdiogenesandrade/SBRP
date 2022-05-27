@@ -15,7 +15,6 @@ mutable struct SBRPData <: AbstractInstance
   B::Vector{Vi}
   T::Float64
   profits::Dict{Vi, Float64}
-  n_vehicles::Int
 end
 
 # 40 km / 60 min = 40 km/h
@@ -147,8 +146,7 @@ function create_complete_digraph(data::SBRPData)
     depot, 
     B, 
     data.T, # 2 hours
-    data.profits,
-    data.n_vehicles
+    data.profits
   ), keys(data.D.V), Dict{Arc, Vi}()
 
   adjList = Dict{Int64, Vi}(i => [] for i in V)
@@ -215,8 +213,7 @@ function readSBRPData(app::Dict{String,Any})
     depot,
     VVi(),
     parse(Float64, app["vehicle-time-limit"]),
-    ArcCostMap(),
-    parse(Int, app["n-vehicles"])
+    ArcCostMap()
   ), Dict{Int, Arcs}()
 
   open(app["instance"]) do f
