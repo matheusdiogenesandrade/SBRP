@@ -149,6 +149,9 @@ function create_complete_digraph(data::SBRPData)
     data.profits
   ), keys(data.D.V), Dict{Arc, Vi}()
 
+  adjList = Dict{Int64, Vi}(i => [] for i in V)
+  [push!(adjList[i], j) for (i, j) in A]
+
   # get paths
   for i in Vb
 
@@ -157,7 +160,8 @@ function create_complete_digraph(data::SBRPData)
     distances[i] = 0.0
     while !∅(q)
       curr = popfirst!(q)
-      for (curr, next) in δ⁺(A, curr)
+  #    for (curr, next) in δ⁺(A, curr)
+      for next in adjList[curr]
 #        if !in(next, [data.depot, i]) && (pred[next] == next || distances[next] > distances[curr] + data.D.distance[(curr, next)])
         if !in(next, [data.depot, i]) && distances[next] > distances[curr] + data.D.distance[(curr, next)]
           distances[next] = distances[curr] + data.D.distance[(curr, next)]
@@ -367,13 +371,14 @@ function readSBRPDataMatheus(app::Dict{String,Any})
   data = data‴
 
   # compact algorithm
-  data″, paths″ = create_no_one_degree_paths_digraph(data)
+#  data″, paths″ = create_no_one_degree_paths_digraph(data)
 
   # check feasibility
-  check_feasibility(data, data″)
+#  check_feasibility(data, data″)
 
   # return
-  return data, data′, paths′, data″, paths″
+#  return data, data′, paths′, data″, paths″
+  return data, data′, paths′
 end
 
 function check_feasibility(data::SBRPData, data′::SBRPData) 
@@ -389,6 +394,9 @@ end
 function calculate_shortest_paths(data::SBRPData)
   V, A, Vb = data.D.V, data.D.A, get_blocks_nodes(data)
 
+  adjList = Dict{Int64, Vi}(i => [] for i in keys(V))
+  [push!(adjList[i], j) for (i, j) in A]
+
   distances = Dict{Arc, Float64}()
   for i in Vb
     # bfs
@@ -398,7 +406,8 @@ function calculate_shortest_paths(data::SBRPData)
       # curr node
       curr = pop!(q)
       # next nodes
-      for (curr, next) in δ⁺(A, curr)
+#      for (curr, next) in δ⁺(A, curr)
+      for next in adjList[curr]
         # edge case
         next == data.depot && continue
 

@@ -34,9 +34,9 @@ function parse_commandline(args_array::Array{String,1}, appfolder::String)
     "--complete"
     help = "true if you want to run the model with the complete digraph, and false otherwise"
     action = :store_true
-    "--no-one-degree-path"
-    help = "true if you want to run the model with the no one degree path digraph, and false otherwise"
-    action = :store_true
+#    "--no-one-degree-path"
+#    help = "true if you want to run the model with the no one degree path digraph, and false otherwise"
+#    action = :store_true
     "--normal"
     help = "true if you want to run the model with the original digraph, and false otherwise"
     action = :store_true
@@ -335,7 +335,8 @@ function run(app::Dict{String,Any})
 
   # read instance
   readInstanceFunction = app["instance-type"] == "carlos" ? readSBRPDataCarlos : readSBRPDataMatheus
-  data, data′, paths′, data″, paths″ = readInstanceFunction(app)
+#  data, data′, paths′, data″, paths″ = readInstanceFunction(app)
+  data, data′, paths′ = readInstanceFunction(app)
   app["instance_name"] = split(basename(app["instance"]), ".")[1]
 
   # instance data
@@ -344,18 +345,19 @@ function run(app::Dict{String,Any})
   flush_println("|A| = $(length(data.D.A))")
   flush_println("|V′| = $(length(data′.D.V))")
   flush_println("|A′| = $(length(data′.D.A))")
-  flush_println("|V″| = $(length(data″.D.V))")
-  flush_println("|A″| = $(length(data″.D.A))")
+#  flush_println("|V″| = $(length(data″.D.V))")
+#  flush_println("|A″| = $(length(data″.D.A))")
 
   # set vehicle time limit
-  data″.T = data′.T = data.T = parse(Int, app["vehicle-time-limit"])
+#  data″.T = data′.T = data.T = parse(Int, app["vehicle-time-limit"])
+  data′.T = data.T = parse(Int, app["vehicle-time-limit"])
 
   # not solve
   app["nosolve"] && return
 
   # solve models
   app["normal"] && return sbrp_max(app, data)
-  app["no-one-degree-path"] && return sbrp_max_no_one_degree_path(app, data, data″, paths″)
+#  app["no-one-degree-path"] && return sbrp_max_no_one_degree_path(app, data, data″, paths″)
   app["complete"] && return sbrp_max_complete(app, data, data′, paths′)
   app["brkga"] && return brkga(app, data, data′, paths′)
   app["dd"] && return dd(app, data, data′, paths′)
