@@ -42,8 +42,6 @@ function bfs_sets(A, nodes, source::Int)
   return sets
 end
 
-include("model_sbrp_max.jl")
-
-include("model_sbrp_max_complete.jl")
+include("model_sbrp.jl")
 
 end

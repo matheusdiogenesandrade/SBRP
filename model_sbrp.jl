@@ -1,4 +1,4 @@
-module ModelSBRPMaxComplete
+module ModelSBRP
 
 include("symbols.jl")
 
@@ -8,7 +8,7 @@ using ...Data.SBRP
 using CPLEX
 using JuMP
 
-export build_model_sbrp_max_complete
+export build_model_sbrp
 
 include("SparseMaxFlowMinCut.jl")
 
@@ -204,7 +204,7 @@ end
 intersection_cuts1, intersection_cuts2 = Vector{Arcs}(), Vector{Arcs}()
 subtour_cuts = Set{Tuple{Arcs, Arcs}}()
 
-function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
+function build_model_sbrp(data::SBRPData, app::Dict{String,Any})
   depot, B, A, T, V, profits, Vb, info = data.depot, data.B, data.D.A, data.T, data.D.V, data.profits, blocks_nodes(data.B), Dict{String, Any}("lazyCuts" => 0)
   A′, V′ = filter(a -> a[2] != depot, A), setdiff(keys(V), depot)
   P′ = filter(a -> a[1] < a[2], χ(V′))
