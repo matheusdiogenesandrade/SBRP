@@ -7,7 +7,7 @@ using ..Data
 
 using BrkgaMpIpr
 
-export time_block, SBRPData, compact, readSBRPDataCarlos, readSBRPDataMatheus, distance_block, tour_distance, tour_time
+export time_block, SBRPData, compact, readSBRPData, distance_block, tour_distance, tour_time
 
 mutable struct SBRPData <: AbstractInstance
   D::Data.InputDigraph
@@ -155,6 +155,9 @@ function create_complete_digraph(data::SBRPData)
     push!(adjList[i], j)
   end
 
+  adjList = Dict{Int64, Vi}(i => [] for i in V)
+  [push!(adjList[i], j) for (i, j) in A]
+
   # get paths
   for i in Vb
 	flush_println(i)
@@ -163,6 +166,7 @@ function create_complete_digraph(data::SBRPData)
     distances[i] = 0.0
     while !∅(q)
       curr = popfirst!(q)
+  #    for (curr, next) in δ⁺(A, curr)
       for next in adjList[curr]
 #        if !in(next, [data.depot, i]) && (pred[next] == next || distances[next] > distances[curr] + data.D.distance[(curr, next)])
         if !in(next, [data.depot, i]) && distances[next] > distances[curr] + data.D.distance[(curr, next)]
@@ -204,85 +208,7 @@ function create_complete_digraph(data::SBRPData)
   return data′, paths
 end
 
-function readSBRPDataCarlos(app::Dict{String,Any})
-  depot = 1
-  data, blocks, ids, blocks_profits = SBRPData(
-    Data.InputDigraph(
-                 Vector{Vertex, 1}([Vertex(-1, -1, -1)]), 
-                 Vector{Tuple{Int,Int}, 1}(), 
-                 Dict{Tuple{Int, Int}, Float64}()
-                ), 
-    depot,
-    Vector{Vi, 1}(),
-    120.0, # 2 hours
-    Dict{Vi, Float64}()
-  ), Dict{Int, Arcs}(), Dict{Int, Int}(), Dict{Int, Int}()
-
-  open(app["instance"]) do f
-    parts = split(readline(f), [' ']; limit=0, keepempty=false)
-    # get params
-    nNodes, nArcs, nBlocks = parse(Int, parts[1]), parse(Int, parts[2]), parse(Int, parts[3])
-    # get nodes
-    for i in 1:nNodes
-      parts = split(readline(f), [' ']; limit=0, keepempty=false)
-      id = parse(Int, parts[2])
-      ids[id] = i + 1
-      push!(data.D.V, Vertex(id, parse(Float64, parts[4]), parse(Float64, parts[3])))
-    end
-    # get distances
-    for i in 1:nArcs
-      parts = split(readline(f), [' ']; limit=0, keepempty=false)
-      a = (ids[parse(Int, parts[2])], ids[parse(Int, parts[3])])
-      data.D.distance[a] = floor(Int, parse(Float64, parts[4]))
-      # get blocks
-      parts[5] == "-1" && continue
-      id_block = parse(Int, parts[5])
-      !haskey(blocks, id_block) && (blocks[id_block] = Vector{Tuple{Int, Int}, 1}())
-      !haskey(blocks_profits, id_block) && (blocks_profits[id_block] = 0)
-      push!(blocks[id_block], a)
-      blocks_profits[id_block] += parse(Int, parts[6])
-    end
-  end
-  n_blocks, k = 16, 1
-  # get blocks
-  for (block, arcs) in blocks
-    # get cycle     
-    cycle, curr, next = Vi(), first(arcs)[1], first(arcs)[2]
-    push!(cycle, curr)
-    while next != first(cycle)
-      push!(cycle, next)
-      curr, next = next, first(δ⁺(arcs, next))[2]
-    end
-    push!(data.B, cycle)
-    data.profits[cycle] = blocks_profits[block]
-
-#    k >= n_blocks && break
-    k = k + 1
-  end
-  # add arcs
-  data.D.A = [keys(data.D.distance)...]
-
-  data′, paths = create_complete_digraph(data)
-  # update arcs
-  data.D.A = collect(Set{Tuple{Int, Int}}(vcat(
-    [(path[i], path[i + 1]) for (a, path) in paths for i in 1:(length(path) - 1)], # min paths arcs
-    [(a[1], path[begin]) for (a, path) in paths if !∅(path)], # min paths arcs
-    [(path[end], a[2]) for (a, path) in paths if !∅(path)], # min paths arcs
-    [a for (a, path) in paths if ∅(path)], # min paths arcs (edge case)
-    [(b[i], b[i + 1]) for b in data.B for i in 1:(length(b) - 1)], # blocks arcs
-    [(b[end], b[begin]) for b in data.B], # blocks arcs
-    [(depot, i) for i in Vb], # depot arcs
-    [(i, depot) for i in Vb] # depot arcs
-   )))
-  # dummy weights
-  [data.D.distance[(depot, i)] = data.D.distance[(i, depot)] = 0.0 for i in Vb]
-  # check feasibility
-  !check_sbrp_complete_feasibility(data′, Vb) && error("The SBRP instance is not feasible")
-  # return
-  return data, Dict{Int, Int}(v => k for (k, v) in ids), data′, paths
-end
-
-function readSBRPDataMatheus(app::Dict{String,Any})
+function readSBRPData(app::Dict{String,Any})
   depot = 1
   data, blocks = SBRPData(
     Data.InputDigraph(
@@ -292,7 +218,7 @@ function readSBRPDataMatheus(app::Dict{String,Any})
                 ), 
     depot,
     VVi(),
-    120.0, # 2 hours
+    parse(Float64, app["vehicle-time-limit"]),
     ArcCostMap()
   ), Dict{Int, Arcs}()
 
@@ -378,13 +304,14 @@ function readSBRPDataMatheus(app::Dict{String,Any})
   data = data‴
 
   # compact algorithm
-  data″, paths″ = create_no_one_degree_paths_digraph(data)
+#  data″, paths″ = create_no_one_degree_paths_digraph(data)
 
   # check feasibility
-  check_feasibility(data, data″)
+#  check_feasibility(data, data″)
 
   # return
-  return data, data′, paths′, data″, paths″
+#  return data, data′, paths′, data″, paths″
+  return data, data′, paths′
 end
 
 function check_feasibility(data::SBRPData, data′::SBRPData) 
@@ -400,11 +327,8 @@ end
 function calculate_shortest_paths(data::SBRPData)
   V, A, Vb = data.D.V, data.D.A, get_blocks_nodes(data)
 
-  # adjList
-  adjList = Dict{Int, Vi}(i => Vi() for i in keys(data.D.V))
-  for (i, j) in A
-    push!(adjList[i], j)
-  end
+  adjList = Dict{Int64, Vi}(i => [] for i in keys(V))
+  [push!(adjList[i], j) for (i, j) in A]
 
   distances = Dict{Arc, Float64}()
   for i in Vb
