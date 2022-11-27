@@ -141,23 +141,29 @@ function create_complete_digraph(data::SBRPData)
     Data.InputDigraph(
                  Dict{Int, Vertex}(vcat((depot => data.D.V[depot]), [(i => data.D.V[i]) for i in Vb])...), 
                  Arcs(), 
-                 ArcCostMap()
+                 ArcCostMap((i, j) => 0.0 for (i, j) in χ(Vb) if i != j)
                 ), 
     depot, 
     B, 
     data.T, # 2 hours
     data.profits
-  ), keys(data.D.V), Dict{Arc, Vi}()
+  ), keys(data.D.V), Dict{Arc, Vi}((i, j) => [] for (i, j) in χ(Vb) if i != j)
+
+  # adjList
+  adjList = Dict{Int, Vi}(i => Vi() for i in keys(data.D.V))
+  for (i, j) in A
+    push!(adjList[i], j)
+  end
 
   # get paths
   for i in Vb
-
+	flush_println(i)
     # bfs
     distances, pred, q = Dict{Int, Float64}(i => typemax(Float64) for i in V), Dict{Int, Int}(i => i for i in V), [i]
     distances[i] = 0.0
     while !∅(q)
       curr = popfirst!(q)
-      for (curr, next) in δ⁺(A, curr)
+      for next in adjList[curr]
 #        if !in(next, [data.depot, i]) && (pred[next] == next || distances[next] > distances[curr] + data.D.distance[(curr, next)])
         if !in(next, [data.depot, i]) && distances[next] > distances[curr] + data.D.distance[(curr, next)]
           distances[next] = distances[curr] + data.D.distance[(curr, next)]
@@ -299,12 +305,14 @@ function readSBRPDataMatheus(app::Dict{String,Any})
     readline(f)
     readline(f)
 
+    flush_println("Reading arcs")
     # get arcs
     for n in 1:nArcs
       parts = split(readline(f), ['(', ')', ' ', ',']; limit=0, keepempty=false)
       data.D.distance[(parse(Int, parts[1]), parse(Int, parts[2]))] = floor(Int, parse(Float64, parts[end]))
     end
 
+    flush_println("Reading nodes")
     # get vertices
     readline(f)
     for i in 1:nNodes
@@ -313,6 +321,7 @@ function readSBRPDataMatheus(app::Dict{String,Any})
       data.D.V[id] = Vertex(id, parse(Float64, parts[2]), parse(Float64, parts[3]))
     end
 
+    flush_println("Reading blocks")
     # get blocks
     readline(f)
     for i in 1:nBlocks
@@ -333,11 +342,13 @@ function readSBRPDataMatheus(app::Dict{String,Any})
   # dummy weights
   add_dummy_arcs(data)
 
+  flush_println("Checking feasibility")
   # check feasibility
   Vb = get_blocks_nodes(data)
   distances = calculate_shortest_paths(data)
   any(!in((i, j), keys(distances)) for (i, j) in χ(Vb)) && error("The SBRP instance it is not connected")
 
+  flush_println("Checking complete graph")
   # compact in complete graph
   data′, paths′ = create_complete_digraph(data)
 
@@ -389,8 +400,15 @@ end
 function calculate_shortest_paths(data::SBRPData)
   V, A, Vb = data.D.V, data.D.A, get_blocks_nodes(data)
 
+  # adjList
+  adjList = Dict{Int, Vi}(i => Vi() for i in keys(data.D.V))
+  for (i, j) in A
+    push!(adjList[i], j)
+  end
+
   distances = Dict{Arc, Float64}()
   for i in Vb
+  	flush_println(i)
     # bfs
     q = [i]
     distances[(i, i)] = 0.0
@@ -398,7 +416,7 @@ function calculate_shortest_paths(data::SBRPData)
       # curr node
       curr = pop!(q)
       # next nodes
-      for (curr, next) in δ⁺(A, curr)
+      for next in adjList[curr] 
         # edge case
         next == data.depot && continue
 

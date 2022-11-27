@@ -1,0 +1,4203 @@
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/1.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random1"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 5
+|V| = 179
+|A| = 430
+|V′| = 31
+|A′| = 930
+|V″| = 82
+|A″| = 252
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:39:47.029
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:39:47.255] Generating initial tour...
+Initial profit: 18.0
+
+[04:39:47.882] Building BRKGA data...
+New population size: 50
+
+[04:39:48.078] Initializing BRKGA data...
+
+[04:39:48.378] Warming up...
+
+[04:39:49.02] Evolving...
+* Iteration | Cost | CurrentTime
+[04:39:49.471] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 0.45
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 1 & 31 & 930 & 5 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 18.0 & 0.4515349864959717 & - & - & 1807.0 & 9.843 & 1585
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/2.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random2"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 5
+|V| = 189
+|A| = 530
+|V′| = 58
+|A′| = 3306
+|V″| = 122
+|A″| = 396
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:39:50.434
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:39:50.435] Generating initial tour...
+Initial profit: 21.0
+
+[04:39:50.529] Building BRKGA data...
+New population size: 50
+
+[04:39:50.529] Initializing BRKGA data...
+
+[04:39:50.607] Warming up...
+
+[04:39:50.632] Evolving...
+* Iteration | Cost | CurrentTime
+[04:39:51.836] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 1.20
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 2 & 58 & 3306 & 5 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 21.0 & 1.2041680812835693 & - & - & 2658.0 & 15.610500000000002 & 2583
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/3.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random3"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 5
+|V| = 242
+|A| = 574
+|V′| = 22
+|A′| = 462
+|V″| = 110
+|A″| = 310
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:39:52.245
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:39:52.245] Generating initial tour...
+Initial profit: 27.0
+
+[04:39:52.401] Building BRKGA data...
+New population size: 50
+
+[04:39:52.401] Initializing BRKGA data...
+
+[04:39:52.404] Warming up...
+
+[04:39:52.409] Evolving...
+* Iteration | Cost | CurrentTime
+[04:39:52.708] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 0.30
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 3 & 22 & 462 & 5 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 27.0 & 0.299030065536499 & - & - & 2845.0 & 12.925500000000001 & 1924
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/4.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random4"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 5
+|V| = 82
+|A| = 242
+|V′| = 25
+|A′| = 600
+|V″| = 58
+|A″| = 194
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:39:52.867
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:39:52.867] Generating initial tour...
+Initial profit: 14.0
+
+[04:39:52.959] Building BRKGA data...
+New population size: 50
+
+[04:39:52.959] Initializing BRKGA data...
+
+[04:39:52.969] Warming up...
+
+[04:39:52.976] Evolving...
+* Iteration | Cost | CurrentTime
+[04:39:53.316] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 0.34
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 4 & 25 & 600 & 5 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 14.0 & 0.34048914909362793 & - & - & 1010.0 & 12.337499999999999 & 2405
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/5.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random5"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 5
+|V| = 350
+|A| = 846
+|V′| = 50
+|A′| = 2450
+|V″| = 159
+|A″| = 464
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:39:54.512
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:39:54.512] Generating initial tour...
+Initial profit: 25.0
+
+[04:39:54.812] Building BRKGA data...
+New population size: 50
+
+[04:39:54.812] Initializing BRKGA data...
+
+[04:39:54.869] Warming up...
+
+[04:39:54.886] Evolving...
+* Iteration | Cost | CurrentTime
+[04:39:55.743] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 0.86
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 5 & 50 & 2450 & 5 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 25.0 & 0.857611894607544 & - & - & 3901.0 & 13.605 & 1723
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/6.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random6"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 10
+|V| = 346
+|A| = 1026
+|V′| = 114
+|A′| = 12882
+|V″| = 234
+|A″| = 802
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:40:02.498
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:40:02.498] Generating initial tour...
+Initial profit: 37.0
+
+[04:40:02.498] Building BRKGA data...
+New population size: 100
+
+[04:40:02.498] Initializing BRKGA data...
+
+[04:40:02.6] Warming up...
+
+[04:40:02.734] Evolving...
+* Iteration | Cost | CurrentTime
+[04:40:09.436] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 6.70
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 6 & 114 & 12882 & 10 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 37.0 & 6.7022199630737305 & - & - & 4699.0 & 33.0495 & 5778
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/7.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random7"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 10
+|V| = 364
+|A| = 986
+|V′| = 65
+|A′| = 4160
+|V″| = 233
+|A″| = 724
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:40:14.785
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:40:14.785] Generating initial tour...
+Initial profit: 37.0
+
+[04:40:14.902] Building BRKGA data...
+New population size: 100
+
+[04:40:14.902] Initializing BRKGA data...
+
+[04:40:14.916] Warming up...
+
+[04:40:14.969] Evolving...
+* Iteration | Cost | CurrentTime
+[04:40:16.929] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 1.96
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 7 & 65 & 4160 & 10 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 37.0 & 1.9594988822937012 & - & - & 5143.0 & 27.784499999999998 & 4460
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/8.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random8"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 10
+|V| = 467
+|A| = 1206
+|V′| = 80
+|A′| = 6320
+|V″| = 275
+|A″| = 824
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:40:24.192
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:40:24.192] Generating initial tour...
+Initial profit: 38.0
+
+[04:40:24.192] Building BRKGA data...
+New population size: 100
+
+[04:40:24.193] Initializing BRKGA data...
+
+[04:40:24.239] Warming up...
+
+[04:40:24.302] Evolving...
+* Iteration | Cost | CurrentTime
+[04:40:27.364] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 3.06
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 8 & 80 & 6320 & 10 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 38.0 & 3.062217950820923 & - & - & 3974.0 & 26.175000000000004 & 4492
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/9.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random9"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 10
+|V| = 384
+|A| = 1002
+|V′| = 70
+|A′| = 4830
+|V″| = 221
+|A″| = 676
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:40:32.152
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:40:32.152] Generating initial tour...
+Initial profit: 36.0
+
+[04:40:32.152] Building BRKGA data...
+New population size: 100
+
+[04:40:32.153] Initializing BRKGA data...
+
+[04:40:32.2] Warming up...
+
+[04:40:32.259] Evolving...
+* Iteration | Cost | CurrentTime
+[04:40:34.936] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 2.68
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 9 & 70 & 4830 & 10 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 36.0 & 2.6760940551757812 & - & - & 2958.0 & 24.1515 & 4381
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/10.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random10"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 10
+|V| = 488
+|A| = 1240
+|V′| = 75
+|A′| = 5550
+|V″| = 265
+|A″| = 794
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:40:42.657
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:40:42.657] Generating initial tour...
+Initial profit: 51.0
+
+[04:40:42.709] Building BRKGA data...
+New population size: 100
+
+[04:40:42.71] Initializing BRKGA data...
+
+[04:40:42.742] Warming up...
+
+[04:40:42.801] Evolving...
+* Iteration | Cost | CurrentTime
+[04:40:45.382] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 2.58
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 10 & 75 & 5550 & 10 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 51.0 & 2.58107590675354 & - & - & 3546.0 & 23.4405 & 4027
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/11.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random11"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 15
+|V| = 549
+|A| = 1486
+|V′| = 105
+|A′| = 10920
+|V″| = 349
+|A″| = 1086
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:41:09.637
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:41:09.638] Generating initial tour...
+Initial profit: 56.0
+
+[04:41:09.638] Building BRKGA data...
+New population size: 150
+
+[04:41:09.638] Initializing BRKGA data...
+
+[04:41:09.692] Warming up...
+
+[04:41:09.862] Evolving...
+* Iteration | Cost | CurrentTime
+[04:41:15.891] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 6.03
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 11 & 105 & 10920 & 15 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 56.0 & 6.028771162033081 & - & - & 5525.0 & 36.678 & 6309
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/12.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random12"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 15
+|V| = 553
+|A| = 1494
+|V′| = 107
+|A′| = 11342
+|V″| = 370
+|A″| = 1136
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:41:44.055
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:41:44.055] Generating initial tour...
+Initial profit: 48.0
+
+[04:41:44.055] Building BRKGA data...
+New population size: 150
+
+[04:41:44.055] Initializing BRKGA data...
+
+[04:41:44.101] Warming up...
+
+[04:41:44.274] Evolving...
+* Iteration | Cost | CurrentTime
+[04:41:50.587] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 6.31
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 12 & 107 & 11342 & 15 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 48.0 & 6.31269907951355 & - & - & 4616.0 & 32.232000000000006 & 5624
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/13.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random13"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 15
+|V| = 430
+|A| = 1218
+|V′| = 116
+|A′| = 13340
+|V″| = 304
+|A″| = 970
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:42:05.501
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:42:05.501] Generating initial tour...
+Initial profit: 73.0
+
+[04:42:05.501] Building BRKGA data...
+New population size: 150
+
+[04:42:05.501] Initializing BRKGA data...
+
+[04:42:05.599] Warming up...
+
+[04:42:05.809] Evolving...
+* Iteration | Cost | CurrentTime
+[04:42:13.58] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 7.77
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 13 & 116 & 13340 & 15 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 73.0 & 7.770729064941406 & - & - & 4901.0 & 29.226000000000003 & 4861
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/14.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random14"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 15
+|V| = 478
+|A| = 1301
+|V′| = 96
+|A′| = 9120
+|V″| = 303
+|A″| = 951
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:42:27.303
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:42:27.303] Generating initial tour...
+Initial profit: 55.0
+
+[04:42:27.304] Building BRKGA data...
+New population size: 150
+
+[04:42:27.304] Initializing BRKGA data...
+
+[04:42:27.358] Warming up...
+
+[04:42:27.496] Evolving...
+* Iteration | Cost | CurrentTime
+[04:42:33.114] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 5.62
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 14 & 96 & 9120 & 15 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 55.0 & 5.617901086807251 & - & - & 5833.0 & 34.8495 & 5800
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/15.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random15"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 15
+|V| = 488
+|A| = 1362
+|V′| = 107
+|A′| = 11342
+|V″| = 316
+|A″| = 1018
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:42:52.295
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:42:52.295] Generating initial tour...
+Initial profit: 63.0
+
+[04:42:52.295] Building BRKGA data...
+New population size: 150
+
+[04:42:52.295] Initializing BRKGA data...
+
+[04:42:52.36] Warming up...
+
+[04:42:52.549] Evolving...
+* Iteration | Cost | CurrentTime
+[04:42:59.366] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 6.82
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 15 & 107 & 11342 & 15 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 63.0 & 6.817399978637695 & - & - & 6021.0 & 38.47500000000001 & 6543
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/16.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random16"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 20
+|V| = 698
+|A| = 2062
+|V′| = 222
+|A′| = 49062
+|V″| = 505
+|A″| = 1682
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:45:04.683
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:45:04.683] Generating initial tour...
+Initial profit: 87.0
+
+[04:45:04.685] Building BRKGA data...
+New population size: 200
+
+[04:45:04.685] Initializing BRKGA data...
+
+[04:45:04.933] Warming up...
+
+[04:45:05.805] Evolving...
+* Iteration | Cost | CurrentTime
+[04:45:34.291] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 28.49
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 16 & 222 & 49062 & 20 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 87.0 & 28.485239028930664 & - & - & 6877.0 & 52.156499999999994 & 9298
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/17.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random17"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 20
+|V| = 689
+|A| = 1928
+|V′| = 163
+|A′| = 26406
+|V″| = 480
+|A″| = 1510
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:46:53.787
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:46:53.787] Generating initial tour...
+Initial profit: 76.0
+
+[04:46:53.788] Building BRKGA data...
+New population size: 200
+
+[04:46:53.788] Initializing BRKGA data...
+
+[04:46:53.937] Warming up...
+
+[04:46:54.426] Evolving...
+* Iteration | Cost | CurrentTime
+[04:47:11.704] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 17.28
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 17 & 163 & 26406 & 20 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 76.0 & 17.277024030685425 & - & - & 6148.0 & 45.01049999999999 & 7953
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/18.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random18"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 20
+|V| = 731
+|A| = 2152
+|V′| = 223
+|A′| = 49506
+|V″| = 516
+|A″| = 1730
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:49:29.244
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:49:29.244] Generating initial tour...
+Initial profit: 85.0
+
+[04:49:29.245] Building BRKGA data...
+New population size: 200
+
+[04:49:29.245] Initializing BRKGA data...
+
+[04:49:29.483] Warming up...
+
+[04:49:30.253] Evolving...
+* Iteration | Cost | CurrentTime
+[04:49:56.229] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 25.98
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 18 & 223 & 49506 & 20 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 85.0 & 25.97575092315674 & - & - & 7746.0 & 48.784499999999994 & 8259
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/19.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random19"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 20
+|V| = 655
+|A| = 1846
+|V′| = 146
+|A′| = 21170
+|V″| = 458
+|A″| = 1452
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:50:57.233
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:50:57.233] Generating initial tour...
+Initial profit: 82.0
+
+[04:50:57.234] Building BRKGA data...
+New population size: 200
+
+[04:50:57.234] Initializing BRKGA data...
+
+[04:50:57.329] Warming up...
+
+[04:50:57.696] Evolving...
+* Iteration | Cost | CurrentTime
+[04:51:10.225] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 12.53
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 19 & 146 & 21170 & 20 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 82.0 & 12.529057025909424 & - & - & 6771.0 & 52.33500000000001 & 9373
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/20.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random20"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 20
+|V| = 564
+|A| = 1638
+|V′| = 165
+|A′| = 27060
+|V″| = 411
+|A″| = 1340
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:51:57.466
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:51:57.466] Generating initial tour...
+Initial profit: 75.0
+
+[04:51:57.467] Building BRKGA data...
+New population size: 200
+
+[04:51:57.467] Initializing BRKGA data...
+
+[04:51:57.605] Warming up...
+
+[04:51:58.097] Evolving...
+* Iteration | Cost | CurrentTime
+[04:52:14.849] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 16.75
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 20 & 165 & 27060 & 20 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 75.0 & 16.75135898590088 & - & - & 6503.0 & 48.35999999999999 & 8579
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/21.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random21"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 25
+|V| = 688
+|A| = 2070
+|V′| = 216
+|A′| = 46440
+|V″| = 511
+|A″| = 1716
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:54:05.412
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:54:05.412] Generating initial tour...
+Initial profit: 79.0
+
+[04:54:05.414] Building BRKGA data...
+New population size: 250
+
+[04:54:05.414] Initializing BRKGA data...
+
+[04:54:05.674] Warming up...
+
+[04:54:06.675] Evolving...
+* Iteration | Cost | CurrentTime
+[04:54:36.874] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 30.20
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 21 & 216 & 46440 & 25 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 79.0 & 30.19877004623413 & - & - & 7683.0 & 60.300000000000004 & 10839
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/22.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random22"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 25
+|V| = 618
+|A| = 1932
+|V′| = 225
+|A′| = 50400
+|V″| = 452
+|A″| = 1600
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:56:09.024
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:56:09.024] Generating initial tour...
+Initial profit: 97.0
+
+[04:56:09.026] Building BRKGA data...
+New population size: 250
+
+[04:56:09.026] Initializing BRKGA data...
+
+[04:56:09.323] Warming up...
+
+[04:56:10.36] Evolving...
+* Iteration | Cost | CurrentTime
+[04:56:44.651] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 34.29
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 22 & 225 & 50400 & 25 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 97.0 & 34.29102802276611 & - & - & 6830.0 & 69.30300000000001 & 13124
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/23.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random23"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 25
+|V| = 744
+|A| = 2167
+|V′| = 203
+|A′| = 41006
+|V″| = 539
+|A″| = 1757
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T04:59:09.455
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[04:59:09.455] Generating initial tour...
+Initial profit: 87.0
+
+[04:59:09.457] Building BRKGA data...
+New population size: 250
+
+[04:59:09.457] Initializing BRKGA data...
+
+[04:59:09.657] Warming up...
+
+[04:59:10.453] Evolving...
+* Iteration | Cost | CurrentTime
+[04:59:34.504] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 24.05
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 23 & 203 & 41006 & 25 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 87.0 & 24.0518798828125 & - & - & 7480.0 & 56.647499999999994 & 10095
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/24.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random24"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 25
+|V| = 703
+|A| = 2206
+|V′| = 264
+|A′| = 69432
+|V″| = 556
+|A″| = 1912
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T05:02:23.161
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[05:02:23.161] Generating initial tour...
+Initial profit: 97.0
+
+[05:02:23.163] Building BRKGA data...
+New population size: 250
+
+[05:02:23.163] Initializing BRKGA data...
+
+[05:02:23.525] Warming up...
+
+[05:02:24.823] Evolving...
+* Iteration | Cost | CurrentTime
+[05:03:06.559] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 41.74
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 24 & 264 & 69432 & 25 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 97.0 & 41.7365448474884 & - & - & 6740.0 & 65.433 & 12294
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/25.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random25"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 25
+|V| = 699
+|A| = 2116
+|V′| = 236
+|A′| = 55460
+|V″| = 507
+|A″| = 1732
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T05:05:17.312
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[05:05:17.313] Generating initial tour...
+Initial profit: 106.0
+
+[05:05:17.314] Building BRKGA data...
+New population size: 250
+
+[05:05:17.314] Initializing BRKGA data...
+
+[05:05:17.628] Warming up...
+
+[05:05:18.962] Evolving...
+* Iteration | Cost | CurrentTime
+[05:05:55.761] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 36.80
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 25 & 236 & 55460 & 25 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 106.0 & 36.79940915107727 & - & - & 7015.0 & 62.04300000000001 & 11449
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/26.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random26"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 30
+|V| = 645
+|A| = 1970
+|V′| = 214
+|A′| = 45582
+|V″| = 468
+|A″| = 1622
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T05:07:30.897
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[05:07:30.897] Generating initial tour...
+Initial profit: 137.0
+
+[05:07:30.899] Building BRKGA data...
+New population size: 300
+
+[05:07:30.899] Initializing BRKGA data...
+
+[05:07:31.18] Warming up...
+
+[05:07:32.3] Evolving...
+* Iteration | Cost | CurrentTime
+[05:08:05.901] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 33.60
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 26 & 214 & 45582 & 30 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 137.0 & 33.600629806518555 & - & - & 7581.0 & 66.38850000000001 & 12226
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/27.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random27"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 30
+|V| = 727
+|A| = 2256
+|V′| = 266
+|A′| = 70490
+|V″| = 518
+|A″| = 1844
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T05:11:32.610
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[05:11:32.611] Generating initial tour...
+Initial profit: 118.0
+
+[05:11:32.613] Building BRKGA data...
+New population size: 300
+
+[05:11:32.613] Initializing BRKGA data...
+
+[05:11:33.048] Warming up...
+
+[05:11:34.755] Evolving...
+* Iteration | Cost | CurrentTime
+[05:12:24.964] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 50.21
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 27 & 266 & 70490 & 30 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 118.0 & 50.20925211906433 & - & - & 7777.0 & 71.67750000000001 & 13336
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/28.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random28"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 30
+|V| = 647
+|A| = 2004
+|V′| = 236
+|A′| = 55460
+|V″| = 474
+|A″| = 1658
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T05:14:24.913
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[05:14:24.914] Generating initial tour...
+Initial profit: 122.0
+
+[05:14:24.916] Building BRKGA data...
+New population size: 300
+
+[05:14:24.916] Initializing BRKGA data...
+
+[05:14:25.3] Warming up...
+
+[05:14:26.76] Evolving...
+* Iteration | Cost | CurrentTime
+[05:15:09.508] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 42.75
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 28 & 236 & 55460 & 30 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 122.0 & 42.74768614768982 & - & - & 9326.0 & 75.28800000000003 & 13622
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/29.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random29"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 30
+|V| = 798
+|A| = 2335
+|V′| = 235
+|A′| = 54990
+|V″| = 552
+|A″| = 1851
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T05:18:22.207
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[05:18:22.208] Generating initial tour...
+Initial profit: 111.0
+
+[05:18:22.21] Building BRKGA data...
+New population size: 300
+
+[05:18:22.21] Initializing BRKGA data...
+
+[05:18:22.529] Warming up...
+
+[05:18:23.812] Evolving...
+* Iteration | Cost | CurrentTime
+[05:19:02.054] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 38.24
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 29 & 235 & 54990 & 30 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 111.0 & 38.24177598953247 & - & - & 8334.0 & 69.4665 & 12659
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/30.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random30"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 30
+|V| = 735
+|A| = 2286
+|V′| = 266
+|A′| = 70490
+|V″| = 557
+|A″| = 1936
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T05:22:10.264
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[05:22:10.264] Generating initial tour...
+Initial profit: 113.0
+
+[05:22:10.266] Building BRKGA data...
+New population size: 300
+
+[05:22:10.266] Initializing BRKGA data...
+
+[05:22:10.698] Warming up...
+
+[05:22:12.465] Evolving...
+* Iteration | Cost | CurrentTime
+[05:23:03.591] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 51.13
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 30 & 266 & 70490 & 30 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 113.0 & 51.1261100769043 & - & - & 8460.0 & 76.914 & 14272
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/31.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random31"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 35
+|V| = 777
+|A| = 2357
+|V′| = 240
+|A′| = 57360
+|V″| = 576
+|A″| = 1955
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T05:26:33.442
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[05:26:33.442] Generating initial tour...
+Initial profit: 155.0
+
+[05:26:33.444] Building BRKGA data...
+New population size: 350
+
+[05:26:33.444] Initializing BRKGA data...
+
+[05:26:33.82] Warming up...
+
+[05:26:35.322] Evolving...
+* Iteration | Cost | CurrentTime
+[05:27:18.683] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 43.36
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 31 & 240 & 57360 & 35 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 155.0 & 43.36098599433899 & - & - & 8454.0 & 76.44149999999998 & 14169
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/32.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random32"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 35
+|V| = 753
+|A| = 2394
+|V′| = 287
+|A′| = 82082
+|V″| = 584
+|A″| = 2054
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T05:31:20.306
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[05:31:20.307] Generating initial tour...
+Initial profit: 125.0
+
+[05:31:20.31] Building BRKGA data...
+New population size: 350
+
+[05:31:20.31] Initializing BRKGA data...
+
+[05:31:20.837] Warming up...
+
+[05:31:22.997] Evolving...
+* Iteration | Cost | CurrentTime
+[05:32:21.603] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 58.61
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 32 & 287 & 82082 & 35 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 125.0 & 58.60608696937561 & - & - & 8074.0 & 70.359 & 12944
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/33.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random33"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 35
+|V| = 748
+|A| = 2416
+|V′| = 313
+|A′| = 97656
+|V″| = 576
+|A″| = 2072
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T05:36:49.345
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[05:36:49.345] Generating initial tour...
+Initial profit: 129.0
+
+[05:36:49.348] Building BRKGA data...
+New population size: 350
+
+[05:36:49.348] Initializing BRKGA data...
+
+[05:36:50.05] Warming up...
+
+[05:36:52.862] Evolving...
+* Iteration | Cost | CurrentTime
+[05:38:05.306] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 72.44
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 33 & 313 & 97656 & 35 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 129.0 & 72.444500207901 & - & - & 8341.0 & 91.19399999999999 & 17485
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/34.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random34"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 35
+|V| = 829
+|A| = 2506
+|V′| = 263
+|A′| = 68906
+|V″| = 579
+|A″| = 2006
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T05:42:48.724
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[05:42:48.724] Generating initial tour...
+Initial profit: 149.0
+
+[05:42:48.727] Building BRKGA data...
+New population size: 350
+
+[05:42:48.727] Initializing BRKGA data...
+
+[05:42:49.16] Warming up...
+
+[05:42:50.9] Evolving...
+* Iteration | Cost | CurrentTime
+[05:43:37.292] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 46.39
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 34 & 263 & 68906 & 35 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 149.0 & 46.39201998710632 & - & - & 8398.0 & 80.79899999999998 & 15156
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/35.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random35"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 35
+|V| = 692
+|A| = 2182
+|V′| = 269
+|A′| = 72092
+|V″| = 514
+|A″| = 1826
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T05:46:14.312
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[05:46:14.312] Generating initial tour...
+Initial profit: 156.0
+
+[05:46:14.365] Building BRKGA data...
+New population size: 350
+
+[05:46:14.365] Initializing BRKGA data...
+
+[05:46:14.866] Warming up...
+
+[05:46:16.65] Evolving...
+* Iteration | Cost | CurrentTime
+[05:47:03.361] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 46.71
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 35 & 269 & 72092 & 35 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 156.0 & 46.71037697792053 & - & - & 8850.0 & 91.017 & 17276
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/36.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random36"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 40
+|V| = 850
+|A| = 2710
+|V′| = 345
+|A′| = 118680
+|V″| = 639
+|A″| = 2288
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T05:53:18.955
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[05:53:18.955] Generating initial tour...
+Initial profit: 137.0
+
+[05:53:18.959] Building BRKGA data...
+New population size: 400
+
+[05:53:18.96] Initializing BRKGA data...
+
+[05:53:19.751] Warming up...
+
+[05:53:22.646] Evolving...
+* Iteration | Cost | CurrentTime
+* 21 | 138 | 13.74 
+* 23 | 139 | 15.27 
+* 34 | 141 | 22.50 
+* 37 | 142 | 24.50 
+* 44 | 143 | 29.28 
+[05:54:30.66] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 44
+Total optimization time: 68.01
+Last update time: 29.28
+Large number of iterations between improvements: 21
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 36 & 345 & 118680 & 40 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 143.0 & 68.01416516304016 & - & - & 11936.0 & 93.85949999999998 & 16879
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/37.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random37"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 40
+|V| = 921
+|A| = 2778
+|V′| = 287
+|A′| = 82082
+|V″| = 676
+|A″| = 2288
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T06:01:37.809
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[06:01:37.809] Generating initial tour...
+Initial profit: 150.0
+
+[06:01:37.813] Building BRKGA data...
+New population size: 400
+
+[06:01:37.813] Initializing BRKGA data...
+
+[06:01:38.433] Warming up...
+
+[06:01:41.049] Evolving...
+* Iteration | Cost | CurrentTime
+* 18 | 151 | 9.54 
+* 27 | 152 | 14.45 
+* 29 | 154 | 15.56 
+* 40 | 155 | 21.77 
+[06:02:38.185] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 40
+Total optimization time: 57.14
+Last update time: 21.77
+Large number of iterations between improvements: 18
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 37 & 287 & 82082 & 40 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 155.0 & 57.13603901863098 & - & - & 13237.0 & 94.7085 & 16634
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/38.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random38"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 40
+|V| = 896
+|A| = 2913
+|V′| = 374
+|A′| = 139502
+|V″| = 730
+|A″| = 2587
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T06:11:23.783
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[06:11:23.783] Generating initial tour...
+Initial profit: 155.0
+
+[06:11:23.788] Building BRKGA data...
+New population size: 400
+
+[06:11:23.788] Initializing BRKGA data...
+
+[06:11:24.704] Warming up...
+
+[06:11:28.453] Evolving...
+* Iteration | Cost | CurrentTime
+[06:12:52.423] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 83.97
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 38 & 374 & 139502 & 40 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 155.0 & 83.96993684768677 & - & - & 9266.0 & 91.7175 & 17293
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/39.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random39"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 40
+|V| = 819
+|A| = 2688
+|V′| = 356
+|A′| = 126380
+|V″| = 641
+|A″| = 2332
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T06:20:08.554
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[06:20:08.554] Generating initial tour...
+Initial profit: 174.0
+
+[06:20:08.559] Building BRKGA data...
+New population size: 400
+
+[06:20:08.559] Initializing BRKGA data...
+
+[06:20:09.478] Warming up...
+
+[06:20:13.666] Evolving...
+* Iteration | Cost | CurrentTime
+[06:21:38] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 0
+Total optimization time: 84.33
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 39 & 356 & 126380 & 40 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 174.0 & 84.33434295654297 & - & - & 8542.0 & 90.92400000000002 & 17358
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/40.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random40"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 40
+|V| = 710
+|A| = 2254
+|V′| = 269
+|A′| = 72092
+|V″| = 530
+|A″| = 1894
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T06:24:48.935
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[06:24:48.935] Generating initial tour...
+Initial profit: 135.0
+
+[06:24:48.939] Building BRKGA data...
+New population size: 400
+
+[06:24:48.939] Initializing BRKGA data...
+
+[06:24:49.488] Warming up...
+
+[06:24:51.745] Evolving...
+* Iteration | Cost | CurrentTime
+* 7 | 137 | 3.18 
+* 9 | 138 | 4.11 
+* 10 | 139 | 4.58 
+* 11 | 141 | 5.05 
+* 14 | 142 | 6.46 
+* 18 | 143 | 8.37 
+* 19 | 144 | 8.85 
+* 21 | 145 | 9.81 
+* 28 | 146 | 13.33 
+* 33 | 147 | 15.80 
+* 34 | 148 | 16.28 
+* 47 | 149 | 22.82 
+* 87 | 150 | 42.83 
+* 99 | 151 | 48.87 
+[06:25:41.109] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 99
+Total optimization time: 49.36
+Last update time: 48.87
+Large number of iterations between improvements: 40
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 40 & 269 & 72092 & 40 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 151.0 & 49.36466598510742 & - & - & 9419.0 & 92.93250000000002 & 17512
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/41.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random41"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 45
+|V| = 904
+|A| = 2892
+|V′| = 356
+|A′| = 126380
+|V″| = 695
+|A″| = 2474
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T06:34:42.489
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[06:34:42.489] Generating initial tour...
+Initial profit: 158.0
+
+[06:34:42.494] Building BRKGA data...
+New population size: 450
+
+[06:34:42.494] Initializing BRKGA data...
+
+[06:34:43.417] Warming up...
+
+[06:34:47.421] Evolving...
+* Iteration | Cost | CurrentTime
+* 19 | 159 | 13.52 
+* 23 | 160 | 16.33 
+* 25 | 161 | 17.71 
+* 26 | 165 | 18.40 
+* 33 | 168 | 23.31 
+* 38 | 169 | 26.87 
+* 39 | 170 | 27.58 
+* 41 | 172 | 29.03 
+* 45 | 173 | 31.93 
+* 53 | 175 | 37.74 
+[06:36:00.426] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 53
+Total optimization time: 73.00
+Last update time: 37.74
+Large number of iterations between improvements: 19
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 41 & 356 & 126380 & 45 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 175.0 & 73.00434398651123 & - & - & 12756.0 & 94.365 & 16718
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/42.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random42"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 45
+|V| = 799
+|A| = 2693
+|V′| = 367
+|A′| = 134322
+|V″| = 651
+|A″| = 2397
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T06:43:04.525
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[06:43:04.525] Generating initial tour...
+Initial profit: 170.0
+
+[06:43:04.53] Building BRKGA data...
+New population size: 450
+
+[06:43:04.53] Initializing BRKGA data...
+
+[06:43:05.535] Warming up...
+
+[06:43:10.475] Evolving...
+* Iteration | Cost | CurrentTime
+* 22 | 172 | 21.34 
+* 27 | 173 | 26.54 
+* 34 | 174 | 33.77 
+* 39 | 175 | 39.00 
+[06:44:51.37] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 39
+Total optimization time: 100.90
+Last update time: 39.00
+Large number of iterations between improvements: 22
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 42 & 367 & 134322 & 45 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 175.0 & 100.89562892913818 & - & - & 10317.0 & 93.30749999999999 & 17296
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/43.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random43"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 45
+|V| = 881
+|A| = 2951
+|V′| = 408
+|A′| = 166056
+|V″| = 720
+|A″| = 2629
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T06:54:28.731
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[06:54:28.731] Generating initial tour...
+Initial profit: 154.0
+
+[06:54:28.736] Building BRKGA data...
+New population size: 450
+
+[06:54:28.736] Initializing BRKGA data...
+
+[06:54:30.038] Warming up...
+
+[06:54:35.727] Evolving...
+* Iteration | Cost | CurrentTime
+* 14 | 156 | 15.14 
+* 17 | 158 | 18.39 
+* 20 | 159 | 21.63 
+* 22 | 160 | 23.77 
+* 27 | 164 | 29.27 
+* 33 | 166 | 35.88 
+* 37 | 167 | 40.35 
+* 40 | 168 | 43.71 
+* 41 | 169 | 44.86 
+* 42 | 170 | 45.99 
+* 47 | 171 | 51.76 
+* 49 | 172 | 54.09 
+* 52 | 173 | 57.58 
+* 57 | 174 | 63.58 
+[06:56:30.673] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 57
+Total optimization time: 114.95
+Last update time: 63.58
+Large number of iterations between improvements: 14
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 43 & 408 & 166056 & 45 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 174.0 & 114.94659900665283 & - & - & 10500.0 & 92.54700000000001 & 17066
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/44.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random44"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 45
+|V| = 808
+|A| = 2638
+|V′| = 335
+|A′| = 111890
+|V″| = 630
+|A″| = 2282
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T07:03:56.274
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[07:03:56.274] Generating initial tour...
+Initial profit: 169.0
+
+[07:03:56.278] Building BRKGA data...
+New population size: 450
+
+[07:03:56.278] Initializing BRKGA data...
+
+[07:03:57.066] Warming up...
+
+[07:04:00.649] Evolving...
+* Iteration | Cost | CurrentTime
+* 29 | 170 | 20.21 
+* 30 | 171 | 20.97 
+* 31 | 172 | 21.70 
+* 32 | 174 | 22.43 
+* 38 | 175 | 26.87 
+* 49 | 177 | 35.13 
+[07:05:14.78] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 49
+Total optimization time: 74.13
+Last update time: 35.13
+Large number of iterations between improvements: 29
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 44 & 335 & 111890 & 45 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 177.0 & 74.13058495521545 & - & - & 11551.0 & 93.95700000000002 & 17029
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/45.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random45"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 45
+|V| = 942
+|A| = 3050
+|V′| = 392
+|A′| = 153272
+|V″| = 709
+|A″| = 2584
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T07:16:26.652
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[07:16:26.652] Generating initial tour...
+Initial profit: 144.0
+
+[07:16:26.657] Building BRKGA data...
+New population size: 450
+
+[07:16:26.657] Initializing BRKGA data...
+
+[07:16:27.79] Warming up...
+
+[07:16:32.361] Evolving...
+* Iteration | Cost | CurrentTime
+* 12 | 146 | 11.54 
+* 15 | 147 | 14.52 
+* 16 | 148 | 15.51 
+* 17 | 149 | 16.48 
+* 19 | 150 | 18.46 
+* 23 | 153 | 22.32 
+* 25 | 154 | 24.29 
+* 31 | 156 | 30.11 
+* 34 | 157 | 33.07 
+* 40 | 160 | 38.89 
+* 48 | 161 | 46.60 
+* 52 | 162 | 50.43 
+* 61 | 163 | 59.02 
+* 79 | 164 | 76.34 
+[07:18:09.859] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 79
+Total optimization time: 97.50
+Last update time: 76.34
+Large number of iterations between improvements: 18
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 45 & 392 & 153272 & 45 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 164.0 & 97.49721598625183 & - & - & 12431.0 & 94.44900000000003 & 16845
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/46.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random46"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 50
+|V| = 819
+|A| = 2717
+|V′| = 376
+|A′| = 141000
+|V″| = 655
+|A″| = 2397
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T07:25:14.084
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[07:25:14.084] Generating initial tour...
+Initial profit: 147.0
+
+[07:25:14.09] Building BRKGA data...
+New population size: 500
+
+[07:25:14.09] Initializing BRKGA data...
+
+[07:25:15.199] Warming up...
+
+[07:25:19.923] Evolving...
+* Iteration | Cost | CurrentTime
+* 9 | 148 | 8.03 
+* 15 | 150 | 13.40 
+* 17 | 151 | 15.21 
+* 19 | 153 | 16.97 
+* 22 | 155 | 19.63 
+* 23 | 157 | 20.55 
+* 25 | 158 | 22.31 
+* 31 | 159 | 27.70 
+* 34 | 160 | 30.39 
+* 36 | 161 | 32.17 
+* 38 | 162 | 33.99 
+* 39 | 163 | 34.92 
+* 45 | 164 | 40.41 
+* 49 | 165 | 44.14 
+* 61 | 166 | 55.63 
+[07:26:53.889] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 61
+Total optimization time: 93.97
+Last update time: 55.63
+Large number of iterations between improvements: 12
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 46 & 376 & 141000 & 50 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 166.0 & 93.96586608886719 & - & - & 11446.0 & 94.1865 & 17115
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/47.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random47"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 50
+|V| = 843
+|A| = 2792
+|V′| = 372
+|A′| = 138012
+|V″| = 658
+|A″| = 2422
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T07:36:11.613
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[07:36:11.613] Generating initial tour...
+Initial profit: 164.0
+
+[07:36:11.619] Building BRKGA data...
+New population size: 500
+
+[07:36:11.619] Initializing BRKGA data...
+
+[07:36:12.779] Warming up...
+
+[07:36:17.128] Evolving...
+* Iteration | Cost | CurrentTime
+* 11 | 166 | 10.00 
+* 15 | 167 | 13.68 
+* 17 | 171 | 15.53 
+* 21 | 172 | 19.19 
+* 22 | 173 | 20.09 
+* 25 | 174 | 22.83 
+* 26 | 176 | 23.76 
+* 28 | 177 | 25.58 
+* 29 | 178 | 26.49 
+* 30 | 182 | 27.39 
+* 37 | 183 | 33.74 
+* 40 | 185 | 36.48 
+* 47 | 187 | 42.87 
+* 50 | 189 | 45.64 
+* 58 | 190 | 52.98 
+* 66 | 191 | 60.35 
+[07:37:48.928] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 66
+Total optimization time: 91.80
+Last update time: 60.35
+Large number of iterations between improvements: 11
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 47 & 372 & 138012 & 50 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 191.0 & 91.80014681816101 & - & - & 11320.0 & 93.9525 & 17105
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/48.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random48"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 50
+|V| = 846
+|A| = 2735
+|V′| = 357
+|A′| = 127092
+|V″| = 643
+|A″| = 2339
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T07:45:30.869
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[07:45:30.869] Generating initial tour...
+Initial profit: 185.0
+
+[07:45:30.874] Building BRKGA data...
+New population size: 500
+
+[07:45:30.874] Initializing BRKGA data...
+
+[07:45:31.959] Warming up...
+
+[07:45:36.939] Evolving...
+* Iteration | Cost | CurrentTime
+* 21 | 188 | 18.94 
+* 22 | 189 | 19.88 
+* 27 | 190 | 24.53 
+* 28 | 193 | 25.48 
+* 32 | 194 | 29.27 
+* 35 | 195 | 32.10 
+* 36 | 196 | 33.06 
+* 39 | 197 | 35.90 
+* 42 | 198 | 38.80 
+* 45 | 200 | 41.74 
+* 52 | 202 | 48.59 
+* 61 | 203 | 57.47 
+[07:47:13.017] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 61
+Total optimization time: 96.08
+Last update time: 57.47
+Large number of iterations between improvements: 21
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 48 & 357 & 127092 & 50 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 203.0 & 96.07778000831604 & - & - & 8787.0 & 92.80800000000002 & 17695
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/49.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random49"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 50
+|V| = 865
+|A| = 2805
+|V′| = 359
+|A′| = 128522
+|V″| = 658
+|A″| = 2389
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T07:56:41.132
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[07:56:41.132] Generating initial tour...
+Initial profit: 159.0
+
+[07:56:41.137] Building BRKGA data...
+New population size: 500
+
+[07:56:41.137] Initializing BRKGA data...
+
+[07:56:42.166] Warming up...
+
+[07:56:46.805] Evolving...
+* Iteration | Cost | CurrentTime
+* 14 | 160 | 12.28 
+* 15 | 162 | 13.19 
+* 17 | 164 | 15.01 
+* 21 | 165 | 18.58 
+* 22 | 166 | 19.50 
+* 25 | 167 | 22.19 
+* 26 | 168 | 23.08 
+* 33 | 171 | 29.33 
+* 40 | 173 | 35.54 
+* 43 | 174 | 38.18 
+* 46 | 175 | 40.79 
+* 51 | 176 | 45.19 
+* 53 | 178 | 46.93 
+* 62 | 179 | 54.81 
+* 69 | 180 | 61.01 
+* 70 | 181 | 61.86 
+* 82 | 182 | 72.45 
+* 100 | 183 | 88.22 
+[07:58:15.021] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 100
+Total optimization time: 88.22
+Last update time: 88.22
+Large number of iterations between improvements: 18
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 49 & 359 & 128522 & 50 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 183.0 & 88.21577095985413 & - & - & 11412.0 & 93.91050000000001 & 17065
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/campinas-random/50.sbrp"
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  "solutions/brkga_campinas-random50"
+  instance-type  =>  "matheus"
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  normal  =>  false
+  nosolve  =>  false
+  complete  =>  false
+  brkga-conf  =>  "conf/config.conf"
+  no-one-degree-path  =>  false
+|B| = 50
+|V| = 856
+|A| = 2984
+|V′| = 460
+|A′| = 211140
+|V″| = 709
+|A″| = 2690
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2022-05-15T08:08:41.984
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 100
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[08:08:41.984] Generating initial tour...
+Initial profit: 114.0
+
+[08:08:41.99] Building BRKGA data...
+New population size: 500
+
+[08:08:41.99] Initializing BRKGA data...
+
+[08:08:43.663] Warming up...
+
+[08:08:49.259] Evolving...
+* Iteration | Cost | CurrentTime
+* 1 | 129 | 1.18 
+* 2 | 132 | 2.37 
+* 4 | 141 | 4.71 
+* 5 | 148 | 5.89 
+* 10 | 154 | 11.66 
+* 13 | 155 | 15.03 
+* 15 | 156 | 17.23 
+* 17 | 158 | 19.41 
+* 21 | 160 | 23.69 
+* 22 | 161 | 24.74 
+* 25 | 162 | 27.89 
+* 29 | 163 | 32.06 
+* 31 | 164 | 34.16 
+* 37 | 165 | 40.56 
+* 42 | 166 | 45.88 
+* 44 | 167 | 48.06 
+* 45 | 168 | 49.13 
+* 54 | 169 | 58.73 
+* 62 | 170 | 67.29 
+* 66 | 171 | 71.60 
+* 84 | 172 | 90.93 
+[08:10:37.016] End of optimization
+
+Total number of iterations: 100
+Last update iteration: 84
+Total optimization time: 107.76
+Last update time: 90.93
+Large number of iterations between improvements: 18
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & 50 & 460 & 211140 & 50 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 172.0 & 107.75675702095032 & - & - & 12007.0 & 93.79950000000001 & 16842
+########################################################

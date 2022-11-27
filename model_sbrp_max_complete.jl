@@ -17,7 +17,7 @@ function add_intersection_cuts1(model, cuts::Vector{Arcs})
   add_cuts(model, [(0, sum(model[:x][a] for a in arcs)) for arcs in cuts])
 end
 
-add_intersection_cuts2(model, cuts::Vector{Arcs}) = add_cuts(model, [(1, sum(model[:x][a] for a in arcs)) for arcs in cuts])
+add_intersection_cuts2(model, cuts::Vector{Arcs}) = add_cuts(model, [(2, sum(model[:x][a] for a in arcs)) for arcs in cuts])
 
 add_subtour_cuts(model, sets::Set{Tuple{Arcs, Arcs}}) = add_cuts(model, [(∑(model[:x][a] for a in Aₛ), ∑(∑(model[:x][a] for a in Aᵢ))) for (Aₛ, Aᵢ) in sets])
 
@@ -187,13 +187,16 @@ function get_intersection_cuts(data::SBRPData)
 
     for block in clique
       # get arcs incident to nodes that belong exclusively to the block 
-      independent_arcs = [a for (i, blocks) in nodes_blocks for a in δ⁺(A, i) if ∧(length(blocks) == 1, block ∈ blocks)]
+#      independent_arcs = [a for (i, blocks) in nodes_blocks for a in δ⁺(A, i) if ∧(length(blocks) == 1, block ∈ blocks)]
+      covered_arcs = [a for i in block for a in δ⁺(A, i) if ⊆(nodes_blocks[i], clique)]
 
       # edge case
-      isempty(independent_arcs) && continue
+#      isempty(independent_arcs) && continue
+      isempty(covered_arcs) && continue
 
       # store
-      push!(cuts2, Arcs(∪([a for i ∈ intersection for a ∈ δ⁺(A, i)], independent_arcs)))
+#      push!(cuts2, Arcs(∪([a for i ∈ intersection for a ∈ δ⁺(A, i)], independent_arcs)))
+      push!(cuts2, Arcs(covered_arcs))
     end
 
   end
@@ -215,7 +218,7 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
     global intersection_cuts1, intersection_cuts2, subtour_cuts
     model = direct_model(CPLEX.Optimizer())
     set_parameters(model, "CPX_PARAM_TILIM" => 3600)
-    set_silent(model)
+#    set_silent(model)
     if relax_x
       @variable(model, x[a in A], lower_bound = 0, upper_bound = 1)
     else
@@ -234,7 +237,8 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
     @constraint(model, sum(Data.SBRP.time(data, a) * x[a] for a in A) <= T - sum(y[block] * time_block(data, block) for block in B))
     # improvements
     @constraint(model, block3[block in B], y[block] - ∑(x[a] in δ⁺(A, i) for i in block if length(nodes_blocks) == 1) >= 0)
-    @constraint(model, block4[block in B], sum(x[(i, j)] for (i, j) in A if i in block && j in block && nodes_blocks[i] == nodes_blocks[j] && length(nodes_blocks[j]) == 1) == 0)
+#    @constraint(model, block4[block in B], sum(x[(i, j)] for (i, j) in A if i in block && j in block && nodes_blocks[i] == nodes_blocks[j] && length(nodes_blocks[j]) == 1) == 0)
+    @constraint(model, block4[block in B], sum(x[(i, j)] for (i, j) in A if i in block && j in block && (length(nodes_blocks[i]) == 1 || length(nodes_blocks[j]) == 1)) == 0)
     @constraint(model, subcycle_size_two[(i, j) in P′], x[(i, j)] + x[(j, i)] <= 1)
     # MTZs
     if app["arcs-mtz"] # Arcs MTZ
