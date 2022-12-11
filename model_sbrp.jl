@@ -258,6 +258,38 @@ function build_model_sbrp(data::SBRPData, app::Dict{String,Any})
     end
     # subtour cuts
     add_subtour_cuts(model, subtour_cuts) 
+    # lb
+    if app["lb"] != nothing 
+        lb = parse(Int, app["lb"])
+        @constraint(model, sum(data.profits[b] * y[b] for b in B) >= lb)
+    end
+    # warm start
+    if app["warm-start-solution"] != nothing 
+        Vb = Si(blocks_nodes(B))
+                           
+        # get route
+        route = unique(filter(
+                       node -> node in Vb,
+                       map(
+                           node -> parse(Int64, node), 
+                           split(readlines(app["warm-start-solution"])[1], ", ", keepempty=false)
+                          )
+                      ))
+
+        pushfirst!(route, depot)
+        push!(route, depot)
+        # get visited arcs
+        route_arcs = ArcsSet(zip(route[begin:end - 1], route[2:end]))
+
+        # get non visited arcs
+        non_visited_arcs = filter(a -> !in(a, route_arcs), A)
+
+        # fix variables
+        [set_start_value(x[a], 1.0) for a in route_arcs]
+        [set_start_value(x[a], 0.0) for a in non_visited_arcs]
+
+    end
+
     # registries
     model[:x], model[:y] = x, y
     return model, x, y
