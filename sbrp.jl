@@ -41,6 +41,12 @@ get_blocks_nodes(data::SBRPData) = Si([i for block in data.B for i in block])
 # add dummy arcs connected to the nodes belonging to some block
 add_dummy_arcs(data::SBRPData) = [data.D.distance[(data.depot, i)] = data.D.distance[(i, data.depot)] = 0.0 for i in get_blocks_nodes(data)]
 
+function create_dummy_digraph(data″::SBRPData, paths″::Dict{Arc, Vi})
+
+
+
+end
+
 function create_no_one_degree_paths_digraph(data::SBRPData)
 
   # setup
