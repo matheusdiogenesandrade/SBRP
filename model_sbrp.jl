@@ -2,6 +2,7 @@ module ModelSBRP
 
 include("symbols.jl")
 
+using ...Solution
 using ..Model
 using ...Data
 using ...Data.SBRP
@@ -268,16 +269,8 @@ function build_model_sbrp(data::SBRPData, app::Dict{String,Any})
         Vb = Si(blocks_nodes(B))
                            
         # get route
-        route = unique(filter(
-                       node -> node in Vb,
-                       map(
-                           node -> parse(Int64, node), 
-                           split(readlines(app["warm-start-solution"])[1], ", ", keepempty=false)
-                          )
-                      ))
+        route, B_selected = Solution.readSolution(app["warm-start-solution"], data)
 
-        pushfirst!(route, depot)
-        push!(route, depot)
         # get visited arcs
         route_arcs = ArcsSet(zip(route[begin:end - 1], route[2:end]))
 

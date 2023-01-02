@@ -43,7 +43,9 @@ add_dummy_arcs(data::SBRPData) = [data.D.distance[(data.depot, i)] = data.D.dist
 
 function create_dummy_digraph(data″::SBRPData, paths″::Dict{Arc, Vi})
 
+    V = collect(data″.D.V)
 
+    new_id = max()
 
 end
 

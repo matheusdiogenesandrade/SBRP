@@ -8,7 +8,7 @@ using CPLEX
 using JuMP
 using DataStructures
 
-export writesol, gettour, check_sbrp_sol, check_atsp_sol, get_info, writeGPX, get_blocks, add_blocks
+export write_sol, gettour, check_sbrp_sol, check_atsp_sol, get_info, writeGPX, get_blocks, add_blocks
 
 get_blocks(data::SBRPData, y) = [block for block in data.B if value(y[block]) > 0.5]
 
@@ -45,11 +45,17 @@ function writeGPX(file_path::String, tour::Vector{Vertex})
   end
 end
 
-function writesol(path::String, tour::Vi)
-  open(path, "w") do file
-    [write(file, "$(v), ") for v in tour]
-  end
+function write_sol(sol_dir, tour, data, B)
+    # write route
+    sol_string = join([i for i in tour if i != data.depot], ", ") * "\n"
+    for block in B 
+        sol_string *= join(block, ", ") * "\n"
+    end
+    write(open(sol_dir * ".sol", "w"), sol_string)
+    # write GPS
+    writeGPX(sol_dir * ".gpx", [data.D.V[i] for i in tour if i != data.depot]) 
 end
+
 
 function gettour(data::SBRPData, x, B::Vector{Vi})
   A, depot, tour = [a for a in data.D.A if value(x[a]) > 0.5], data.depot, []
@@ -150,4 +156,22 @@ function check_atsp_sol(tour::Vi, Vb::Dict{Tuple{Int, Vi}, Int}, Vb′::Dict{Tup
   return true
 end
 =#
+
+function readSolution(sol_dir::String, data::SBRPData)
+    # get lines
+    lines = readlines(sol_dir)
+
+    # get route
+    route = map(node -> parse(Int64, node), split(first(lines), ", ", keepempty=false))
+    pushfirst!(route, data.depot)
+    push!(route, data.depot)
+
+    # get blocks
+    B = VVi()
+    
+    [push!(B, map(node -> parse(Int64, node), split(block_line, ", ", keepempty=false))) for block_line in lines[2:end]]
+
+    return route, B
+end
+
 end

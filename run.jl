@@ -2,10 +2,10 @@ module Main
 
 include("symbols.jl")
 include("data.jl")
+include("sol.jl")
 include("nn_heuristic.jl")
 include("model.jl")
 include("solve.jl")
-include("sol.jl")
 include("brkga.jl")
 include("dd_sbrp.jl")
 
@@ -76,14 +76,6 @@ function log(info)
     println([" & " * (column in keys(info) ? string(info[column]) : "-") for column in logColumns]...)
 end
 
-function write_sol(app, tour, data)
-    if app["out"] != nothing 
-        writesol(app["out"] * ".sol", [i for i in tour if i != data.depot])
-        # write output files
-        writeGPX(app["out"] * ".gpx", [data.D.V[i] for i in tour if i != data.depot]) 
-    end
-end
-
 function ip(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, paths::Dict{Tuple{Int, Int}, Vi})
     flush_println("###################SBRP####################")
 
@@ -123,7 +115,10 @@ function ip(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, paths::Di
     log(info) 
 
     # write solution
-    write_sol(app, tour, data)
+    if app["out"] != nothing
+        write_sol(app["out"], tour, data, B)
+        write_sol(app["out"] * "_complete", tour′, data′, B)
+    end
 
     flush_println("########################################################")
 end
@@ -167,7 +162,10 @@ function brkga(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, paths:
     log(info) 
 
     # write solution
-    write_sol(app, tour, data)
+    if app["out"] != nothing
+        write_sol(app["out"], tour, data, B)
+        write_sol(app["out"] * "_complete", tour′, data′, B)
+    end
 
     flush_println("########################################################")
 end
@@ -206,7 +204,10 @@ function dd(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, paths::Di
     log(info) 
 
     # write solution
-    write_sol(app, tour, data)
+    if app["out"] != nothing
+        write_sol(app["out"], tour, data, B)
+        write_sol(app["out"] * "_complete", tour′, data′, B)
+    end
 
     flush_println("########################################################")
 end
