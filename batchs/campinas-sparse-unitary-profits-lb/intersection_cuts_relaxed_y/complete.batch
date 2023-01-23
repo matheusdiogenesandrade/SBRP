@@ -1,50 +1,80 @@
-data/campinas-sparse/1.sbrp --out solutions/complete_campinas-sparse-unitary1 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/2.sbrp --out solutions/complete_campinas-sparse-unitary2 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/3.sbrp --out solutions/complete_campinas-sparse-unitary3 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/4.sbrp --out solutions/complete_campinas-sparse-unitary4 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/5.sbrp --out solutions/complete_campinas-sparse-unitary5 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/6.sbrp --out solutions/complete_campinas-sparse-unitary6 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/7.sbrp --out solutions/complete_campinas-sparse-unitary7 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/8.sbrp --out solutions/complete_campinas-sparse-unitary8 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/9.sbrp --out solutions/complete_campinas-sparse-unitary9 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/10.sbrp --out solutions/complete_campinas-sparse-unitary10 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/11.sbrp --out solutions/complete_campinas-sparse-unitary11 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/12.sbrp --out solutions/complete_campinas-sparse-unitary12 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/13.sbrp --out solutions/complete_campinas-sparse-unitary13 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/14.sbrp --out solutions/complete_campinas-sparse-unitary14 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/15.sbrp --out solutions/complete_campinas-sparse-unitary15 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/16.sbrp --out solutions/complete_campinas-sparse-unitary16 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/17.sbrp --out solutions/complete_campinas-sparse-unitary17 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/18.sbrp --out solutions/complete_campinas-sparse-unitary18 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/19.sbrp --out solutions/complete_campinas-sparse-unitary19 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/20.sbrp --out solutions/complete_campinas-sparse-unitary20 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/21.sbrp --out solutions/complete_campinas-sparse-unitary21 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/22.sbrp --out solutions/complete_campinas-sparse-unitary22 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/23.sbrp --out solutions/complete_campinas-sparse-unitary23 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/24.sbrp --out solutions/complete_campinas-sparse-unitary24 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/25.sbrp --out solutions/complete_campinas-sparse-unitary25 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/26.sbrp --out solutions/complete_campinas-sparse-unitary26 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/27.sbrp --out solutions/complete_campinas-sparse-unitary27 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/28.sbrp --out solutions/complete_campinas-sparse-unitary28 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/29.sbrp --out solutions/complete_campinas-sparse-unitary29 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/30.sbrp --out solutions/complete_campinas-sparse-unitary30 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/31.sbrp --out solutions/complete_campinas-sparse-unitary31 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/32.sbrp --out solutions/complete_campinas-sparse-unitary32 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/33.sbrp --out solutions/complete_campinas-sparse-unitary33 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/34.sbrp --out solutions/complete_campinas-sparse-unitary34 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/35.sbrp --out solutions/complete_campinas-sparse-unitary35 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/36.sbrp --out solutions/complete_campinas-sparse-unitary36 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/37.sbrp --out solutions/complete_campinas-sparse-unitary37 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/38.sbrp --out solutions/complete_campinas-sparse-unitary38 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/39.sbrp --out solutions/complete_campinas-sparse-unitary39 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/40.sbrp --out solutions/complete_campinas-sparse-unitary40 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/41.sbrp --out solutions/complete_campinas-sparse-unitary41 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/42.sbrp --out solutions/complete_campinas-sparse-unitary42 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/43.sbrp --out solutions/complete_campinas-sparse-unitary43 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/44.sbrp --out solutions/complete_campinas-sparse-unitary44 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/45.sbrp --out solutions/complete_campinas-sparse-unitary45 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/46.sbrp --out solutions/complete_campinas-sparse-unitary46 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/47.sbrp --out solutions/complete_campinas-sparse-unitary47 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/48.sbrp --out solutions/complete_campinas-sparse-unitary48 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/49.sbrp --out solutions/complete_campinas-sparse-unitary49 --intersection-cuts --ip --unitary-profits --lb      
-data/campinas-sparse/50.sbrp --out solutions/complete_campinas-sparse-unitary50 --intersection-cuts --ip --unitary-profits --lb      
+data/campinas-sparse/1.sbrp --out solutions/complete_campinas-sparse-unitary-lb1 --intersection-cuts --ip --unitary-profits --lb    5   --warm-start-solution brkga_campinas-sparse-unitary1_complete.sol
+data/campinas-sparse/2.sbrp --out solutions/complete_campinas-sparse-unitary-lb2 --intersection-cuts --ip --unitary-profits --lb    5   --warm-start-solution brkga_campinas-sparse-unitary2_complete.sol
+data/campinas-sparse/3.sbrp --out solutions/complete_campinas-sparse-unitary-lb3 --intersection-cuts --ip --unitary-profits --lb    5   --warm-start-solution brkga_campinas-sparse-unitary3_complete.sol
+data/campinas-sparse/4.sbrp --out solutions/complete_campinas-sparse-unitary-lb4 --intersection-cuts --ip --unitary-profits --lb    5   --warm-start-solution brkga_campinas-sparse-unitary4_complete.sol
+data/campinas-sparse/5.sbrp --out solutions/complete_campinas-sparse-unitary-lb5 --intersection-cuts --ip --unitary-profits --lb    5   --warm-start-solution brkga_campinas-sparse-unitary5_complete.sol
+data/campinas-sparse/6.sbrp --out solutions/complete_campinas-sparse-unitary-lb6 --intersection-cuts --ip --unitary-profits --lb    10  --warm-start-solution brkga_campinas-sparse-unitary6_complete.sol
+data/campinas-sparse/7.sbrp --out solutions/complete_campinas-sparse-unitary-lb7 --intersection-cuts --ip --unitary-profits --lb    10  --warm-start-solution brkga_campinas-sparse-unitary7_complete.sol
+data/campinas-sparse/8.sbrp --out solutions/complete_campinas-sparse-unitary-lb8 --intersection-cuts --ip --unitary-profits --lb    10  --warm-start-solution brkga_campinas-sparse-unitary8_complete.sol
+data/campinas-sparse/9.sbrp --out solutions/complete_campinas-sparse-unitary-lb9 --intersection-cuts --ip --unitary-profits --lb    10  --warm-start-solution brkga_campinas-sparse-unitary9_complete.sol
+data/campinas-sparse/10.sbrp --out solutions/complete_campinas-sparse-unitary-lb10 --intersection-cuts --ip --unitary-profits --lb  10  --warm-start-solution brkga_campinas-sparse-unitary10_complete.sol
+data/campinas-sparse/11.sbrp --out solutions/complete_campinas-sparse-unitary-lb11 --intersection-cuts --ip --unitary-profits --lb  15  --warm-start-solution brkga_campinas-sparse-unitary11_complete.sol
+data/campinas-sparse/12.sbrp --out solutions/complete_campinas-sparse-unitary-lb12 --intersection-cuts --ip --unitary-profits --lb  15  --warm-start-solution brkga_campinas-sparse-unitary12_complete.sol
+data/campinas-sparse/13.sbrp --out solutions/complete_campinas-sparse-unitary-lb13 --intersection-cuts --ip --unitary-profits --lb  15  --warm-start-solution brkga_campinas-sparse-unitary13_complete.sol
+data/campinas-sparse/14.sbrp --out solutions/complete_campinas-sparse-unitary-lb14 --intersection-cuts --ip --unitary-profits --lb  15  --warm-start-solution brkga_campinas-sparse-unitary14_complete.sol
+data/campinas-sparse/15.sbrp --out solutions/complete_campinas-sparse-unitary-lb15 --intersection-cuts --ip --unitary-profits --lb  15  --warm-start-solution brkga_campinas-sparse-unitary15_complete.sol
+data/campinas-sparse/16.sbrp --out solutions/complete_campinas-sparse-unitary-lb16 --intersection-cuts --ip --unitary-profits --lb  20  --warm-start-solution brkga_campinas-sparse-unitary16_complete.sol
+data/campinas-sparse/17.sbrp --out solutions/complete_campinas-sparse-unitary-lb17 --intersection-cuts --ip --unitary-profits --lb  20  --warm-start-solution brkga_campinas-sparse-unitary17_complete.sol
+data/campinas-sparse/18.sbrp --out solutions/complete_campinas-sparse-unitary-lb18 --intersection-cuts --ip --unitary-profits --lb  20  --warm-start-solution brkga_campinas-sparse-unitary18_complete.sol
+data/campinas-sparse/19.sbrp --out solutions/complete_campinas-sparse-unitary-lb19 --intersection-cuts --ip --unitary-profits --lb  20  --warm-start-solution brkga_campinas-sparse-unitary19_complete.sol
+data/campinas-sparse/20.sbrp --out solutions/complete_campinas-sparse-unitary-lb20 --intersection-cuts --ip --unitary-profits --lb  20  --warm-start-solution brkga_campinas-sparse-unitary20_complete.sol
+data/campinas-sparse/21.sbrp --out solutions/complete_campinas-sparse-unitary-lb21 --intersection-cuts --ip --unitary-profits --lb  25  --warm-start-solution brkga_campinas-sparse-unitary21_complete.sol
+data/campinas-sparse/22.sbrp --out solutions/complete_campinas-sparse-unitary-lb22 --intersection-cuts --ip --unitary-profits --lb  25  --warm-start-solution brkga_campinas-sparse-unitary22_complete.sol
+data/campinas-sparse/23.sbrp --out solutions/complete_campinas-sparse-unitary-lb23 --intersection-cuts --ip --unitary-profits --lb  25  --warm-start-solution brkga_campinas-sparse-unitary23_complete.sol
+data/campinas-sparse/24.sbrp --out solutions/complete_campinas-sparse-unitary-lb24 --intersection-cuts --ip --unitary-profits --lb  25  --warm-start-solution brkga_campinas-sparse-unitary24_complete.sol
+data/campinas-sparse/25.sbrp --out solutions/complete_campinas-sparse-unitary-lb25 --intersection-cuts --ip --unitary-profits --lb  25  --warm-start-solution brkga_campinas-sparse-unitary25_complete.sol
+data/campinas-sparse/26.sbrp --out solutions/complete_campinas-sparse-unitary-lb26 --intersection-cuts --ip --unitary-profits --lb  30  --warm-start-solution brkga_campinas-sparse-unitary26_complete.sol
+data/campinas-sparse/27.sbrp --out solutions/complete_campinas-sparse-unitary-lb27 --intersection-cuts --ip --unitary-profits --lb  30  --warm-start-solution brkga_campinas-sparse-unitary27_complete.sol
+data/campinas-sparse/28.sbrp --out solutions/complete_campinas-sparse-unitary-lb28 --intersection-cuts --ip --unitary-profits --lb  30  --warm-start-solution brkga_campinas-sparse-unitary28_complete.sol
+data/campinas-sparse/29.sbrp --out solutions/complete_campinas-sparse-unitary-lb29 --intersection-cuts --ip --unitary-profits --lb  30  --warm-start-solution brkga_campinas-sparse-unitary29_complete.sol
+data/campinas-sparse/30.sbrp --out solutions/complete_campinas-sparse-unitary-lb30 --intersection-cuts --ip --unitary-profits --lb  30  --warm-start-solution brkga_campinas-sparse-unitary30_complete.sol
+data/campinas-sparse/31.sbrp --out solutions/complete_campinas-sparse-unitary-lb31 --intersection-cuts --ip --unitary-profits --lb  35  --warm-start-solution brkga_campinas-sparse-unitary31_complete.sol
+data/campinas-sparse/32.sbrp --out solutions/complete_campinas-sparse-unitary-lb32 --intersection-cuts --ip --unitary-profits --lb  35  --warm-start-solution brkga_campinas-sparse-unitary32_complete.sol
+data/campinas-sparse/33.sbrp --out solutions/complete_campinas-sparse-unitary-lb33 --intersection-cuts --ip --unitary-profits --lb  35  --warm-start-solution brkga_campinas-sparse-unitary33_complete.sol
+data/campinas-sparse/34.sbrp --out solutions/complete_campinas-sparse-unitary-lb34 --intersection-cuts --ip --unitary-profits --lb  35  --warm-start-solution brkga_campinas-sparse-unitary34_complete.sol
+data/campinas-sparse/35.sbrp --out solutions/complete_campinas-sparse-unitary-lb35 --intersection-cuts --ip --unitary-profits --lb  35  --warm-start-solution brkga_campinas-sparse-unitary35_complete.sol
+data/campinas-sparse/36.sbrp --out solutions/complete_campinas-sparse-unitary-lb36 --intersection-cuts --ip --unitary-profits --lb  40  --warm-start-solution brkga_campinas-sparse-unitary36_complete.sol
+data/campinas-sparse/37.sbrp --out solutions/complete_campinas-sparse-unitary-lb37 --intersection-cuts --ip --unitary-profits --lb  40  --warm-start-solution brkga_campinas-sparse-unitary37_complete.sol
+data/campinas-sparse/38.sbrp --out solutions/complete_campinas-sparse-unitary-lb38 --intersection-cuts --ip --unitary-profits --lb  40  --warm-start-solution brkga_campinas-sparse-unitary38_complete.sol
+data/campinas-sparse/39.sbrp --out solutions/complete_campinas-sparse-unitary-lb39 --intersection-cuts --ip --unitary-profits --lb  40  --warm-start-solution brkga_campinas-sparse-unitary39_complete.sol
+data/campinas-sparse/40.sbrp --out solutions/complete_campinas-sparse-unitary-lb40 --intersection-cuts --ip --unitary-profits --lb  40  --warm-start-solution brkga_campinas-sparse-unitary40_complete.sol
+data/campinas-sparse/41.sbrp --out solutions/complete_campinas-sparse-unitary-lb41 --intersection-cuts --ip --unitary-profits --lb  45  --warm-start-solution brkga_campinas-sparse-unitary41_complete.sol
+data/campinas-sparse/42.sbrp --out solutions/complete_campinas-sparse-unitary-lb42 --intersection-cuts --ip --unitary-profits --lb  45  --warm-start-solution brkga_campinas-sparse-unitary42_complete.sol
+data/campinas-sparse/43.sbrp --out solutions/complete_campinas-sparse-unitary-lb43 --intersection-cuts --ip --unitary-profits --lb  45  --warm-start-solution brkga_campinas-sparse-unitary43_complete.sol
+data/campinas-sparse/44.sbrp --out solutions/complete_campinas-sparse-unitary-lb44 --intersection-cuts --ip --unitary-profits --lb  45  --warm-start-solution brkga_campinas-sparse-unitary44_complete.sol
+data/campinas-sparse/45.sbrp --out solutions/complete_campinas-sparse-unitary-lb45 --intersection-cuts --ip --unitary-profits --lb  45  --warm-start-solution brkga_campinas-sparse-unitary45_complete.sol
+data/campinas-sparse/46.sbrp --out solutions/complete_campinas-sparse-unitary-lb46 --intersection-cuts --ip --unitary-profits --lb  49  --warm-start-solution brkga_campinas-sparse-unitary46_complete.sol
+data/campinas-sparse/47.sbrp --out solutions/complete_campinas-sparse-unitary-lb47 --intersection-cuts --ip --unitary-profits --lb  50  --warm-start-solution brkga_campinas-sparse-unitary47_complete.sol
+data/campinas-sparse/48.sbrp --out solutions/complete_campinas-sparse-unitary-lb48 --intersection-cuts --ip --unitary-profits --lb  49  --warm-start-solution brkga_campinas-sparse-unitary48_complete.sol
+data/campinas-sparse/49.sbrp --out solutions/complete_campinas-sparse-unitary-lb49 --intersection-cuts --ip --unitary-profits --lb  49  --warm-start-solution brkga_campinas-sparse-unitary49_complete.sol
+data/campinas-sparse/50.sbrp --out solutions/complete_campinas-sparse-unitary-lb50 --intersection-cuts --ip --unitary-profits --lb  49  --warm-start-solution brkga_campinas-sparse-unitary50_complete.sol
+data/campinas-sparse/51.sbrp --out solutions/complete_campinas-sparse-unitary-lb51 --intersection-cuts --ip --unitary-profits --lb  52     --warm-start-solution brkga_campinas-sparse-unitary51_complete.sol
+data/campinas-sparse/52.sbrp --out solutions/complete_campinas-sparse-unitary-lb52 --intersection-cuts --ip --unitary-profits --lb  52     --warm-start-solution brkga_campinas-sparse-unitary52_complete.sol
+data/campinas-sparse/53.sbrp --out solutions/complete_campinas-sparse-unitary-lb53 --intersection-cuts --ip --unitary-profits --lb  52     --warm-start-solution brkga_campinas-sparse-unitary53_complete.sol
+data/campinas-sparse/54.sbrp --out solutions/complete_campinas-sparse-unitary-lb54 --intersection-cuts --ip --unitary-profits --lb  52     --warm-start-solution brkga_campinas-sparse-unitary54_complete.sol
+data/campinas-sparse/55.sbrp --out solutions/complete_campinas-sparse-unitary-lb55 --intersection-cuts --ip --unitary-profits --lb  52     --warm-start-solution brkga_campinas-sparse-unitary55_complete.sol
+data/campinas-sparse/56.sbrp --out solutions/complete_campinas-sparse-unitary-lb56 --intersection-cuts --ip --unitary-profits --lb  54     --warm-start-solution brkga_campinas-sparse-unitary56_complete.sol
+data/campinas-sparse/57.sbrp --out solutions/complete_campinas-sparse-unitary-lb57 --intersection-cuts --ip --unitary-profits --lb  55     --warm-start-solution brkga_campinas-sparse-unitary57_complete.sol
+data/campinas-sparse/58.sbrp --out solutions/complete_campinas-sparse-unitary-lb58 --intersection-cuts --ip --unitary-profits --lb  55     --warm-start-solution brkga_campinas-sparse-unitary58_complete.sol
+data/campinas-sparse/59.sbrp --out solutions/complete_campinas-sparse-unitary-lb59 --intersection-cuts --ip --unitary-profits --lb  55     --warm-start-solution brkga_campinas-sparse-unitary59_complete.sol
+data/campinas-sparse/60.sbrp --out solutions/complete_campinas-sparse-unitary-lb60 --intersection-cuts --ip --unitary-profits --lb  54     --warm-start-solution brkga_campinas-sparse-unitary60_complete.sol
+data/campinas-sparse/61.sbrp --out solutions/complete_campinas-sparse-unitary-lb61 --intersection-cuts --ip --unitary-profits --lb  57     --warm-start-solution brkga_campinas-sparse-unitary61_complete.sol
+data/campinas-sparse/62.sbrp --out solutions/complete_campinas-sparse-unitary-lb62 --intersection-cuts --ip --unitary-profits --lb  57     --warm-start-solution brkga_campinas-sparse-unitary62_complete.sol
+data/campinas-sparse/63.sbrp --out solutions/complete_campinas-sparse-unitary-lb63 --intersection-cuts --ip --unitary-profits --lb  57     --warm-start-solution brkga_campinas-sparse-unitary63_complete.sol
+data/campinas-sparse/64.sbrp --out solutions/complete_campinas-sparse-unitary-lb64 --intersection-cuts --ip --unitary-profits --lb  57     --warm-start-solution brkga_campinas-sparse-unitary64_complete.sol
+data/campinas-sparse/65.sbrp --out solutions/complete_campinas-sparse-unitary-lb65 --intersection-cuts --ip --unitary-profits --lb  57     --warm-start-solution brkga_campinas-sparse-unitary65_complete.sol
+data/campinas-sparse/66.sbrp --out solutions/complete_campinas-sparse-unitary-lb66 --intersection-cuts --ip --unitary-profits --lb  58     --warm-start-solution brkga_campinas-sparse-unitary66_complete.sol
+data/campinas-sparse/67.sbrp --out solutions/complete_campinas-sparse-unitary-lb67 --intersection-cuts --ip --unitary-profits --lb  58     --warm-start-solution brkga_campinas-sparse-unitary67_complete.sol
+data/campinas-sparse/68.sbrp --out solutions/complete_campinas-sparse-unitary-lb68 --intersection-cuts --ip --unitary-profits --lb  59     --warm-start-solution brkga_campinas-sparse-unitary68_complete.sol
+data/campinas-sparse/69.sbrp --out solutions/complete_campinas-sparse-unitary-lb69 --intersection-cuts --ip --unitary-profits --lb  58     --warm-start-solution brkga_campinas-sparse-unitary69_complete.sol
+data/campinas-sparse/70.sbrp --out solutions/complete_campinas-sparse-unitary-lb70 --intersection-cuts --ip --unitary-profits --lb  59     --warm-start-solution brkga_campinas-sparse-unitary70_complete.sol
+data/campinas-sparse/71.sbrp --out solutions/complete_campinas-sparse-unitary-lb71 --intersection-cuts --ip --unitary-profits --lb  60     --warm-start-solution brkga_campinas-sparse-unitary71_complete.sol
+data/campinas-sparse/72.sbrp --out solutions/complete_campinas-sparse-unitary-lb72 --intersection-cuts --ip --unitary-profits --lb  60     --warm-start-solution brkga_campinas-sparse-unitary72_complete.sol
+data/campinas-sparse/73.sbrp --out solutions/complete_campinas-sparse-unitary-lb73 --intersection-cuts --ip --unitary-profits --lb  59     --warm-start-solution brkga_campinas-sparse-unitary73_complete.sol
+data/campinas-sparse/74.sbrp --out solutions/complete_campinas-sparse-unitary-lb74 --intersection-cuts --ip --unitary-profits --lb  60     --warm-start-solution brkga_campinas-sparse-unitary74_complete.sol
+data/campinas-sparse/75.sbrp --out solutions/complete_campinas-sparse-unitary-lb75 --intersection-cuts --ip --unitary-profits --lb  60     --warm-start-solution brkga_campinas-sparse-unitary75_complete.sol
+data/campinas-sparse/76.sbrp --out solutions/complete_campinas-sparse-unitary-lb76 --intersection-cuts --ip --unitary-profits --lb  58     --warm-start-solution brkga_campinas-sparse-unitary76_complete.sol
+data/campinas-sparse/77.sbrp --out solutions/complete_campinas-sparse-unitary-lb77 --intersection-cuts --ip --unitary-profits --lb  59     --warm-start-solution brkga_campinas-sparse-unitary77_complete.sol
+data/campinas-sparse/78.sbrp --out solutions/complete_campinas-sparse-unitary-lb78 --intersection-cuts --ip --unitary-profits --lb  60     --warm-start-solution brkga_campinas-sparse-unitary78_complete.sol
+data/campinas-sparse/79.sbrp --out solutions/complete_campinas-sparse-unitary-lb79 --intersection-cuts --ip --unitary-profits --lb  60     --warm-start-solution brkga_campinas-sparse-unitary79_complete.sol
+data/campinas-sparse/80.sbrp --out solutions/complete_campinas-sparse-unitary-lb80 --intersection-cuts --ip --unitary-profits --lb  58     --warm-start-solution brkga_campinas-sparse-unitary80_complete.sol
