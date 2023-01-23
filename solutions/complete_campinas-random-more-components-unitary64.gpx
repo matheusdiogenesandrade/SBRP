@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" creator="Oregon 400t" version="1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www.garmin.com/xmlschemas/GpxExtensionsv3.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd">
+<metadata>
+<link href="http://www.garmin.com">
+<text>Garmin International</text>
+</link>
+<time>2009-10-17T22:58:43Z</time>
+</metadata>
+<trk>
+<name>Example GPX Document</name>
+<trkseg><trkpt lat="-22.9196208" lon="-47.1151629">
+</trkpt>
+<trkpt lat="-22.9196174" lon="-47.1150038">
+</trkpt>
+<trkpt lat="-22.919686" lon="-47.1149465">
+</trkpt>
+<trkpt lat="-22.9197435" lon="-47.1147622">
+</trkpt>
+<trkpt lat="-22.9197776" lon="-47.1146187">
+</trkpt>
+<trkpt lat="-22.9198427" lon="-47.114344">
+</trkpt>
+<trkpt lat="-22.9199132" lon="-47.1140716">
+</trkpt>
+<trkpt lat="-22.9201663" lon="-47.1140647">
+</trkpt>
+<trkpt lat="-22.9202431" lon="-47.1140839">
+</trkpt>
+<trkpt lat="-22.9203039" lon="-47.1141082">
+</trkpt>
+<trkpt lat="-22.9203681" lon="-47.1141507">
+</trkpt>
+<trkpt lat="-22.9204105" lon="-47.1142245">
+</trkpt>
+<trkpt lat="-22.92045" lon="-47.1142963">
+</trkpt>
+<trkpt lat="-22.9205851" lon="-47.1146806">
+</trkpt>
+<trkpt lat="-22.9206345" lon="-47.1148309">
+</trkpt>
+<trkpt lat="-22.9206415" lon="-47.1150544">
+</trkpt>
+<trkpt lat="-22.9206349" lon="-47.1154117">
+</trkpt>
+<trkpt lat="-22.9196943" lon="-47.1156303">
+</trkpt>
+<trkpt lat="-22.919619" lon="-47.1154345">
+</trkpt>
+<trkpt lat="-22.9196185" lon="-47.1153358">
+</trkpt>
+<trkpt lat="-22.9196199" lon="-47.1152488">
+</trkpt>
+<trkpt lat="-22.9196208" lon="-47.1151629">
+</trkpt>
+</trkseg>
+</trk>
+</gpx>
