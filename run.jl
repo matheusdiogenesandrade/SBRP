@@ -42,6 +42,9 @@ function parse_commandline(args_array::Array{String,1}, appfolder::String)
         "--vehicle-time-limit"
         help = "Vehicle time limit in minutes"
         default = "120"
+        "--instance-type"
+        help = "Instance type (matheus|carlos)"
+        default = "matheus"
         "--lb"
         help = "Lower bound"
         "--warm-start-solution"
@@ -93,15 +96,15 @@ function ip(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, paths::Di
     check_sbrp_sol(data′, tour′, B) 
 
     # get solution for original graph
-    tour = Vi()
-    for i in 2:length(tour′)
-        push!(tour, tour′[i - 1])
-        !in((tour′[i - 1], tour′[i]), data.D.A) && push!(tour, paths[(tour′[i - 1], tour′[i])]...)
-    end
-    push!(tour, tour′[end]) 
+#    tour = Vi()
+#    for i in 2:length(tour′)
+#        push!(tour, tour′[i - 1])
+#        !in((tour′[i - 1], tour′[i]), data.D.A) && push!(tour, paths[(tour′[i - 1], tour′[i])]...)
+#    end
+#    push!(tour, tour′[end]) 
 
     # check feasibility
-    check_sbrp_sol(data, tour, B) 
+#    check_sbrp_sol(data, tour, B) 
 
     # log
     info = merge(info, get_info(model, data′, tour′, B), Dict{String, String}(
@@ -116,7 +119,7 @@ function ip(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, paths::Di
 
     # write solution
     if app["out"] != nothing
-        write_sol(app["out"], tour, data, B)
+#        write_sol(app["out"], tour, data, B)
         write_sol(app["out"] * "_complete", tour′, data′, B)
     end
 
@@ -217,7 +220,9 @@ function run(app::Dict{String,Any})
     [flush_println("  $arg  =>  $(repr(val))") for (arg,val) in app]
 
     # read instance
-    data, data′, paths′ = readSBRPData(app)
+    instanceReader = app["instance-type"] == "matheus" ? readSBRPData : readSBRPDataCarlos
+
+    data, data′, paths′ = instanceReader(app)
     app["instance_name"] = split(basename(app["instance"]), ".")[1]
 
     # instance data
