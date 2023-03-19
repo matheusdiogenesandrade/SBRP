@@ -13,10 +13,10 @@ export write_sol, gettour, check_sbrp_sol, check_atsp_sol, get_info, writeGPX, g
 get_blocks(data::SBRPData, y) = [block for block in data.B if value(y[block]) > 0.5]
 
 get_info(model, data::SBRPData, tour::Vi, B::Vector{Vi}) = Dict{String, String}(
-                                       "cost"         => string(objective_value(model)),
-                                       "solverTime"   => string(solve_time(model)),
-                                       "relativeGAP"  => string(relative_gap(model)),
-                                       "nodeCount"    => string(node_count(model)),
+                                       "cost"         => string(has_values(model) ? objective_value(model) : sum(block -> data.profits[block], B)),
+                                       "solverTime"   => string(has_values(model) ? solve_time(model) : 3600),
+                                       "relativeGAP"  => string(has_values(model) ? relative_gap(model) : "-"),
+                                       "nodeCount"    => string(has_values(model) ? node_count(model) : 0),
                                        "meters"       => string(tour_distance(data, tour)),
                                        "tourMinutes"  => string(tour_time(data, tour, B)),
                                        "blocksMeters" => string(sum(distance_block(data, block) for block in B))

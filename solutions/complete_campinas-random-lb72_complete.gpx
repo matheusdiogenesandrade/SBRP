@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" creator="Oregon 400t" version="1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www.garmin.com/xmlschemas/GpxExtensionsv3.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd">
+<metadata>
+<link href="http://www.garmin.com">
+<text>Garmin International</text>
+</link>
+<time>2009-10-17T22:58:43Z</time>
+</metadata>
+<trk>
+<name>Example GPX Document</name>
+<trkseg><trkpt lat="-22.9277147" lon="-47.1045733">
+</trkpt>
+<trkpt lat="-22.9301442" lon="-47.1053177">
+</trkpt>
+<trkpt lat="-22.9300196" lon="-47.1036666">
+</trkpt>
+<trkpt lat="-22.9302112" lon="-47.1062064">
+</trkpt>
+<trkpt lat="-22.9293524" lon="-47.1067635">
+</trkpt>
+<trkpt lat="-22.928186" lon="-47.1081461">
+</trkpt>
+<trkpt lat="-22.9266873" lon="-47.1076122">
+</trkpt>
+<trkpt lat="-22.928186" lon="-47.1081461">
+</trkpt>
+<trkpt lat="-22.9261951" lon="-47.1110541">
+</trkpt>
+<trkpt lat="-22.9257538" lon="-47.1098579">
+</trkpt>
+<trkpt lat="-22.9258332" lon="-47.1101982">
+</trkpt>
+<trkpt lat="-22.92543" lon="-47.1088505">
+</trkpt>
+<trkpt lat="-22.9255448" lon="-47.1085118">
+</trkpt>
+<trkpt lat="-22.9253506" lon="-47.1086854">
+</trkpt>
+<trkpt lat="-22.9260997" lon="-47.1108288">
+</trkpt>
+<trkpt lat="-22.9228675" lon="-47.1108846">
+</trkpt>
+<trkpt lat="-22.9225486" lon="-47.1114919">
+</trkpt>
+<trkpt lat="-22.9188165" lon="-47.1111088">
+</trkpt>
+<trkpt lat="-22.9176868" lon="-47.1098493">
+</trkpt>
+<trkpt lat="-22.9162698" lon="-47.1108382">
+</trkpt>
+<trkpt lat="-22.9170659" lon="-47.1093188">
+</trkpt>
+<trkpt lat="-22.9177" lon="-47.1078574">
+</trkpt>
+<trkpt lat="-22.9176468" lon="-47.1061869">
+</trkpt>
+<trkpt lat="-22.9157709" lon="-47.1063413">
+</trkpt>
+<trkpt lat="-22.9214356" lon="-47.0987766">
+</trkpt>
+<trkpt lat="-22.9223488" lon="-47.1017684">
+</trkpt>
+<trkpt lat="-22.9214679" lon="-47.10254">
+</trkpt>
+<trkpt lat="-22.9230738" lon="-47.1046731">
+</trkpt>
+<trkpt lat="-22.9248356" lon="-47.106867">
+</trkpt>
+<trkpt lat="-22.9242903" lon="-47.1063467">
+</trkpt>
+<trkpt lat="-22.921136" lon="-47.1080226">
+</trkpt>
+<trkpt lat="-22.9212123" lon="-47.1058868">
+</trkpt>
+<trkpt lat="-22.9239534" lon="-47.0993644">
+</trkpt>
+<trkpt lat="-22.9282183" lon="-47.0970281">
+</trkpt>
+<trkpt lat="-22.9253317" lon="-47.0976315">
+</trkpt>
+<trkpt lat="-22.9229694" lon="-47.0983984">
+</trkpt>
+<trkpt lat="-22.920936" lon="-47.103124">
+</trkpt>
+<trkpt lat="-22.91987" lon="-47.1040144">
+</trkpt>
+<trkpt lat="-22.9200205" lon="-47.1043646">
+</trkpt>
+<trkpt lat="-22.9193857" lon="-47.1044369">
+</trkpt>
+</trkseg>
+</trk>
+</gpx>

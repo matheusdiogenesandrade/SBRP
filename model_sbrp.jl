@@ -216,6 +216,7 @@ function build_model_sbrp(data::SBRPData, app::Dict{String,Any})
   nodes_blocks = Dict{Int, VVi}(i => [block for block in B if i in block] for i in Vb)
 
   function create_model(relax_x::Bool = false, relax_y::Bool = false)
+
     global intersection_cuts1, intersection_cuts2, subtour_cuts
     model = direct_model(CPLEX.Optimizer())
     set_parameters(model, "CPX_PARAM_TILIM" => 3600)

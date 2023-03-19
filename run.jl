@@ -81,13 +81,23 @@ function ip(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, paths::Di
 
     # create and solve model
     (model, x, y, info) = build_model_sbrp(data′, app)
-    optimize!(model) 
+    optimize!(model)
 
-    # get serviced blocks
-    B = get_blocks(data, y) 
+    # warm start checking
+    if app["warm-start-solution"] != nothing && !has_values(model)
 
-    # get solution for complete model
-    tour′ = gettour(data′, x, B)
+        # get solution
+        tour′, B = Solution.readSolution(app["warm-start-solution"], data)
+
+    else
+
+	# get serviced blocks
+	B = get_blocks(data, y) 
+
+	# get solution for complete model
+	tour′ = gettour(data′, x, B)
+
+    end
 
     # check feasibility
     check_sbrp_sol(data′, tour′, B) 
