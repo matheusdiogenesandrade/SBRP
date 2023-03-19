@@ -7,7 +7,7 @@ using ..Data
 
 using BrkgaMpIpr
 
-export time_block, SBRPData, compact, readSBRPData, distance_block, tour_distance, tour_time
+export time_block, SBRPData, compact, readSBRPData, readSBRPDataCarlos, distance_block, tour_distance, tour_time
 
 mutable struct SBRPData <: AbstractInstance
   D::Data.InputDigraph
@@ -145,6 +145,7 @@ function create_complete_digraph(data::SBRPData)
   # setup
   A, B = data.D.A, data.B
   Vb, depot = Si([i for b in B for i in b]), data.depot
+
   data′, V, paths = SBRPData(
     Data.InputDigraph(
                  Dict{Int, Vertex}(vcat((depot => data.D.V[depot]), [(i => data.D.V[i]) for i in Vb])...), 
@@ -168,7 +169,7 @@ function create_complete_digraph(data::SBRPData)
 
   # get paths
   for i in Vb
-	flush_println(i)
+#	flush_println(i)
     # bfs
     distances, pred, q = Dict{Int, Float64}(i => typemax(Float64) for i in V), Dict{Int, Int}(i => i for i in V), [i]
     distances[i] = 0.0
@@ -214,6 +215,153 @@ function create_complete_digraph(data::SBRPData)
   check_sbrp_complete_feasibility(data′, Vb)
 
   return data′, paths
+end
+
+function readSBRPDataCarlos(app::Dict{String,Any})
+  data, blocks = SBRPData(
+    Data.InputDigraph(
+                 Dict{Int, Vertex}(1 => Vertex(-1, -1, -1)), 
+                 Arcs(), 
+                 ArcCostMap()
+                ), 
+    -1,
+    VVi(),
+    parse(Float64, app["vehicle-time-limit"]),
+    ArcCostMap()
+  ), Dict{Int, Arcs}()
+
+  open(app["instance"]) do f
+
+    nNodes::Int, nArcs::Int, nBlocks::Int = map(str -> parse(Int, str), split(readline(f), [' ']; limit=3, keepempty=false))
+
+    flush_println("Reading nodes")
+    # get vertices
+    for i in 1:nNodes
+
+        strs = split(readline(f), [' ']; keepempty=false)
+
+        id = parse(Int, strs[2])
+        x = parse(Float64, strs[3])
+        y = parse(Float64, strs[4])
+
+        data.D.V[id] = Vertex(id, x, y)
+    end
+
+    flush_println("Reading arcs")
+    # get arcs
+    block_arcs = Dict{Int, Vector{Tuple{Int, Int}}}()
+    block_profit = Dict{Int, Int}()
+
+    for n in 1:nArcs
+
+        strs = split(readline(f), [' ']; keepempty=false)
+
+        a = (parse(Int, strs[2]), parse(Int, strs[3]))
+        distance = parse(Float64, strs[4])
+        block_id = parse(Int, strs[5])
+        cases = parse(Int, strs[6])
+
+        data.D.distance[a] = distance
+
+        block_id == -1 && continue
+
+        # new block
+        if !haskey(block_profit, block_id)
+            block_profit[block_id] = 0
+            block_arcs[block_id] = Vector{Tuple{Int, Int}}()
+        end
+
+        block_profit[block_id] += cases
+
+        push!(block_arcs[block_id], a)
+
+    end
+
+    # get blocks
+    function get_block(arcs::Vector{Tuple{Int, Int}})
+        block = Vi()
+        curr, next = first(arcs)
+
+        push!(block, curr)
+        deleteat!(arcs, 1)
+
+        while true
+            idx = findfirst((i, j)::Tuple{Int, Int} -> next == i, arcs)
+            idx == nothing && break
+
+            curr, next = arcs[idx]
+
+            push!(block, curr)
+            deleteat!(arcs, idx)
+        end
+
+        return block
+    end
+
+    for (block_id, arcs) in block_arcs
+
+        block = get_block(arcs)
+        push!(data.B, block)
+
+        data.profits[block] = block_profit[block_id]
+    end
+
+  end
+
+  # update arcs ids
+  data.D.A = collect(keys(data.D.distance))
+
+  # add dummy depot
+  depot = data.depot = maximum(collect(keys(data.D.V))) + 1
+  data.D.V[depot] = Vertex(depot, -1, -1)
+
+  # dummy weights
+  add_dummy_arcs(data)
+
+  flush_println("Checking feasibility")
+  # check feasibility
+  Vb = get_blocks_nodes(data)
+  distances = calculate_shortest_paths(data)
+  any(!in((i, j), keys(distances)) for (i, j) in χ(Vb)) && error("The SBRP instance it is not connected")
+
+  flush_println("Checking complete graph")
+  # compact in complete graph
+  data′, paths′ = create_complete_digraph(data)
+
+  # check feasibility
+  check_feasibility(data, data′)
+
+  # consider only shortest paths arcs
+    # copy
+#  data‴ = deepcopy(data)
+    # set arcs
+#  data‴.D.A = collect(ArcsSet(vcat(
+#                                   [(path[i], path[i + 1]) for (a, path) in paths′ for i in 1:(length(path) - 1)], # min paths arcs
+#                                   [(a[1], path[begin]) for (a, path) in paths′ if !∅(path)], # min paths arcs
+#                                   [(path[end], a[2]) for (a, path) in paths′ if !∅(path)], # min paths arcs
+#                                   [a for (a, path) in paths′ if ∅(path)], # min paths arcs (edge case)
+#                                   [(b[i], b[i + 1]) for b in data.B for i in 1:(length(b) - 1)], # blocks arcs
+#                                   [(b[end], b[begin]) for b in data.B], # blocks arcs
+#                                   [(data.depot, i) for i in Vb], # depot arcs
+#                                   [(i, data.depot) for i in Vb] # depot arcs
+#                                  )))
+#  data‴.D.distance = ArcCostMap(a => data.D.distance[a] for a in data‴.D.A if a[1] != a[2])
+
+  # check feasibility
+#  check_feasibility(data, data‴)
+
+  # set
+#  data = data‴
+
+  # compact algorithm
+#  data″, paths″ = create_no_one_degree_paths_digraph(data)
+
+  # check feasibility
+#  check_feasibility(data, data″)
+
+  # return
+#  return data, data′, paths′, data″, paths″
+  return data, data′, paths′
 end
 
 function readSBRPData(app::Dict{String,Any})
@@ -328,7 +476,7 @@ function check_feasibility(data::SBRPData, data′::SBRPData)
   distances′ = calculate_shortest_paths(data′)
   any(!in((i, j), keys(distances′)) for (i, j) in χ(Vb)) && error("The SBRP instance it is not connected")
   for a in χ(Vb)
-    distances[a] != distances′[a] && error("Original digraph distance is $(distances[a]) while the new digraph distance is $(distances′[a])")
+      abs(distances[a] - distances′[a]) > 1e-3 && error("Original digraph distance is $(distances[a]) while the new digraph distance is $(distances′[a])")
   end
 end
 
@@ -340,7 +488,7 @@ function calculate_shortest_paths(data::SBRPData)
 
   distances = Dict{Arc, Float64}()
   for i in Vb
-  	flush_println(i)
+#  	flush_println(i)
     # bfs
     q = [i]
     distances[(i, i)] = 0.0

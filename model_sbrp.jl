@@ -231,6 +231,10 @@ function build_model_sbrp(data::SBRPData, app::Dict{String,Any})
     else
       @variable(model, y[b in B], Bin)
     end
+    for block in B
+        println(block)
+        println(time_block(data, block))
+    end
     @objective(model, Max, sum(data.profits[b] * y[b] for b in B))
     @constraint(model, degree[i in keys(V)], sum(x[a] for a in δ⁻(A, i)) == sum(x[a] for a in δ⁺(A, i)))
     @constraint(model, degree_at_most_once[i in keys(V)], sum(x[a] for a in δ⁺(A, i)) <= 1)
