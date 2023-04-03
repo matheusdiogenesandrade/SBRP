@@ -1,0 +1,581 @@
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-3000-2015.txt"
+  ip  =>  false
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  nothing
+  instance-type  =>  "carlos"
+  warm-start-solution  =>  nothing
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  lb  =>  nothing
+  brkga-conf  =>  "conf/config.conf"
+Reading nodes
+Reading arcs
+Checking feasibility
+Checking complete graph
+|B| = 517
+|V| = 1213
+|A| = 3489
+|V′| = 905
+|A′| = 818120
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2023-03-28T19:18:15.001
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 1000000
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[19:18:15.244] Generating initial tour...
+Initial profit: 46.0
+
+[19:18:15.672] Building BRKGA data...
+New population size: 2000
+
+[19:18:15.964] Initializing BRKGA data...
+
+[19:18:37.084] Warming up...
+
+[19:19:19.509] Evolving...
+* Iteration | Cost | CurrentTime
+[19:34:20.829] End of optimization
+
+Total number of iterations: 59
+Last update iteration: 0
+Total optimization time: 901.32
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-3000-2015 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 46.0 & 901.3200039863586 & - & - & - & - & -
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-3000-2016.txt"
+  ip  =>  false
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  nothing
+  instance-type  =>  "carlos"
+  warm-start-solution  =>  nothing
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  lb  =>  nothing
+  brkga-conf  =>  "conf/config.conf"
+Reading nodes
+Reading arcs
+Checking feasibility
+Checking complete graph
+|B| = 517
+|V| = 1213
+|A| = 3489
+|V′| = 905
+|A′| = 818120
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2023-03-28T20:09:21.884
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 1000000
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[20:09:21.884] Generating initial tour...
+Initial profit: 67.0
+
+[20:09:21.925] Building BRKGA data...
+New population size: 2000
+
+[20:09:21.925] Initializing BRKGA data...
+
+[20:09:43.285] Warming up...
+
+[20:10:25.458] Evolving...
+* Iteration | Cost | CurrentTime
+[20:25:39.161] End of optimization
+
+Total number of iterations: 60
+Last update iteration: 0
+Total optimization time: 913.70
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-3000-2016 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 67.0 & 913.7029650211334 & - & - & - & - & -
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-3000-2017.txt"
+  ip  =>  false
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  nothing
+  instance-type  =>  "carlos"
+  warm-start-solution  =>  nothing
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  lb  =>  nothing
+  brkga-conf  =>  "conf/config.conf"
+Reading nodes
+Reading arcs
+Checking feasibility
+Checking complete graph
+|B| = 517
+|V| = 1213
+|A| = 3489
+|V′| = 905
+|A′| = 818120
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2023-03-28T21:00:34.751
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 1000000
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[21:00:34.752] Generating initial tour...
+Initial profit: 103.0
+
+[21:00:34.792] Building BRKGA data...
+New population size: 2000
+
+[21:00:34.793] Initializing BRKGA data...
+
+[21:00:56.009] Warming up...
+
+[21:01:38.061] Evolving...
+* Iteration | Cost | CurrentTime
+[21:16:42.089] End of optimization
+
+Total number of iterations: 59
+Last update iteration: 0
+Total optimization time: 904.03
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-3000-2017 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 103.0 & 904.0279278755188 & - & - & - & - & -
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-3000-2018.txt"
+  ip  =>  false
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  nothing
+  instance-type  =>  "carlos"
+  warm-start-solution  =>  nothing
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  lb  =>  nothing
+  brkga-conf  =>  "conf/config.conf"
+Reading nodes
+Reading arcs
+Checking feasibility
+Checking complete graph
+|B| = 517
+|V| = 1213
+|A| = 3489
+|V′| = 905
+|A′| = 818120
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2023-03-28T21:51:54.743
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 1000000
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[21:51:54.743] Generating initial tour...
+Initial profit: 103.0
+
+[21:51:54.783] Building BRKGA data...
+New population size: 2000
+
+[21:51:54.783] Initializing BRKGA data...
+
+[21:52:16.359] Warming up...
+
+[21:52:59.385] Evolving...
+* Iteration | Cost | CurrentTime
+[22:08:08.549] End of optimization
+
+Total number of iterations: 59
+Last update iteration: 0
+Total optimization time: 909.16
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-3000-2018 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 103.0 & 909.163715839386 & - & - & - & - & -
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-3000-2019.txt"
+  ip  =>  false
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  nothing
+  instance-type  =>  "carlos"
+  warm-start-solution  =>  nothing
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  lb  =>  nothing
+  brkga-conf  =>  "conf/config.conf"
+Reading nodes
+Reading arcs
+Checking feasibility
+Checking complete graph
+|B| = 517
+|V| = 1213
+|A| = 3489
+|V′| = 905
+|A′| = 818120
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2023-03-28T22:43:17.778
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 1000000
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[22:43:17.778] Generating initial tour...
+Initial profit: 103.0
+
+[22:43:17.82] Building BRKGA data...
+New population size: 2000
+
+[22:43:17.82] Initializing BRKGA data...
+
+[22:43:39.291] Warming up...
+
+[22:44:21.959] Evolving...
+* Iteration | Cost | CurrentTime
+[22:59:32.997] End of optimization
+
+Total number of iterations: 59
+Last update iteration: 0
+Total optimization time: 911.04
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-3000-2019 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 103.0 & 911.0378580093384 & - & - & - & - & -
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-3000-2020.txt"
+  ip  =>  false
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  nothing
+  instance-type  =>  "carlos"
+  warm-start-solution  =>  nothing
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  lb  =>  nothing
+  brkga-conf  =>  "conf/config.conf"
+Reading nodes
+Reading arcs
+Checking feasibility
+Checking complete graph
+|B| = 517
+|V| = 1213
+|A| = 3489
+|V′| = 905
+|A′| = 818120
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2023-03-28T23:34:34.831
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 1000000
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[23:34:34.831] Generating initial tour...
+Initial profit: 230.0
+
+[23:34:34.873] Building BRKGA data...
+New population size: 2000
+
+[23:34:34.873] Initializing BRKGA data...
+
+[23:34:56.192] Warming up...
+
+[23:35:38.004] Evolving...
+* Iteration | Cost | CurrentTime
+[23:50:46.475] End of optimization
+
+Total number of iterations: 59
+Last update iteration: 0
+Total optimization time: 908.47
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-3000-2020 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 230.0 & 908.4711220264435 & - & - & - & - & -
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-3000-2021.txt"
+  ip  =>  false
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  nothing
+  instance-type  =>  "carlos"
+  warm-start-solution  =>  nothing
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  lb  =>  nothing
+  brkga-conf  =>  "conf/config.conf"
+Reading nodes
+Reading arcs
+Checking feasibility
+Checking complete graph
+|B| = 517
+|V| = 1213
+|A| = 3489
+|V′| = 905
+|A′| = 818120
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2023-03-29T00:25:49.160
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 1000000
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[00:25:49.161] Generating initial tour...
+Initial profit: 242.0
+
+[00:25:49.201] Building BRKGA data...
+New population size: 2000
+
+[00:25:49.202] Initializing BRKGA data...
+
+[00:26:10.255] Warming up...
+
+[00:26:52.12] Evolving...
+* Iteration | Cost | CurrentTime
+[00:42:04.763] End of optimization
+
+Total number of iterations: 60
+Last update iteration: 0
+Total optimization time: 912.64
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-3000-2021 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 242.0 & 912.6421749591827 & - & - & - & - & -
+########################################################

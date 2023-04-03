@@ -1,0 +1,20 @@
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-3000-2015 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 46.0 & 901.3200039863586 & - & - & - & - & -
+--
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-3000-2016 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 67.0 & 913.7029650211334 & - & - & - & - & -
+--
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-3000-2017 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 103.0 & 904.0279278755188 & - & - & - & - & -
+--
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-3000-2018 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 103.0 & 909.163715839386 & - & - & - & - & -
+--
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-3000-2019 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 103.0 & 911.0378580093384 & - & - & - & - & -
+--
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-3000-2020 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 230.0 & 908.4711220264435 & - & - & - & - & -
+--
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-3000-2021 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 242.0 & 912.6421749591827 & - & - & - & - & -

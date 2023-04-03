@@ -237,7 +237,6 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
     @constraint(model, sum(Data.SBRP.time(data, a) * x[a] for a in A) <= T - sum(y[block] * time_block(data, block) for block in B))
     # improvements
     @constraint(model, block3[block in B], y[block] - ∑(x[a] in δ⁺(A, i) for i in block if length(nodes_blocks) == 1) >= 0)
-#    @constraint(model, block4[block in B], sum(x[(i, j)] for (i, j) in A if i in block && j in block && nodes_blocks[i] == nodes_blocks[j] && length(nodes_blocks[j]) == 1) == 0)
     @constraint(model, block4[block in B], sum(x[(i, j)] for (i, j) in A if i in block && j in block && (length(nodes_blocks[i]) == 1 || length(nodes_blocks[j]) == 1)) == 0)
     @constraint(model, subcycle_size_two[(i, j) in P′], x[(i, j)] + x[(j, i)] <= 1)
     # MTZs

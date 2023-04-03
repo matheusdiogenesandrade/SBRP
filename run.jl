@@ -150,15 +150,15 @@ function brkga(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, paths:
     check_sbrp_sol(data′, tour′, B) 
 
     # get solution for original graph
-    tour = Vi()
-    for i in 2:length(tour′)
-        push!(tour, tour′[i - 1])
-        !in((tour′[i - 1], tour′[i]), data.D.A) && push!(tour, paths[(tour′[i - 1], tour′[i])]...)
-    end
-    push!(tour, tour′[end]) 
+#    tour = Vi()
+#    for i in 2:length(tour′)
+#        push!(tour, tour′[i - 1])
+#        !in((tour′[i - 1], tour′[i]), data.D.A) && push!(tour, paths[(tour′[i - 1], tour′[i])]...)
+#    end
+#    push!(tour, tour′[end]) 
 
     # check feasibility
-    check_sbrp_sol(data, tour, B) 
+#    check_sbrp_sol(data, tour, B) 
 
     # log
     info = merge(info, Dict{String, String}(
@@ -168,15 +168,15 @@ function brkga(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, paths:
                                             "|A|" => string(length(data′.D.A)), 
                                             "|B|" => string(length(data.B)), 
                                             "T" => string(data.T),
-                                            "meters" => string(tour_distance(data, tour)),
-                                            "tourMinutes" => string(tour_time(data, tour, B)),
-                                            "blocksMeters" => string(sum(distance_block(data, block) for block in B))
+#                                            "meters" => string(tour_distance(data, tour)),
+#                                            "tourMinutes" => string(tour_time(data, tour, B)),
+#                                            "blocksMeters" => string(sum(distance_block(data, block) for block in B))
                                             )) 
     log(info) 
 
     # write solution
     if app["out"] != nothing
-        write_sol(app["out"], tour, data, B)
+#        write_sol(app["out"], tour, data, B)
         write_sol(app["out"] * "_complete", tour′, data′, B)
     end
 
