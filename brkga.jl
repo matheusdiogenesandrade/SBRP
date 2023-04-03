@@ -83,22 +83,140 @@ function dijkstra(data::SBRPData, idxs_blocks::Vi)
     end
   end
   
-  return min([consumed_times[(last(idxs_blocks), i)] for i in B[last(idxs_blocks)]]...), consumed_times
+  last_block_idx = idxs_blocks[findlast(idx -> any(i -> consumed_times[(idx, i)] <= T, B[idx]), idxs_blocks)]
+  candidates = filter(i -> consumed_times[(last_block_idx, i)] <= T, B[last_block_idx])
+
+  return min(map(i -> consumed_times[(last_block_idx, i)], candidates)...), consumed_times
+end
+
+function get_longest_profit_route(data::SBRPData, consumed_times::Dict{Tuple{Int, Int}, Real}, idxs_blocks::Vi)
+
+    #=
+    # params
+    V = data.D.V
+    depot = data.depot
+    B = data.B
+
+    # blocks order
+    blocks_order::VVi = map(idx::Int -> B[idx], idxs_blocks)
+    pushfirst!(blocks_order, [depot])
+
+    # build DAG
+    # build nodes
+    dag_V::Dict{Int, Vertex} = Dict{Int, Vertex}()
+
+    block_node_to_id::Dict{Tuple{Vi, Int}, Int} = Dict{Tuple{Vi, Int}, Int}()
+    id_to_block_node::Dict{Int, Tuple{Vi, Int}} = Dict{Int, Tuple{Vi, Int}}()
+
+    id::Int = 0
+    for block in blocks_order
+        for i in block
+            dat_V[id] = V[i]
+            block_node_to_id[(block, i)] = id
+            id_to_block_node[id] = (block, i)
+
+            id += 1
+        end
+    end
+
+    # build arcs
+    dag_A::Arcs = Arcs()
+    enumeration = enumerate(blocks_order)
+    for idx_prev, block_prev in enumeration[1:end - 1]
+        for _, block_next in enumeration[idx_prev + 1:end]
+            for i in block_prev
+                for j in block_next
+                    node_prev = block_node_to_id[(block_prev, i)]
+                    node_next = block_node_to_id[(block_next, j)]
+
+                    push!(dag_arcs, Arc(node_prev, node_next))
+                end
+            end
+        end
+    end
+
+    # build revAdjList
+    revAdjList::Dict{Int, Vi} = Dict{Int, Vi}(id => Vi())
+    for (id_i, id_j) in dag_A 
+        push!(revAdjList[id_j], id_i)
+    end
+
+    # times and profits
+    times::ArcCostMap = ArcCostMap()
+    profits::ArcCostMap = ArcCostMap()
+    for (id_i, id_j) in dag_A
+        i, block_i = id_to_block_node[id_i]
+        j, block_j = id_to_block_node[id_j]
+
+        times[(id_i, id_j)] = time(data, (i, j)) + time_block(data, block_j)
+        profits[(id_i, id_j)] = data.profits[block_j]
+    end
+
+    # get topological sorting
+    topological_order::Vi = Vi()
+    for block in blocks_order
+        for i in block
+            id_i = block_node_to_id[(block, i)]
+
+            push!(topological_order, id_i)
+        end
+    end
+
+    #
+    path::Vi = Vi()
+    pred::Dict{Int, Int} = Dict{Int, Int}(i => i for i in keys(dag_V))
+    incurr_time::Vector{Float64} = Vector{Float64}(zeros(length(pred)))
+    incurr_profit::Vector{Float64} = Vector{Float64}(zeros(length(pred)))
+
+    # get distances
+    for v in topological_order
+        for u in revAdjList[v]
+
+            newdist = dist[u] + times[(u, v)]
+            newprofit = 
+
+            if newdist > dist[v]
+                dist[v] = newdist
+                pred[v] = u
+            end
+
+        end
+    end
+
+    # retrieve path 
+    v = argmax(x -> dist[x], vertices(g))
+    push!(path, v)
+
+    while pred[v] != v
+        v = pred[v]
+        push!(path, v)
+    end
+
+    # return 
+    return reverse(path)
+    =#
+
 end
 
 function get_dijkstra_route(data::SBRPData, consumed_times::Dict{Tuple{Int, Int}, Real}, idxs_blocks::Vi)
 
-  tour, m = Vi(), length(idxs_blocks)
+    tour, m = Vi(), findlast(idx -> any(i -> consumed_times[(idx, i)] <= data.T, data.B[idx]), idxs_blocks)
 
   # edge case
   m == 0 && return tour
 
   # attrs
-  B, A, T, first_idx, last_idx = data.B, data.D.A, data.T, first(idxs_blocks), last(idxs_blocks)
+  B, A, T, first_idx, last_idx = data.B, data.D.A, data.T, first(idxs_blocks), idxs_blocks[m]
 
   # initialize tour
   
-  push!(tour, findmin([(consumed_times[(last_idx, i)], i) for i in B[last_idx]])[1][2])
+  push!(tour, B[last_idx][findmin(i -> consumed_times[(last_idx, i)], B[last_idx])[2]])
+
+  println(m)
+  println(idxs_blocks)
+  println(findmin(i -> consumed_times[(last_idx, i)], B[last_idx])[2])
+  println(tour)
+
 
   # BFS
   for i in reverse(2:m)
@@ -117,7 +235,34 @@ function get_dijkstra_route(data::SBRPData, consumed_times::Dict{Tuple{Int, Int}
 #    println("In block ", idx_curr_block, " previous node ", last(tour))
 
     # if no intersecting nodes push backwards candidate
-    !in(last(tour), intersection) && push!(tour, first([i for (i, j) in δ⁻(A, last(tour)) if i in prev_block && consumed_times[(idx_prev_block, i)] + Data.SBRP.time(data, (i, j)) + curr_block_time <= consumed_times[(idx_curr_block, j)]]))
+
+    j = last(tour)
+    if !in(j, intersection)
+        #=
+        println(idx_prev_block, ": ", prev_block)
+        println(idx_curr_block, ": ", curr_block)
+        println(last(tour))
+        println("===============")
+        for (i, j) in δ⁻(A, last(tour))
+            if i in prev_block 
+                println(consumed_times[(idx_prev_block, i)])
+                println(consumed_times[(idx_curr_block, j)])
+            end
+        end
+        =#
+
+        candidates = map(
+                         a -> first(a), 
+                         filter(
+                            i -> consumed_times[(idx_prev_block, i)] + Data.SBRP.time(data, (i, j)) + curr_block_time <= consumed_times[(idx_curr_block, j)], 
+                            prev_block
+                           )
+                        )
+        push!(
+              tour, 
+              first(candidates)
+             )
+    end
 
   end
 
@@ -140,7 +285,7 @@ function get_idxs_blocks(chromosome::Array{Float64}, data::SBRPData)
   sort!(permutation, rev = true)
 
   # consider only blocks with allele > 0.5
-  filter!(s -> s[1] > 0.5, permutation)
+#  filter!(s -> s[1] > 0.5, permutation)
 
   # return indexes of the selected blocks
   return [idx for (key, idx) in permutation]
@@ -164,12 +309,12 @@ function decode!(chromosome::Array{Float64}, data::SBRPData, rewrite::Bool)::Flo
     
     if tour_time > data.T # check feasibility
 
+        error("Not here")
 #      println("Infeasile with time ", tour_time)
       N_INFEASIBLE += 1
       return -∞
 
     else # return profit
-
 #      println("Feasile with time ", tour_time)
       N_FEASIBLE += 1
       return ∑(data.profits[B[idx]] for idx in idxs_blocks)
@@ -519,6 +664,9 @@ function run_brkga(conf_dir::String, data::SBRPData)
 
   # get tour
   tour = get_dijkstra_route(data, consumed_times, idxs_blocks)
+
+  # update blocks indexes
+  idxs_blocks = idxs_blocks[1:findlast(idx -> any(i -> consumed_times[(idx, i)] <= data.T, data.B[idx]), idxs_blocks)]
 
   # get visited blocks
   blocks = [B[idx_block] for idx_block in idxs_blocks]
