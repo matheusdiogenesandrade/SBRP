@@ -508,8 +508,8 @@ function run_brkga(conf_dir::String, data::SBRPData)
   bogus_data = deepcopy(brkga_data)
   evolve!(bogus_data, 2)
   path_relink!(bogus_data, brkga_params.pr_type, brkga_params.pr_selection, (x, y) -> 1.0, (x, y) -> true, 0, 0.5, 1, 10.0, 1.0)
-  get_best_fitness(brkga_data)
-  get_best_chromosome(brkga_data)
+  best_cost = get_best_fitness(brkga_data)
+  best_chromosome = get_best_chromosome(brkga_data)
   bogus_data = nothing
 
   ########################################
@@ -518,10 +518,6 @@ function run_brkga(conf_dir::String, data::SBRPData)
 
   verbose && flush_println("\n[$(Dates.Time(Dates.now()))] Evolving...")
   verbose && flush_println("* Iteration | Cost | CurrentTime")
-
-#  best_cost = -Inf
-  best_cost = profit
-  best_chromosome = initial_chromosome
 
   iteration = 0
   last_update_time = 0.0
@@ -665,6 +661,7 @@ function run_brkga(conf_dir::String, data::SBRPData)
   # get tour
   tour = get_dijkstra_route(data, consumed_times, idxs_blocks)
 
+  println("Last index ", findlast(idx -> any(i -> consumed_times[(idx, i)] <= data.T, data.B[idx]), idxs_blocks))
   # update blocks indexes
   idxs_blocks = idxs_blocks[1:findlast(idx -> any(i -> consumed_times[(idx, i)] <= data.T, data.B[idx]), idxs_blocks)]
 
@@ -672,7 +669,11 @@ function run_brkga(conf_dir::String, data::SBRPData)
   blocks = [B[idx_block] for idx_block in idxs_blocks]
 
   # log
-  info["cost"], info["solverTime"] = string(∑(data.profits[block] for block in blocks)), string(total_elapsed_time)
+#  info["cost"], info["solverTime"] = string(∑(data.profits[block] for block in blocks)), string(total_elapsed_time)
+  info["cost"], info["solverTime"] = best_cost, string(total_elapsed_time)
+
+  println("BRKGA cost:", best_cost)
+  println("Calculated cost:", info["cost"])
 
   return tour, info, blocks
 
