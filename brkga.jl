@@ -297,7 +297,7 @@ function decode!(chromosome::Array{Float64}, data::SBRPData, rewrite::Bool)::Flo
   global N_INFEASIBLE 
   global DECODING_TIME 
 
-  DECODING_TIME += @elapsed begin
+  DECODING_TIME += curr_decode_time = @elapsed begin
 
     # attrs
     B = data.B
@@ -305,7 +305,7 @@ function decode!(chromosome::Array{Float64}, data::SBRPData, rewrite::Bool)::Flo
     # get min tour time
     idxs_blocks = get_idxs_blocks(chromosome, data)
     tour_time, consumed_times = dijkstra(data, idxs_blocks)
-
+  end
     
     if tour_time > data.T # check feasibility
 
@@ -320,7 +320,6 @@ function decode!(chromosome::Array{Float64}, data::SBRPData, rewrite::Bool)::Flo
       return ∑(data.profits[B[idx]] for idx in idxs_blocks)
 
     end
-  end
 end
 
 function run_brkga(conf_dir::String, data::SBRPData)
