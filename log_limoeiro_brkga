@@ -2,7 +2,7 @@ Application parameters:
   intersection-cuts  =>  false
   batch  =>  nothing
   subcycle-separation  =>  false
-  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-3000-2015.txt"
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-1000-2015.txt"
   ip  =>  false
   arcs-mtz  =>  false
   brkga  =>  true
@@ -20,14 +20,14 @@ Reading nodes
 Reading arcs
 Checking feasibility
 Checking complete graph
-|B| = 517
-|V| = 1213
-|A| = 3489
-|V′| = 905
-|A′| = 818120
+|B| = 152
+|V| = 373
+|A| = 1063
+|V′| = 290
+|A′| = 83810
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2023-04-04T22:23:24.706
+> Experiment started at 2023-04-09T20:10:57.810
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -54,43 +54,47 @@ Checking complete graph
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[22:23:24.835] Generating initial tour...
-Initial profit: 46.0
+[20:10:57.939] Generating initial tour...
+Initial profit: 50.0
 
-[22:23:25.73] Building BRKGA data...
-New population size: 2000
+[20:10:58.755] Building BRKGA data...
+New population size: 1520
 
-[22:23:26.015] Initializing BRKGA data...
+[20:10:59.052] Initializing BRKGA data...
 
-[22:24:05.624] Warming up...
+[20:11:05.372] Warming up...
 
-[22:25:14.565] Evolving...
+[20:11:24.907] Evolving...
 * Iteration | Cost | CurrentTime
-* 1 | 840 | 27.97 
-[22:40:38.557] End of optimization
+Performing path relink at 200...
+- No improvement found | Elapsed time: 35.41
+[20:26:28.288] End of optimization
 
-Total number of iterations: 33
-Last update iteration: 1
-Total optimization time: 923.99
-Last update time: 27.97
-Large number of iterations between improvements: 1
-Total path relink time: 0.00
-Total path relink calls: 0
+Total number of iterations: 205
+Last update iteration: 0
+Total optimization time: 903.38
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 35.41
+Total path relink calls: 1
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
-19
-[3, 357, 50, 365, 171, 46, 306, 321, 179, 498, 338, 360, 322, 408, 94, 340, 313, 517, 297, 88, 240, 54, 374, 396, 263, 290, 198, 250, 503, 252, 105, 128, 186, 161, 397, 73, 214, 121, 314, 442, 310, 60, 160, 351, 328, 260, 320, 288, 352, 33, 28, 387, 414, 115, 100, 500, 131, 438, 359, 364, 375, 247, 62, 392, 225, 48, 309, 138, 89, 346, 410, 210, 246, 355, 118, 191, 168, 222, 25, 212, 129, 251, 318, 92, 363, 424, 112, 490, 493, 49, 282, 299, 332, 142, 324, 495, 514, 484, 368, 13, 349, 329, 482, 259, 239, 79, 43, 270, 85, 441, 181, 55, 159, 34, 125, 336, 459, 241, 316, 244, 391, 57, 515, 478, 70, 291, 383, 435, 228, 194, 183, 41, 185, 4, 137, 388, 409, 192, 104, 390, 295, 20, 201, 378, 451, 215, 465, 504, 102, 31, 486, 325, 195, 266, 143, 350, 269, 406, 135, 205, 39, 206, 470, 472, 506, 407, 101, 258, 67, 103, 208, 344, 227, 399, 300, 176, 158, 38, 6, 381, 144, 63, 80, 273, 66, 136, 116, 444, 21, 126, 8, 132, 448, 369, 468, 1, 23, 27, 342, 148, 232, 52, 379, 323, 445, 261, 74, 298, 284, 302, 173, 488, 377, 149, 167, 164, 411, 22, 184, 400, 204, 37, 197, 432, 454, 434, 267, 440, 499, 213, 293, 358, 425, 224, 477, 416, 403, 111, 413, 428, 42, 354, 296, 154, 97, 513, 127, 347, 419, 319, 385, 461, 113, 497, 384, 151, 312, 108, 56, 458, 234, 76, 376, 457, 157, 327, 236, 106, 447, 109, 404, 140, 480, 220, 373, 200, 150, 256, 166, 479, 249, 172, 83, 460, 19, 229, 268, 255, 362, 348, 26, 367, 512, 68, 248, 380, 279, 511, 476, 230, 481, 257, 330, 78, 58, 449, 439, 124, 12, 122, 508, 437, 326, 430, 17, 389, 202, 153, 107, 502, 483, 237, 510, 16, 501, 262, 305, 152, 473, 165, 96, 174, 426, 30, 170, 516, 436, 193, 467, 9, 93, 339, 289, 469, 175, 405, 45, 47, 366, 489, 145, 276, 163, 253, 87, 209, 119, 429, 450, 77, 337, 353, 75, 71, 44, 243, 331, 218, 294, 254, 453, 274, 130, 187, 275, 64, 203, 415, 178, 283, 341, 431, 11, 301, 231, 162, 90, 372, 141, 182, 420, 464, 292, 211, 207, 69, 311, 285, 463, 345, 386, 196, 82, 123, 280, 156, 29, 15, 146, 485, 245, 452, 199, 507, 189, 395, 155, 5, 277, 333, 86, 427, 335, 133, 35, 370, 98, 307, 509, 114, 505, 402, 180, 265, 139, 456, 421, 417, 382, 51, 134, 221, 398, 84, 120, 496, 99, 2, 475, 72, 65, 238, 343, 7, 217, 216, 303, 446, 264, 371, 462, 272, 281, 308, 418, 334, 61, 494, 190, 226, 10, 491, 287, 401, 53, 474, 169, 147, 466, 304, 117, 455, 412, 91, 317, 14, 433, 356, 32, 40, 223, 235, 59, 188, 422, 278, 271, 110, 361, 36, 394, 219, 24, 242, 393, 233, 315, 471, 177, 487, 18, 443, 423, 81, 492, 286, 95]
+29
+[131, 136, 43, 141, 28, 67, 120, 24, 56, 84, 139, 81, 88, 121, 80, 116, 91, 105, 42, 147, 32, 65, 37, 39, 127, 61, 33, 29, 7, 149, 75, 15, 135, 126, 89, 146, 92, 41, 87, 63, 49, 31, 45, 36, 8, 20, 66, 144, 74, 104, 86, 71, 152, 57, 140, 128, 85, 99, 83, 129, 151, 34, 142, 19, 143, 102, 96, 53, 10, 132, 125, 23, 46, 115, 6, 122, 5, 73, 148, 138, 78, 52, 82, 2, 21, 111, 134, 145, 16, 103, 112, 133, 44, 22, 64, 113, 48, 98, 130, 95, 18, 137, 106, 93, 17, 76, 119, 100, 101, 108, 27, 30, 123, 47, 110, 13, 12, 90, 25, 1, 51, 124, 70, 117, 9, 77, 50, 60, 114, 54, 4, 26, 35, 62, 14, 55, 38, 68, 69, 59, 72, 109, 94, 150, 40, 3, 11, 97, 107, 79, 58, 118]
 1
-[66]
+[123]
+Last index 29
+BRKGA cost:91.0
+Calculated cost:91.0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & notified-limoeiro-3000-2015 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 4.0 & 923.991758108139 & - & - & - & - & -
+ & notified-limoeiro-1000-2015 & 290 & 83810 & 152 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 91.0 & 903.381206035614 & - & - & - & - & -
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
   batch  =>  nothing
   subcycle-separation  =>  false
-  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-3000-2016.txt"
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-1000-2016.txt"
   ip  =>  false
   arcs-mtz  =>  false
   brkga  =>  true
@@ -108,14 +112,14 @@ Reading nodes
 Reading arcs
 Checking feasibility
 Checking complete graph
-|B| = 517
-|V| = 1213
-|A| = 3489
-|V′| = 905
-|A′| = 818120
+|B| = 152
+|V| = 373
+|A| = 1063
+|V′| = 290
+|A′| = 83810
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2023-04-04T23:12:54.534
+> Experiment started at 2023-04-09T20:26:49.765
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -142,43 +146,47 @@ Checking complete graph
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[23:12:54.534] Generating initial tour...
+[20:26:49.765] Generating initial tour...
 Initial profit: 67.0
 
-[23:12:54.572] Building BRKGA data...
-New population size: 2000
+[20:26:49.774] Building BRKGA data...
+New population size: 1520
 
-[23:12:54.573] Initializing BRKGA data...
+[20:26:49.774] Initializing BRKGA data...
 
-[23:13:33.892] Warming up...
+[20:26:55.714] Warming up...
 
-[23:14:41.892] Evolving...
+[20:27:14.412] Evolving...
 * Iteration | Cost | CurrentTime
-* 1 | 1692 | 28.06 
-[23:30:08.174] End of optimization
+Performing path relink at 200...
+- No improvement found | Elapsed time: 35.36
+[20:42:17.858] End of optimization
 
-Total number of iterations: 33
-Last update iteration: 1
-Total optimization time: 926.28
-Last update time: 28.06
-Large number of iterations between improvements: 1
-Total path relink time: 0.00
-Total path relink calls: 0
+Total number of iterations: 203
+Last update iteration: 0
+Total optimization time: 903.45
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 35.36
+Total path relink calls: 1
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
-19
-[3, 357, 50, 365, 171, 46, 306, 321, 179, 498, 338, 360, 322, 408, 94, 340, 313, 517, 297, 88, 240, 54, 374, 396, 263, 290, 198, 250, 503, 252, 105, 128, 186, 161, 397, 73, 214, 121, 314, 442, 310, 60, 160, 351, 328, 260, 320, 288, 352, 33, 28, 387, 414, 115, 100, 500, 131, 438, 359, 364, 375, 247, 62, 392, 225, 48, 309, 138, 89, 346, 410, 210, 246, 355, 118, 191, 168, 222, 25, 212, 129, 251, 318, 92, 363, 424, 112, 490, 493, 49, 282, 299, 332, 142, 324, 495, 514, 484, 368, 13, 349, 329, 482, 259, 239, 79, 43, 270, 85, 441, 181, 55, 159, 34, 125, 336, 459, 241, 316, 244, 391, 57, 515, 478, 70, 291, 383, 435, 228, 194, 183, 41, 185, 4, 137, 388, 409, 192, 104, 390, 295, 20, 201, 378, 451, 215, 465, 504, 102, 31, 486, 325, 195, 266, 143, 350, 269, 406, 135, 205, 39, 206, 470, 472, 506, 407, 101, 258, 67, 103, 208, 344, 227, 399, 300, 176, 158, 38, 6, 381, 144, 63, 80, 273, 66, 136, 116, 444, 21, 126, 8, 132, 448, 369, 468, 1, 23, 27, 342, 148, 232, 52, 379, 323, 445, 261, 74, 298, 284, 302, 173, 488, 377, 149, 167, 164, 411, 22, 184, 400, 204, 37, 197, 432, 454, 434, 267, 440, 499, 213, 293, 358, 425, 224, 477, 416, 403, 111, 413, 428, 42, 354, 296, 154, 97, 513, 127, 347, 419, 319, 385, 461, 113, 497, 384, 151, 312, 108, 56, 458, 234, 76, 376, 457, 157, 327, 236, 106, 447, 109, 404, 140, 480, 220, 373, 200, 150, 256, 166, 479, 249, 172, 83, 460, 19, 229, 268, 255, 362, 348, 26, 367, 512, 68, 248, 380, 279, 511, 476, 230, 481, 257, 330, 78, 58, 449, 439, 124, 12, 122, 508, 437, 326, 430, 17, 389, 202, 153, 107, 502, 483, 237, 510, 16, 501, 262, 305, 152, 473, 165, 96, 174, 426, 30, 170, 516, 436, 193, 467, 9, 93, 339, 289, 469, 175, 405, 45, 47, 366, 489, 145, 276, 163, 253, 87, 209, 119, 429, 450, 77, 337, 353, 75, 71, 44, 243, 331, 218, 294, 254, 453, 274, 130, 187, 275, 64, 203, 415, 178, 283, 341, 431, 11, 301, 231, 162, 90, 372, 141, 182, 420, 464, 292, 211, 207, 69, 311, 285, 463, 345, 386, 196, 82, 123, 280, 156, 29, 15, 146, 485, 245, 452, 199, 507, 189, 395, 155, 5, 277, 333, 86, 427, 335, 133, 35, 370, 98, 307, 509, 114, 505, 402, 180, 265, 139, 456, 421, 417, 382, 51, 134, 221, 398, 84, 120, 496, 99, 2, 475, 72, 65, 238, 343, 7, 217, 216, 303, 446, 264, 371, 462, 272, 281, 308, 418, 334, 61, 494, 190, 226, 10, 491, 287, 401, 53, 474, 169, 147, 466, 304, 117, 455, 412, 91, 317, 14, 433, 356, 32, 40, 223, 235, 59, 188, 422, 278, 271, 110, 361, 36, 394, 219, 24, 242, 393, 233, 315, 471, 177, 487, 18, 443, 423, 81, 492, 286, 95]
+29
+[131, 136, 43, 141, 28, 67, 120, 24, 56, 84, 139, 81, 88, 121, 80, 116, 91, 105, 42, 147, 32, 65, 37, 39, 127, 61, 33, 29, 7, 149, 75, 15, 135, 126, 89, 146, 92, 41, 87, 63, 49, 31, 45, 36, 8, 20, 66, 144, 74, 104, 86, 71, 152, 57, 140, 128, 85, 99, 83, 129, 151, 34, 142, 19, 143, 102, 96, 53, 10, 132, 125, 23, 46, 115, 6, 122, 5, 73, 148, 138, 78, 52, 82, 2, 21, 111, 134, 145, 16, 103, 112, 133, 44, 22, 64, 113, 48, 98, 130, 95, 18, 137, 106, 93, 17, 76, 119, 100, 101, 108, 27, 30, 123, 47, 110, 13, 12, 90, 25, 1, 51, 124, 70, 117, 9, 77, 50, 60, 114, 54, 4, 26, 35, 62, 14, 55, 38, 68, 69, 59, 72, 109, 94, 150, 40, 3, 11, 97, 107, 79, 58, 118]
 1
-[66]
+[123]
+Last index 29
+BRKGA cost:127.0
+Calculated cost:127.0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & notified-limoeiro-3000-2016 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 4.0 & 926.2822911739349 & - & - & - & - & -
+ & notified-limoeiro-1000-2016 & 290 & 83810 & 152 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 127.0 & 903.4456279277802 & - & - & - & - & -
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
   batch  =>  nothing
   subcycle-separation  =>  false
-  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-3000-2017.txt"
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-1000-2017.txt"
   ip  =>  false
   arcs-mtz  =>  false
   brkga  =>  true
@@ -196,14 +204,14 @@ Reading nodes
 Reading arcs
 Checking feasibility
 Checking complete graph
-|B| = 517
-|V| = 1213
-|A| = 3489
-|V′| = 905
-|A′| = 818120
+|B| = 152
+|V| = 373
+|A| = 1063
+|V′| = 290
+|A′| = 83810
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2023-04-05T00:02:42.288
+> Experiment started at 2023-04-09T20:42:38.942
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -230,43 +238,47 @@ Checking complete graph
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:02:42.289] Generating initial tour...
-Initial profit: 103.0
+[20:42:38.943] Generating initial tour...
+Initial profit: 121.0
 
-[00:02:42.327] Building BRKGA data...
-New population size: 2000
+[20:42:38.952] Building BRKGA data...
+New population size: 1520
 
-[00:02:42.327] Initializing BRKGA data...
+[20:42:38.953] Initializing BRKGA data...
 
-[00:03:21.747] Warming up...
+[20:42:44.933] Warming up...
 
-[00:04:29.103] Evolving...
+[20:43:03.691] Evolving...
 * Iteration | Cost | CurrentTime
-* 1 | 2587 | 28.22 
-[00:19:32.241] End of optimization
+Performing path relink at 200...
+- No improvement found | Elapsed time: 35.33
+[20:58:05.793] End of optimization
 
-Total number of iterations: 32
-Last update iteration: 1
-Total optimization time: 903.14
-Last update time: 28.22
-Large number of iterations between improvements: 1
-Total path relink time: 0.00
-Total path relink calls: 0
+Total number of iterations: 203
+Last update iteration: 0
+Total optimization time: 902.10
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 35.33
+Total path relink calls: 1
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
-19
-[3, 357, 50, 365, 171, 46, 306, 321, 179, 498, 338, 360, 322, 408, 94, 340, 313, 517, 297, 88, 240, 54, 374, 396, 263, 290, 198, 250, 503, 252, 105, 128, 186, 161, 397, 73, 214, 121, 314, 442, 310, 60, 160, 351, 328, 260, 320, 288, 352, 33, 28, 387, 414, 115, 100, 500, 131, 438, 359, 364, 375, 247, 62, 392, 225, 48, 309, 138, 89, 346, 410, 210, 246, 355, 118, 191, 168, 222, 25, 212, 129, 251, 318, 92, 363, 424, 112, 490, 493, 49, 282, 299, 332, 142, 324, 495, 514, 484, 368, 13, 349, 329, 482, 259, 239, 79, 43, 270, 85, 441, 181, 55, 159, 34, 125, 336, 459, 241, 316, 244, 391, 57, 515, 478, 70, 291, 383, 435, 228, 194, 183, 41, 185, 4, 137, 388, 409, 192, 104, 390, 295, 20, 201, 378, 451, 215, 465, 504, 102, 31, 486, 325, 195, 266, 143, 350, 269, 406, 135, 205, 39, 206, 470, 472, 506, 407, 101, 258, 67, 103, 208, 344, 227, 399, 300, 176, 158, 38, 6, 381, 144, 63, 80, 273, 66, 136, 116, 444, 21, 126, 8, 132, 448, 369, 468, 1, 23, 27, 342, 148, 232, 52, 379, 323, 445, 261, 74, 298, 284, 302, 173, 488, 377, 149, 167, 164, 411, 22, 184, 400, 204, 37, 197, 432, 454, 434, 267, 440, 499, 213, 293, 358, 425, 224, 477, 416, 403, 111, 413, 428, 42, 354, 296, 154, 97, 513, 127, 347, 419, 319, 385, 461, 113, 497, 384, 151, 312, 108, 56, 458, 234, 76, 376, 457, 157, 327, 236, 106, 447, 109, 404, 140, 480, 220, 373, 200, 150, 256, 166, 479, 249, 172, 83, 460, 19, 229, 268, 255, 362, 348, 26, 367, 512, 68, 248, 380, 279, 511, 476, 230, 481, 257, 330, 78, 58, 449, 439, 124, 12, 122, 508, 437, 326, 430, 17, 389, 202, 153, 107, 502, 483, 237, 510, 16, 501, 262, 305, 152, 473, 165, 96, 174, 426, 30, 170, 516, 436, 193, 467, 9, 93, 339, 289, 469, 175, 405, 45, 47, 366, 489, 145, 276, 163, 253, 87, 209, 119, 429, 450, 77, 337, 353, 75, 71, 44, 243, 331, 218, 294, 254, 453, 274, 130, 187, 275, 64, 203, 415, 178, 283, 341, 431, 11, 301, 231, 162, 90, 372, 141, 182, 420, 464, 292, 211, 207, 69, 311, 285, 463, 345, 386, 196, 82, 123, 280, 156, 29, 15, 146, 485, 245, 452, 199, 507, 189, 395, 155, 5, 277, 333, 86, 427, 335, 133, 35, 370, 98, 307, 509, 114, 505, 402, 180, 265, 139, 456, 421, 417, 382, 51, 134, 221, 398, 84, 120, 496, 99, 2, 475, 72, 65, 238, 343, 7, 217, 216, 303, 446, 264, 371, 462, 272, 281, 308, 418, 334, 61, 494, 190, 226, 10, 491, 287, 401, 53, 474, 169, 147, 466, 304, 117, 455, 412, 91, 317, 14, 433, 356, 32, 40, 223, 235, 59, 188, 422, 278, 271, 110, 361, 36, 394, 219, 24, 242, 393, 233, 315, 471, 177, 487, 18, 443, 423, 81, 492, 286, 95]
+29
+[131, 136, 43, 141, 28, 67, 120, 24, 56, 84, 139, 81, 88, 121, 80, 116, 91, 105, 42, 147, 32, 65, 37, 39, 127, 61, 33, 29, 7, 149, 75, 15, 135, 126, 89, 146, 92, 41, 87, 63, 49, 31, 45, 36, 8, 20, 66, 144, 74, 104, 86, 71, 152, 57, 140, 128, 85, 99, 83, 129, 151, 34, 142, 19, 143, 102, 96, 53, 10, 132, 125, 23, 46, 115, 6, 122, 5, 73, 148, 138, 78, 52, 82, 2, 21, 111, 134, 145, 16, 103, 112, 133, 44, 22, 64, 113, 48, 98, 130, 95, 18, 137, 106, 93, 17, 76, 119, 100, 101, 108, 27, 30, 123, 47, 110, 13, 12, 90, 25, 1, 51, 124, 70, 117, 9, 77, 50, 60, 114, 54, 4, 26, 35, 62, 14, 55, 38, 68, 69, 59, 72, 109, 94, 150, 40, 3, 11, 97, 107, 79, 58, 118]
 1
-[66]
+[123]
+Last index 29
+BRKGA cost:245.0
+Calculated cost:245.0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & notified-limoeiro-3000-2017 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 4.0 & 903.1381659507751 & - & - & - & - & -
+ & notified-limoeiro-1000-2017 & 290 & 83810 & 152 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 245.0 & 902.1015238761902 & - & - & - & - & -
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
   batch  =>  nothing
   subcycle-separation  =>  false
-  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-3000-2018.txt"
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-1000-2018.txt"
   ip  =>  false
   arcs-mtz  =>  false
   brkga  =>  true
@@ -284,14 +296,14 @@ Reading nodes
 Reading arcs
 Checking feasibility
 Checking complete graph
-|B| = 517
-|V| = 1213
-|A| = 3489
-|V′| = 905
-|A′| = 818120
+|B| = 152
+|V| = 373
+|A| = 1063
+|V′| = 290
+|A′| = 83810
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2023-04-05T00:51:35.683
+> Experiment started at 2023-04-09T20:58:27.042
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -318,43 +330,47 @@ Checking complete graph
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[00:51:35.683] Generating initial tour...
-Initial profit: 103.0
+[20:58:27.042] Generating initial tour...
+Initial profit: 129.0
 
-[00:51:35.721] Building BRKGA data...
-New population size: 2000
+[20:58:27.052] Building BRKGA data...
+New population size: 1520
 
-[00:51:35.721] Initializing BRKGA data...
+[20:58:27.052] Initializing BRKGA data...
 
-[00:52:15.31] Warming up...
+[20:58:32.941] Warming up...
 
-[00:53:23.147] Evolving...
+[20:58:51.759] Evolving...
 * Iteration | Cost | CurrentTime
-* 1 | 2660 | 28.13 
-[01:08:50.667] End of optimization
+Performing path relink at 200...
+- No improvement found | Elapsed time: 34.84
+[21:13:55.698] End of optimization
 
-Total number of iterations: 33
-Last update iteration: 1
-Total optimization time: 927.52
-Last update time: 28.13
-Large number of iterations between improvements: 1
-Total path relink time: 0.00
-Total path relink calls: 0
+Total number of iterations: 207
+Last update iteration: 0
+Total optimization time: 903.94
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 34.84
+Total path relink calls: 1
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
-19
-[3, 357, 50, 365, 171, 46, 306, 321, 179, 498, 338, 360, 322, 408, 94, 340, 313, 517, 297, 88, 240, 54, 374, 396, 263, 290, 198, 250, 503, 252, 105, 128, 186, 161, 397, 73, 214, 121, 314, 442, 310, 60, 160, 351, 328, 260, 320, 288, 352, 33, 28, 387, 414, 115, 100, 500, 131, 438, 359, 364, 375, 247, 62, 392, 225, 48, 309, 138, 89, 346, 410, 210, 246, 355, 118, 191, 168, 222, 25, 212, 129, 251, 318, 92, 363, 424, 112, 490, 493, 49, 282, 299, 332, 142, 324, 495, 514, 484, 368, 13, 349, 329, 482, 259, 239, 79, 43, 270, 85, 441, 181, 55, 159, 34, 125, 336, 459, 241, 316, 244, 391, 57, 515, 478, 70, 291, 383, 435, 228, 194, 183, 41, 185, 4, 137, 388, 409, 192, 104, 390, 295, 20, 201, 378, 451, 215, 465, 504, 102, 31, 486, 325, 195, 266, 143, 350, 269, 406, 135, 205, 39, 206, 470, 472, 506, 407, 101, 258, 67, 103, 208, 344, 227, 399, 300, 176, 158, 38, 6, 381, 144, 63, 80, 273, 66, 136, 116, 444, 21, 126, 8, 132, 448, 369, 468, 1, 23, 27, 342, 148, 232, 52, 379, 323, 445, 261, 74, 298, 284, 302, 173, 488, 377, 149, 167, 164, 411, 22, 184, 400, 204, 37, 197, 432, 454, 434, 267, 440, 499, 213, 293, 358, 425, 224, 477, 416, 403, 111, 413, 428, 42, 354, 296, 154, 97, 513, 127, 347, 419, 319, 385, 461, 113, 497, 384, 151, 312, 108, 56, 458, 234, 76, 376, 457, 157, 327, 236, 106, 447, 109, 404, 140, 480, 220, 373, 200, 150, 256, 166, 479, 249, 172, 83, 460, 19, 229, 268, 255, 362, 348, 26, 367, 512, 68, 248, 380, 279, 511, 476, 230, 481, 257, 330, 78, 58, 449, 439, 124, 12, 122, 508, 437, 326, 430, 17, 389, 202, 153, 107, 502, 483, 237, 510, 16, 501, 262, 305, 152, 473, 165, 96, 174, 426, 30, 170, 516, 436, 193, 467, 9, 93, 339, 289, 469, 175, 405, 45, 47, 366, 489, 145, 276, 163, 253, 87, 209, 119, 429, 450, 77, 337, 353, 75, 71, 44, 243, 331, 218, 294, 254, 453, 274, 130, 187, 275, 64, 203, 415, 178, 283, 341, 431, 11, 301, 231, 162, 90, 372, 141, 182, 420, 464, 292, 211, 207, 69, 311, 285, 463, 345, 386, 196, 82, 123, 280, 156, 29, 15, 146, 485, 245, 452, 199, 507, 189, 395, 155, 5, 277, 333, 86, 427, 335, 133, 35, 370, 98, 307, 509, 114, 505, 402, 180, 265, 139, 456, 421, 417, 382, 51, 134, 221, 398, 84, 120, 496, 99, 2, 475, 72, 65, 238, 343, 7, 217, 216, 303, 446, 264, 371, 462, 272, 281, 308, 418, 334, 61, 494, 190, 226, 10, 491, 287, 401, 53, 474, 169, 147, 466, 304, 117, 455, 412, 91, 317, 14, 433, 356, 32, 40, 223, 235, 59, 188, 422, 278, 271, 110, 361, 36, 394, 219, 24, 242, 393, 233, 315, 471, 177, 487, 18, 443, 423, 81, 492, 286, 95]
+29
+[131, 136, 43, 141, 28, 67, 120, 24, 56, 84, 139, 81, 88, 121, 80, 116, 91, 105, 42, 147, 32, 65, 37, 39, 127, 61, 33, 29, 7, 149, 75, 15, 135, 126, 89, 146, 92, 41, 87, 63, 49, 31, 45, 36, 8, 20, 66, 144, 74, 104, 86, 71, 152, 57, 140, 128, 85, 99, 83, 129, 151, 34, 142, 19, 143, 102, 96, 53, 10, 132, 125, 23, 46, 115, 6, 122, 5, 73, 148, 138, 78, 52, 82, 2, 21, 111, 134, 145, 16, 103, 112, 133, 44, 22, 64, 113, 48, 98, 130, 95, 18, 137, 106, 93, 17, 76, 119, 100, 101, 108, 27, 30, 123, 47, 110, 13, 12, 90, 25, 1, 51, 124, 70, 117, 9, 77, 50, 60, 114, 54, 4, 26, 35, 62, 14, 55, 38, 68, 69, 59, 72, 109, 94, 150, 40, 3, 11, 97, 107, 79, 58, 118]
 1
-[66]
+[123]
+Last index 29
+BRKGA cost:253.0
+Calculated cost:253.0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & notified-limoeiro-3000-2018 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 4.0 & 927.5202350616455 & - & - & - & - & -
+ & notified-limoeiro-1000-2018 & 290 & 83810 & 152 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 253.0 & 903.9387111663818 & - & - & - & - & -
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
   batch  =>  nothing
   subcycle-separation  =>  false
-  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-3000-2019.txt"
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-1000-2019.txt"
   ip  =>  false
   arcs-mtz  =>  false
   brkga  =>  true
@@ -372,14 +388,14 @@ Reading nodes
 Reading arcs
 Checking feasibility
 Checking complete graph
-|B| = 517
-|V| = 1213
-|A| = 3489
-|V′| = 905
-|A′| = 818120
+|B| = 152
+|V| = 373
+|A| = 1063
+|V′| = 290
+|A′| = 83810
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2023-04-05T01:41:21.010
+> Experiment started at 2023-04-09T21:14:16.892
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -406,43 +422,47 @@ Checking complete graph
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[01:41:21.01] Generating initial tour...
-Initial profit: 103.0
+[21:14:16.893] Generating initial tour...
+Initial profit: 181.0
 
-[01:41:21.048] Building BRKGA data...
-New population size: 2000
+[21:14:16.902] Building BRKGA data...
+New population size: 1520
 
-[01:41:21.048] Initializing BRKGA data...
+[21:14:16.902] Initializing BRKGA data...
 
-[01:42:00.472] Warming up...
+[21:14:22.742] Warming up...
 
-[01:43:08.512] Evolving...
+[21:14:41.511] Evolving...
 * Iteration | Cost | CurrentTime
-* 1 | 4288 | 28.14 
-[01:58:10.604] End of optimization
+Performing path relink at 200...
+- No improvement found | Elapsed time: 35.28
+[21:29:44.597] End of optimization
 
-Total number of iterations: 32
-Last update iteration: 1
-Total optimization time: 902.09
-Last update time: 28.14
-Large number of iterations between improvements: 1
-Total path relink time: 0.00
-Total path relink calls: 0
+Total number of iterations: 204
+Last update iteration: 0
+Total optimization time: 903.09
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 35.28
+Total path relink calls: 1
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
-19
-[3, 357, 50, 365, 171, 46, 306, 321, 179, 498, 338, 360, 322, 408, 94, 340, 313, 517, 297, 88, 240, 54, 374, 396, 263, 290, 198, 250, 503, 252, 105, 128, 186, 161, 397, 73, 214, 121, 314, 442, 310, 60, 160, 351, 328, 260, 320, 288, 352, 33, 28, 387, 414, 115, 100, 500, 131, 438, 359, 364, 375, 247, 62, 392, 225, 48, 309, 138, 89, 346, 410, 210, 246, 355, 118, 191, 168, 222, 25, 212, 129, 251, 318, 92, 363, 424, 112, 490, 493, 49, 282, 299, 332, 142, 324, 495, 514, 484, 368, 13, 349, 329, 482, 259, 239, 79, 43, 270, 85, 441, 181, 55, 159, 34, 125, 336, 459, 241, 316, 244, 391, 57, 515, 478, 70, 291, 383, 435, 228, 194, 183, 41, 185, 4, 137, 388, 409, 192, 104, 390, 295, 20, 201, 378, 451, 215, 465, 504, 102, 31, 486, 325, 195, 266, 143, 350, 269, 406, 135, 205, 39, 206, 470, 472, 506, 407, 101, 258, 67, 103, 208, 344, 227, 399, 300, 176, 158, 38, 6, 381, 144, 63, 80, 273, 66, 136, 116, 444, 21, 126, 8, 132, 448, 369, 468, 1, 23, 27, 342, 148, 232, 52, 379, 323, 445, 261, 74, 298, 284, 302, 173, 488, 377, 149, 167, 164, 411, 22, 184, 400, 204, 37, 197, 432, 454, 434, 267, 440, 499, 213, 293, 358, 425, 224, 477, 416, 403, 111, 413, 428, 42, 354, 296, 154, 97, 513, 127, 347, 419, 319, 385, 461, 113, 497, 384, 151, 312, 108, 56, 458, 234, 76, 376, 457, 157, 327, 236, 106, 447, 109, 404, 140, 480, 220, 373, 200, 150, 256, 166, 479, 249, 172, 83, 460, 19, 229, 268, 255, 362, 348, 26, 367, 512, 68, 248, 380, 279, 511, 476, 230, 481, 257, 330, 78, 58, 449, 439, 124, 12, 122, 508, 437, 326, 430, 17, 389, 202, 153, 107, 502, 483, 237, 510, 16, 501, 262, 305, 152, 473, 165, 96, 174, 426, 30, 170, 516, 436, 193, 467, 9, 93, 339, 289, 469, 175, 405, 45, 47, 366, 489, 145, 276, 163, 253, 87, 209, 119, 429, 450, 77, 337, 353, 75, 71, 44, 243, 331, 218, 294, 254, 453, 274, 130, 187, 275, 64, 203, 415, 178, 283, 341, 431, 11, 301, 231, 162, 90, 372, 141, 182, 420, 464, 292, 211, 207, 69, 311, 285, 463, 345, 386, 196, 82, 123, 280, 156, 29, 15, 146, 485, 245, 452, 199, 507, 189, 395, 155, 5, 277, 333, 86, 427, 335, 133, 35, 370, 98, 307, 509, 114, 505, 402, 180, 265, 139, 456, 421, 417, 382, 51, 134, 221, 398, 84, 120, 496, 99, 2, 475, 72, 65, 238, 343, 7, 217, 216, 303, 446, 264, 371, 462, 272, 281, 308, 418, 334, 61, 494, 190, 226, 10, 491, 287, 401, 53, 474, 169, 147, 466, 304, 117, 455, 412, 91, 317, 14, 433, 356, 32, 40, 223, 235, 59, 188, 422, 278, 271, 110, 361, 36, 394, 219, 24, 242, 393, 233, 315, 471, 177, 487, 18, 443, 423, 81, 492, 286, 95]
+29
+[131, 136, 43, 141, 28, 67, 120, 24, 56, 84, 139, 81, 88, 121, 80, 116, 91, 105, 42, 147, 32, 65, 37, 39, 127, 61, 33, 29, 7, 149, 75, 15, 135, 126, 89, 146, 92, 41, 87, 63, 49, 31, 45, 36, 8, 20, 66, 144, 74, 104, 86, 71, 152, 57, 140, 128, 85, 99, 83, 129, 151, 34, 142, 19, 143, 102, 96, 53, 10, 132, 125, 23, 46, 115, 6, 122, 5, 73, 148, 138, 78, 52, 82, 2, 21, 111, 134, 145, 16, 103, 112, 133, 44, 22, 64, 113, 48, 98, 130, 95, 18, 137, 106, 93, 17, 76, 119, 100, 101, 108, 27, 30, 123, 47, 110, 13, 12, 90, 25, 1, 51, 124, 70, 117, 9, 77, 50, 60, 114, 54, 4, 26, 35, 62, 14, 55, 38, 68, 69, 59, 72, 109, 94, 150, 40, 3, 11, 97, 107, 79, 58, 118]
 1
-[66]
+[123]
+Last index 29
+BRKGA cost:337.0
+Calculated cost:337.0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & notified-limoeiro-3000-2019 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 14.0 & 902.0920040607452 & - & - & - & - & -
+ & notified-limoeiro-1000-2019 & 290 & 83810 & 152 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 337.0 & 903.0863468647003 & - & - & - & - & -
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
   batch  =>  nothing
   subcycle-separation  =>  false
-  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-3000-2020.txt"
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-1000-2020.txt"
   ip  =>  false
   arcs-mtz  =>  false
   brkga  =>  true
@@ -460,14 +480,14 @@ Reading nodes
 Reading arcs
 Checking feasibility
 Checking complete graph
-|B| = 517
-|V| = 1213
-|A| = 3489
-|V′| = 905
-|A′| = 818120
+|B| = 152
+|V| = 373
+|A| = 1063
+|V′| = 290
+|A′| = 83810
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2023-04-05T02:30:27.556
+> Experiment started at 2023-04-09T21:30:06.250
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -494,43 +514,47 @@ Checking complete graph
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[02:30:27.556] Generating initial tour...
-Initial profit: 230.0
+[21:30:06.25] Generating initial tour...
+Initial profit: 605.0
 
-[02:30:27.595] Building BRKGA data...
-New population size: 2000
+[21:30:06.26] Building BRKGA data...
+New population size: 1520
 
-[02:30:27.595] Initializing BRKGA data...
+[21:30:06.26] Initializing BRKGA data...
 
-[02:31:07.223] Warming up...
+[21:30:12.382] Warming up...
 
-[02:32:15.4] Evolving...
+[21:30:31.072] Evolving...
 * Iteration | Cost | CurrentTime
-* 1 | 10886 | 28.17 
-[02:47:16.559] End of optimization
+Performing path relink at 200...
+- No improvement found | Elapsed time: 33.80
+[21:45:31.075] End of optimization
 
-Total number of iterations: 32
-Last update iteration: 1
-Total optimization time: 901.16
-Last update time: 28.17
-Large number of iterations between improvements: 1
-Total path relink time: 0.00
-Total path relink calls: 0
+Total number of iterations: 200
+Last update iteration: 0
+Total optimization time: 900.00
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 33.80
+Total path relink calls: 1
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
-19
-[3, 357, 50, 365, 171, 46, 306, 321, 179, 498, 338, 360, 322, 408, 94, 340, 313, 517, 297, 88, 240, 54, 374, 396, 263, 290, 198, 250, 503, 252, 105, 128, 186, 161, 397, 73, 214, 121, 314, 442, 310, 60, 160, 351, 328, 260, 320, 288, 352, 33, 28, 387, 414, 115, 100, 500, 131, 438, 359, 364, 375, 247, 62, 392, 225, 48, 309, 138, 89, 346, 410, 210, 246, 355, 118, 191, 168, 222, 25, 212, 129, 251, 318, 92, 363, 424, 112, 490, 493, 49, 282, 299, 332, 142, 324, 495, 514, 484, 368, 13, 349, 329, 482, 259, 239, 79, 43, 270, 85, 441, 181, 55, 159, 34, 125, 336, 459, 241, 316, 244, 391, 57, 515, 478, 70, 291, 383, 435, 228, 194, 183, 41, 185, 4, 137, 388, 409, 192, 104, 390, 295, 20, 201, 378, 451, 215, 465, 504, 102, 31, 486, 325, 195, 266, 143, 350, 269, 406, 135, 205, 39, 206, 470, 472, 506, 407, 101, 258, 67, 103, 208, 344, 227, 399, 300, 176, 158, 38, 6, 381, 144, 63, 80, 273, 66, 136, 116, 444, 21, 126, 8, 132, 448, 369, 468, 1, 23, 27, 342, 148, 232, 52, 379, 323, 445, 261, 74, 298, 284, 302, 173, 488, 377, 149, 167, 164, 411, 22, 184, 400, 204, 37, 197, 432, 454, 434, 267, 440, 499, 213, 293, 358, 425, 224, 477, 416, 403, 111, 413, 428, 42, 354, 296, 154, 97, 513, 127, 347, 419, 319, 385, 461, 113, 497, 384, 151, 312, 108, 56, 458, 234, 76, 376, 457, 157, 327, 236, 106, 447, 109, 404, 140, 480, 220, 373, 200, 150, 256, 166, 479, 249, 172, 83, 460, 19, 229, 268, 255, 362, 348, 26, 367, 512, 68, 248, 380, 279, 511, 476, 230, 481, 257, 330, 78, 58, 449, 439, 124, 12, 122, 508, 437, 326, 430, 17, 389, 202, 153, 107, 502, 483, 237, 510, 16, 501, 262, 305, 152, 473, 165, 96, 174, 426, 30, 170, 516, 436, 193, 467, 9, 93, 339, 289, 469, 175, 405, 45, 47, 366, 489, 145, 276, 163, 253, 87, 209, 119, 429, 450, 77, 337, 353, 75, 71, 44, 243, 331, 218, 294, 254, 453, 274, 130, 187, 275, 64, 203, 415, 178, 283, 341, 431, 11, 301, 231, 162, 90, 372, 141, 182, 420, 464, 292, 211, 207, 69, 311, 285, 463, 345, 386, 196, 82, 123, 280, 156, 29, 15, 146, 485, 245, 452, 199, 507, 189, 395, 155, 5, 277, 333, 86, 427, 335, 133, 35, 370, 98, 307, 509, 114, 505, 402, 180, 265, 139, 456, 421, 417, 382, 51, 134, 221, 398, 84, 120, 496, 99, 2, 475, 72, 65, 238, 343, 7, 217, 216, 303, 446, 264, 371, 462, 272, 281, 308, 418, 334, 61, 494, 190, 226, 10, 491, 287, 401, 53, 474, 169, 147, 466, 304, 117, 455, 412, 91, 317, 14, 433, 356, 32, 40, 223, 235, 59, 188, 422, 278, 271, 110, 361, 36, 394, 219, 24, 242, 393, 233, 315, 471, 177, 487, 18, 443, 423, 81, 492, 286, 95]
+29
+[131, 136, 43, 141, 28, 67, 120, 24, 56, 84, 139, 81, 88, 121, 80, 116, 91, 105, 42, 147, 32, 65, 37, 39, 127, 61, 33, 29, 7, 149, 75, 15, 135, 126, 89, 146, 92, 41, 87, 63, 49, 31, 45, 36, 8, 20, 66, 144, 74, 104, 86, 71, 152, 57, 140, 128, 85, 99, 83, 129, 151, 34, 142, 19, 143, 102, 96, 53, 10, 132, 125, 23, 46, 115, 6, 122, 5, 73, 148, 138, 78, 52, 82, 2, 21, 111, 134, 145, 16, 103, 112, 133, 44, 22, 64, 113, 48, 98, 130, 95, 18, 137, 106, 93, 17, 76, 119, 100, 101, 108, 27, 30, 123, 47, 110, 13, 12, 90, 25, 1, 51, 124, 70, 117, 9, 77, 50, 60, 114, 54, 4, 26, 35, 62, 14, 55, 38, 68, 69, 59, 72, 109, 94, 150, 40, 3, 11, 97, 107, 79, 58, 118]
 1
-[66]
+[123]
+Last index 29
+BRKGA cost:899.0
+Calculated cost:899.0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & notified-limoeiro-3000-2020 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 44.0 & 901.1583800315857 & - & - & - & - & -
+ & notified-limoeiro-1000-2020 & 290 & 83810 & 152 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 899.0 & 900.0026791095734 & - & - & - & - & -
 ########################################################
 Application parameters:
   intersection-cuts  =>  false
   batch  =>  nothing
   subcycle-separation  =>  false
-  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-3000-2021.txt"
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-1000-2021.txt"
   ip  =>  false
   arcs-mtz  =>  false
   brkga  =>  true
@@ -548,14 +572,14 @@ Reading nodes
 Reading arcs
 Checking feasibility
 Checking complete graph
-|B| = 517
-|V| = 1213
-|A| = 3489
-|V′| = 905
-|A′| = 818120
+|B| = 152
+|V| = 373
+|A| = 1063
+|V′| = 290
+|A′| = 83810
 ###################BRKGA####################
 ------------------------------------------------------
-> Experiment started at 2023-04-05T03:19:52.998
+> Experiment started at 2023-04-09T21:45:52.183
 > Configuration: conf/config.conf
 > Algorithm Parameters:
 
@@ -582,35 +606,669 @@ Checking complete graph
 > Number of parallel threads for decoding: 1
 ------------------------------------------------------
 
-[03:19:52.998] Generating initial tour...
-Initial profit: 242.0
+[21:45:52.183] Generating initial tour...
+Initial profit: 613.0
 
-[03:19:53.036] Building BRKGA data...
+[21:45:52.192] Building BRKGA data...
+New population size: 1520
+
+[21:45:52.192] Initializing BRKGA data...
+
+[21:45:58.054] Warming up...
+
+[21:46:16.771] Evolving...
+* Iteration | Cost | CurrentTime
+Performing path relink at 200...
+- No improvement found | Elapsed time: 35.07
+[22:01:19.968] End of optimization
+
+Total number of iterations: 204
+Last update iteration: 0
+Total optimization time: 903.20
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 35.07
+Total path relink calls: 1
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+29
+[131, 136, 43, 141, 28, 67, 120, 24, 56, 84, 139, 81, 88, 121, 80, 116, 91, 105, 42, 147, 32, 65, 37, 39, 127, 61, 33, 29, 7, 149, 75, 15, 135, 126, 89, 146, 92, 41, 87, 63, 49, 31, 45, 36, 8, 20, 66, 144, 74, 104, 86, 71, 152, 57, 140, 128, 85, 99, 83, 129, 151, 34, 142, 19, 143, 102, 96, 53, 10, 132, 125, 23, 46, 115, 6, 122, 5, 73, 148, 138, 78, 52, 82, 2, 21, 111, 134, 145, 16, 103, 112, 133, 44, 22, 64, 113, 48, 98, 130, 95, 18, 137, 106, 93, 17, 76, 119, 100, 101, 108, 27, 30, 123, 47, 110, 13, 12, 90, 25, 1, 51, 124, 70, 117, 9, 77, 50, 60, 114, 54, 4, 26, 35, 62, 14, 55, 38, 68, 69, 59, 72, 109, 94, 150, 40, 3, 11, 97, 107, 79, 58, 118]
+1
+[123]
+Last index 29
+BRKGA cost:921.0
+Calculated cost:921.0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-1000-2021 & 290 & 83810 & 152 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 921.0 & 903.1970419883728 & - & - & - & - & -
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-2000-2015.txt"
+  ip  =>  false
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  nothing
+  instance-type  =>  "carlos"
+  warm-start-solution  =>  nothing
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  lb  =>  nothing
+  brkga-conf  =>  "conf/config.conf"
+Reading nodes
+Reading arcs
+Checking feasibility
+Checking complete graph
+|B| = 443
+|V| = 981
+|A| = 2860
+|V′| = 757
+|A′| = 572292
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2023-04-09T22:15:08.843
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 1000000
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[22:15:08.843] Generating initial tour...
+Initial profit: 51.0
+
+[22:15:08.882] Building BRKGA data...
 New population size: 2000
 
-[03:19:53.036] Initializing BRKGA data...
+[22:15:08.882] Initializing BRKGA data...
 
-[03:20:32.474] Warming up...
+[22:15:40.449] Warming up...
 
-[03:21:40.442] Evolving...
+[22:16:36.991] Evolving...
 * Iteration | Cost | CurrentTime
-* 1 | 11581 | 28.13 
-[03:36:41.766] End of optimization
+[22:31:40.701] End of optimization
 
-Total number of iterations: 32
-Last update iteration: 1
-Total optimization time: 901.32
-Last update time: 28.13
-Large number of iterations between improvements: 1
+Total number of iterations: 40
+Last update iteration: 0
+Total optimization time: 903.71
+Last update time: 0.00
+Large number of iterations between improvements: 0
 Total path relink time: 0.00
 Total path relink calls: 0
 Number of homogenities: 0
 Improvements in the elite set: 0
 Best individual improvements: 0
-19
-[3, 357, 50, 365, 171, 46, 306, 321, 179, 498, 338, 360, 322, 408, 94, 340, 313, 517, 297, 88, 240, 54, 374, 396, 263, 290, 198, 250, 503, 252, 105, 128, 186, 161, 397, 73, 214, 121, 314, 442, 310, 60, 160, 351, 328, 260, 320, 288, 352, 33, 28, 387, 414, 115, 100, 500, 131, 438, 359, 364, 375, 247, 62, 392, 225, 48, 309, 138, 89, 346, 410, 210, 246, 355, 118, 191, 168, 222, 25, 212, 129, 251, 318, 92, 363, 424, 112, 490, 493, 49, 282, 299, 332, 142, 324, 495, 514, 484, 368, 13, 349, 329, 482, 259, 239, 79, 43, 270, 85, 441, 181, 55, 159, 34, 125, 336, 459, 241, 316, 244, 391, 57, 515, 478, 70, 291, 383, 435, 228, 194, 183, 41, 185, 4, 137, 388, 409, 192, 104, 390, 295, 20, 201, 378, 451, 215, 465, 504, 102, 31, 486, 325, 195, 266, 143, 350, 269, 406, 135, 205, 39, 206, 470, 472, 506, 407, 101, 258, 67, 103, 208, 344, 227, 399, 300, 176, 158, 38, 6, 381, 144, 63, 80, 273, 66, 136, 116, 444, 21, 126, 8, 132, 448, 369, 468, 1, 23, 27, 342, 148, 232, 52, 379, 323, 445, 261, 74, 298, 284, 302, 173, 488, 377, 149, 167, 164, 411, 22, 184, 400, 204, 37, 197, 432, 454, 434, 267, 440, 499, 213, 293, 358, 425, 224, 477, 416, 403, 111, 413, 428, 42, 354, 296, 154, 97, 513, 127, 347, 419, 319, 385, 461, 113, 497, 384, 151, 312, 108, 56, 458, 234, 76, 376, 457, 157, 327, 236, 106, 447, 109, 404, 140, 480, 220, 373, 200, 150, 256, 166, 479, 249, 172, 83, 460, 19, 229, 268, 255, 362, 348, 26, 367, 512, 68, 248, 380, 279, 511, 476, 230, 481, 257, 330, 78, 58, 449, 439, 124, 12, 122, 508, 437, 326, 430, 17, 389, 202, 153, 107, 502, 483, 237, 510, 16, 501, 262, 305, 152, 473, 165, 96, 174, 426, 30, 170, 516, 436, 193, 467, 9, 93, 339, 289, 469, 175, 405, 45, 47, 366, 489, 145, 276, 163, 253, 87, 209, 119, 429, 450, 77, 337, 353, 75, 71, 44, 243, 331, 218, 294, 254, 453, 274, 130, 187, 275, 64, 203, 415, 178, 283, 341, 431, 11, 301, 231, 162, 90, 372, 141, 182, 420, 464, 292, 211, 207, 69, 311, 285, 463, 345, 386, 196, 82, 123, 280, 156, 29, 15, 146, 485, 245, 452, 199, 507, 189, 395, 155, 5, 277, 333, 86, 427, 335, 133, 35, 370, 98, 307, 509, 114, 505, 402, 180, 265, 139, 456, 421, 417, 382, 51, 134, 221, 398, 84, 120, 496, 99, 2, 475, 72, 65, 238, 343, 7, 217, 216, 303, 446, 264, 371, 462, 272, 281, 308, 418, 334, 61, 494, 190, 226, 10, 491, 287, 401, 53, 474, 169, 147, 466, 304, 117, 455, 412, 91, 317, 14, 433, 356, 32, 40, 223, 235, 59, 188, 422, 278, 271, 110, 361, 36, 394, 219, 24, 242, 393, 233, 315, 471, 177, 487, 18, 443, 423, 81, 492, 286, 95]
-1
-[66]
+25
+[296, 73, 393, 31, 261, 245, 439, 23, 15, 432, 255, 35, 64, 302, 178, 250, 309, 279, 79, 248, 139, 306, 328, 387, 443, 267, 440, 92, 181, 34, 339, 434, 159, 219, 202, 348, 11, 117, 307, 323, 105, 47, 76, 180, 168, 61, 197, 185, 89, 246, 427, 206, 436, 175, 400, 165, 441, 338, 404, 422, 408, 294, 42, 344, 85, 325, 177, 69, 247, 224, 60, 158, 120, 266, 362, 346, 189, 357, 333, 330, 257, 299, 98, 65, 364, 129, 200, 59, 12, 291, 204, 82, 319, 275, 358, 99, 66, 244, 56, 327, 271, 236, 240, 426, 414, 423, 301, 435, 228, 254, 431, 274, 10, 52, 84, 121, 413, 235, 326, 171, 395, 147, 290, 7, 104, 229, 351, 184, 112, 234, 164, 218, 103, 403, 6, 136, 293, 359, 115, 329, 81, 298, 156, 282, 305, 2, 415, 232, 209, 412, 36, 3, 225, 277, 353, 212, 160, 106, 215, 80, 316, 45, 270, 216, 70, 377, 399, 418, 238, 421, 388, 332, 437, 68, 72, 14, 170, 71, 354, 62, 273, 50, 86, 384, 142, 179, 154, 394, 192, 407, 389, 26, 226, 272, 83, 420, 21, 91, 110, 48, 322, 259, 402, 111, 303, 263, 442, 5, 345, 314, 24, 425, 107, 350, 75, 397, 310, 100, 379, 57, 340, 125, 113, 208, 211, 380, 371, 311, 145, 19, 172, 137, 352, 374, 396, 161, 369, 183, 383, 126, 41, 28, 30, 265, 381, 227, 318, 143, 102, 193, 252, 375, 182, 391, 166, 334, 231, 95, 124, 116, 203, 67, 438, 135, 176, 207, 372, 4, 269, 343, 51, 428, 153, 123, 243, 361, 278, 241, 54, 280, 315, 38, 373, 96, 141, 260, 43, 188, 286, 90, 18, 114, 140, 40, 155, 258, 174, 97, 313, 151, 304, 406, 222, 337, 295, 194, 398, 409, 198, 284, 13, 214, 46, 199, 134, 285, 360, 220, 25, 230, 87, 262, 324, 276, 288, 130, 152, 133, 22, 317, 433, 9, 190, 281, 169, 376, 157, 401, 17, 39, 63, 44, 128, 221, 300, 378, 342, 37, 268, 410, 146, 368, 49, 411, 108, 32, 335, 150, 386, 101, 163, 390, 16, 201, 356, 8, 292, 385, 320, 122, 118, 405, 127, 331, 55, 347, 366, 287, 321, 424, 173, 237, 132, 370, 205, 1, 363, 308, 195, 78, 283, 249, 74, 349, 336, 297, 27, 417, 29, 191, 233, 88, 341, 187, 382, 253, 264, 138, 33, 93, 119, 416, 149, 94, 196, 148, 367, 53, 429, 20, 365, 58, 289, 256, 217, 162, 419, 355, 186, 213, 239, 223, 131, 210, 242, 392, 167, 77, 109, 144, 251, 430, 312]
+3
+[161]
+Last index 25
+BRKGA cost:864.0
+Calculated cost:864.0
  & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
- & notified-limoeiro-3000-2021 & 905 & 818120 & 517 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 48.0 & 901.3240549564362 & - & - & - & - & -
+ & notified-limoeiro-2000-2015 & 757 & 572292 & 443 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 864.0 & 903.7097878456116 & - & - & - & - & -
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-2000-2016.txt"
+  ip  =>  false
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  nothing
+  instance-type  =>  "carlos"
+  warm-start-solution  =>  nothing
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  lb  =>  nothing
+  brkga-conf  =>  "conf/config.conf"
+Reading nodes
+Reading arcs
+Checking feasibility
+Checking complete graph
+|B| = 443
+|V| = 981
+|A| = 2860
+|V′| = 757
+|A′| = 572292
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2023-04-09T22:45:43.673
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 1000000
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[22:45:43.673] Generating initial tour...
+Initial profit: 72.0
+
+[22:45:43.706] Building BRKGA data...
+New population size: 2000
+
+[22:45:43.706] Initializing BRKGA data...
+
+[22:46:15.346] Warming up...
+
+[22:47:11.628] Evolving...
+* Iteration | Cost | CurrentTime
+[23:02:13.05] End of optimization
+
+Total number of iterations: 40
+Last update iteration: 0
+Total optimization time: 901.42
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+25
+[296, 73, 393, 31, 261, 245, 439, 23, 15, 432, 255, 35, 64, 302, 178, 250, 309, 279, 79, 248, 139, 306, 328, 387, 443, 267, 440, 92, 181, 34, 339, 434, 159, 219, 202, 348, 11, 117, 307, 323, 105, 47, 76, 180, 168, 61, 197, 185, 89, 246, 427, 206, 436, 175, 400, 165, 441, 338, 404, 422, 408, 294, 42, 344, 85, 325, 177, 69, 247, 224, 60, 158, 120, 266, 362, 346, 189, 357, 333, 330, 257, 299, 98, 65, 364, 129, 200, 59, 12, 291, 204, 82, 319, 275, 358, 99, 66, 244, 56, 327, 271, 236, 240, 426, 414, 423, 301, 435, 228, 254, 431, 274, 10, 52, 84, 121, 413, 235, 326, 171, 395, 147, 290, 7, 104, 229, 351, 184, 112, 234, 164, 218, 103, 403, 6, 136, 293, 359, 115, 329, 81, 298, 156, 282, 305, 2, 415, 232, 209, 412, 36, 3, 225, 277, 353, 212, 160, 106, 215, 80, 316, 45, 270, 216, 70, 377, 399, 418, 238, 421, 388, 332, 437, 68, 72, 14, 170, 71, 354, 62, 273, 50, 86, 384, 142, 179, 154, 394, 192, 407, 389, 26, 226, 272, 83, 420, 21, 91, 110, 48, 322, 259, 402, 111, 303, 263, 442, 5, 345, 314, 24, 425, 107, 350, 75, 397, 310, 100, 379, 57, 340, 125, 113, 208, 211, 380, 371, 311, 145, 19, 172, 137, 352, 374, 396, 161, 369, 183, 383, 126, 41, 28, 30, 265, 381, 227, 318, 143, 102, 193, 252, 375, 182, 391, 166, 334, 231, 95, 124, 116, 203, 67, 438, 135, 176, 207, 372, 4, 269, 343, 51, 428, 153, 123, 243, 361, 278, 241, 54, 280, 315, 38, 373, 96, 141, 260, 43, 188, 286, 90, 18, 114, 140, 40, 155, 258, 174, 97, 313, 151, 304, 406, 222, 337, 295, 194, 398, 409, 198, 284, 13, 214, 46, 199, 134, 285, 360, 220, 25, 230, 87, 262, 324, 276, 288, 130, 152, 133, 22, 317, 433, 9, 190, 281, 169, 376, 157, 401, 17, 39, 63, 44, 128, 221, 300, 378, 342, 37, 268, 410, 146, 368, 49, 411, 108, 32, 335, 150, 386, 101, 163, 390, 16, 201, 356, 8, 292, 385, 320, 122, 118, 405, 127, 331, 55, 347, 366, 287, 321, 424, 173, 237, 132, 370, 205, 1, 363, 308, 195, 78, 283, 249, 74, 349, 336, 297, 27, 417, 29, 191, 233, 88, 341, 187, 382, 253, 264, 138, 33, 93, 119, 416, 149, 94, 196, 148, 367, 53, 429, 20, 365, 58, 289, 256, 217, 162, 419, 355, 186, 213, 239, 223, 131, 210, 242, 392, 167, 77, 109, 144, 251, 430, 312]
+3
+[161]
+Last index 25
+BRKGA cost:1673.0
+Calculated cost:1673.0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-2000-2016 & 757 & 572292 & 443 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 1673.0 & 901.4212431907654 & - & - & - & - & -
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-2000-2017.txt"
+  ip  =>  false
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  nothing
+  instance-type  =>  "carlos"
+  warm-start-solution  =>  nothing
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  lb  =>  nothing
+  brkga-conf  =>  "conf/config.conf"
+Reading nodes
+Reading arcs
+Checking feasibility
+Checking complete graph
+|B| = 443
+|V| = 981
+|A| = 2860
+|V′| = 757
+|A′| = 572292
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2023-04-09T23:16:11.228
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 1000000
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[23:16:11.228] Generating initial tour...
+Initial profit: 109.0
+
+[23:16:11.259] Building BRKGA data...
+New population size: 2000
+
+[23:16:11.259] Initializing BRKGA data...
+
+[23:16:42.829] Warming up...
+
+[23:17:39.023] Evolving...
+* Iteration | Cost | CurrentTime
+[23:32:42.37] End of optimization
+
+Total number of iterations: 40
+Last update iteration: 0
+Total optimization time: 903.35
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+25
+[296, 73, 393, 31, 261, 245, 439, 23, 15, 432, 255, 35, 64, 302, 178, 250, 309, 279, 79, 248, 139, 306, 328, 387, 443, 267, 440, 92, 181, 34, 339, 434, 159, 219, 202, 348, 11, 117, 307, 323, 105, 47, 76, 180, 168, 61, 197, 185, 89, 246, 427, 206, 436, 175, 400, 165, 441, 338, 404, 422, 408, 294, 42, 344, 85, 325, 177, 69, 247, 224, 60, 158, 120, 266, 362, 346, 189, 357, 333, 330, 257, 299, 98, 65, 364, 129, 200, 59, 12, 291, 204, 82, 319, 275, 358, 99, 66, 244, 56, 327, 271, 236, 240, 426, 414, 423, 301, 435, 228, 254, 431, 274, 10, 52, 84, 121, 413, 235, 326, 171, 395, 147, 290, 7, 104, 229, 351, 184, 112, 234, 164, 218, 103, 403, 6, 136, 293, 359, 115, 329, 81, 298, 156, 282, 305, 2, 415, 232, 209, 412, 36, 3, 225, 277, 353, 212, 160, 106, 215, 80, 316, 45, 270, 216, 70, 377, 399, 418, 238, 421, 388, 332, 437, 68, 72, 14, 170, 71, 354, 62, 273, 50, 86, 384, 142, 179, 154, 394, 192, 407, 389, 26, 226, 272, 83, 420, 21, 91, 110, 48, 322, 259, 402, 111, 303, 263, 442, 5, 345, 314, 24, 425, 107, 350, 75, 397, 310, 100, 379, 57, 340, 125, 113, 208, 211, 380, 371, 311, 145, 19, 172, 137, 352, 374, 396, 161, 369, 183, 383, 126, 41, 28, 30, 265, 381, 227, 318, 143, 102, 193, 252, 375, 182, 391, 166, 334, 231, 95, 124, 116, 203, 67, 438, 135, 176, 207, 372, 4, 269, 343, 51, 428, 153, 123, 243, 361, 278, 241, 54, 280, 315, 38, 373, 96, 141, 260, 43, 188, 286, 90, 18, 114, 140, 40, 155, 258, 174, 97, 313, 151, 304, 406, 222, 337, 295, 194, 398, 409, 198, 284, 13, 214, 46, 199, 134, 285, 360, 220, 25, 230, 87, 262, 324, 276, 288, 130, 152, 133, 22, 317, 433, 9, 190, 281, 169, 376, 157, 401, 17, 39, 63, 44, 128, 221, 300, 378, 342, 37, 268, 410, 146, 368, 49, 411, 108, 32, 335, 150, 386, 101, 163, 390, 16, 201, 356, 8, 292, 385, 320, 122, 118, 405, 127, 331, 55, 347, 366, 287, 321, 424, 173, 237, 132, 370, 205, 1, 363, 308, 195, 78, 283, 249, 74, 349, 336, 297, 27, 417, 29, 191, 233, 88, 341, 187, 382, 253, 264, 138, 33, 93, 119, 416, 149, 94, 196, 148, 367, 53, 429, 20, 365, 58, 289, 256, 217, 162, 419, 355, 186, 213, 239, 223, 131, 210, 242, 392, 167, 77, 109, 144, 251, 430, 312]
+3
+[161]
+Last index 25
+BRKGA cost:2603.0
+Calculated cost:2603.0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-2000-2017 & 757 & 572292 & 443 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 2603.0 & 903.3470180034637 & - & - & - & - & -
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-2000-2018.txt"
+  ip  =>  false
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  nothing
+  instance-type  =>  "carlos"
+  warm-start-solution  =>  nothing
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  lb  =>  nothing
+  brkga-conf  =>  "conf/config.conf"
+Reading nodes
+Reading arcs
+Checking feasibility
+Checking complete graph
+|B| = 443
+|V| = 981
+|A| = 2860
+|V′| = 757
+|A′| = 572292
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2023-04-09T23:46:40.550
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 1000000
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[23:46:40.55] Generating initial tour...
+Initial profit: 109.0
+
+[23:46:40.581] Building BRKGA data...
+New population size: 2000
+
+[23:46:40.581] Initializing BRKGA data...
+
+[23:47:12.173] Warming up...
+
+[23:48:08.777] Evolving...
+* Iteration | Cost | CurrentTime
+[00:03:12.308] End of optimization
+
+Total number of iterations: 40
+Last update iteration: 0
+Total optimization time: 903.53
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+25
+[296, 73, 393, 31, 261, 245, 439, 23, 15, 432, 255, 35, 64, 302, 178, 250, 309, 279, 79, 248, 139, 306, 328, 387, 443, 267, 440, 92, 181, 34, 339, 434, 159, 219, 202, 348, 11, 117, 307, 323, 105, 47, 76, 180, 168, 61, 197, 185, 89, 246, 427, 206, 436, 175, 400, 165, 441, 338, 404, 422, 408, 294, 42, 344, 85, 325, 177, 69, 247, 224, 60, 158, 120, 266, 362, 346, 189, 357, 333, 330, 257, 299, 98, 65, 364, 129, 200, 59, 12, 291, 204, 82, 319, 275, 358, 99, 66, 244, 56, 327, 271, 236, 240, 426, 414, 423, 301, 435, 228, 254, 431, 274, 10, 52, 84, 121, 413, 235, 326, 171, 395, 147, 290, 7, 104, 229, 351, 184, 112, 234, 164, 218, 103, 403, 6, 136, 293, 359, 115, 329, 81, 298, 156, 282, 305, 2, 415, 232, 209, 412, 36, 3, 225, 277, 353, 212, 160, 106, 215, 80, 316, 45, 270, 216, 70, 377, 399, 418, 238, 421, 388, 332, 437, 68, 72, 14, 170, 71, 354, 62, 273, 50, 86, 384, 142, 179, 154, 394, 192, 407, 389, 26, 226, 272, 83, 420, 21, 91, 110, 48, 322, 259, 402, 111, 303, 263, 442, 5, 345, 314, 24, 425, 107, 350, 75, 397, 310, 100, 379, 57, 340, 125, 113, 208, 211, 380, 371, 311, 145, 19, 172, 137, 352, 374, 396, 161, 369, 183, 383, 126, 41, 28, 30, 265, 381, 227, 318, 143, 102, 193, 252, 375, 182, 391, 166, 334, 231, 95, 124, 116, 203, 67, 438, 135, 176, 207, 372, 4, 269, 343, 51, 428, 153, 123, 243, 361, 278, 241, 54, 280, 315, 38, 373, 96, 141, 260, 43, 188, 286, 90, 18, 114, 140, 40, 155, 258, 174, 97, 313, 151, 304, 406, 222, 337, 295, 194, 398, 409, 198, 284, 13, 214, 46, 199, 134, 285, 360, 220, 25, 230, 87, 262, 324, 276, 288, 130, 152, 133, 22, 317, 433, 9, 190, 281, 169, 376, 157, 401, 17, 39, 63, 44, 128, 221, 300, 378, 342, 37, 268, 410, 146, 368, 49, 411, 108, 32, 335, 150, 386, 101, 163, 390, 16, 201, 356, 8, 292, 385, 320, 122, 118, 405, 127, 331, 55, 347, 366, 287, 321, 424, 173, 237, 132, 370, 205, 1, 363, 308, 195, 78, 283, 249, 74, 349, 336, 297, 27, 417, 29, 191, 233, 88, 341, 187, 382, 253, 264, 138, 33, 93, 119, 416, 149, 94, 196, 148, 367, 53, 429, 20, 365, 58, 289, 256, 217, 162, 419, 355, 186, 213, 239, 223, 131, 210, 242, 392, 167, 77, 109, 144, 251, 430, 312]
+3
+[161]
+Last index 25
+BRKGA cost:2686.0
+Calculated cost:2686.0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-2000-2018 & 757 & 572292 & 443 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 2686.0 & 903.5304589271545 & - & - & - & - & -
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-2000-2019.txt"
+  ip  =>  false
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  nothing
+  instance-type  =>  "carlos"
+  warm-start-solution  =>  nothing
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  lb  =>  nothing
+  brkga-conf  =>  "conf/config.conf"
+Reading nodes
+Reading arcs
+Checking feasibility
+Checking complete graph
+|B| = 443
+|V| = 981
+|A| = 2860
+|V′| = 757
+|A′| = 572292
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2023-04-10T00:17:11.369
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 1000000
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[00:17:11.369] Generating initial tour...
+Initial profit: 109.0
+
+[00:17:11.399] Building BRKGA data...
+New population size: 2000
+
+[00:17:11.399] Initializing BRKGA data...
+
+[00:17:43.134] Warming up...
+
+[00:18:39.347] Evolving...
+* Iteration | Cost | CurrentTime
+[00:33:44.295] End of optimization
+
+Total number of iterations: 40
+Last update iteration: 0
+Total optimization time: 904.95
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+25
+[296, 73, 393, 31, 261, 245, 439, 23, 15, 432, 255, 35, 64, 302, 178, 250, 309, 279, 79, 248, 139, 306, 328, 387, 443, 267, 440, 92, 181, 34, 339, 434, 159, 219, 202, 348, 11, 117, 307, 323, 105, 47, 76, 180, 168, 61, 197, 185, 89, 246, 427, 206, 436, 175, 400, 165, 441, 338, 404, 422, 408, 294, 42, 344, 85, 325, 177, 69, 247, 224, 60, 158, 120, 266, 362, 346, 189, 357, 333, 330, 257, 299, 98, 65, 364, 129, 200, 59, 12, 291, 204, 82, 319, 275, 358, 99, 66, 244, 56, 327, 271, 236, 240, 426, 414, 423, 301, 435, 228, 254, 431, 274, 10, 52, 84, 121, 413, 235, 326, 171, 395, 147, 290, 7, 104, 229, 351, 184, 112, 234, 164, 218, 103, 403, 6, 136, 293, 359, 115, 329, 81, 298, 156, 282, 305, 2, 415, 232, 209, 412, 36, 3, 225, 277, 353, 212, 160, 106, 215, 80, 316, 45, 270, 216, 70, 377, 399, 418, 238, 421, 388, 332, 437, 68, 72, 14, 170, 71, 354, 62, 273, 50, 86, 384, 142, 179, 154, 394, 192, 407, 389, 26, 226, 272, 83, 420, 21, 91, 110, 48, 322, 259, 402, 111, 303, 263, 442, 5, 345, 314, 24, 425, 107, 350, 75, 397, 310, 100, 379, 57, 340, 125, 113, 208, 211, 380, 371, 311, 145, 19, 172, 137, 352, 374, 396, 161, 369, 183, 383, 126, 41, 28, 30, 265, 381, 227, 318, 143, 102, 193, 252, 375, 182, 391, 166, 334, 231, 95, 124, 116, 203, 67, 438, 135, 176, 207, 372, 4, 269, 343, 51, 428, 153, 123, 243, 361, 278, 241, 54, 280, 315, 38, 373, 96, 141, 260, 43, 188, 286, 90, 18, 114, 140, 40, 155, 258, 174, 97, 313, 151, 304, 406, 222, 337, 295, 194, 398, 409, 198, 284, 13, 214, 46, 199, 134, 285, 360, 220, 25, 230, 87, 262, 324, 276, 288, 130, 152, 133, 22, 317, 433, 9, 190, 281, 169, 376, 157, 401, 17, 39, 63, 44, 128, 221, 300, 378, 342, 37, 268, 410, 146, 368, 49, 411, 108, 32, 335, 150, 386, 101, 163, 390, 16, 201, 356, 8, 292, 385, 320, 122, 118, 405, 127, 331, 55, 347, 366, 287, 321, 424, 173, 237, 132, 370, 205, 1, 363, 308, 195, 78, 283, 249, 74, 349, 336, 297, 27, 417, 29, 191, 233, 88, 341, 187, 382, 253, 264, 138, 33, 93, 119, 416, 149, 94, 196, 148, 367, 53, 429, 20, 365, 58, 289, 256, 217, 162, 419, 355, 186, 213, 239, 223, 131, 210, 242, 392, 167, 77, 109, 144, 251, 430, 312]
+3
+[161]
+Last index 25
+BRKGA cost:4334.0
+Calculated cost:4334.0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-2000-2019 & 757 & 572292 & 443 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 4334.0 & 904.9486019611359 & - & - & - & - & -
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-2000-2020.txt"
+  ip  =>  false
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  nothing
+  instance-type  =>  "carlos"
+  warm-start-solution  =>  nothing
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  lb  =>  nothing
+  brkga-conf  =>  "conf/config.conf"
+Reading nodes
+Reading arcs
+Checking feasibility
+Checking complete graph
+|B| = 443
+|V| = 981
+|A| = 2860
+|V′| = 757
+|A′| = 572292
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2023-04-10T00:47:49.440
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 1000000
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[00:47:49.44] Generating initial tour...
+Initial profit: 208.0
+
+[00:47:49.472] Building BRKGA data...
+New population size: 2000
+
+[00:47:49.472] Initializing BRKGA data...
+
+[00:48:22.163] Warming up...
+
+[00:49:19.703] Evolving...
+* Iteration | Cost | CurrentTime
+[01:04:26.383] End of optimization
+
+Total number of iterations: 39
+Last update iteration: 0
+Total optimization time: 906.68
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+25
+[296, 73, 393, 31, 261, 245, 439, 23, 15, 432, 255, 35, 64, 302, 178, 250, 309, 279, 79, 248, 139, 306, 328, 387, 443, 267, 440, 92, 181, 34, 339, 434, 159, 219, 202, 348, 11, 117, 307, 323, 105, 47, 76, 180, 168, 61, 197, 185, 89, 246, 427, 206, 436, 175, 400, 165, 441, 338, 404, 422, 408, 294, 42, 344, 85, 325, 177, 69, 247, 224, 60, 158, 120, 266, 362, 346, 189, 357, 333, 330, 257, 299, 98, 65, 364, 129, 200, 59, 12, 291, 204, 82, 319, 275, 358, 99, 66, 244, 56, 327, 271, 236, 240, 426, 414, 423, 301, 435, 228, 254, 431, 274, 10, 52, 84, 121, 413, 235, 326, 171, 395, 147, 290, 7, 104, 229, 351, 184, 112, 234, 164, 218, 103, 403, 6, 136, 293, 359, 115, 329, 81, 298, 156, 282, 305, 2, 415, 232, 209, 412, 36, 3, 225, 277, 353, 212, 160, 106, 215, 80, 316, 45, 270, 216, 70, 377, 399, 418, 238, 421, 388, 332, 437, 68, 72, 14, 170, 71, 354, 62, 273, 50, 86, 384, 142, 179, 154, 394, 192, 407, 389, 26, 226, 272, 83, 420, 21, 91, 110, 48, 322, 259, 402, 111, 303, 263, 442, 5, 345, 314, 24, 425, 107, 350, 75, 397, 310, 100, 379, 57, 340, 125, 113, 208, 211, 380, 371, 311, 145, 19, 172, 137, 352, 374, 396, 161, 369, 183, 383, 126, 41, 28, 30, 265, 381, 227, 318, 143, 102, 193, 252, 375, 182, 391, 166, 334, 231, 95, 124, 116, 203, 67, 438, 135, 176, 207, 372, 4, 269, 343, 51, 428, 153, 123, 243, 361, 278, 241, 54, 280, 315, 38, 373, 96, 141, 260, 43, 188, 286, 90, 18, 114, 140, 40, 155, 258, 174, 97, 313, 151, 304, 406, 222, 337, 295, 194, 398, 409, 198, 284, 13, 214, 46, 199, 134, 285, 360, 220, 25, 230, 87, 262, 324, 276, 288, 130, 152, 133, 22, 317, 433, 9, 190, 281, 169, 376, 157, 401, 17, 39, 63, 44, 128, 221, 300, 378, 342, 37, 268, 410, 146, 368, 49, 411, 108, 32, 335, 150, 386, 101, 163, 390, 16, 201, 356, 8, 292, 385, 320, 122, 118, 405, 127, 331, 55, 347, 366, 287, 321, 424, 173, 237, 132, 370, 205, 1, 363, 308, 195, 78, 283, 249, 74, 349, 336, 297, 27, 417, 29, 191, 233, 88, 341, 187, 382, 253, 264, 138, 33, 93, 119, 416, 149, 94, 196, 148, 367, 53, 429, 20, 365, 58, 289, 256, 217, 162, 419, 355, 186, 213, 239, 223, 131, 210, 242, 392, 167, 77, 109, 144, 251, 430, 312]
+3
+[161]
+Last index 25
+BRKGA cost:10852.0
+Calculated cost:10852.0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-2000-2020 & 757 & 572292 & 443 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 10852.0 & 906.680230140686 & - & - & - & - & -
+########################################################
+Application parameters:
+  intersection-cuts  =>  false
+  batch  =>  nothing
+  subcycle-separation  =>  false
+  instance  =>  "data/carlos/notified-limoeiro/notified-limoeiro-2000-2021.txt"
+  ip  =>  false
+  arcs-mtz  =>  false
+  brkga  =>  true
+  dd  =>  false
+  unitary-profits  =>  false
+  out  =>  nothing
+  instance-type  =>  "carlos"
+  warm-start-solution  =>  nothing
+  y-integer  =>  false
+  vehicle-time-limit  =>  "120"
+  nosolve  =>  false
+  lb  =>  nothing
+  brkga-conf  =>  "conf/config.conf"
+Reading nodes
+Reading arcs
+Checking feasibility
+Checking complete graph
+|B| = 443
+|V| = 981
+|A| = 2860
+|V′| = 757
+|A′| = 572292
+###################BRKGA####################
+------------------------------------------------------
+> Experiment started at 2023-04-10T01:18:31.573
+> Configuration: conf/config.conf
+> Algorithm Parameters:
+
+>  - population_size 2000
+>  - elite_percentage 0.3
+>  - mutants_percentage 0.15
+>  - num_elite_parents 2
+>  - total_parents 3
+>  - bias_type LOGINVERSE
+>  - num_independent_populations 3
+>  - pr_number_pairs 0
+>  - pr_minimum_distance 0.15
+>  - pr_type PERMUTATION
+>  - pr_selection BESTSOLUTION
+>  - alpha_block_size 1.0
+>  - pr_percentage 1.0
+>  - exchange_interval 200
+>  - num_exchange_indivuduals 2
+>  - reset_interval 600
+> Seed: 100
+> Stop rule: GENERATIONS
+> Stop argument: 1000000
+> Maximum time (s): 900.0
+> Number of parallel threads for decoding: 1
+------------------------------------------------------
+
+[01:18:31.573] Generating initial tour...
+Initial profit: 212.0
+
+[01:18:31.604] Building BRKGA data...
+New population size: 2000
+
+[01:18:31.604] Initializing BRKGA data...
+
+[01:19:03.301] Warming up...
+
+[01:19:59.607] Evolving...
+* Iteration | Cost | CurrentTime
+[01:35:07.871] End of optimization
+
+Total number of iterations: 40
+Last update iteration: 0
+Total optimization time: 908.26
+Last update time: 0.00
+Large number of iterations between improvements: 0
+Total path relink time: 0.00
+Total path relink calls: 0
+Number of homogenities: 0
+Improvements in the elite set: 0
+Best individual improvements: 0
+25
+[296, 73, 393, 31, 261, 245, 439, 23, 15, 432, 255, 35, 64, 302, 178, 250, 309, 279, 79, 248, 139, 306, 328, 387, 443, 267, 440, 92, 181, 34, 339, 434, 159, 219, 202, 348, 11, 117, 307, 323, 105, 47, 76, 180, 168, 61, 197, 185, 89, 246, 427, 206, 436, 175, 400, 165, 441, 338, 404, 422, 408, 294, 42, 344, 85, 325, 177, 69, 247, 224, 60, 158, 120, 266, 362, 346, 189, 357, 333, 330, 257, 299, 98, 65, 364, 129, 200, 59, 12, 291, 204, 82, 319, 275, 358, 99, 66, 244, 56, 327, 271, 236, 240, 426, 414, 423, 301, 435, 228, 254, 431, 274, 10, 52, 84, 121, 413, 235, 326, 171, 395, 147, 290, 7, 104, 229, 351, 184, 112, 234, 164, 218, 103, 403, 6, 136, 293, 359, 115, 329, 81, 298, 156, 282, 305, 2, 415, 232, 209, 412, 36, 3, 225, 277, 353, 212, 160, 106, 215, 80, 316, 45, 270, 216, 70, 377, 399, 418, 238, 421, 388, 332, 437, 68, 72, 14, 170, 71, 354, 62, 273, 50, 86, 384, 142, 179, 154, 394, 192, 407, 389, 26, 226, 272, 83, 420, 21, 91, 110, 48, 322, 259, 402, 111, 303, 263, 442, 5, 345, 314, 24, 425, 107, 350, 75, 397, 310, 100, 379, 57, 340, 125, 113, 208, 211, 380, 371, 311, 145, 19, 172, 137, 352, 374, 396, 161, 369, 183, 383, 126, 41, 28, 30, 265, 381, 227, 318, 143, 102, 193, 252, 375, 182, 391, 166, 334, 231, 95, 124, 116, 203, 67, 438, 135, 176, 207, 372, 4, 269, 343, 51, 428, 153, 123, 243, 361, 278, 241, 54, 280, 315, 38, 373, 96, 141, 260, 43, 188, 286, 90, 18, 114, 140, 40, 155, 258, 174, 97, 313, 151, 304, 406, 222, 337, 295, 194, 398, 409, 198, 284, 13, 214, 46, 199, 134, 285, 360, 220, 25, 230, 87, 262, 324, 276, 288, 130, 152, 133, 22, 317, 433, 9, 190, 281, 169, 376, 157, 401, 17, 39, 63, 44, 128, 221, 300, 378, 342, 37, 268, 410, 146, 368, 49, 411, 108, 32, 335, 150, 386, 101, 163, 390, 16, 201, 356, 8, 292, 385, 320, 122, 118, 405, 127, 331, 55, 347, 366, 287, 321, 424, 173, 237, 132, 370, 205, 1, 363, 308, 195, 78, 283, 249, 74, 349, 336, 297, 27, 417, 29, 191, 233, 88, 341, 187, 382, 253, 264, 138, 33, 93, 119, 416, 149, 94, 196, 148, 367, 53, 429, 20, 365, 58, 289, 256, 217, 162, 419, 355, 186, 213, 239, 223, 131, 210, 242, 392, 167, 77, 109, 144, 251, 430, 312]
+3
+[161]
+Last index 25
+BRKGA cost:11515.0
+Calculated cost:11515.0
+ & :instance & :|V| & :|A| & :|B| & :T & :model & :initialLP & :yLP & :yLPTime & :intersectionCuts1 & :intersectionCuts2 & :intersectionCutsTime & :maxFlowLP & :maxFlowCuts & :maxFlowCutsTime & :lazyCuts & :cost & :solverTime & :relativeGAP & :nodeCount & :meters & :tourMinutes & :blocksMeters
+ & notified-limoeiro-2000-2021 & 757 & 572292 & 443 & 120.0 & BKRGA & - & - & - & - & - & - & - & - & - & - & 11515.0 & 908.2634580135345 & - & - & - & - & -
 ########################################################
