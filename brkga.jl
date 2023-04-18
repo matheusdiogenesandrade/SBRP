@@ -292,32 +292,34 @@ function get_idxs_blocks(chromosome::Array{Float64}, data::SBRPData)
 end
 
 function decode!(chromosome::Array{Float64}, data::SBRPData, rewrite::Bool)::Float64
-  # inport blogal variables
-  global N_FEASIBLE
-  global N_INFEASIBLE 
-  global DECODING_TIME 
+    # import blogal variables
+    global N_FEASIBLE
+    global N_INFEASIBLE 
+    global DECODING_TIME 
 
-  DECODING_TIME += curr_decode_time = @elapsed begin
+    DECODING_TIME += curr_decode_time = @elapsed begin
 
-    # attrs
-    B = data.B
+        # attrs
+        B = data.B
 
-    # get min tour time
-    idxs_blocks = get_idxs_blocks(chromosome, data)
-    tour_time, consumed_times = dijkstra(data, idxs_blocks)
-  end
-    
+        # get min tour time
+        idxs_blocks = get_idxs_blocks(chromosome, data)
+        tour_time, consumed_times = dijkstra(data, idxs_blocks)
+
+        idxs_blocks = idxs_blocks[begin:findlast(idx -> any(i -> consumed_times[(idx, i)] <= data.T, data.B[idx]), idxs_blocks)]
+    end
+
     if tour_time > data.T # check feasibility
 
         error("Not here")
-#      println("Infeasile with time ", tour_time)
-      N_INFEASIBLE += 1
-      return -∞
+        #      println("Infeasile with time ", tour_time)
+        N_INFEASIBLE += 1
+        return -∞
 
     else # return profit
-#      println("Feasile with time ", tour_time)
-      N_FEASIBLE += 1
-      return ∑(data.profits[B[idx]] for idx in idxs_blocks)
+        #      println("Feasile with time ", tour_time)
+        N_FEASIBLE += 1
+        return ∑(data.profits[B[idx]] for idx in idxs_blocks)
 
     end
 end
@@ -672,6 +674,7 @@ function run_brkga(conf_dir::String, data::SBRPData)
   info["cost"], info["solverTime"] = string(best_cost), string(total_elapsed_time)
 
   println("BRKGA cost:", best_cost)
+  println("Blocks cost:", ∑(data.profits[block] for block in blocks))
   println("Calculated cost:", info["cost"])
 
   return tour, info, blocks

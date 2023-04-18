@@ -167,9 +167,8 @@ function create_complete_digraph(data::SBRPData)
   adjList = Dict{Int64, Vi}(i => [] for i in V)
   [push!(adjList[i], j) for (i, j) in A]
 
-  # get paths
-  for i in Vb
-#	flush_println(i)
+  function find_paths(i)
+	flush_println(i)
     # bfs
     distances, pred, q = Dict{Int, Float64}(i => typemax(Float64) for i in V), Dict{Int, Int}(i => i for i in V), [i]
     distances[i] = 0.0
@@ -196,7 +195,17 @@ function create_complete_digraph(data::SBRPData)
       end
       pushfirst!(paths[(i, j)], i)
     end
+  end
 
+  # get paths
+  tasks = []
+  for i in Vb
+      t = @task find_paths(i)
+      schedule(t)
+      push!(tasks, t)
+  end
+  for t in tasks
+      wait(t)
   end
 
   # dummy arcs
@@ -487,27 +496,39 @@ function calculate_shortest_paths(data::SBRPData)
   [push!(adjList[i], j) for (i, j) in A]
 
   distances = Dict{Arc, Float64}()
-  for i in Vb
-#  	flush_println(i)
-    # bfs
-    q = [i]
-    distances[(i, i)] = 0.0
-    while !∅(q)
-      # curr node
-      curr = pop!(q)
-      # next nodes
-      for next in adjList[curr] 
-        # edge case
-        next == data.depot && continue
 
-        # update distance and push new nodes
-        b = distances[(i, curr)] + data.D.distance[(curr, next)]
-        if !in((i, next), keys(distances)) || distances[(i, next)] > b
-          distances[(i, next)] = b
-          push!(q, next)
-        end
+  function find_paths(i)
+      flush_println(i)
+      # bfs
+      q = [i]
+      distances[(i, i)] = 0.0
+      while !∅(q)
+          # curr node
+          curr = pop!(q)
+          # next nodes
+          for next in adjList[curr] 
+              # edge case
+              next == data.depot && continue
+
+              # update distance and push new nodes
+              b = distances[(i, curr)] + data.D.distance[(curr, next)]
+              if !in((i, next), keys(distances)) || distances[(i, next)] > b
+                  distances[(i, next)] = b
+                  push!(q, next)
+              end
+          end
       end
-    end
+  end
+
+  # get paths
+  tasks = []
+  for i in Vb
+      t = @task find_paths(i)
+      schedule(t)
+      push!(tasks, t)
+  end
+  for t in tasks
+      wait(t)
   end
 
   return distances
@@ -518,6 +539,12 @@ check_sbrp_complete_feasibility(data::SBRPData, Vb) = any([!in((i, j), data.D.A)
 function check_sbrp_feasibility(data::SBRPData)
   V′ = get_blocks_nodes(data)
   A = data.D.A
+  adjList = Dict{Int, Vi}(i => Vi() for i in V′)
+  revAdjList = Dict{Int, Vi}(i => Vi() for i in V′)
+  for (i, j) in A
+    push!(adjList[i], j)
+    push!(revAdjList[j], i)
+  end
   # Kosaraju’s algorithm
   # outgoing arcs
   # bfs
@@ -527,7 +554,7 @@ function check_sbrp_feasibility(data::SBRPData)
   q = [v]
   while !∅(q)
     curr = popfirst!(q) 
-    for (i, j) in δ⁺(A, curr)
+    for (i, j) in adjList[curr]
       if !in(j, visited_vertices)
         push!(q, j)
         push!(visited_vertices, j)
@@ -554,7 +581,7 @@ function check_sbrp_feasibility(data::SBRPData)
   q = [v]
   while !∅(q)
     curr = popfirst!(q) 
-    for (i, j) in δ⁻(A, curr)
+    for (i, j) in revAdjList[curr]
       if !in(i, visited_vertices)
         push!(q, i)
         push!(visited_vertices, i)
