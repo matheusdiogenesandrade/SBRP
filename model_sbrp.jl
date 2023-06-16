@@ -8,8 +8,20 @@ using ...Data
 using ...Data.SBRP
 using CPLEX
 using JuMP
+using Dates
 
-export build_model_sbrp
+export build_model_sbrp, COST_PER_TIME
+
+# cost and time track
+mutable struct CostPerTime
+    list::Vector{Pair{Float64, Float64}}
+    lock::ReentrantLock
+    CostPerTime() = new(Vector{Pair{Float64, Float64}}(), ReentrantLock())
+end
+
+STARTING_TIME::Float64 = 0.0
+COST_PER_TIME::CostPerTime = CostPerTime()
+
 
 include("SparseMaxFlowMinCut.jl")
 
@@ -21,6 +33,39 @@ end
 add_intersection_cuts2(model, cuts::Vector{Arcs}) = add_cuts(model, [(2, sum(model[:x][a] for a in arcs)) for arcs in cuts])
 
 add_subtour_cuts(model, sets::Set{Tuple{Arcs, Arcs}}) = add_cuts(model, [(∑(model[:x][a] for a in Aₛ), ∑(∑(model[:x][a] for a in Aᵢ))) for (Aₛ, Aᵢ) in sets])
+
+function updateCostPerTimeRelation(data::SBRPData, model, cb_data::CPLEX.CallbackContext, context_id::Clong)
+
+    global STARTING_TIME 
+    global COST_PER_TIME
+
+  y = model[:y]
+
+  # preliminary checkings
+  context_id != CPX_CALLBACKCONTEXT_CANDIDATE && return
+  ispoint_p = Ref{Cint}()
+  (CPXcallbackcandidateispoint(cb_data, ispoint_p) != 0 || ispoint_p[] == 0) && return 
+
+  # get values
+  CPLEX.load_callback_variable_primal(cb_data, context_id)
+  y_val = callback_value.(Ref(cb_data), y)
+
+  # get cost
+  curr_profit::Float64 = sum(block::Vi -> data.profits[block], filter(block::Vi -> y_val[block] > 0.5, data.B); init = 0)
+  # update cost
+  lock(COST_PER_TIME.lock) do 
+ 
+      if isempty(COST_PER_TIME.list) || curr_profit > last(COST_PER_TIME.list).second
+ 
+          curr_time::Float64 = datetime2unix(now()) - STARTING_TIME
+          push!(COST_PER_TIME.list, Pair{Float64, Float64}(curr_time, curr_profit))
+ 
+      end
+ 
+  end
+
+    return
+end
 
 function lazy_separation(data::SBRPData, Vb, info, model, cb_data::CPLEX.CallbackContext, context_id::Clong)
   x, y = model[:x], model[:y]
@@ -326,9 +371,11 @@ function build_model_sbrp(data::SBRPData, app::Dict{String,Any})
 
   # integer model
   model, x, y = create_model()
-#  MOI.set(model, MOI.NumberOfThreads(), 1) # thread numbers
+  MOI.set(model, MOI.NumberOfThreads(), 1) # thread numbers
 #  MOI.set(model, CPLEX.CallbackFunction(), (cb_data, context_id) -> lazy_separation(data, Vb, info, model, cb_data, context_id)) # lazy callback
+    MOI.set(model, CPLEX.CallbackFunction(), (cb_data, context_id) -> updateCostPerTimeRelation(data, model, cb_data, context_id)) # lazy callback
 
+  STARTING_TIME = datetime2unix(now())
   # return
   return (model, x, y, info)
 end

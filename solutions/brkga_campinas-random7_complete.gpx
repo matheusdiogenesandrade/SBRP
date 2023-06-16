@@ -8,25 +8,25 @@
 </metadata>
 <trk>
 <name>Example GPX Document</name>
-<trkseg><trkpt lat="-22.920654" lon="-47.1013391">
+<trkseg><trkpt lat="-22.9201643" lon="-47.1066565">
+</trkpt>
+<trkpt lat="-22.9245466" lon="-47.1070483">
+</trkpt>
+<trkpt lat="-22.9251688" lon="-47.1083438">
+</trkpt>
+<trkpt lat="-22.920654" lon="-47.1013391">
 </trkpt>
 <trkpt lat="-22.9214535" lon="-47.1001534">
 </trkpt>
-<trkpt lat="-22.9259973" lon="-47.1018891">
-</trkpt>
-<trkpt lat="-22.9276047" lon="-47.099493">
-</trkpt>
-<trkpt lat="-22.9242903" lon="-47.1063467">
-</trkpt>
-<trkpt lat="-22.9253206" lon="-47.1086293">
-</trkpt>
 <trkpt lat="-22.9256207" lon="-47.1093578">
 </trkpt>
-<trkpt lat="-22.9281915" lon="-47.1074025">
-</trkpt>
-<trkpt lat="-22.9201643" lon="-47.1066565">
-</trkpt>
 <trkpt lat="-22.9159167" lon="-47.1058129">
+</trkpt>
+<trkpt lat="-22.9272491" lon="-47.1028774">
+</trkpt>
+<trkpt lat="-22.9281764" lon="-47.1070979">
+</trkpt>
+<trkpt lat="-22.9276047" lon="-47.099493">
 </trkpt>
 </trkseg>
 </trk>

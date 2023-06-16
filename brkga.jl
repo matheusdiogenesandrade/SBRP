@@ -14,6 +14,16 @@ using ConfParser
 using Dates
 using Printf
 
+# cost and time track
+mutable struct CostPerTime
+    list::Vector{Pair{Float64, Float64}}
+    lock::ReentrantLock
+    CostPerTime() = new(Vector{Pair{Float64, Float64}}(), ReentrantLock())
+end
+
+STARTING_TIME::Float64 = 0.0
+COST_PER_TIME::CostPerTime = CostPerTime()
+
 """
     @enum StopRule
 
@@ -296,6 +306,8 @@ function decode!(chromosome::Array{Float64}, data::SBRPData, rewrite::Bool)::Flo
     global N_FEASIBLE
     global N_INFEASIBLE 
     global DECODING_TIME 
+    global STARTING_TIME 
+    global COST_PER_TIME
 
     DECODING_TIME += curr_decode_time = @elapsed begin
 
@@ -319,7 +331,21 @@ function decode!(chromosome::Array{Float64}, data::SBRPData, rewrite::Bool)::Flo
     else # return profit
         #      println("Feasile with time ", tour_time)
         N_FEASIBLE += 1
-        return ∑(data.profits[B[idx]] for idx in idxs_blocks)
+
+        curr_profit::Float64 = ∑(data.profits[B[idx]] for idx in idxs_blocks)
+
+        # update cost
+        lock(COST_PER_TIME.lock) do 
+
+            if isempty(COST_PER_TIME.list) || curr_profit > last(COST_PER_TIME.list).second
+
+                curr_time::Float64 = datetime2unix(now()) - STARTING_TIME
+                push!(COST_PER_TIME.list, Pair{Float64, Float64}(curr_time, curr_profit))
+
+            end
+
+        end
+        return curr_cost
 
     end
 end
@@ -329,6 +355,8 @@ function run_brkga(conf_dir::String, data::SBRPData)
   global N_FEASIBLE
   global N_INFEASIBLE 
   global DECODING_TIME 
+  global STARTING_TIME
+  global COST_PER_TIME
 
   N_FEASIBLE, N_INFEASIBLE, DECODING_TIME = 0, 0, 0.0
 
@@ -336,6 +364,8 @@ function run_brkga(conf_dir::String, data::SBRPData)
   B = data.B
   m = length(B)
   verbose, info = false, Dict{String, String}()
+
+  STARTING_TIME = datetime2unix(now())
 
   ########################################
   #=
@@ -677,7 +707,7 @@ function run_brkga(conf_dir::String, data::SBRPData)
   println("Blocks cost:", ∑(data.profits[block] for block in blocks))
   println("Calculated cost:", info["cost"])
 
-  return tour, info, blocks
+  return tour, info, blocks, COST_PER_TIME.list
 
 end
 

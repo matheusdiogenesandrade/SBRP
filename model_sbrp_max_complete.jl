@@ -208,6 +208,9 @@ intersection_cuts1, intersection_cuts2 = Vector{Arcs}(), Vector{Arcs}()
 subtour_cuts = Set{Tuple{Arcs, Arcs}}()
 
 function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
+    global STARTING_TIME 
+    global COST_PER_TIME
+
   depot, B, A, T, V, profits, Vb, info = data.depot, data.B, data.D.A, data.T, data.D.V, data.profits, blocks_nodes(data.B), Dict{String, Any}("lazyCuts" => 0)
   A′, V′ = filter(a -> a[2] != depot, A), setdiff(keys(V), depot)
   P′ = filter(a -> a[1] < a[2], χ(V′))
@@ -297,9 +300,11 @@ function build_model_sbrp_max_complete(data::SBRPData, app::Dict{String,Any})
   model, x, y = create_model()
 #  MOI.set(model, MOI.NumberOfThreads(), 1) # thread numbers
 #  MOI.set(model, CPLEX.CallbackFunction(), (cb_data, context_id) -> lazy_separation(data, Vb, info, model, cb_data, context_id)) # lazy callback
+    MOI.set(model, CPLEX.CallbackFunction(), (cb_data, context_id) -> updateCostPerTimeRelation(data, model, cb_data, context_id)) # lazy callback
 
   # return
   return (model, x, y, info)
 end
+
 
 end

@@ -8,33 +8,35 @@
 </metadata>
 <trk>
 <name>Example GPX Document</name>
-<trkseg><trkpt lat="-22.9188606" lon="-47.1088085">
+<trkseg><trkpt lat="-22.9193502" lon="-47.107337">
 </trkpt>
-<trkpt lat="-22.919563" lon="-47.1080066">
+<trkpt lat="-22.9188606" lon="-47.1088085">
 </trkpt>
-<trkpt lat="-22.9197965" lon="-47.1061494">
+<trkpt lat="-22.9253506" lon="-47.1086854">
 </trkpt>
-<trkpt lat="-22.9195667" lon="-47.1044164">
-</trkpt>
-<trkpt lat="-22.9223488" lon="-47.1017684">
-</trkpt>
-<trkpt lat="-22.9256109" lon="-47.0975766">
-</trkpt>
-<trkpt lat="-22.9287457" lon="-47.0993382">
-</trkpt>
-<trkpt lat="-22.9276653" lon="-47.1046766">
-</trkpt>
-<trkpt lat="-22.9253094" lon="-47.1093867">
-</trkpt>
-<trkpt lat="-22.9255769" lon="-47.1101468">
-</trkpt>
-<trkpt lat="-22.9251903" lon="-47.1109851">
-</trkpt>
-<trkpt lat="-22.9242292" lon="-47.1110213">
+<trkpt lat="-22.9269401" lon="-47.1062292">
 </trkpt>
 <trkpt lat="-22.9228675" lon="-47.1108846">
 </trkpt>
-<trkpt lat="-22.9184024" lon="-47.1116934">
+<trkpt lat="-22.9246524" lon="-47.1108882">
+</trkpt>
+<trkpt lat="-22.9246734" lon="-47.1105744">
+</trkpt>
+<trkpt lat="-22.9251903" lon="-47.1109851">
+</trkpt>
+<trkpt lat="-22.921136" lon="-47.1080226">
+</trkpt>
+<trkpt lat="-22.9255769" lon="-47.1101468">
+</trkpt>
+<trkpt lat="-22.9180892" lon="-47.110676">
+</trkpt>
+<trkpt lat="-22.9287457" lon="-47.0993382">
+</trkpt>
+<trkpt lat="-22.9262377" lon="-47.0976242">
+</trkpt>
+<trkpt lat="-22.919854" lon="-47.1041649">
+</trkpt>
+<trkpt lat="-22.9219553" lon="-47.1023577">
 </trkpt>
 </trkseg>
 </trk>

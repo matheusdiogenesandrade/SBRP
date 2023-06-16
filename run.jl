@@ -131,6 +131,7 @@ function ip(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, paths::Di
     if app["out"] != nothing
 #        write_sol(app["out"], tour, data, B)
         write_sol(app["out"] * "_complete", tour′, data′, B)
+        writeCostPerTime(COST_PER_TIME.list, app["out"] * "_cost_per_time")
     end
 
     flush_println("########################################################")
@@ -140,7 +141,7 @@ function brkga(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, paths:
     flush_println("###################BRKGA####################")
 
     # solve model
-    tour′, info, B = run_brkga(app["brkga-conf"], data′)
+    tour′, info, B, COST_PER_TIME = run_brkga(app["brkga-conf"], data′)
 
     # get tour 
     push!(tour′, data.depot)
@@ -178,6 +179,7 @@ function brkga(app::Dict{String, Any}, data::SBRPData, data′::SBRPData, paths:
     if app["out"] != nothing
 #        write_sol(app["out"], tour, data, B)
         write_sol(app["out"] * "_complete", tour′, data′, B)
+        writeCostPerTime(COST_PER_TIME, app["out"] * "_cost_per_time")
     end
 
     flush_println("########################################################")

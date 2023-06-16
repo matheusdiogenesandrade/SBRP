@@ -8,7 +8,7 @@ using CPLEX
 using JuMP
 using DataStructures
 
-export write_sol, gettour, check_sbrp_sol, check_atsp_sol, get_info, writeGPX, get_blocks, add_blocks
+export write_sol, gettour, check_sbrp_sol, check_atsp_sol, get_info, writeGPX, get_blocks, add_blocks, writeCostPerTime
 
 get_blocks(data::SBRPData, y) = [block for block in data.B if value(y[block]) > 0.5]
 
@@ -21,6 +21,13 @@ get_info(model, data::SBRPData, tour::Vi, B::Vector{Vi}) = Dict{String, String}(
                                        "tourMinutes"  => string(tour_time(data, tour, B)),
                                        "blocksMeters" => string(sum(distance_block(data, block) for block in B))
                                       )
+function writeCostPerTime(COST_PER_TIME::Vector{Pair{Float64, Float64}}, file_path::String)
+    open(file_path, "w") do f
+        for entry::Pair{Float64, Float64} in COST_PER_TIME
+            write(f, "$(entry.first) $(entry.second)\n")
+        end
+    end
+end
 
 function writeGPX(file_path::String, tour::Vector{Vertex})
   open(file_path, "w") do f
