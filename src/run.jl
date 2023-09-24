@@ -175,7 +175,7 @@ function completeDigraphCPModel(app::Dict{String, Any}, data::SBRPData)
     checkSBRPSolution(data, solution) 
 
     # log
-    info["model"]        = "IP"
+    info["model"]        = "CP"
     info["|V|"]          = string(length(data.D.V))
     info["|A|"]          = string(length(data.D.A))
     info["|B|"]          = string(length(data.B))

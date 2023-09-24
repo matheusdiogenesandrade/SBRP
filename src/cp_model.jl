@@ -5,6 +5,79 @@ using ConstraintProgrammingExtensions
 const MOI = MathOptInterface
 const CP = ConstraintProgrammingExtensions
 
+using Base.Threads
+
+# add type 2 (CP focused)
+function getIntersectionCutsCPFocused(data::SBRPData)::Arcs
+
+    # data
+    Vb::Si = getBlocksNodes(data)
+    B::VVi                     = data.B
+    A::Arcs                    = data.D.A
+    nodes_blocks::Dict{Int, VVi} = Dict{Int, VVi}(map(i::Int -> i => filter(block::Vi -> i in block, B), Vi(collect(Vb))))
+
+    # output
+    pairs::Arcs = Arcs()
+    cliques::Vector{VVi} = Vector{VVi}()
+
+    # max clique model
+    max_clique::Model = direct_model(CPLEX.Optimizer())
+
+    set_silent(max_clique)
+
+    @variable(max_clique, z[block in B], Bin)
+
+    @objective(max_clique, Max, ∑(z[block] for block in B))
+
+    @constraint(max_clique, [(block, block′) in [(B[i], B[j]) for i in 1:length(B) for j in i + 1:length(B) if isempty(∩(B[i], B[j]))]], 1 >= z[block] + z[block′])
+    @constraint(max_clique, ∑(z[block] for block in B) >= 2)
+
+    while true
+        # solve
+        optimize!(max_clique)
+
+        # base case
+        termination_status(max_clique) == MOI.INFEASIBLE && break 
+
+        # get clique
+        B′::VVi = filter(block -> value(z[block]) > 0.5, B)
+
+        # check if it is a clique 
+        if all(
+               (block′, block)::Pair{Vi, Vi} -> !isempty(∩(block, block′)), 
+               filter((block′, block)::Pair{Vi, Vi} -> block′ ≠ block, χ(B, B′))
+              ) 
+            throw(InvalidStateException("It is not a clique"))
+        end
+
+        # store clique
+        push!(cliques, B′)
+
+        # update clique model
+        @constraint(max_clique, sum(block::Vi -> z[block], B′) <= length(B′) - 1)
+    end
+
+    # get cuts
+    for clique::VVi in cliques
+
+        @debug "Clique length $(length(clique))"
+
+        # get intersection
+        intersection::Vi = ∩(clique...)
+
+        # get exclusive clique nodes
+        exclusive_nodes::Vi = setdiff(∪(clique...), ∪(setdiff(B, clique)...))
+
+        for (i::Int, j::Int) in χ(intersection, exclusive_nodes)
+            i == j && continue
+            push!(pairs, Pair{Int, Int}(i, j))
+        end
+
+    end
+
+    return pairs
+end
+
 function runCompleteDigraphCPModel(data::SBRPData, app::Dict{String, Any})::Tuple{SBRPSolution, Dict{String, String}}
 
     # instance parameters
@@ -14,13 +87,20 @@ function runCompleteDigraphCPModel(data::SBRPData, app::Dict{String, Any})::Tupl
     depot::Int                 = data.depot
     B::VVi                     = data.B
     A::Arcs                    = data.D.A
-    T::Float64                 = data.T
-    V::Vi                      = collect(keys(data.D.V))
+    V::Vi                      = sort(collect(keys(data.D.V))) # sorting for better debugging
     profits::Dict{Vi, Float64} = data.profits
-    Vb::Si                     = getBlocksNodes(data)
 
     # aux data
+    EPS = 10000;
+    Vb::Si                      = getBlocksNodes(data)
+    times::Dict{Arc, Int32}     = Dict{Arc, Int32}(map(a::Arc -> a => Int32(floor(time(data, a) * EPS)), A))
+    T::Int32                    = Int32(floor(data.T * EPS))
+    blockTimes::Dict{Vi, Int32} = Dict{Vi, Int32}(map(block::Vi -> block => Int32(floor(blockTime(data, block) * EPS)), B))
+
+    nodes_blocks::Dict{Int, VVi} = Dict{Int, VVi}(map(i::Int -> i => filter(block::Vi -> i in block, B), Vi(collect(Vb))))
+
     n::Int = length(V)
+    node_idx_map::Dict{Int, Int} = Dict{Int, Int}(map((idx, i)::Tuple{Int, Int} -> i => idx, enumerate(V)))
 
     # create model
     
@@ -42,7 +122,8 @@ function runCompleteDigraphCPModel(data::SBRPData, app::Dict{String, Any})::Tupl
     y::Dict{Vi, MOI.VariableIndex} = Dict{Vi, MOI.VariableIndex}(map(block::Vi -> block => first(MOI.add_constrained_variable(model, MOI.ZeroOne())), B))
 
     # incurred time
-    t::Dict{Int, MOI.VariableIndex} = Dict{Int, MOI.VariableIndex}(map(i::Int -> i => first(MOI.add_constrained_variable(model, MOI.Interval(0.0, T))), V))
+#    t::Dict{Int, MOI.VariableIndex} = Dict{Int, MOI.VariableIndex}(map(i::Int -> i => first(MOI.add_constrained_variable(model, MOI.Interval{Float64}(0.0, T))), V))
+t::Dict{Int, MOI.VariableIndex} = Dict{Int, MOI.VariableIndex}(map(i::Int -> i => first(MOI.add_constrained_variable(model, MOI.Interval{Int32}(0, T))), V))
 
     # Domains
     
@@ -66,15 +147,14 @@ function runCompleteDigraphCPModel(data::SBRPData, app::Dict{String, Any})::Tupl
 
     MOI.set(model, MOI.ObjectiveSense(), MOI.MAX_SENSE)
     MOI.set(model, MOI.ObjectiveFunction{MathOptInterface.ScalarAffineFunction{Int}}(), objective_function)
-#    MOI.set(model, MOI.TimeLimitSec(), 3600)
 
     # Constraints
     
     @debug "Setup constraints"
 
-    # No cycles
+    # Continuity constriants
     
-    @debug "No cycle constraints"
+    @debug "Continuity constraints"
 
     _ = MOI.add_constraint(
                        model,
@@ -88,18 +168,25 @@ function runCompleteDigraphCPModel(data::SBRPData, app::Dict{String, Any})::Tupl
     _ = MOI.add_constraint(
                        model,
                        MOI.SingleVariable(x[depot]),
-                       CP.DifferentFrom(depot),
+                       CP.DifferentFrom(node_idx_map[depot]),
                       )
+
+#    _ = MOI.add_constraint(
+#                           model,
+#                           MOI.SingleVariable(t[depot]),
+#                           MOI.EqualTo{Int32}(0)
+#                          )
+    CPLEXCP._set_ub(model, MOI.SingleVariable(t[depot]), MOI.EqualTo{Int32}(0).value)
 
     # Node visited
     
     @debug "Node visited"
 
-    for i in V
+    for (idx::Int, i::Int) in enumerate(V)
         _ = MOI.add_constraint(
                            model,
                            MOI.VectorOfVariables([w[i], x[i]]),
-                           CP.EquivalenceNot(MOI.EqualTo(1), MOI.EqualTo(i)),
+                           CP.EquivalenceNot(MOI.EqualTo(1), MOI.EqualTo(idx)),
                           )
     end
 
@@ -110,7 +197,7 @@ function runCompleteDigraphCPModel(data::SBRPData, app::Dict{String, Any})::Tupl
     for block::Vi in B
 
         visited_nodes::MOI.ScalarAffineFunction{Int} = MOI.ScalarAffineFunction(MOI.ScalarAffineTerm{Int}.(
-                                                                                                        vcat(map(i::Int -> 1, block), [-1]), 
+                                                                                                        vcat(ones(Int, length(block)),   [-1]), 
                                                                                                         vcat(map(i::Int -> w[i], block), [y[block]])
                                                                                                        ), 0)
         _ = MOI.add_constraint(
@@ -125,34 +212,147 @@ function runCompleteDigraphCPModel(data::SBRPData, app::Dict{String, Any})::Tupl
     @debug "Incurred time"
 
     for i in V
-        for j in V
+        # time 0
+        # if x[i] == i then t[i] = 0.0
+        implication::CP.Implication = CP.Implication(MOI.EqualTo{Int32}(node_idx_map[i]), MOI.EqualTo{Int32}(0))
 
-            # edge case
+        constr = CPLEXCP.cpo_java_imply(
+                                        model.inner,
+                                        CPLEXCP._build_constraint(model, x[i], implication.antecedent),
+                                        CPLEXCP._build_constraint(model, t[i], implication.consequent),
+                                       )
+        CPLEXCP.cpo_java_add(model.inner, constr)
+
+        # time limit
+        # t[i] + \sum_{b \in B} y[b] * t_b  <= T
+        affine = MOI.ScalarAffineFunction(MOI.ScalarAffineTerm{Int32}.(
+                                                                     vcat(map(block::Vi -> blockTimes[block], B),   [1]), 
+                                                                     vcat(map(block::Vi -> y[block], B), [t[i]])
+                                                                    ), Int32(0))
+
+        _ = MOI.add_constraint(
+                               model,
+                               affine,
+                               MOI.LessThan(T)
+                              )
+       
+    end
+
+    # Tour time
+
+    @debug "Tour time"
+
+    for (i::Int, j::Int) in A
+
+        # edge case
+        j == depot && continue
+
+        affine::MOI.ScalarAffineFunction{Int32} = MOI.ScalarAffineFunction(MOI.ScalarAffineTerm{Int32}.([1, -1], [t[j], t[i]]), Int32(0))
+
+        # if x[i] == j then t[j] = t[i] + time(i, j)
+        implication::CP.Implication = CP.Implication(MOI.EqualTo{Int32}(node_idx_map[j]), MOI.EqualTo{Int32}(times[Arc(i, j)]))
+
+        constr = CPLEXCP.cpo_java_imply(
+                                        model.inner,
+                                        CPLEXCP._build_constraint(model, x[i], implication.antecedent),
+                                        CPLEXCP._build_constraint(model, affine, implication.consequent),
+                                       )
+        CPLEXCP.cpo_java_add(model.inner, constr)
+
+    end
+
+    # improvements
+
+    @debug "Improvements"
+
+    for block::Vi in B
+        selected_nodes::Vi = filter(i::Int -> length(nodes_blocks[i]) == 1, block)
+ 
+        visited_nodes::MOI.ScalarAffineFunction{Int} = MOI.ScalarAffineFunction(MOI.ScalarAffineTerm{Int}.(
+                                                                                                           vcat([1], map(_ -> -1, selected_nodes)),
+                                                                                                           vcat([y[block]], map(i::Int -> w[i], selected_nodes)) 
+                                                                                                          ), 0)
+        _ = MOI.add_constraint(
+                               model,
+                               visited_nodes,
+                               MOI.GreaterThan(0)
+                              )
+    end
+
+    for block::Vi in B
+
+        for (i::Int, j::Int) in χ(block, block)
             i == j && continue
 
-            t_affine::MOI.ScalarAffineFunction{Float64} = MOI.ScalarAffineFunction(MOI.ScalarAffineTerm{Float64}.([1, -1], [t[j], t[i]]), 
-                                                                                   - time(data, Arc(i, j)))
+            if length(nodes_blocks[i]) == 1 || length(nodes_blocks[j]) == 1
+                _ = MOI.add_constraint(
+                                       model,
+                                       MOI.SingleVariable(x[i]),
+                                       CP.DifferentFrom(node_idx_map[j]),
+                                      )
+            end
 
-            println(typeof(MOI.Utilities.operate(vcat, MOI.ScalarAffineFunction{Float64}, MOI.SingleVariable(x[i]), t_affine)))
-
-            # if x[i] == j then t[j] = t[i] + time(i, j)
-            _ = MOI.add_constraint(
-                               model,
-                               MOI.Utilities.operate(vcat, MOI.ScalarAffineFunction{Float64}, MOI.SingleVariable(x[i]), t_affine),
-                               CP.Implication(MOI.EqualTo(j), MOI.EqualTo(0)),
-                              )
         end
     end
+
+    # Intersection cuts
+
+    @debug "Intersection cuts"
+
+    # get intersection cuts
+    intersection_cuts1::Vector{Arcs}, intersection_cuts2::Vector{Arcs} = getIntersectionCuts(data) 
+
+    # add type 1
+    for arcs::Arcs in intersection_cuts1 
+        for (i::Int, j::Int) in arcs
+            _ = MOI.add_constraint(
+                                   model,
+                                   MOI.SingleVariable(x[i]),
+                                   CP.DifferentFrom(node_idx_map[j]),
+                                  )
+        end
+    end
+
+    # add type 2
+    for arcs::Arcs in intersection_cuts2
+        selected_nodes::Vi = collect(Si(map((i, j)::Pair{Int, Int} -> i, arcs)))
+
+        visited_nodes::MOI.ScalarAffineFunction{Int} = MOI.ScalarAffineFunction(MOI.ScalarAffineTerm{Int}.(
+                                                                                                           ones(Int, length(selected_nodes)), 
+                                                                                                           map(i::Int -> w[i], selected_nodes)
+                                                                                                          ), 0)
+        _ = MOI.add_constraint(
+                               model,
+                               visited_nodes,
+                               MOI.LessThan(1)
+                              )
+    end
+
+
+    pairs::Arcs = getIntersectionCutsCPFocused(data)
+
+    for (i::Int, j::Int) in pairs
+        implication::CP.Implication = CP.Implication(MOI.EqualTo{Int32}(1), MOI.EqualTo{Int32}(0))
+
+        constr = CPLEXCP.cpo_java_imply(
+                                        model.inner,
+                                        CPLEXCP._build_constraint(model, w[i], implication.antecedent),
+                                        CPLEXCP._build_constraint(model, w[j], implication.consequent),
+                                       )
+        CPLEXCP.cpo_java_add(model.inner, constr)
+    end
+
+    # parameters
     
-    # Tour time
+    @debug "Setting parameters"
     
-    @debug "Tour time"
+    cpo_java_setdoubleparameter(model.inner, "TimeLimit", 3600)
+    cpo_java_setintparameter(model.inner, "Workers", Int32(nthreads()))
 
     # Solve the model.
     
     @debug "Solve model"
-
-    MOI.optimize!(model)
+    elapsed_time::Float64 = @elapsed MOI.optimize!(model)
     
     # Check if the solution is optimum.
     @show MOI.get(model, MOI.TerminationStatus())
@@ -161,14 +361,13 @@ function runCompleteDigraphCPModel(data::SBRPData, app::Dict{String, Any})::Tupl
    
     @debug "Get solution"
 
-    info::Dict{String, String} = Dict{String, String}()
-
     serviced_blocks::VVi = filter(block::Vi -> MOI.get(model, MOI.VariablePrimal(), y[block]) > .5, B)
     tour::Vi = Vi()
 
     # DFS
-    tourAdjList::Dict{Int, Int} = Dict{Int, Int}(map(i::Int -> i => V[Int(MOI.get(model, MOI.VariablePrimal(), x[i]))], V))
-
+    tourAdjList::Dict{Int, Int} = Dict{Int, Int}(
+                                                 map(i::Int -> i => V[Int(MOI.get(model, MOI.VariablePrimal(), x[i]))], V)
+                                                )
     curr::Int = depot 
     push!(tour, curr)
 
@@ -183,16 +382,14 @@ function runCompleteDigraphCPModel(data::SBRPData, app::Dict{String, Any})::Tupl
 
     solution::SBRPSolution = SBRPSolution(tour, serviced_blocks)
 
-    println(tour)
-#    for (k, v) in tourAdjList
-#        println(k, " => ", v)
-#    end
-    for i in V
-        if MOI.get(model, MOI.VariablePrimal(), w[i]) > .5
-            println(i)
-        end
+    # Get the info
+   
+    @debug "Get info"
 
-    end
+    info::Dict{String, String} = Dict{String, String}()
+    info["cost"] = string(sum(block::Vi -> profits[block], serviced_blocks))
+    info["solverTime"] = string(elapsed_time)
+
 
     # Return
    

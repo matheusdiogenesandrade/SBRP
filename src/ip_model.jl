@@ -40,7 +40,8 @@ function addIntersectionCuts2(model::Model, arcs::Vector{Arcs})
 
     addCuts(model, 
             Vector{Pair{AffExpr, AffExpr}}( map(
-                                               A::Arcs -> Pair{AffExpr, AffExpr}(AffExpr(2), sum(a::Arc -> model[:x][a], A)), 
+#                                               A::Arcs -> Pair{AffExpr, AffExpr}(AffExpr(2), sum(a::Arc -> model[:x][a], A)), 
+                                               A::Arcs -> Pair{AffExpr, AffExpr}(AffExpr(1), sum(a::Arc -> model[:x][a], A)), 
                                                arcs
                                               )))
 end
@@ -314,7 +315,14 @@ function getIntersectionCuts(data::SBRPData)::Tuple{Vector{Arcs}, Vector{Arcs}}
         for block::Vi in clique
             # get arcs incident to nodes that belong exclusively to the block 
             #      independent_arcs = [a for (i, blocks) in nodes_blocks for a in δ⁺(A, i) if ∧(length(blocks) == 1, block ∈ blocks)]
-            covered_arcs::Arcs = reduce(vcat, map(i::Int -> δ⁺(A, i), filter(i::Int -> ⊆(nodes_blocks[i], clique), block)), init = Arcs())
+            covered_arcs::Arcs = reduce(
+                                        vcat, 
+                                        map(
+                                            i::Int -> δ⁺(A, i), 
+                                            filter(i::Int -> length(nodes_blocks[i]) == 1, block)
+                                           ), 
+                                        init = Arcs()
+                                       )
 
             # edge case
             #      isempty(independent_arcs) && continue
@@ -389,7 +397,7 @@ function runCompleteDigraphIPModel(data::SBRPData, app::Dict{String, Any})::Tupl
         @constraint(model, sum(a::Arc -> time(data, a) * x[a], A) <= T - sum(block::Vi -> y[block] * blockTime(data, block), B))
 
         # improvements
-        @constraint(model, block3[block::Vi in B], y[block] - sum(x[a] in δ⁺(A, i) for i in block if length(nodes_blocks) == 1) >= 0)
+        @constraint(model, block3[block::Vi in B], y[block] - sum(x[a] in δ⁺(A, i) for i in block if length(nodes_blocks[i]) == 1) >= 0)
 #        @constraint(model, block4[block::Vi in B], sum((i, j)::Arc -> x[(i, j)], filter((i, j)::Arc -> i in block && j in block && nodes_blocks[i] == nodes_blocks[j] && length(nodes_blocks[j]) == 1, A)) == 0)
         @constraint(model, block4[block::Vi in B], sum(a::Arc -> x[a], filter((i, j)::Arc -> i in block && j in block && (length(nodes_blocks[i]) == 1 || length(nodes_blocks[j]) == 1), A), init = 0.0) == 0)
         @constraint(model, subcycle_size_two[a::Arc in P′], x[a] + x[reverse(a)] <= 1)
@@ -452,7 +460,7 @@ function runCompleteDigraphIPModel(data::SBRPData, app::Dict{String, Any})::Tupl
     if app["intersection-cuts"]
         @debug "Getting intersection cuts"
         
-        elapsed_time::Float64 = @elapsed intersection_cuts1, intersection_cuts2 = getIntersectionCuts(data) # get intersection cuts
+        elapsed_time::Float64 = @elapsed intersection_cuts1::Vector{Arcs}, intersection_cuts2::Vector{Arcs} = getIntersectionCuts(data) # get intersection cuts
 
         info["intersectionCutsTime"] = string(elapsed_time)
         info["intersectionCuts1"] = string(length(intersection_cuts1))
@@ -492,8 +500,10 @@ function runCompleteDigraphIPModel(data::SBRPData, app::Dict{String, Any})::Tupl
     #  MOI.set(model, CPLEX.CallbackFunction(), (cb_data, context_id) -> lazy_separation(data, Vb, info, model, cb_data, context_id)) # lazy callback
 
     # run
-    info["solverTime"] = string(@elapsed optimize!(model))
-    info["cost"]       = @sprintf("%.2f", objective_value(model))
+    info["solverTime"]  = string(@elapsed optimize!(model))
+    info["cost"]        = @sprintf("%.2f", objective_value(model))
+    info["relativeGAP"] = string(relative_gap(model))
+    info["nodeCount"]   = string(node_count(model))
 
     # retrieve solution
     x, y = model[:x], model[:y]
