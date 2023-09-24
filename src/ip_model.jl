@@ -530,7 +530,6 @@ function runCompleteDigraphIPModel(data::SBRPData, app::Dict{String, Any})::Tupl
     end
 
     solution::SBRPSolution   = SBRPSolution(tour, solution_blocks)
-    info["numVisitedBlocks"] = string(length(solution.B))
 
     # return
     return solution, info

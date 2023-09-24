@@ -145,6 +145,7 @@ function completeDigraphIPModel(app::Dict{String, Any}, data::SBRPData)
     info["meters"]       = string(tourDistance(data, solution.tour))
     info["tourMinutes"]  = string(tourTime(data, solution))
     info["blocksMeters"] = string(sum(map(block::Vi -> blockDistance(data, block), solution.B)))
+    info["numVisitedBlocks"] = string(length(solution.B))
 
     log(app, info) 
 
@@ -183,6 +184,7 @@ function completeDigraphCPModel(app::Dict{String, Any}, data::SBRPData)
     info["meters"]       = string(tourDistance(data, solution.tour))
     info["tourMinutes"]  = string(tourTime(data, solution))
     info["blocksMeters"] = string(sum(map(block::Vi -> blockDistance(data, block), solution.B)))
+    info["numVisitedBlocks"] = string(length(solution.B))
 
     log(app, info) 
 
@@ -221,6 +223,7 @@ function BRKGAModel(app::Dict{String, Any}, data::SBRPData)
     info["meters"]       = string(tourDistance(data, solution.tour))
     info["tourMinutes"]  = string(tourTime(data, solution))
     info["blocksMeters"] = string(sum(map(block::Vi -> blockDistance(data, block), solution.B)))
+    info["numVisitedBlocks"] = string(length(solution.B))
 
     log(app, info) 
 
