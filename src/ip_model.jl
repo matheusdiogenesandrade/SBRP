@@ -312,6 +312,10 @@ function getIntersectionCuts(data::SBRPData)::Tuple{Vector{Arcs}, Vector{Arcs}}
 
         @debug "Clique length $(length(clique))"
 
+        length(clique) <= 1 && continue
+
+        intersection_arcs::Arcs = reduce(vcat, map(i::Int -> δ⁺(A, i), intersection))
+
         for block::Vi in clique
             # get arcs incident to nodes that belong exclusively to the block 
             #      independent_arcs = [a for (i, blocks) in nodes_blocks for a in δ⁺(A, i) if ∧(length(blocks) == 1, block ∈ blocks)]
@@ -321,7 +325,8 @@ function getIntersectionCuts(data::SBRPData)::Tuple{Vector{Arcs}, Vector{Arcs}}
                                             i::Int -> δ⁺(A, i), 
                                             filter(i::Int -> length(nodes_blocks[i]) == 1, block)
                                            ), 
-                                        init = Arcs()
+#                                        init = Arcs()
+                                        init = intersection_arcs
                                        )
 
             # edge case
@@ -397,7 +402,7 @@ function runCompleteDigraphIPModel(data::SBRPData, app::Dict{String, Any})::Tupl
         @constraint(model, sum(a::Arc -> time(data, a) * x[a], A) <= T - sum(block::Vi -> y[block] * blockTime(data, block), B))
 
         # improvements
-        @constraint(model, block3[block::Vi in B], y[block] - sum(x[a] in δ⁺(A, i) for i in block if length(nodes_blocks[i]) == 1) >= 0)
+        @constraint(model, block3[block::Vi in B], y[block] - sum(x[a] for i in block for a in δ⁺(A, i) if length(nodes_blocks[i]) == 1) >= 0)
 #        @constraint(model, block4[block::Vi in B], sum((i, j)::Arc -> x[(i, j)], filter((i, j)::Arc -> i in block && j in block && nodes_blocks[i] == nodes_blocks[j] && length(nodes_blocks[j]) == 1, A)) == 0)
         @constraint(model, block4[block::Vi in B], sum(a::Arc -> x[a], filter((i, j)::Arc -> i in block && j in block && (length(nodes_blocks[i]) == 1 || length(nodes_blocks[j]) == 1), A), init = 0.0) == 0)
         @constraint(model, subcycle_size_two[a::Arc in P′], x[a] + x[reverse(a)] <= 1)

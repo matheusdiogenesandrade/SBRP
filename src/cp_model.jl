@@ -40,7 +40,7 @@ function getIntersectionCutsCPFocused(data::SBRPData)::Arcs
         termination_status(max_clique) == MOI.INFEASIBLE && break 
 
         # get clique
-        B′::VVi = filter(block -> value(z[block]) > 0.5, B)
+        B′::VVi = filter(block::Vi -> value(z[block]) > 0.5, B)
 
         # check if it is a clique 
         if all(
@@ -59,6 +59,8 @@ function getIntersectionCutsCPFocused(data::SBRPData)::Arcs
 
     # get cuts
     for clique::VVi in cliques
+
+        length(clique) <= 1 && continue
 
         @debug "Clique length $(length(clique))"
 
@@ -122,8 +124,7 @@ function runCompleteDigraphCPModel(data::SBRPData, app::Dict{String, Any})::Tupl
     y::Dict{Vi, MOI.VariableIndex} = Dict{Vi, MOI.VariableIndex}(map(block::Vi -> block => first(MOI.add_constrained_variable(model, MOI.ZeroOne())), B))
 
     # incurred time
-#    t::Dict{Int, MOI.VariableIndex} = Dict{Int, MOI.VariableIndex}(map(i::Int -> i => first(MOI.add_constrained_variable(model, MOI.Interval{Float64}(0.0, T))), V))
-t::Dict{Int, MOI.VariableIndex} = Dict{Int, MOI.VariableIndex}(map(i::Int -> i => first(MOI.add_constrained_variable(model, MOI.Interval{Int32}(0, T))), V))
+    t::Dict{Int, MOI.VariableIndex} = Dict{Int, MOI.VariableIndex}(map(i::Int -> i => first(MOI.add_constrained_variable(model, MOI.Interval{Int32}(0, T))), V))
 
     # Domains
     
@@ -226,7 +227,7 @@ t::Dict{Int, MOI.VariableIndex} = Dict{Int, MOI.VariableIndex}(map(i::Int -> i =
         # time limit
         # t[i] + \sum_{b \in B} y[b] * t_b  <= T
         affine = MOI.ScalarAffineFunction(MOI.ScalarAffineTerm{Int32}.(
-                                                                     vcat(map(block::Vi -> blockTimes[block], B),   [1]), 
+                                                                     vcat(map(block::Vi -> blockTimes[block], B), [1]), 
                                                                      vcat(map(block::Vi -> y[block], B), [t[i]])
                                                                     ), Int32(0))
 
@@ -381,6 +382,8 @@ t::Dict{Int, MOI.VariableIndex} = Dict{Int, MOI.VariableIndex}(map(i::Int -> i =
     end
 
     solution::SBRPSolution = SBRPSolution(tour, serviced_blocks)
+
+    cpo_java_release(model.inner)
 
     # Get the info
    
