@@ -1,4 +1,5 @@
 using Printf
+using Combinatorics
 
 include("SparseMaxFlowMinCut.jl")
 
@@ -245,13 +246,40 @@ function getIntersectionCuts(data::SBRPData)::Tuple{Vector{Arcs}, Vector{Arcs}}
 
     @debug "Obtaining intersection cuts"
 
-    # setup
+    # data
     B::VVi = data.B 
     A::Arcs = data.D.A
+    V::Vi = collect(keys(data.D.V))
+
+    # output
     cuts1::Vector{Arcs} = Vector{Arcs}()
     cuts2::Vector{Arcs} = Vector{Arcs}()
-    cliques::Vector{VVi} = Vector{VVi}()
+    cliques::Set{VVi} = Set{VVi}()
 
+    # get nodes of each block
+    Vb::Si = getBlocksNodes(data)
+    nodes_blocks::Dict{Int, VVi} = Dict{Int, VVi}(map(i::Int -> i => filter(block::Vi -> i in block, B), Vi(collect(Vb))))
+
+    # get cliques
+    for i in Vb
+
+        @debug @sprintf("Obtaining cliques for the node %d", i)
+
+        # data
+        blocks::VVi = nodes_blocks[i]
+        blocks_num::Int = length(blocks)
+
+        # edge case
+        blocks_num == 1 && continue
+
+        # store
+        for clique::VVi in collect(Combinatorics.powerset(blocks, 2))
+            push!(cliques, clique)
+        end
+
+    end
+    
+    #=
     # max clique model
     max_clique::Model = direct_model(CPLEX.Optimizer())
 
@@ -274,6 +302,25 @@ function getIntersectionCuts(data::SBRPData)::Tuple{Vector{Arcs}, Vector{Arcs}}
         # get clique
         B′::VVi = filter(block -> value(z[block]) > 0.5, B)
 
+
+        for i in 1:length(B′)
+            for j in 1:length(B′)
+                i >= j && continue
+                println(i, " ", j, ": ", ∩(B′[i], B′[j]))
+            end
+        end
+
+        # get intersection
+        intersection::Vi = ∩(B′...)
+        for block in B′
+            println(sort(block))
+        end
+        println(intersection)
+        println(termination_status(max_clique))
+        if isempty(intersection)
+            throw(InvalidStateException("It is not a clique"))
+        end
+
         # check if it is a clique 
         if all(
                (block′, block)::Pair{Vi, Vi} -> !isempty(∩(block, block′)), 
@@ -288,10 +335,8 @@ function getIntersectionCuts(data::SBRPData)::Tuple{Vector{Arcs}, Vector{Arcs}}
         # update clique model
         @constraint(max_clique, sum(block::Vi -> z[block], B′) <= length(B′) - 1)
     end
+    =#
 
-    # get nodes of each block
-    Vb::Si = getBlocksNodes(data)
-    nodes_blocks::Dict{Int, VVi} = Dict{Int, VVi}(map(i::Int -> i => filter(block::Vi -> i in block, B), Vi(collect(Vb))))
 
     # get cuts
     for clique::VVi in cliques
@@ -304,7 +349,9 @@ function getIntersectionCuts(data::SBRPData)::Tuple{Vector{Arcs}, Vector{Arcs}}
         isolated_intersection::Vi = setdiff(intersection, reduce(vcat, setdiff(B, clique)))
         
         #    isolated_intersection = sediff(intersection, ∪(block... for block ∈ setdiff(B, clique)))
-        length(isolated_intersection) > 1 && push!(cuts1, Arcs(filter((i, j)::Arc -> i != j, χ(isolated_intersection))))
+        if length(isolated_intersection) > 1 
+            push!(cuts1, Arcs(filter((i, j)::Arc -> i != j, χ(isolated_intersection))))
+        end
 
         @debug "Isolated clique $isolated_intersection"
 

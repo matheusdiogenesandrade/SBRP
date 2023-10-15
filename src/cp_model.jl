@@ -20,6 +20,26 @@ function getIntersectionCutsCPFocused(data::SBRPData)::Arcs
     pairs::Arcs = Arcs()
     cliques::Vector{VVi} = Vector{VVi}()
 
+    # get cliques
+    for i in Vb
+
+        @debug @sprintf("Obtaining cliques for the node %d", i)
+
+        # data
+        blocks::VVi = nodes_blocks[i]
+        blocks_num::Int = length(blocks)
+
+        # edge case
+        blocks_num == 1 && continue
+
+        # store
+        for clique::VVi in collect(Combinatorics.powerset(blocks, 2))
+            push!(cliques, clique)
+        end
+
+    end
+
+    #=
     # max clique model
     max_clique::Model = direct_model(CPLEX.Optimizer())
 
@@ -56,10 +76,12 @@ function getIntersectionCutsCPFocused(data::SBRPData)::Arcs
         # update clique model
         @constraint(max_clique, sum(block::Vi -> z[block], B′) <= length(B′) - 1)
     end
+    =#
 
     # get cuts
     for clique::VVi in cliques
 
+        # edge case
         length(clique) <= 1 && continue
 
         @debug "Clique length $(length(clique))"
@@ -315,21 +337,22 @@ function runCompleteDigraphCPModel(data::SBRPData, app::Dict{String, Any})::Tupl
     end
 
     # add type 2
-    for arcs::Arcs in intersection_cuts2
-        selected_nodes::Vi = collect(Si(map((i, j)::Pair{Int, Int} -> i, arcs)))
+#    for arcs::Arcs in intersection_cuts2
+#        selected_nodes::Vi = collect(Si(map((i, j)::Pair{Int, Int} -> i, arcs)))
+# 
+#        visited_nodes::MOI.ScalarAffineFunction{Int} = MOI.ScalarAffineFunction(MOI.ScalarAffineTerm{Int}.(
+#                                                                                                           ones(Int, length(selected_nodes)), 
+#                                                                                                           map(i::Int -> w[i], selected_nodes)
+#                                                                                                          ), 0)
+#        _ = MOI.add_constraint(
+#                               model,
+#                               visited_nodes,
+#                               MOI.LessThan(1)
+#                              )
+#    end
 
-        visited_nodes::MOI.ScalarAffineFunction{Int} = MOI.ScalarAffineFunction(MOI.ScalarAffineTerm{Int}.(
-                                                                                                           ones(Int, length(selected_nodes)), 
-                                                                                                           map(i::Int -> w[i], selected_nodes)
-                                                                                                          ), 0)
-        _ = MOI.add_constraint(
-                               model,
-                               visited_nodes,
-                               MOI.LessThan(1)
-                              )
-    end
 
-
+    # add type 3
     pairs::Arcs = getIntersectionCutsCPFocused(data)
 
     for (i::Int, j::Int) in pairs
