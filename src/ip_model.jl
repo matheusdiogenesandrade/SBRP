@@ -252,9 +252,9 @@ function getIntersectionCuts(data::SBRPData)::Tuple{Vector{Arcs}, Vector{Arcs}}
     V::Vi = collect(keys(data.D.V))
 
     # output
-    cuts1::Vector{Arcs} = Vector{Arcs}()
-    cuts2::Vector{Arcs} = Vector{Arcs}()
-    cliques::Set{VVi} = Set{VVi}()
+    cuts1::Set{ArcsSet} = Set{ArcsSet}()
+    cuts2::Set{ArcsSet} = Set{ArcsSet}()
+    cliques::Set{VVi}   = Set{VVi}()
 
     # get nodes of each block
     Vb::Si = getBlocksNodes(data)
@@ -273,11 +273,88 @@ function getIntersectionCuts(data::SBRPData)::Tuple{Vector{Arcs}, Vector{Arcs}}
         blocks_num == 1 && continue
 
         # store
-        for clique::VVi in collect(Combinatorics.powerset(blocks, 2))
-            push!(cliques, clique)
+#        for clique::VVi in collect(Combinatorics.powerset(blocks, 2))
+#            push!(cliques, clique)
+#        end
+        
+        push!(cliques, blocks)
+    end
+
+    # get cuts
+    cut1::ArcsSet = ArcsSet();
+
+    for clique::VVi in cliques
+        
+        # edge case
+        length(clique) <= 1 && continue
+
+        @debug "Clique length $(length(clique))"
+
+        # get intersection
+        intersection::Vi = ∩(clique...)
+
+        intersection_arcs::Arcs = reduce(vcat, map(i::Int -> δ⁺(A, i), intersection))
+
+        @debug "Clique intersection $intersection"
+
+        ######## intersection cuts 1 ########
+        if length(intersection) > 1 
+            union!(cut1, Arcs(filter((i, j)::Arc -> i != j, χ(intersection))))
+        end
+
+        ######## intersection cuts 2 ########
+
+        for block::Vi in clique
+            # get arcs incident to nodes that belong exclusively to the block 
+            covered_arcs::Arcs = reduce(
+                                        vcat, 
+                                        map(
+                                            i::Int -> δ⁺(A, i), 
+                                            filter(i::Int -> length(nodes_blocks[i]) == 1, block)
+                                           ), 
+#                                        init = Arcs()
+                                        init = intersection_arcs
+                                       )
+
+            # edge case
+            isempty(covered_arcs) && continue
+
+            # store
+            push!(cuts2, ArcsSet(covered_arcs))
+
+        end
+
+        ######## intersection cuts 3 ########
+        
+        @debug "Clique length $(length(clique))"
+
+        for block::Vi in clique
+
+            # get nodes
+            covered_nodes::Vi = filter(i::Int -> length(nodes_blocks[i]) > 1 && ⊆(nodes_blocks[i], clique) && !in(i, intersection), block)
+
+            # edge case
+            isempty(covered_nodes) && continue
+
+            # for each node
+            for i::Int in covered_nodes
+
+                # get arcs
+                covered_arcs::ArcsSet = ArcsSet(reduce(vcat, map(i::Int -> δ⁺(A, i), covered_nodes), init = intersection_arcs))
+
+                # edge case
+                isempty(covered_arcs) && continue
+
+                # store
+                push!(cuts2, covered_arcs)
+            end
+
         end
 
     end
+
+    # edge case
+    !isempty(cut1) && push!(cuts1, cut1)
     
     #=
     # max clique model
@@ -335,8 +412,6 @@ function getIntersectionCuts(data::SBRPData)::Tuple{Vector{Arcs}, Vector{Arcs}}
         # update clique model
         @constraint(max_clique, sum(block::Vi -> z[block], B′) <= length(B′) - 1)
     end
-    =#
-
 
     # get cuts
     for clique::VVi in cliques
@@ -383,11 +458,13 @@ function getIntersectionCuts(data::SBRPData)::Tuple{Vector{Arcs}, Vector{Arcs}}
             # store
             #      push!(cuts2, Arcs(∪([a for i ∈ intersection for a ∈ δ⁺(A, i)], independent_arcs)))
             push!(cuts2, Arcs(covered_arcs))
+
         end
 
     end
+    =#
 
-    return cuts1, cuts2
+    return collect(map(arcs_set::ArcsSet -> collect(arcs_set), collect(cuts1))), collect(map(arcs_set::ArcsSet -> collect(arcs_set), collect(cuts2)))
 end
 
 #=
@@ -427,7 +504,7 @@ function runCompleteDigraphIPModel(data::SBRPData, app::Dict{String, Any})::Tupl
         model::Model = direct_model(CPLEX.Optimizer())
         set_parameters(model, "CPX_PARAM_TILIM" => 3600)
 
-        #    set_silent(model)
+#        set_silent(model)
         if relax_x
             @variable(model, x[a in A], lower_bound = 0, upper_bound = 1)
         else
@@ -519,8 +596,8 @@ function runCompleteDigraphIPModel(data::SBRPData, app::Dict{String, Any})::Tupl
         info["intersectionCuts2"] = string(length(intersection_cuts2))
 
         # adding intersection cuts to the recently create model
-        addIntersectionCuts1(model, intersection_cuts1)
-        addIntersectionCuts2(model, intersection_cuts2)
+        !isempty(intersection_cuts1) && addIntersectionCuts1(model, intersection_cuts1)
+        !isempty(intersection_cuts2) && addIntersectionCuts2(model, intersection_cuts2)
     end
 
     # getting initial relaxation with both variables <x and y> relaxed

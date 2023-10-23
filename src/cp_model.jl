@@ -9,6 +9,67 @@ using Base.Threads
 
 # add type 2 (CP focused)
 function getIntersectionCutsCPFocused(data::SBRPData)::Arcs
+    @debug "Obtaining intersection cuts"
+
+    # data
+    B::VVi = data.B 
+    A::Arcs = data.D.A
+    V::Vi = collect(keys(data.D.V))
+
+    # output
+    cuts2::ArcsSet = ArcsSet() # an arc (i, j) belongs to cuts2, whether i is visited than j should not be visited
+    cliques::Set{VVi}   = Set{VVi}()
+
+    # get nodes of each block
+    Vb::Si = getBlocksNodes(data)
+    nodes_blocks::Dict{Int, VVi} = Dict{Int, VVi}(map(i::Int -> i => filter(block::Vi -> i in block, B), Vi(collect(Vb))))
+
+    # get cliques
+    for i::Int in Vb
+
+        @debug @sprintf("Obtaining cliques for the node %d", i)
+
+        # data
+        blocks::VVi     = nodes_blocks[i]
+        blocks_num::Int = length(blocks)
+
+        # edge case
+        blocks_num == 1 && continue
+
+        push!(cliques, blocks)
+    end
+
+    # get cuts
+    for clique::VVi in cliques
+        
+        # edge case
+        length(clique) <= 1 && continue
+
+        @debug "Clique length $(length(clique))"
+
+        # get intersection
+        intersection::Vi = ∩(clique...)
+
+        intersection_arcs::Arcs = reduce(vcat, map(i::Int -> δ⁺(A, i), intersection))
+
+        @debug "Clique intersection $intersection"
+
+        ######## intersection cuts 2 ########
+        
+        covered_nodes::Vi = filter(i::Int -> ⊆(nodes_blocks[i], clique) && !in(i, intersection), collect(Vb))
+
+        for a::Arc in χ(intersection, covered_nodes)
+            push!(cuts2, a)
+        end
+
+    end
+    
+    return collect(cuts2)
+end
+
+#=
+# add type 2 (CP focused)
+function getIntersectionCutsCPFocused(data::SBRPData)::Arcs
 
     # data
     Vb::Si = getBlocksNodes(data)
@@ -101,6 +162,7 @@ function getIntersectionCutsCPFocused(data::SBRPData)::Arcs
 
     return pairs
 end
+=#
 
 function runCompleteDigraphCPModel(data::SBRPData, app::Dict{String, Any})::Tuple{SBRPSolution, Dict{String, String}}
 
@@ -326,6 +388,7 @@ function runCompleteDigraphCPModel(data::SBRPData, app::Dict{String, Any})::Tupl
     intersection_cuts1::Vector{Arcs}, intersection_cuts2::Vector{Arcs} = getIntersectionCuts(data) 
 
     # add type 1
+    #=
     for arcs::Arcs in intersection_cuts1 
         for (i::Int, j::Int) in arcs
             _ = MOI.add_constraint(
@@ -335,6 +398,7 @@ function runCompleteDigraphCPModel(data::SBRPData, app::Dict{String, Any})::Tupl
                                   )
         end
     end
+    =#
 
     # add type 2
 #    for arcs::Arcs in intersection_cuts2
@@ -355,6 +419,7 @@ function runCompleteDigraphCPModel(data::SBRPData, app::Dict{String, Any})::Tupl
     # add type 3
     pairs::Arcs = getIntersectionCutsCPFocused(data)
 
+    #=
     for (i::Int, j::Int) in pairs
         implication::CP.Implication = CP.Implication(MOI.EqualTo{Int32}(1), MOI.EqualTo{Int32}(0))
 
@@ -365,6 +430,7 @@ function runCompleteDigraphCPModel(data::SBRPData, app::Dict{String, Any})::Tupl
                                        )
         CPLEXCP.cpo_java_add(model.inner, constr)
     end
+    =#
 
     # parameters
     

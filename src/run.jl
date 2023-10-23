@@ -86,6 +86,7 @@ function log(app::Dict{String, Any}, info::Dict{String, String})
     println(join(selected_columns, ","))
     println(join(map(column -> info[column], selected_columns), ","))
     flush(stdout)
+
 end
 
 #=
