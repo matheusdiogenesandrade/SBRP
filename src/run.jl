@@ -22,8 +22,17 @@ function parse_commandline(args_array::Vector{String}, appfolder::String)::Union
         "--unitary-profits"
         help = "true if you want to consider the blocks' profitsas 1, and false otherwise"
         action = :store_true
+        "--csp"
+        help = "true if you want to run models for the CSP instead of the SBRP, and false otherwise"
+        action = :store_true
         "--ip"
         help = "true if you want to run the I.P. model, and false otherwise"
+        action = :store_true
+        "--cg"
+        help = "true if you want to run the C.G. model, and false otherwise"
+        action = :store_true
+        "--concorde"
+        help = "true if you want to run the concorde algorithm, and false otherwise"
         action = :store_true
         "--cp"
         help = "true if you want to run the C.P. model, and false otherwise"
@@ -38,7 +47,7 @@ function parse_commandline(args_array::Vector{String}, appfolder::String)::Union
         help = "Vehicle time limit in minutes"
         default = "120"
         "--instance-type"
-        help = "Instance type (matheus|carlos)"
+        help = "Instance type (matheus|carlos|csp)"
         default = "matheus"
         "--lb"
         help = "Lower bound"
@@ -47,21 +56,37 @@ function parse_commandline(args_array::Vector{String}, appfolder::String)::Union
         "--nosolve"
         help = "Not solve flag"
         action = :store_true
+        "--unfixed-depot"
+        help = "true if you want to consider as depot any node, and false otherwise"
+        action = :store_true
         "--out"
         help = "Path to write the solution found"
         "--batch"
         help = "Batch file path"
         "--intersection-cuts"
-        help = "Intersection model for the complete model"
+        help = "Intersection cuts for the complete model"
+        action = :store_true
+        "--intersection-arcs"
+        help = "Intersection arc are deleted for the complete model"
+        action = :store_true
+        "--distance-as-time"
+        help = "true if you want to consider as unit of time the distance of the arcs, and false otherwise"
         action = :store_true
         "--arcs-mtz"
         help = "MTZ on the arcs for the complete model"
         action = :store_true
         "--subcycle-separation"
+        help = "Strategy (first|best|all|none)"
         help = "Subcycle separation with max-flow at the B&B root node"
-        action = :store_true
+        default = "none"
         "--y-integer"
         help = "Fix the variable y, for the complete model, when running the separation algorithm"
+        action = :store_true
+        "--z-integer"
+        help = "Fix the variable z, for the complete model, when running the separation algorithm"
+        action = :store_true
+        "--w-integer"
+        help = "Fix the variable w, for the complete model, when running the separation algorithm"
         action = :store_true
     end
 
@@ -71,7 +96,7 @@ end
 # log function 
 function log(app::Dict{String, Any}, info::Dict{String, String})
 
-    columns::Vector{String} = ["instance", "|V|", "|A|", "|B|", "T", "model", "initialLP", "yLP", "yLPTime", "intersectionCuts1", "intersectionCuts2", "intersectionCutsTime", "maxFlowLP", "maxFlowCuts", "maxFlowCutsTime", "lazyCuts", "cost", "solverTime", "relativeGAP", "nodeCount", "meters", "tourMinutes", "blocksMeters", "numVisitedBlocks"]
+    columns::Vector{String} = ["instance", "|V|", "|A|", "|B|", "T", "model", "initialLP", "yLP", "yLPTime", "zLP", "zLPTime", "wLP", "wLPTime" , "maxFlowLP", "maxFlowCuts", "maxFlowCutsTime", "lazyCuts", "cost", "solverTime", "relativeGAP", "nodeCount", "meters", "tourMinutes", "blocksMeters", "numVisitedBlocks", "#PreprocArcs", "#IntersectPaths", "AVGIntersectLen", "MaxIntersectLen", "MinIntersectLen", "STDIntersectLen", "IntersecTime"]
 
     info["instance"] = last(split(app["instance"], "/"; keepempty = false))
     info["instance"] = first(split(info["instance"], "."; keepempty = false))
@@ -121,8 +146,71 @@ function retrieveOriginalDigraphSolution(
     return ori_tour
 end
 
+function getPathsForIntersectionCuts(data::SBRPData, info::Dict{String, String})::Tuple{VVi, ArcsSet}
+
+    # get
+    elapsed_time::Float64 = @elapsed maximal_paths::VVi, invalid_arcs::ArcsSet = getMaximalPathsAndInvalidArcs(data) 
+
+    # paths statistics
+    paths_lengths::Vi = map(maximal_path::Vi -> length(maximal_path), maximal_paths)
+
+    num_paths::Int   = length(maximal_paths)
+    average::Float64 = reduce(+, paths_lengths) / num_paths
+    max_length::Int  = maximum(paths_lengths)
+    min_length::Int  = minimum(paths_lengths)
+    std::Float64     = reduce(+, map(path_length::Int -> abs(path_length - average), paths_lengths)) / num_paths
+
+    # store
+    info["#PreprocArcs"]    = string(length(invalid_arcs))
+    info["#IntersectPaths"] = string(num_paths)
+    info["AVGIntersectLen"] = string(average)
+    info["MaxIntersectLen"] = string(max_length)
+    info["MinIntersectLen"] = string(min_length)
+    info["STDIntersectLen"] = string(std)
+    info["IntersecTime"]    = string(elapsed_time)
+
+    # return
+    return maximal_paths, invalid_arcs
+end
+
 #=
-Run complete digraph IP formulation
+Run Concorde with complete digraph for the SBRP
+    input: 
+        - app::Dict{String, Any} is the command line arguments relation
+        - data::SBRPData is the SBRP instance built on a complete digraph
+=# 
+function completeDigraphConcordeModel(app::Dict{String, Any}, data::SBRPData)
+
+    @info "###################SBRP####################"
+
+    # create and solve model
+    solution::SBRPSolution, info::Dict{String, String} = solveTSP(data)
+
+    # check feasibility
+    checkSBRPSolution(data, solution) 
+
+    # log
+    info["model"]  = "Concorde"
+    info["|V|"]    = string(length(data.D.V))
+    info["|A|"]    = string(length(data.D.A))
+    info["|B|"]    = string(length(data.B))
+    info["T"]      = string(data.T)
+    info["meters"] = string(tourDistance(data, solution.tour))
+
+    log(app, info) 
+
+    # write solution
+    solution_dir::Union{String, Nothing} = app["out"]
+
+    if solution_dir != nothing
+        writeSolution(solution_dir * "_csp_concorde_model", data, solution)
+    end
+
+    @info "########################################################"
+end
+
+#=
+Run complete digraph IP formulation for the SBRP
     input: 
         - app::Dict{String, Any} is the command line arguments relation
         - data::SBRPData is the SBRP instance built on a complete digraph
@@ -131,8 +219,31 @@ function completeDigraphIPModel(app::Dict{String, Any}, data::SBRPData)
 
     @info "###################SBRP####################"
 
+    # intersection cuts
+    info::Dict{String, String} = Dict{String, String}()
+    maximal_paths::VVi         = VVi()
+
+    # if intersection cuts selected
+    if app["intersection-cuts"] || app["intersection-arcs"]
+
+        # retrieve
+        maximal_paths, preprocessed_arcs = getPathsForIntersectionCuts(data, info)
+
+        # preprocess arcs
+        if app["intersection-arcs"]
+            filter!(a::Arc -> !in(a, preprocessed_arcs), data.D.A)
+        end
+    end
+
+    # process time function
+    time_function::Function       = app["distance-as-time"] ? distance : time
+    block_time_function::Function = app["distance-as-time"] ? (data::SBRPData, block::Vi) -> 0 : blockTime
+    
     # create and solve model
-    solution::SBRPSolution, info::Dict{String, String} = runCompleteDigraphIPModel(data, app)
+    solution::SBRPSolution, info_::Dict{String, String} = runCOPCompleteDigraphIPModel(data, app, maximal_paths, time_function, block_time_function)
+
+    # merge
+    merge!(info, info_)
 
     # check feasibility
     checkSBRPSolution(data, solution) 
@@ -154,7 +265,105 @@ function completeDigraphIPModel(app::Dict{String, Any}, data::SBRPData)
     solution_dir::Union{String, Nothing} = app["out"]
 
     if solution_dir != nothing
-        writeSolution(solution_dir * "_ip_model", data, solution)
+        writeSolution(solution_dir * "_cop_ip_model", data, solution)
+    end
+
+    @info "########################################################"
+end
+
+#=
+Run complete digraph IP formulation for the CSP
+    input: 
+        - app::Dict{String, Any} is the command line arguments relation
+        - data::SBRPData is the SBRP instance built on a complete digraph
+=# 
+function completeDigraphCSPIPModel(app::Dict{String, Any}, data::SBRPData)
+
+    @info "###################CSP#####################"
+
+    # intersection cuts
+    info::Dict{String, String} = Dict{String, String}()
+    maximal_paths::VVi         = VVi()
+
+    # if intersection cuts selected
+    if app["intersection-cuts"] || app["intersection-arcs"]
+
+        # retrieve
+        maximal_paths, preprocessed_arcs = getPathsForIntersectionCuts(data, info)
+
+        # preprocess arcs
+        if app["intersection-arcs"]
+            filter!(a::Arc -> !in(a, preprocessed_arcs), data.D.A)
+        end
+    end
+
+    # process time function
+    time_function::Function       = app["distance-as-time"] ? distance : time
+    block_time_function::Function = app["distance-as-time"] ? (data::SBRPData, block::Vi) -> 0 : blockTime
+
+    # create and solve model
+    solution::SBRPSolution, info_::Dict{String, String} = runCSPCompleteDigraphIPModel(data, app, maximal_paths, time_function, block_time_function)
+
+    # merge
+    merge!(info, info_)
+
+    # check feasibility
+    checkSBRPSolution(data, solution) 
+
+    # log
+    info["model"]        = "IP"
+    info["|V|"]          = string(length(data.D.V))
+    info["|A|"]          = string(length(data.D.A))
+    info["|B|"]          = string(length(data.B))
+    info["T"]            = string(data.T)
+    info["meters"]       = string(tourDistance(data, solution.tour))
+
+    log(app, info) 
+
+    # write solution
+    solution_dir::Union{String, Nothing} = app["out"]
+
+    if solution_dir != nothing
+        writeSolution(solution_dir * "_csp_ip_model", data, solution)
+    end
+
+    @info "########################################################"
+end
+
+#=
+Run complete digraph CG formulation
+    input: 
+        - app::Dict{String, Any} is the command line arguments relation
+        - data::SBRPData is the SBRP instance built on a complete digraph
+=# 
+function completeDigraphCGModel(app::Dict{String, Any}, data::SBRPData)
+
+    @info "###################SBRP####################"
+
+    # create and solve model
+    solution::SBRPSolution, info::Dict{String, String} = runCOPColumnGenerationModel(data, app)
+
+    # check feasibility
+    checkSBRPSolution(data, solution) 
+
+    # log
+    info["model"]        = "CG"
+    info["|V|"]          = string(length(data.D.V))
+    info["|A|"]          = string(length(data.D.A))
+    info["|B|"]          = string(length(data.B))
+    info["T"]            = string(data.T)
+    info["meters"]       = string(tourDistance(data, solution.tour))
+    info["tourMinutes"]  = string(tourTime(data, solution))
+    info["blocksMeters"] = string(sum(map(block::Vi -> blockDistance(data, block), solution.B)))
+    info["numVisitedBlocks"] = string(length(solution.B))
+
+    log(app, info) 
+
+    # write solution
+    solution_dir::Union{String, Nothing} = app["out"]
+
+    if solution_dir != nothing
+        writeSolution(solution_dir * "_cg_model", data, solution)
     end
 
     @info "########################################################"
@@ -171,7 +380,7 @@ function completeDigraphCPModel(app::Dict{String, Any}, data::SBRPData)
     @info "###################SBRP####################"
 
     # create and solve model
-    solution::SBRPSolution, info::Dict{String, String} = runCompleteDigraphCPModel(data, app)
+    solution::SBRPSolution, info::Dict{String, String} = runCOPCompleteDigraphCPModel(data, app)
 
     # check feasibility
     checkSBRPSolution(data, solution) 
@@ -210,7 +419,7 @@ function BRKGAModel(app::Dict{String, Any}, data::SBRPData)
     @info "###################BRKGA####################"
 
     # solve model
-    solution::SBRPSolution, info::Dict{String, String} = runBRKGAModel(data, app)
+    solution::SBRPSolution, info::Dict{String, String} = runCOPBRKGAModel(data, app)
 
     # check feasibility
     checkSBRPSolution(data, solution) 
@@ -245,9 +454,17 @@ function run(app::Dict{String,Any})
     end
 
     # read instance
-    instanceReader = app["instance-type"] == "matheus" ? readSBRPData : readSBRPDataCarlos
+    data::Union{SBRPData, Nothing} = nothing
 
-    data::SBRPData = instanceReader(app)
+    if app["instance-type"] == "matheus"
+        data = readSBRPData(app)
+    elseif app["instance-type"] == "carlos"
+        data = readSBRPDataCarlos(app)
+    elseif app["instance-type"] == "csp"
+        data = readSBRPDataCSP(app)
+    else
+        error(@sprintf("Invalid instance type: %s", app["instance-type"]))
+    end
 
     # instance data
     @info "|B| = $(length(data.B))"
@@ -258,15 +475,37 @@ function run(app::Dict{String,Any})
     data.T = parse(Int, app["vehicle-time-limit"])
 
     # not solve
-    app["nosolve"] && return
+    if app["nosolve"] 
 
-    # solve models
-    if app["ip"]
-        return completeDigraphIPModel(app, data)
-    elseif app["cp"]
-        return completeDigraphCPModel(app, data)
-    elseif app["brkga"] 
-        return BRKGAModel(app, data)
+        info::Dict{String, String} = Dict{String, String}()
+
+        app["intersection-cuts"] && getPathsForIntersectionCuts(data, info)
+
+        # log
+        info["|V|"]          = string(length(data.D.V))
+        info["|A|"]          = string(length(data.D.A))
+        info["|B|"]          = string(length(data.B))
+        info["T"]            = string(data.T)
+
+        log(app, info)
+    elseif app["csp"]
+        if app["ip"]
+            completeDigraphCSPIPModel(app, data)
+        elseif app["concorde"]
+            completeDigraphConcordeModel(app, data)
+        end
+    else
+        if app["ip"]
+            completeDigraphIPModel(app, data)
+        elseif app["cg"]
+            completeDigraphCGModel(app, data)
+        elseif app["cp"]
+            completeDigraphCPModel(app, data)
+        elseif app["brkga"] 
+            BRKGAModel(app, data)
+        elseif app["concorde"]
+            completeDigraphConcordeModel(app, data)
+        end
     end
 end
 

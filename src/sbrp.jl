@@ -19,6 +19,12 @@ const NORMAL_SPEED::Float64 = (40.0 * 1e3)/60.0
 # arc time in 40 km/h
 const time(data::SBRPData, (i, j)::Arc)::Float64 = i == j ? 0.0 : data.D.distance[Arc(i, j)] / NORMAL_SPEED
 
+# arc distance
+const distance(data::SBRPData, (i, j)::Arc)::Float64 = i == j ? 0.0 : data.D.distance[Arc(i, j)]
+
+# arc time with custom speed
+#const time(data::SBRPData, (i, j)::Arc, speed::Float64)::Float64 = i == j ? 0.0 : data.D.distance[Arc(i, j)] / speed
+
 # block distance in meters
 const blockDistance(data::SBRPData, block::Vi)::Float64 = sum(a::Arc -> data.D.distance[a], Arcs(collect(zip(block[begin:end - 1], block[begin + 1:end])))) + data.D.distance[Arc(last(block), first(block))]
 

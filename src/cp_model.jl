@@ -164,7 +164,7 @@ function getIntersectionCutsCPFocused(data::SBRPData)::Arcs
 end
 =#
 
-function runCompleteDigraphCPModel(data::SBRPData, app::Dict{String, Any})::Tuple{SBRPSolution, Dict{String, String}}
+function runCOPCompleteDigraphCPModel(data::SBRPData, app::Dict{String, Any})::Tuple{SBRPSolution, Dict{String, String}}
 
     # instance parameters
     

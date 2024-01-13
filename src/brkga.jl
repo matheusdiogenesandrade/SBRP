@@ -375,7 +375,7 @@ function decode!(chromosome::Array{Float64}, data::SBRPData, rewrite::Bool)::Flo
     end
 end
 
-function runBRKGAModel(data::SBRPData, app::Dict{String, Any})::Tuple{SBRPSolution, Dict{String, String}}
+function runCOPBRKGAModel(data::SBRPData, app::Dict{String, Any})::Tuple{SBRPSolution, Dict{String, String}}
 
     global N_FEASIBLE
     global N_INFEASIBLE 

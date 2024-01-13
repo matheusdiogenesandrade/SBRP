@@ -1,0 +1,12 @@
+toy
+3
+-
+Distance Matrix:
+0 9 10 
+9 0 11 
+10 11 0
+Coverage:
+0 2
+1 0
+2 1
+EOF

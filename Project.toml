@@ -1,7 +1,10 @@
 [deps]
-BrkgaMpIpr = "028a27d2-de01-11e8-146d-d556803d83ae"
 CPLEXCP = "cf5b58c4-1b5d-4a07-a0a4-f2f6c3ca5a5f"
 Combinatorics = "861a8166-3701-5b0c-9a16-15d98fcdc6aa"
+Concorde = "df6a336b-a67f-4155-81fc-4f05fe893652"
 ConfParser = "88353bc9-fd38-507d-a820-d3b43837d6b9"
 ConstraintProgrammingExtensions = "b65d079e-ed98-51d9-b0db-edee61a5c5f8"
+JuMP = "4076af6c-e467-56ae-b986-b466b2749572"
 MathOptInterface = "b8f27783-ece8-5eb3-8dc8-9495eed66fee"
+SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
+TSPLIB = "b1c258e7-59ae-4b06-a547-f10871db1548"
