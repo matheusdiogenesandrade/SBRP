@@ -96,7 +96,7 @@ end
 # log function 
 function log(app::Dict{String, Any}, info::Dict{String, String})
 
-    columns::Vector{String} = ["instance", "|V|", "|A|", "|B|", "T", "model", "initialLP", "yLP", "yLPTime", "zLP", "zLPTime", "wLP", "wLPTime" , "maxFlowLP", "maxFlowCuts", "maxFlowCutsTime", "lazyCuts", "cost", "solverTime", "relativeGAP", "nodeCount", "meters", "tourMinutes", "blocksMeters", "numVisitedBlocks", "#PreprocArcs", "#IntersectPaths", "AVGIntersectLen", "MaxIntersectLen", "MinIntersectLen", "STDIntersectLen", "IntersecTime"]
+    columns::Vector{String} = ["instance", "|V|", "|A|", "|B|", "T", "model", "initialLP", "yLP", "yLPTime", "zLP", "zLPTime", "wLP", "wLPTime" , "maxFlowLP", "maxFlowCuts", "maxFlowCutsTime", "lazyCuts", "cost", "solverTime", "relativeGAP", "nodeCount", "integerCount", "meters", "tourMinutes", "blocksMeters", "numVisitedBlocks", "#PreprocArcs", "#IntersectPaths", "AVGIntersectLen", "MaxIntersectLen", "MinIntersectLen", "STDIntersectLen", "IntersecTime"]
 
     info["instance"] = last(split(app["instance"], "/"; keepempty = false))
     info["instance"] = first(split(info["instance"], "."; keepempty = false))
@@ -302,30 +302,36 @@ function completeDigraphCSPIPModel(app::Dict{String, Any}, data::SBRPData)
     block_time_function::Function = app["distance-as-time"] ? (data::SBRPData, block::Vi) -> 0 : blockTime
 
     # create and solve model
-    solution::SBRPSolution, info_::Dict{String, String} = runCSPCompleteDigraphIPModel(data, app, maximal_paths, time_function, block_time_function)
+    solution::Union{Nothing, SBRPSolution}, info_::Dict{String, String} = runCSPCompleteDigraphIPModel(data, app, maximal_paths, time_function, block_time_function)
 
     # merge
     merge!(info, info_)
 
-    # check feasibility
-    checkSBRPSolution(data, solution) 
-
     # log
-    info["model"]        = "IP"
-    info["|V|"]          = string(length(data.D.V))
-    info["|A|"]          = string(length(data.D.A))
-    info["|B|"]          = string(length(data.B))
-    info["T"]            = string(data.T)
-    info["meters"]       = string(tourDistance(data, solution.tour))
+    info["model"] = "IP"
+    info["|V|"]   = string(length(data.D.V))
+    info["|A|"]   = string(length(data.D.A))
+    info["|B|"]   = string(length(data.B))
+    info["T"]     = string(data.T)
 
-    log(app, info) 
+    # check feasibility
+    if solution != nothing 
+        checkSBRPSolution(data, solution) 
 
-    # write solution
-    solution_dir::Union{String, Nothing} = app["out"]
+        # log
+        info["meters"]       = string(tourDistance(data, solution.tour))
 
-    if solution_dir != nothing
-        writeSolution(solution_dir * "_csp_ip_model", data, solution)
+        # write solution
+        solution_dir::Union{String, Nothing} = app["out"]
+
+        if solution_dir != nothing
+            writeSolution(solution_dir * "_csp_ip_model", data, solution)
+        end
+    else
+        # log
+        info["meters"] = "-"
     end
+    log(app, info) 
 
     @info "########################################################"
 end

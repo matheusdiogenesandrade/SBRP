@@ -526,7 +526,7 @@ function runCSPCompleteDigraphIPModel(
         maximal_paths::VVi = VVi(),
         time::Function = time,
         blockTime::Function = blockTime
-    )::Tuple{SBRPSolution, Dict{String, String}}
+    )::Tuple{Union{Nothing, SBRPSolution}, Dict{String, String}}
 
     # instance parameters
     depot::Int                 = data.depot
@@ -560,7 +560,7 @@ function runCSPCompleteDigraphIPModel(
 
         model::Model = direct_model(CPLEX.Optimizer())
 #        set_silent(model)
-        set_parameters(model, "CPX_PARAM_TILIM" => 3600)
+        set_parameters(model, "CPX_PARAM_TILIM" => 60)
         #=
         set_parameters(model, "CPX_PARAM_PREIND" => 0)
         set_parameters(model, "CPXPARAM_MIP_Strategy_Search" => 1)
@@ -692,15 +692,15 @@ function runCSPCompleteDigraphIPModel(
 
     # getting initial relaxation with both variables <x and y> relaxed
     @debug "Getting initial relaxation"
-    optimize!(model)
-    info["initialLP"] = string(objective_value(model))
+#    optimize!(model)
+#    info["initialLP"] = string(objective_value(model))
 
     # getting initial relaxation with only x relaxed (y integer)
     @debug "Getting initial relaxation with y as integer"
-    model = createModel(true)
+#    model = createModel(true)
 
-    info["zLPTime"] = string(@elapsed optimize!(model))
-    info["zLP"] = string(objective_value(model))
+#    info["zLPTime"] = string(@elapsed optimize!(model))
+#    info["zLP"] = string(objective_value(model))
 
     # get max-flow cuts with x and y relaxed or integer
     if app["subcycle-separation"] != "none"
@@ -721,9 +721,21 @@ function runCSPCompleteDigraphIPModel(
 
     # run
     info["solverTime"]  = string(@elapsed optimize!(model))
-    info["cost"]        = @sprintf("%.2f", objective_value(model))
-    info["relativeGAP"] = string(relative_gap(model))
-    info["nodeCount"]   = string(node_count(model))
+
+    # integer count
+    integer_count::Int = result_count(model)
+
+    # log
+    info["nodeCount"]    = string(node_count(model))
+    info["integerCount"] = string(integer_count)
+
+    # edge case
+    if integer_count == 0
+        return nothing, info
+    else
+        info["cost"]         = "-"
+        info["relativeGAP"]  = "-"
+    end
 
     # retrieve solution
     x, z, w = model[:x], model[:z], model[:w]
