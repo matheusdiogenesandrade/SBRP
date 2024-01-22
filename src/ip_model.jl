@@ -692,15 +692,15 @@ function runCSPCompleteDigraphIPModel(
 
     # getting initial relaxation with both variables <x and y> relaxed
     @debug "Getting initial relaxation"
-#    optimize!(model)
-#    info["initialLP"] = string(objective_value(model))
+    optimize!(model)
+    info["initialLP"] = string(objective_value(model))
 
     # getting initial relaxation with only x relaxed (y integer)
     @debug "Getting initial relaxation with y as integer"
-#    model = createModel(true)
+    model = createModel(true)
 
-#    info["zLPTime"] = string(@elapsed optimize!(model))
-#    info["zLP"] = string(objective_value(model))
+    info["zLPTime"] = string(@elapsed optimize!(model))
+    info["zLP"] = string(objective_value(model))
 
     # get max-flow cuts with x and y relaxed or integer
     if app["subcycle-separation"] != "none"
