@@ -301,7 +301,7 @@ function runCOPCompleteDigraphIPModel(
         local model
 
         model::Model = direct_model(CPLEX.Optimizer())
-        set_silent(model)
+#        set_silent(model)
         set_parameters(model, "CPX_PARAM_TILIM" => 3600)
         #=
         set_parameters(model, "CPX_PARAM_PREIND" => 0)
@@ -560,7 +560,7 @@ function runCSPCompleteDigraphIPModel(
 
         model::Model = direct_model(CPLEX.Optimizer())
 #        set_silent(model)
-        set_parameters(model, "CPX_PARAM_TILIM" => 60)
+        set_parameters(model, "CPX_PARAM_TILIM" => 3600)
         #=
         set_parameters(model, "CPX_PARAM_PREIND" => 0)
         set_parameters(model, "CPXPARAM_MIP_Strategy_Search" => 1)
@@ -672,7 +672,8 @@ function runCSPCompleteDigraphIPModel(
     end
 
     # creating model with both variables (x and y) relaxed
-    model::Model = createModel(true, true)
+#    model::Model = createModel(true, true)
+    model::Model = createModel(true, true, true)
 
     # getting intersection cuts
     if app["intersection-cuts"]
@@ -731,10 +732,12 @@ function runCSPCompleteDigraphIPModel(
 
     # edge case
     if integer_count == 0
-        return nothing, info
-    else
         info["cost"]         = "-"
         info["relativeGAP"]  = "-"
+        return nothing, info
+    else
+        info["cost"]        = @sprintf("%.2f", objective_value(model))   
+        info["relativeGAP"] = string(relative_gap(model))                                    
     end
 
     # retrieve solution
