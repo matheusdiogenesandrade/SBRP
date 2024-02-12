@@ -652,7 +652,13 @@ function readSBRPData(app::Dict{String, Any})::SBRPData
             push!(data.B, block)
 
             # define profit
-            data.profits[block] = app["unitary-profits"] ? 1.0 : parse(Float64, parts[end])
+            if app["cluster-size-profits"]
+                data.profits[block] = length(block)
+            elseif app["unitary-profits"]
+                data.profits[block] = 1.0 
+            else
+                data.profits[block] = parse(Float64, parts[end])
+            end
 
         end
 

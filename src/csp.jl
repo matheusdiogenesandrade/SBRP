@@ -70,12 +70,21 @@ function readSBRPDataCSP(app::Dict{String, Any})::SBRPData
         blocks_set::Set{Vi} = Set{Vi}()
         for i::Int in 1:nNodes 
 
-            block::Vi = filter(j::Int -> i in clusters[j], 1:nNodes)
+            parts::Vi = filter(j::Int -> i in clusters[j], 1:nNodes)
 
-            push!(blocks_set, sort(block))
+            block::Vi = sort(parts[begin:end - 1])
+
+            push!(blocks_set, block)
 
             # define profit
-            data.profits[block] = app["unitary-profits"] ? 1.0 : length(block)
+#            data.profits[block] = app["unitary-profits"] ? 1.0 : length(block)
+            if app["cluster-size-profits"]
+                data.profits[block] = length(block)
+            elseif app["unitary-profits"]
+                data.profits[block] = 1.0 
+            else
+                data.profits[block] = parse(Float64, parts[end])
+            end
 
         end
 

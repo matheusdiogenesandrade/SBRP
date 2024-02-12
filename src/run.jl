@@ -19,8 +19,11 @@ function parse_commandline(args_array::Vector{String}, appfolder::String)::Union
     @add_arg_table s begin
         "instance"
         help = "Instance file path"
+        "--cluster-size-profits"
+        help = "true if you want to consider the blocks' profits as the size of the block, and false otherwise"
+        action = :store_true
         "--unitary-profits"
-        help = "true if you want to consider the blocks' profitsas 1, and false otherwise"
+        help = "true if you want to consider the blocks' profits as 1, and false otherwise"
         action = :store_true
         "--csp"
         help = "true if you want to run models for the CSP instead of the SBRP, and false otherwise"
