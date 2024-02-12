@@ -35,9 +35,6 @@ function readSBRPDataCSP(app::Dict{String, Any})::SBRPData
             data.D.V[i] = Vertex(i, 0.0, 0.0)
         end
 
-        # ignore number of nodes per cluster
-        readline(f)
-
         # ignore distance matrix title
         readline(f)
 
@@ -55,29 +52,23 @@ function readSBRPDataCSP(app::Dict{String, Any})::SBRPData
         # get blocks
         @debug "Reading clusters"
 
-        clusters::VVi = VVi()
+        blocks::VVi = VVi()
 
         # ignore clusters list title
         readline(f)
 
-        for _ in 1:nNodes
+        while true
 
-            cluster::Vi = map(k::SubString{String} -> parse(Int, k) + 1, split(readline(f), [',', ' ']; limit=0, keepempty=false))
-            push!(clusters, cluster)
+            line::String = readline(f)
 
-        end
+            occursin("EOF", line) && break
 
-        blocks_set::Set{Vi} = Set{Vi}()
-        for i::Int in 1:nNodes 
+            parts::Vector{String} = split(line, [',', ' ']; limit=0, keepempty=false)
 
-            parts::Vi = filter(j::Int -> i in clusters[j], 1:nNodes)
+            block::Vi = sort(map(i::String -> parse(Int, i), parts[begin:end - 1]))
 
-            block::Vi = sort(parts[begin:end - 1])
+            push!(blocks, block)
 
-            push!(blocks_set, block)
-
-            # define profit
-#            data.profits[block] = app["unitary-profits"] ? 1.0 : length(block)
             if app["cluster-size-profits"]
                 data.profits[block] = length(block)
             elseif app["unitary-profits"]
@@ -88,7 +79,7 @@ function readSBRPDataCSP(app::Dict{String, Any})::SBRPData
 
         end
 
-        data.B = collect(blocks_set)
+        data.B = blocks
         println(length(data.B))
 
     end

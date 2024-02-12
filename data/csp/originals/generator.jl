@@ -135,7 +135,8 @@ for instance in instances
         nNodes::Int = parse(Int, split(line, [' ']; limit=0, keepempty=false)[end])
 
         # ignore number of nodes per cluster
-        new_instance *= readline(f) * "\n"
+#        new_instance *= readline(f) * "\n"
+        readline(f)
 
         # ignore distance matrix title
         new_instance *= readline(f) * "\n"
@@ -150,8 +151,27 @@ for instance in instances
         # ignore clusters list title
         new_instance *= readline(f) * "\n"
 
+        #
+        clusters::Vector{Vector{Int}} = Vector{Vector{Int}}()
         for _ in 1:nNodes
-            new_instance *= readline(f) * " " * string(rand(1:MAX_PROFIT)) * "\n"
+
+            cluster::Vector{Int} = map(k::SubString{String} -> parse(Int, k) + 1, split(readline(f), [',', ' ']; limit=0, keepempty=false))
+            push!(clusters, cluster)
+
+        end
+
+        blocks_set::Set{Vector{Int}} = Set{Vector{Int}}()
+        for i::Int in 1:nNodes 
+
+            block::Vector{Int} = sort(filter(j::Int -> i in clusters[j], 1:nNodes))
+
+            push!(blocks_set, sort(block))
+
+        end
+
+        # define profit
+        for block::Vector{Int} in blocks_set
+            new_instance *= join(block, " ") * " " * string(rand(1:MAX_PROFIT)) * "\n"
         end
 
         new_instance *= readline(f) * "\n"
