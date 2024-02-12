@@ -60,7 +60,7 @@
 #data/csp/CSP-I/kroC100-9.csp2      --csp --instance-type csp --vehicle-time-limit 100000 --intersection-cuts --intersection-arcs --distance-as-time --unfixed-depot --ip --out solutions/CSP-I-kroC100-9.csp2  
 #data/csp/CSP-I/kroD100-11.csp2     --csp --instance-type csp --vehicle-time-limit 100000 --intersection-cuts --intersection-arcs --distance-as-time --unfixed-depot --ip --out solutions/CSP-I-kroD100-11.csp2  
 #data/csp/CSP-I/kroD100-7.csp2      --csp --instance-type csp --vehicle-time-limit 100000 --intersection-cuts --intersection-arcs --distance-as-time --unfixed-depot --ip --out solutions/CSP-I-kroD100-7.csp2  
-#
+#d
 #data/csp/CSP-I/kroD100-9.csp2      --csp --instance-type csp --vehicle-time-limit 100000 --intersection-cuts --intersection-arcs --distance-as-time --unfixed-depot --ip --out solutions/CSP-I-kroD100-9.csp2  
 #data/csp/CSP-I/kroE100-11.csp2     --csp --instance-type csp --vehicle-time-limit 100000 --intersection-cuts --intersection-arcs --distance-as-time --unfixed-depot --ip --out solutions/CSP-I-kroE100-11.csp2  
 #data/csp/CSP-I/kroE100-7.csp2      --csp --instance-type csp --vehicle-time-limit 100000 --intersection-cuts --intersection-arcs --distance-as-time --unfixed-depot --ip --out solutions/CSP-I-kroE100-7.csp2  
@@ -88,8 +88,8 @@
 #data/csp/CSP-I/pr439-9.csp2        --csp --instance-type csp --vehicle-time-limit 100000 --intersection-cuts --intersection-arcs --distance-as-time --unfixed-depot --ip --out solutions/CSP-I-pr439-9.csp2  
 #data/csp/CSP-I/rat575-3.csp2       --csp --instance-type csp --vehicle-time-limit 100000 --intersection-cuts --intersection-arcs --distance-as-time --unfixed-depot --ip --out solutions/CSP-I-rat575-3.csp2  
 #data/csp/CSP-I/rat575-5.csp2       --csp --instance-type csp --vehicle-time-limit 100000 --intersection-cuts --intersection-arcs --distance-as-time --unfixed-depot --ip --out solutions/CSP-I-rat575-5.csp2  
-data/csp/CSP-I/rat575-7.csp2       --csp --instance-type csp --vehicle-time-limit 100000 --intersection-cuts --intersection-arcs --distance-as-time --unfixed-depot --ip --out solutions/CSP-I-rat575-7.csp2  
-data/csp/CSP-I/rat783-3.csp2       --csp --instance-type csp --vehicle-time-limit 100000 --intersection-cuts --intersection-arcs --distance-as-time --unfixed-depot --ip --out solutions/CSP-I-rat783-3.csp2  
+#data/csp/CSP-I/rat575-7.csp2       --csp --instance-type csp --vehicle-time-limit 100000 --intersection-cuts --intersection-arcs --distance-as-time --unfixed-depot --ip --out solutions/CSP-I-rat575-7.csp2  
+#data/csp/CSP-I/rat783-3.csp2       --csp --instance-type csp --vehicle-time-limit 100000 --intersection-cuts --intersection-arcs --distance-as-time --unfixed-depot --ip --out solutions/CSP-I-rat783-3.csp2  
 data/csp/CSP-I/rat783-5.csp2       --csp --instance-type csp --vehicle-time-limit 100000 --intersection-cuts --intersection-arcs --distance-as-time --unfixed-depot --ip --out solutions/CSP-I-rat783-5.csp2  
 data/csp/CSP-I/rat783-7.csp2       --csp --instance-type csp --vehicle-time-limit 100000 --intersection-cuts --intersection-arcs --distance-as-time --unfixed-depot --ip --out solutions/CSP-I-rat783-7.csp2  
 data/csp/CSP-I/rd400-11.csp2       --csp --instance-type csp --vehicle-time-limit 100000 --intersection-cuts --intersection-arcs --distance-as-time --unfixed-depot --ip --out solutions/CSP-I-rd400-11.csp2  
