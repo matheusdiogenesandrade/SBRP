@@ -227,9 +227,13 @@ function getCompactDominanceDigraph(dominance_digraph::InputDigraph)::Tuple{Inpu
         if any((k, l)::Arc -> Arc(k, l) in arcs_set, χ(scc_i, scc_j)) # case arc exists
 
             push!(compact_dominance_digraph.A, a)
-            compact_dominance_digraph.distance[a] = length(scc_j) 
+            compact_dominance_digraph.distance[a] = length(setdiff(scc_j, scc_i))
 
         end
+    end
+
+    for a in compact_dominance_digraph.A
+        println(a)
     end
 
     # from root arcs

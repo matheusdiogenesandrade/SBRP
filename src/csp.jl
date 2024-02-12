@@ -80,6 +80,7 @@ function readSBRPDataCSP(app::Dict{String, Any})::SBRPData
         end
 
         data.B = collect(blocks_set)
+        println(length(data.B))
 
     end
 

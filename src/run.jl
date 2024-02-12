@@ -51,6 +51,8 @@ function parse_commandline(args_array::Vector{String}, appfolder::String)::Union
         default = "matheus"
         "--lb"
         help = "Lower bound"
+        "--ub"
+        help = "Upper bound"
         "--warm-start-solution"
         help = "Solution directory for Warm start"
         "--nosolve"

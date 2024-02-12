@@ -301,7 +301,7 @@ function runCOPCompleteDigraphIPModel(
         local model
 
         model::Model = direct_model(CPLEX.Optimizer())
-        set_silent(model)
+#        set_silent(model)
         set_parameters(model, "CPX_PARAM_TILIM" => 3600)
         #=
         set_parameters(model, "CPX_PARAM_PREIND" => 0)
@@ -561,18 +561,20 @@ function runCSPCompleteDigraphIPModel(
         model::Model = direct_model(CPLEX.Optimizer())
 #        set_silent(model)
         set_parameters(model, "CPX_PARAM_TILIM" => 3600)
-#        set_parameters(model, "CPX_PARAM_PREIND" => 0)
-#        set_parameters(model, "CPXPARAM_MIP_Strategy_Search" => 1)
-#        set_parameters(model, "CPXPARAM_Preprocessing_Fill" => 0)
-#        set_parameters(model, "CPXPARAM_Preprocessing_Dual" => -1)
-#        set_parameters(model, "CPXPARAM_Preprocessing_Reduce" => 0)
-#        set_parameters(model, "CPXPARAM_MIP_Cuts_FlowCovers" => -1)
-#        set_parameters(model, "CPXPARAM_MIP_Cuts_MIRCut" => -1)
-#        set_parameters(model, "CPXPARAM_MIP_Cuts_ZeroHalfCut" => -1)
-#        set_parameters(model, "CPXPARAM_MIP_Cuts_Gomory" => -1)
-#        set_parameters(model, "CPXPARAM_MIP_Cuts_Implied" => -1)
-#        set_parameters(model, "CPXPARAM_MIP_Cuts_LiftProj" => -1)
-#        set_parameters(model, "CPXPARAM_MIP_Cuts_Cliques" => -1)
+        #=
+        set_parameters(model, "CPX_PARAM_PREIND" => 0)
+        set_parameters(model, "CPXPARAM_MIP_Strategy_Search" => 1)
+        set_parameters(model, "CPXPARAM_Preprocessing_Fill" => 0)
+        set_parameters(model, "CPXPARAM_Preprocessing_Dual" => -1)
+        set_parameters(model, "CPXPARAM_Preprocessing_Reduce" => 0)
+        set_parameters(model, "CPXPARAM_MIP_Cuts_FlowCovers" => -1)
+        set_parameters(model, "CPXPARAM_MIP_Cuts_MIRCut" => -1)
+        set_parameters(model, "CPXPARAM_MIP_Cuts_ZeroHalfCut" => -1)
+        set_parameters(model, "CPXPARAM_MIP_Cuts_Gomory" => -1)
+        set_parameters(model, "CPXPARAM_MIP_Cuts_Implied" => -1)
+        set_parameters(model, "CPXPARAM_MIP_Cuts_LiftProj" => -1)
+        set_parameters(model, "CPXPARAM_MIP_Cuts_Cliques" => -1)
+        =#
 
         if relax_x
             @variable(model, x[a in A], lower_bound = 0, upper_bound = 1)
@@ -670,7 +672,8 @@ function runCSPCompleteDigraphIPModel(
     end
 
     # creating model with both variables (x and y) relaxed
-    model::Model = createModel(true, true)
+#    model::Model = createModel(true, true)
+    model::Model = createModel(true, true, true)
 
     # getting intersection cuts
     if app["intersection-cuts"]
