@@ -1,0 +1,5 @@
+instance,|V|,|A|,|B|,T,model,initialLP,zLP,zLPTime,lazyCuts,cost,solverTime,relativeGAP,nodeCount,integerCount,meters
+kroA100-11,100,9900,94,100000.0,IP,7849.4586400280405,8337.0,16.995043112,0,8901.00,3604.949576263,0.06308487923583919,570922,1,8901.0
+--
+instance,|V|,|A|,|B|,T,model,initialLP,zLP,zLPTime,lazyCuts,cost,solverTime,relativeGAP,nodeCount,integerCount,meters
+kroA100-7,100,9900,91,100000.0,IP,8869.73321935157,9337.0,16.563160787,0,9674.00,3610.807071611,0.01466941860823715,351785,1,9674.0

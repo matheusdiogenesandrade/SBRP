@@ -532,6 +532,7 @@ function main(args)
             if !isempty(strip(line)) && strip(line)[1] != '#'
 
                 run(parse_commandline(map(s::Any -> String(s), split(line)), appfolder))
+		GC.gc()  # Force the GC to run
 
             end
         end
