@@ -291,10 +291,6 @@ function runCOPCompleteDigraphIPModel(
 
     nodes_blocks::Dict{Int, VVi} = Dict{Int, VVi}(map(i::Int -> i => filter(block::Vi -> i in block, B), collect(Vb)))
 
-    function createModel()::Model
-
-        local model
-
         model::Model = direct_model(CPLEX.Optimizer())
 #        set_silent(model)
         set_parameters(model, "CPX_PARAM_TILIM" => 3600)
@@ -395,17 +391,6 @@ function runCOPCompleteDigraphIPModel(
 
         end
 
-        # registries
-        model[:x], model[:y], model[:z], model[:w], model[:t] = x, y, z, w, t
-
-        return model
-    end
-
-    # creating model with all variables relaxed
-    model::Model = createModel()
-
-    x, y, z, w, t = model[:x], model[:y], model[:z], model[:w], model[:t]
-
     # getting intersection cuts
     if app["intersection-cuts"]
         @debug "Getting intersection cuts"
@@ -425,6 +410,7 @@ function runCOPCompleteDigraphIPModel(
     # getting initial relaxation with both variables <x and y> relaxed
     @debug "Getting initial relaxation"
 
+    # creating model with all variables relaxed
     unsetBinary(values(z))
     unsetBinary(values(w))
     unsetBinary(values(y))
@@ -552,10 +538,6 @@ function runCSPCompleteDigraphIPModel(
 
     nodes_blocks::Dict{Int, VVi} = Dict{Int, VVi}(map(i::Int -> i => filter(block::Vi -> i in block, B), V))
 
-    function createModel()::Model
-
-        local model
-
         model::Model = direct_model(CPLEX.Optimizer())
 #        set_silent(model)
         #=
@@ -648,19 +630,7 @@ function runCSPCompleteDigraphIPModel(
 
         end
 
-        # registries
-        model[:x], model[:z], model[:w] = x, z, w
-
-        return model
-    end
-
     # creating model
-    model::Model = createModel()
-
-    x = model[:x]
-    z = model[:z]
-    w = model[:w]
-
     unsetBinary(values(z))
     unsetBinary(values(w))
     unsetBinary(values(x))
