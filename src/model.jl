@@ -5,6 +5,16 @@ using DataStructures
 
 const EPS = 1e-4
 
+function unsetBinary(vars)
+    unset_binary.(vars)
+    set_lower_bound.(vars, zeros(length(vars)))
+    set_upper_bound.(vars, ones(length(vars)))
+end
+
+function setBinary(vars)
+    set_binary.(vars)
+end
+
 #=
 Get all blocks with some node inside the component ´S´
 input: 
