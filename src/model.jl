@@ -429,6 +429,8 @@ function getMaximalPathsAndInvalidArcs(data::SBRPData)::Tuple{VVi, ArcsSet}
         push!(invalid_arcs, Arc(j, i))
     end
 
+    println(length(invalid_arcs))
+
     # return
     return maximal_unpacked_paths, invalid_arcs
 end

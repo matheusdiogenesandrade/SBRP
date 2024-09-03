@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" creator="Oregon 400t" version="1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www.garmin.com/xmlschemas/GpxExtensionsv3.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd">
+<metadata>
+<link href="http://www.garmin.com">
+<text>Garmin International</text>
+</link>
+<time>2009-10-17T22:58:43Z</time>
+</metadata>
+<trk>
+<name>Example GPX Document</name>
+<trkseg><trkpt lat="-22.91759" lon="-47.1017595">
+</trkpt>
+<trkpt lat="-22.9174461" lon="-47.101568">
+</trkpt>
+<trkpt lat="-22.9177602" lon="-47.1012988">
+</trkpt>
+<trkpt lat="-22.9181002" lon="-47.1017716">
+</trkpt>
+<trkpt lat="-22.9181613" lon="-47.1018648">
+</trkpt>
+<trkpt lat="-22.9181762" lon="-47.1019071">
+</trkpt>
+<trkpt lat="-22.9181749" lon="-47.1019252">
+</trkpt>
+<trkpt lat="-22.9181663" lon="-47.1019413">
+</trkpt>
+<trkpt lat="-22.9181471" lon="-47.1019587">
+</trkpt>
+<trkpt lat="-22.9179248" lon="-47.102127">
+</trkpt>
+<trkpt lat="-22.9178828" lon="-47.1021377">
+</trkpt>
+<trkpt lat="-22.9178599" lon="-47.1021337">
+</trkpt>
+<trkpt lat="-22.9178396" lon="-47.1021243">
+</trkpt>
+<trkpt lat="-22.91759" lon="-47.1017595">
+</trkpt>
+</trkseg>
+</trk>
+</gpx>

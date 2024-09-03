@@ -342,6 +342,44 @@ function completeDigraphCSPIPModel(app::Dict{String, Any}, data::SBRPData)
 end
 
 #=
+Run complete digraph CG formulation for the CSP
+    input: 
+        - app::Dict{String, Any} is the command line arguments relation
+        - data::SBRPData is the SBRP instance built on a complete digraph
+=# 
+function completeDigraphCSPCGModel(app::Dict{String, Any}, data::SBRPData)
+
+    @info "###################CSP####################"
+
+    # process time function
+    time_function::Function       = app["distance-as-time"] ? distance : time
+
+    # create and solve model
+    solution::SBRPSolution, info::Dict{String, String} = runCSPColumnGenerationModel(data, app, time_function)
+
+    # check feasibility
+    checkSBRPSolution(data, solution) 
+
+    # log
+    info["model"] = "CG"
+    info["|V|"]   = string(length(data.D.V))
+    info["|A|"]   = string(length(data.D.A))
+    info["|B|"]   = string(length(data.B))
+    info["T"]     = string(data.T)
+
+    log(app, info) 
+
+    # write solution
+    solution_dir::Union{String, Nothing} = app["out"]
+
+    if solution_dir != nothing
+        writeSolution(solution_dir * "_csp_cg_model", data, solution)
+    end
+
+    @info "########################################################"
+end
+
+#=
 Run complete digraph CG formulation
     input: 
         - app::Dict{String, Any} is the command line arguments relation
@@ -502,6 +540,8 @@ function run(app::Dict{String,Any})
     elseif app["csp"]
         if app["ip"]
             completeDigraphCSPIPModel(app, data)
+        elseif app["cg"]
+            completeDigraphCSPCGModel(app, data)
         elseif app["concorde"]
             completeDigraphConcordeModel(app, data)
         end
@@ -532,7 +572,7 @@ function main(args)
             if !isempty(strip(line)) && strip(line)[1] != '#'
 
                 run(parse_commandline(map(s::Any -> String(s), split(line)), appfolder))
-		GC.gc()  # Force the GC to run
+                GC.gc()  # Force the GC to run
 
             end
         end

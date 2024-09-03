@@ -540,8 +540,8 @@ function runCSPCompleteDigraphIPModel(
 
         model::Model = direct_model(CPLEX.Optimizer())
 #        set_silent(model)
-        #=
         set_parameters(model, "CPX_PARAM_TILIM" => 3600)
+        #=
         set_parameters(model, "CPX_PARAM_PREIND" => 0)
         set_parameters(model, "CPXPARAM_MIP_Strategy_Search" => 1)
         set_parameters(model, "CPXPARAM_Preprocessing_Fill" => 0)
