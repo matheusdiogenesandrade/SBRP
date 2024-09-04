@@ -22,9 +22,6 @@ const time(data::SBRPData, (i, j)::Arc)::Float64 = i == j ? 0.0 : data.D.distanc
 # arc distance
 const distance(data::SBRPData, (i, j)::Arc)::Float64 = i == j ? 0.0 : data.D.distance[Arc(i, j)]
 
-# arc time with custom speed
-#const time(data::SBRPData, (i, j)::Arc, speed::Float64)::Float64 = i == j ? 0.0 : data.D.distance[Arc(i, j)] / speed
-
 # block distance in meters
 const blockDistance(data::SBRPData, block::Vi)::Float64 = sum(a::Arc -> data.D.distance[a], Arcs(collect(zip(block[begin:end - 1], block[begin + 1:end])))) + data.D.distance[Arc(last(block), first(block))]
 
@@ -51,215 +48,6 @@ function addDummyArcs(data::SBRPData)
 
         data.D.distance[Arc(data.depot, i)] = data.D.distance[Arc(i, data.depot)] = 0.0 
     end
-end
-
-function createDummyDigraph(data″::SBRPData, paths″::Dict{Arc, Vi})
-
-    @debug "Creating dummy digraph"
-
-    V::Vi = collect(data″.D.V)
-
-    #    new_id = max()
-
-end
-
-#=
-Create a SBRP instance in which there is no path in which all the nodes have degree (in or out) equals to one
-input:
-- data::SBRPData is a SBRP instance
-output:
-- data″::SBRPData is the new SBRP instance
-- paths::Dict{Pair{Int, Int}, Vector{Int}} is the relation of paths
-=#
-function createNoOneDegreePathsDigraph(data::SBRPData)
-
-    @debug "Creating no one degree paths digraph"
-
-    # setup
-    V::Dict{Int, Vertex} = data.D.V
-    A::ArcsSet = ArcsSet(data.D.A)
-    Vb::Si = getBlocksNodes(data)
-    distance::ArcCostMap = data.D.distance
-
-    # utils
-    v⁺::Dict{Int, Si} = Dict{Int, Si}(map(i::Int -> i => Si(), V))
-    v⁻::Dict{Int, Si} = Dict{Int, Si}(map(j::Int -> j => Si(), V))
-    d⁺(i::Int)::Int = length(v⁺[i])
-    d⁻(j::Int)::Int = length(v⁻[j])
-
-    for (i::Int, j::Int) in A
-        push!(v⁺[i], j)
-        push!(v⁻[j], i)
-    end
-
-    validNode(i::Int)::Bool = ∧(
-                                ∨(
-                                  ∧(
-                                    v⁻[i] ⊆ v⁺[i], 
-                                    d⁺(i) <= 2, 
-                                    d⁻(i) <= 2
-                                   ), 
-                                  ∧(
-                                    v⁺[i] ⊆ v⁻[i], 
-                                    d⁺(i) <= 2, 
-                                    d⁻(i) <= 2
-                                   )
-                                 ), 
-                                !in(i, Vb)
-                               )
-
-    # new digraph by selecting the proper nodes
-    V′::Si = Si(filter(i::Int -> validNode(A, i), keys(V)))
-    A′::ArcsSet = ArcsSet(filter((i, j)::Arc -> i in V′ && j in V′, A))
-
-    v⁺′::Dict{Int, Si} = Dict{Int, Si}(map(i::Int -> i => Si(), V′))
-    v⁻′::Dict{Int, Si} = Dict{Int, Si}(map(j::Int -> j => Si(), V′))
-    d⁺′(i::Int)::Int = length(v⁺′[i])
-    d⁻′(j::Int)::Int = length(v⁻′[j])
-
-    for (i::Int, j:Int) in A′
-        push!(v⁺′[i], j)
-        push!(v⁻′[j], i)
-    end
-
-    validNode′(i::Int)::Bool = ∧(
-                                ∨(
-                                  ∧(
-                                    v⁻′[i] ⊆ v⁺′[i], 
-                                    d⁺′(i) <= 2, 
-                                    d⁻′(i) <= 2
-                                   ), 
-                                  ∧(
-                                    v⁺′[i] ⊆ v⁻′[i], 
-                                    d⁺′(i) <= 2, 
-                                    d⁻′(i) <= 2
-                                   )
-                                 ), 
-                                !in(i, Vb)
-                               )
-
-    # get paths
-    paths::Dict{Arc, Vi} = Dict{Arc, Vi}()
-    visited_nodes::Si = Si()
-
-    function dfs(curr::Int, path::Vi)
-
-        # base case
-        if !validNode′(curr)
-            throw(InvalidStateException("Node $curr is not valid"))
-        end
-
-        # children
-        for next::Int in v⁺′[curr]
-
-            next in visited_nodes && continue 
-
-            # store node
-            push!(path, next)
-            push!(visited_nodes, next)
-
-            # go on
-            dfs(next, path)
-
-        end
-
-    end
-
-    for i::Int in V′
-
-        @debug "Obtaining one degree path starting at node $i"
-
-        # checking if it is not a head node
-        !(d⁺′(i) == 1 && ⊆(v⁻′[i], v⁺′[i])) && continue
-
-        # dfs
-        path::Vi = Vi([i])
-        push!(visited_nodes, i)
-        dfs(i, path)
-
-        # store path
-        if length(path) >= 2 
-
-            @debug ">> Saving path"
-
-            paths[(path[begin], path[end])] = path
-
-            # check if reversed is feasible
-            path′::Vi = reverse(path)
-
-            if all((i, j)::Arc -> (i, j) in A, zip(path′[begin:end - 1], path′[begin + 1:end]))
-
-                paths[(path′[begin], path′[end])] = path′
-
-            end
-
-        end
-    end
-
-    # connect with Vb's nodes
-    function inNode((i, j)::Arc)::Union{Int, Nothing}
-
-        arr::Vi = setdiff(v⁻[i], v⁻′[i])
-
-        return length(arr) == 1 ? first(arr) : nothing
-
-    end
-
-    function outNode((i, j)::Arc)::Union{Int, Nothing}
-
-        arr::Vi = setdiff(v⁺[j], v⁺′[j])
-
-        return length(arr) == 1 ? first(arr) : nothing
-
-    end
-
-    paths′::Dict{Arc, Vi} = filter((a, path)::Pair{Arc, Vi} -> inNode(a) == outNode(a) == nothing, paths)
-    paths″::Dict{Arc, Vi} = Dict{Arc, Vi}()
-
-    @debug "Mapping paths to arcs"
-    for (a::Arc, path::Vi) in filter((a, _)::Pair{Arc, Vi} -> !in(a, keys(paths′)), paths)
-
-        @debug ">> Mapping arc $a"
-
-        a′::Arc = a
-        path′::Vi = copy(path)
-        nodeIn::Union{Int, Nothing} = inNode(a)
-        nodeOut::Union{Int, Nothing} = outNode(a)
-
-        if nodeIn != nothing
-            a′ = (nodeIn, a′[2])
-            pushfirst!(path′, nodeIn)
-        end
-
-        if nodeOut != nothing
-            a′ = (a′[1], nodeOut)
-            push!(path′, nodeOut)
-        end
-
-        paths″[a′] = path′
-
-    end
-
-    paths = merge(paths′, paths″)
-
-    # build new digraph
-    data″::SBRPData = deepcopy(data)
-    A″::Arcs = collect(∪(filter((i, j)::Arc -> !(i in visited_nodes && j in visited_nodes), A), keys(paths)))
-
-    D″ = InputDigraph(
-                      Dict{Int, Vertex}(map(i::Int -> i => V[i], vcat(map((i, j)::Arc -> i, A″), map((i, j)::Arc -> j, A″)))),
-                      A″,
-                      ArcCostMap(map(a::Arc -> a => a in keys(paths) ? sum((i, j)::Arc -> distance[Arc(i, j)], zip(paths[a][begin:end - 1], paths[a][begin + 1:end])) : distance[a], A″))
-                     )
-
-    data″.D = D″
-
-    # remove begins and endings
-    for (a::Arc, path::Vi) in paths
-        paths[a] = path[begin + 1 : end - 1]
-    end
-
-    return data″, paths
 end
 
 #=
@@ -572,15 +360,7 @@ function readSBRPDataCarlos(app::Dict{String, Any})::SBRPData
     # set
     data = data‴
 
-    # compact algorithm
-    #  data″, paths″ = create_no_one_degree_paths_digraph(data)
-
-    # check feasibility
-    #  check_feasibility(data, data″)
-
     # return
-    #  return data, data′, paths′, data″, paths″
-#    return data, data′, paths′
     return data
 end
 
@@ -666,7 +446,6 @@ function readSBRPData(app::Dict{String, Any})::SBRPData
 
     # update arcs ids
     data.D.A = collect(keys(data.D.distance))
-#    arcs_set::ArcsSet = ArcsSet(data.D.A)
 
     # dummy weights
     addDummyArcs(data)
@@ -688,25 +467,6 @@ function readSBRPData(app::Dict{String, Any})::SBRPData
     # check feasibility
     checkArcsFeasibility(data, data′)
 
-#    println(collect(filter(i::Int -> isempty(δ⁻(data′.D.A, i)) || isempty(δ⁺(data′.D.A, i)), collect(keys(data′.D.V)))))
-#    println(collect(filter(i::Int -> isempty(δ⁻(data‴.D.A, i)) || isempty(δ⁺(data‴.D.A, i)), collect(keys(data‴.D.V)))))
-
-#    for (a, path) in paths′
-#        println("Arc $a")
-#        if isempty(path)
-#            if !in(a, data.D.A)
-#                println("\tArc $a does not exists")
-#            end
-#        else
-#            for arc in zip(path[begin:end - 1], path[begin + 1:end])
-#                if !in(arc, data.D.A)
-#                    println("\tArc $arc does not exists")
-#                end
-#            end
-#        end
-#    end
-#    exit(0)
-
     # consider only shortest paths arcs
     # copy
     data‴ = deepcopy(data)
@@ -721,16 +481,6 @@ function readSBRPData(app::Dict{String, Any})::SBRPData
                                      map(block::Vi -> Arc(block[end], block[begin]), data.B), # blocks arcs
                                      map(i::Int -> Arc(depot, i), collect(Vb)), # depot arcs
                                      map(i::Int -> Arc(i, depot), collect(Vb))  # depot arcs
-
-#                                   [Arc(path[i], path[i + 1]) for (a, path) in paths′ for i in 1:(length(path) - 1)], # min paths arcs
-#                                   [Arc(a[1], path[begin]) for (a, path) in paths′ if !∅(path)], # min paths arcs
-#                                   [Arc(path[end], a[2]) for (a, path) in paths′ if !∅(path)], # min paths arcs
-#                                   [a for (a, path) in paths′ if ∅(path)], # min paths arcs (edge case)
-#                                   [Arc(b[i], b[i + 1]) for b in data.B for i in 1:(length(b) - 1)], # blocks arcs
-#                                   [Arc(b[end], b[begin]) for b in data.B], # blocks arcs
-#                                   [Arc(depot, i) for i in Vb], # depot arcs
-#                                   [Arc(i, depot) for i in Vb] # depot arcs
-
                                     )))
     data‴.D.distance = ArcCostMap(map(a::Arc -> a => data.D.distance[a], data‴.D.A))
 
@@ -740,16 +490,7 @@ function readSBRPData(app::Dict{String, Any})::SBRPData
     # set
     data = data‴
 
-
-    # compact algorithm
-    #  data″, paths″ = create_no_one_degree_paths_digraph(data)
-
-    # check feasibility
-    #  check_feasibility(data, data″)
-
     # return
-    #  return data, data′, paths′, data″, paths″
-#    return data, data′, paths′
     return data′
 end
 

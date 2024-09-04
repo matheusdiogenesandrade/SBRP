@@ -71,28 +71,3 @@ function checkSBRPSolution(data::SBRPData, solution::SBRPSolution)
     end
 
 end
-
-#=
-Reads a SBRP solution from a file
-input:
-- file_path::String is the file directory the solution file is stored at
-- data::SBRPData is the SBRP instance
-output:
-- (route, B)::Pair{Vector{Int}, Vector{Vector{Int}}} is the pair containing the route and serviced blocks
-=#
-function readSolution(file_path::String, data::SBRPData)::SBRPSolution
-    # get lines
-    lines::Vector{String} = readlines(file_path)
-
-    # get route
-    tour::Vi = map(node -> parse(Int, node), split(first(lines), ", ", keepempty=false))
-    pushfirst!(tour, data.depot)
-    push!(tour, data.depot)
-
-    # get blocks
-    serviced_blocks::VVi = map(block_line::String -> map(node::Int -> parse(Int, node), split(block_line, ", ", keepempty=false)), lines[2:end])
-
-    # return
-    return  SBRPSolution(tour, serviced_blocks)
-end
-

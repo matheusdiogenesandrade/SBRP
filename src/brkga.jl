@@ -41,7 +41,7 @@ function dijkstra(data::SBRPData, idxs_blocks::Vi)::Tuple{Float64, Dict{Tuple{In
 
 
     # attrs
-    
+
     @debug "Getting params"
 
     m::Int = length(idxs_blocks)
@@ -88,13 +88,13 @@ function dijkstra(data::SBRPData, idxs_blocks::Vi)::Tuple{Float64, Dict{Tuple{In
         next_block::Vi = B[idx_next_block]
 
         # calculate next block service time
-        
+
         @debug "Get next block service time"
 
         next_block_time::Float64 = blockTime(data, next_block)
 
         # intersecting nodes
-       
+
         @debug "Get intersecting nodes"
 
         intersection::Si = Si(intersect(curr_block, next_block))
@@ -104,7 +104,7 @@ function dijkstra(data::SBRPData, idxs_blocks::Vi)::Tuple{Float64, Dict{Tuple{In
         end
 
         # non intersecting nodes
-        
+
         @debug "Get non-intersecting nodes"
 
         for i::Int in curr_block
@@ -129,115 +129,6 @@ function dijkstra(data::SBRPData, idxs_blocks::Vi)::Tuple{Float64, Dict{Tuple{In
     return minimum(map(i::Int -> consumed_times[(last_block_idx, i)], candidates)), consumed_times
 end
 
-function getLongestProfitRoute(data::SBRPData, consumed_times::Dict{Tuple{Int, Int}, Real}, idxs_blocks::Vi)
-
-    #=
-    # params
-    V = data.D.V
-    depot = data.depot
-    B = data.B
-
-    # blocks order
-    blocks_order::VVi = map(idx::Int -> B[idx], idxs_blocks)
-    pushfirst!(blocks_order, [depot])
-
-    # build DAG
-    # build nodes
-    dag_V::Dict{Int, Vertex} = Dict{Int, Vertex}()
-
-    block_node_to_id::Dict{Tuple{Vi, Int}, Int} = Dict{Tuple{Vi, Int}, Int}()
-    id_to_block_node::Dict{Int, Tuple{Vi, Int}} = Dict{Int, Tuple{Vi, Int}}()
-
-    id::Int = 0
-    for block in blocks_order
-    for i in block
-    dat_V[id] = V[i]
-    block_node_to_id[(block, i)] = id
-    id_to_block_node[id] = (block, i)
-
-    id += 1
-    end
-    end
-
-    # build arcs
-    dag_A::Arcs = Arcs()
-    enumeration = enumerate(blocks_order)
-    for idx_prev, block_prev in enumeration[1:end - 1]
-    for _, block_next in enumeration[idx_prev + 1:end]
-    for i in block_prev
-    for j in block_next
-    node_prev = block_node_to_id[(block_prev, i)]
-    node_next = block_node_to_id[(block_next, j)]
-
-    push!(dag_arcs, Arc(node_prev, node_next))
-    end
-    end
-    end
-    end
-
-    # build revAdjList
-    revAdjList::Dict{Int, Vi} = Dict{Int, Vi}(id => Vi())
-    for (id_i, id_j) in dag_A 
-    push!(revAdjList[id_j], id_i)
-    end
-
-    # times and profits
-    times::ArcCostMap = ArcCostMap()
-    profits::ArcCostMap = ArcCostMap()
-    for (id_i, id_j) in dag_A
-    i, block_i = id_to_block_node[id_i]
-    j, block_j = id_to_block_node[id_j]
-
-    times[(id_i, id_j)] = time(data, (i, j)) + time_block(data, block_j)
-    profits[(id_i, id_j)] = data.profits[block_j]
-    end
-
-    # get topological sorting
-    topological_order::Vi = Vi()
-    for block in blocks_order
-    for i in block
-    id_i = block_node_to_id[(block, i)]
-
-    push!(topological_order, id_i)
-    end
-    end
-
-    #
-    path::Vi = Vi()
-    pred::Dict{Int, Int} = Dict{Int, Int}(i => i for i in keys(dag_V))
-    incurr_time::Vector{Float64} = Vector{Float64}(zeros(length(pred)))
-    incurr_profit::Vector{Float64} = Vector{Float64}(zeros(length(pred)))
-
-    # get distances
-    for v in topological_order
-    for u in revAdjList[v]
-
-    newdist = dist[u] + times[(u, v)]
-    newprofit = 
-
-    if newdist > dist[v]
-    dist[v] = newdist
-    pred[v] = u
-    end
-
-    end
-    end
-
-    # retrieve path 
-    v = argmax(x -> dist[x], vertices(g))
-    push!(path, v)
-
-    while pred[v] != v
-    v = pred[v]
-    push!(path, v)
-    end
-
-    # return 
-    return reverse(path)
-    =#
-
-end
-
 function getDijkstraRoute(data::SBRPData, consumed_times::Dict{Tuple{Int, Int}, Float64}, idxs_blocks::Vi)::Vi
 
     @debug "Get dijkstra route"
@@ -259,13 +150,13 @@ function getDijkstraRoute(data::SBRPData, consumed_times::Dict{Tuple{Int, Int}, 
     last_idx::Int  = idxs_blocks[m]
 
     # initialize tour
-    
+
     @debug "Initialize tour"
 
     push!(tour, B[last_idx][findmin(i -> consumed_times[(last_idx, i)], B[last_idx])[2]])
 
     # BFS
-    
+
     @debug "BFS"
 
     for i::Int in reverse(2:m)
@@ -315,13 +206,6 @@ function getDijkstraRoute(data::SBRPData, consumed_times::Dict{Tuple{Int, Int}, 
 
 end
 
-"""
-Countings
-"""
-N_FEASIBLE::Int        = 0
-N_INFEASIBLE::Int      = 0
-DECODING_TIME::Float64 = 0
-
 function getIdxsBlocks(chromosome::Array{Float64}, data::SBRPData)::Vi
     # attrs
     m::Int = length(data.B)
@@ -335,42 +219,319 @@ function getIdxsBlocks(chromosome::Array{Float64}, data::SBRPData)::Vi
 
     sort!(permutation, rev = true)
 
-    # consider only blocks with allele > 0.5
-    #  filter!(s -> s[1] > 0.5, permutation)
-
     # return indexes of the selected blocks
     return map((key, idx)::Tuple{Float64, Int} -> idx, permutation)
 end
 
 function decode!(chromosome::Array{Float64}, data::SBRPData, rewrite::Bool)::Float64
-    # import blogal variables
-    global N_FEASIBLE
-    global N_INFEASIBLE 
-    global DECODING_TIME 
 
-    DECODING_TIME += curr_decode_time::Float64 = @elapsed begin
+    # attrs
+    B::VVi = data.B
 
-        # attrs
-        B::VVi = data.B
+    # get min tour time
+    idxs_blocks::Vi = getIdxsBlocks(chromosome, data)
+    tour_time::Float64, consumed_times::Dict{Tuple{Int, Int}, Float64} = dijkstra(data, idxs_blocks)
 
-        # get min tour time
-        idxs_blocks::Vi = getIdxsBlocks(chromosome, data)
-        tour_time::Float64, consumed_times::Dict{Tuple{Int, Int}, Float64} = dijkstra(data, idxs_blocks)
-
-        idxs_blocks = idxs_blocks[begin:findlast(idx::Int -> any(i::Int -> consumed_times[(idx, i)] <= data.T, data.B[idx]), idxs_blocks)]
-    end
+    idxs_blocks = idxs_blocks[begin:findlast(idx::Int -> any(i::Int -> consumed_times[(idx, i)] <= data.T, data.B[idx]), idxs_blocks)]
 
     if tour_time > data.T # check feasibility
-
         throw(InvalidStateException("Not here"))
-        #      println("Infeasile with time ", tour_time)
-        N_INFEASIBLE += 1
         return -∞
-
     else # return profit
-        #      println("Feasile with time ", tour_time)
-        N_FEASIBLE += 1
         return sum(idx::Int -> data.profits[B[idx]], idxs_blocks)
-
     end
+end
+
+function runCOPBRKGAModel(data::SBRPData, app::Dict{String, Any})::Tuple{SBRPSolution, Dict{String, String}}
+
+    @debug "Run BRKGA"
+
+    # attrs
+    @debug "Getting instance data"
+
+    B::VVi = data.B
+    m::Int = length(B)
+    verbose::Bool, info::Dict{String, String} = false, Dict{String, String}()
+
+    STARTING_TIME = datetime2unix(now())
+
+    ########################################
+    # Load configuration file and show basic info.
+    ########################################
+
+    @debug "Load configuration file and show basic info"
+
+    conf::ConfParse              = ConfParse(app["brkga-conf"])
+    parse_conf!(conf)
+
+    println(retrieve(conf, "stop_rule"))
+    seed::Int                          = parse(Int64, retrieve(conf, "seed"))
+    stop_rule::StopRule                = parseRule(StopRule, retrieve(conf, "stop_rule"))
+    stop_argument::Union{Float64, Int} = parse(stop_rule == TARGET ? Float64 : Int64, retrieve(conf, "stop_argument"))
+    maximum_time::Float64              = parse(Float64, retrieve(conf, "maximum_time"))
+    verbose                            = parse(Bool, retrieve(conf, "verbose"))
+    perform_evolution::Bool            = parse(Bool, retrieve(conf, "evolution"))
+
+    if maximum_time <= 0.0
+        error("Maximum time must be larger than 0.0. Given $maximum_time.")
+    end
+
+    ########################################
+    # Load config file and show basic info.
+    ########################################
+    
+    @debug "Load config file and show basic info"
+
+    brkga_params, control_params = load_configuration(retrieve(conf, "brkg_params"))
+
+    if verbose
+        println("""
+                ------------------------------------------------------
+                > Experiment started at $(Dates.now())
+                > Configuration: $(app["brkga-conf"])
+                > Algorithm Parameters:
+                """)
+        if !perform_evolution
+            println(">    - Simple multi-start: on (no evolutionary operators)")
+        end
+        # log BRKGA parameters
+        for field in fieldnames(BrkgaParams)
+            println(">  - $field $(getfield(brkga_params, field))")
+        end
+        # log control parameters
+        for field in fieldnames(ExternalControlParams)
+            println(">  - $field $(getfield(control_params, field))")
+        end
+        println("""
+                > Seed: $seed
+                > Stop rule: $stop_rule
+                > Stop argument: $stop_argument
+                > Maximum time (s): $maximum_time
+                > Number of parallel threads for decoding: $(Threads.nthreads())
+                ------------------------------------------------------""")
+    end
+
+    ########################################
+    # Adjust BRKGA parameters
+    ########################################
+
+    verbose && println("\n[$(Dates.Time(Dates.now()))] Generating initial tour...")
+
+    # Generate a greedy solution to be used as warm start for BRKGA.
+    profit, visited_blocks, tour = solveNearestNeighborhood(data)
+    verbose && println("Initial profit: $profit")
+
+    ########################################
+    # Build the BRKGA data structures and initialize
+    ########################################
+
+    verbose && println("\n[$(Dates.Time(Dates.now()))] Building BRKGA data...")
+
+    # Usually, it is a good idea to set the population size
+    # proportional to the instance size.
+    brkga_params.population_size = min(brkga_params.population_size, 10 * m)
+    verbose && println("New population size: $(brkga_params.population_size)")
+
+    # Chromosome size is the number of nodes.
+    # Each chromosome represents a permutation of nodes.
+    brkga_data = build_brkga(data, decode!, MAXIMIZE, seed, m, brkga_params, perform_evolution)
+
+    # To inject the initial tour, we need to create chromosome representing that
+    # solution. First, we create a set of keys to be used in the chromosome.
+    # Then, we visit each required and profitable arc in the routes and assign to they keys.
+    visited_blocks_weights::Dict{Vi, Real} = Dict{Vi, Real}(visited_blocks[i] => 1 - i * 1e-3 for i::Int in 1:length(visited_blocks))
+    initial_chromosome::Vector{Float64}    = [block in keys(visited_blocks_weights) ? visited_blocks_weights[block] : 0.0 for block::Vi in B]
+
+    # Inject the warm start solution in the initial population.
+    set_initial_population!(brkga_data, [initial_chromosome])
+
+    # NOTE: don't forget to initialize the algorithm.
+    verbose && println("\n[$(Dates.Time(Dates.now()))] Initializing BRKGA data...")
+    initialize!(brkga_data)
+
+    ########################################
+    # Warm up the script/code
+    ########################################
+
+    # To make sure we are timing the runs correctly, we run some warmup
+    # iterations with bogus data. Warmup is always recommended for script
+    # languages. Here, we call the most used methods.
+    verbose && println("\n[$(Dates.Time(Dates.now()))] Warming up...")
+
+    bogus_data = deepcopy(brkga_data)
+    evolve!(bogus_data, 2)
+    path_relink!(bogus_data, brkga_params.pr_type, brkga_params.pr_selection, (x, y) -> 1.0, (x, y) -> true, 0, 0.5, 1, 10.0, 1.0)
+    best_cost::Float64 = get_best_fitness(brkga_data)
+    best_chromosome::Vector{Float64} = get_best_chromosome(brkga_data)
+    bogus_data = nothing
+
+    ########################################
+    # Evolving
+    ########################################
+
+    verbose && println("\n[$(Dates.Time(Dates.now()))] Evolving...")
+    verbose && println("* Iteration | Cost | CurrentTime")
+
+    iteration::Int = 0
+    last_update_time = 0.0
+    last_update_iteration = 0
+    large_offset = 0
+    path_relink_time = 0.0
+    num_path_relink_calls::Int = 0
+    num_homogenities::Int = 0
+    num_best_improvements::Int = 0
+    num_elite_improvements::Int = 0
+    run::Bool = true
+    start_time = Base.time()
+
+    # Main optimization loop. We evolve one generation at time,
+    # keeping track of all changes during such process.
+    while run
+        iteration += 1
+
+        # Evolves one iteration.
+        evolve!(brkga_data)
+
+        # Checks the current results and holds the best.
+        fitness = get_best_fitness(brkga_data)
+        if fitness > best_cost
+            last_update_time = Base.time() - start_time
+            update_offset = iteration - last_update_iteration
+
+            if large_offset < update_offset
+                large_offset = update_offset
+            end
+
+            last_update_iteration = iteration
+
+            best_cost = fitness
+            best_chromosome = get_best_chromosome(brkga_data)
+
+            verbose && @printf("* %d | %.0f | %.2f \n", iteration, best_cost, last_update_time)
+
+        end
+
+        iter_without_improvement = iteration - last_update_iteration
+
+        # Here, we call the path relink when the algorithm gets stuck for
+        # `exchange_interval` iterations. Obviously, we can use many other ways
+        # of hybridization.
+        if control_params.exchange_interval > 0 &&
+            iter_without_improvement > 0 &&
+            (iter_without_improvement % control_params.exchange_interval == 0)
+
+            verbose && println("Performing path relink at $iteration...")
+            num_path_relink_calls += 1
+
+            pr_now = Base.time()
+            result = path_relink!(
+                                  brkga_data,
+                                  brkga_params.pr_type,
+                                  brkga_params.pr_selection,
+                                  kendall_tau_distance,
+                                  affect_solution_kendall_tau,
+                                  brkga_params.pr_number_pairs,
+                                  brkga_params.pr_minimum_distance,
+                                  1, # block_size doesn't matter for permutation.
+                                  maximum_time - (Base.time() - start_time),
+                                  brkga_params.pr_percentage
+                                 )
+
+            pr_time = Base.time() - pr_now
+            path_relink_time += pr_time
+
+            if result == TOO_HOMOGENEOUS
+                num_homogenities += 1
+                verbose && println("- Populations are too too homogeneous | " *
+                                         "Elapsed time: $(@sprintf("%.2f", pr_time))")
+
+            elseif result == NO_IMPROVEMENT
+                verbose && println("- No improvement found | " *
+                                         "Elapsed time: $(@sprintf("%.2f", pr_time))")
+
+            elseif result == ELITE_IMPROVEMENT
+                num_elite_improvements += 1
+                verbose && println("- Improvement on the elite set but " *
+                                         "not in the best individual | " *
+                                         "Elapsed time: $(@sprintf("%.2f", pr_time))")
+
+            elseif result == BEST_IMPROVEMENT
+                num_best_improvements += 1
+                fitness = get_best_fitness(brkga_data)
+                verbose && println("- Best individual improvement: $fitness | " *
+                                         "Elapsed time: $(@sprintf("%.2f", pr_time))")
+                if fitness < best_cost
+                    last_update_time = Base.time() - start_time
+                    update_offset = iteration - last_update_iteration
+
+                    if large_offset < update_offset 
+                        large_offset = update_offset
+                    end
+
+                    last_update_iteration = iteration
+                    best_cost = fitness
+                    best_chromosome = get_best_chromosome(brkga_data)
+
+                    verbose && @printf("* %d | %.0f | %.2f \n", iteration, best_cost,
+                                       last_update_time)
+                end
+            end
+        end
+
+        # Check stop criteria.
+        run = !(
+                (Base.time() - start_time > maximum_time) ||
+                (stop_rule == GENERATIONS && Float64(iteration) == stop_argument) ||
+                (stop_rule == IMPROVEMENT &&
+                 Float64(iter_without_improvement) >= stop_argument) ||
+                (stop_rule == TARGET && best_cost <= stop_argument)
+               )
+    end
+    total_elapsed_time = Base.time() - start_time
+    total_num_iterations = iteration
+
+    if verbose
+        println("[$(Dates.Time(Dates.now()))] End of optimization\n")
+        println("Total number of iterations: $total_num_iterations")
+        println("Last update iteration: $last_update_iteration")
+        @printf("Total optimization time: %.2f\n", total_elapsed_time)
+        @printf("Last update time: %.2f\n", last_update_time)
+        println("Large number of iterations between improvements: $large_offset")
+
+        @printf("Total path relink time: %.2f\n", path_relink_time)
+        println("Total path relink calls: $num_path_relink_calls")
+        println("Number of homogenities: $num_homogenities")
+        println("Improvements in the elite set: $num_elite_improvements")
+        println("Best individual improvements: $num_best_improvements")
+    end
+
+    ########################################
+    # Extracting the solution
+    ########################################
+
+    # get blocks indexes
+    idxs_blocks = getIdxsBlocks(best_chromosome, data)
+
+    # get dijkstra time matrix
+    tour_time, consumed_times = dijkstra(data, idxs_blocks)
+
+    # get tour
+    tour = getDijkstraRoute(data, consumed_times, idxs_blocks)
+
+    println("Last index ", findlast(idx -> any(i -> consumed_times[(idx, i)] <= data.T, data.B[idx]), idxs_blocks))
+    # update blocks indexes
+    idxs_blocks = idxs_blocks[1:findlast(idx -> any(i -> consumed_times[(idx, i)] <= data.T, data.B[idx]), idxs_blocks)]
+
+    # get visited blocks
+    blocks = [B[idx_block] for idx_block in idxs_blocks]
+
+    # log
+    info["cost"], info["solverTime"] = string(best_cost), string(total_elapsed_time)
+
+    println("BRKGA cost:", best_cost)
+    println("Blocks cost:", sum(data.profits[block] for block in blocks))
+    println("Calculated cost:", info["cost"])
+
+    return SBRPSolution(tour, blocks), info
+
 end
